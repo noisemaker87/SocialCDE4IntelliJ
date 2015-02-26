@@ -5,6 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
 			name: "this"
+			"preferredSize": new java.awt.Dimension( 450, 600 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 				"alignment": 0
 				"hgap": 15
@@ -139,13 +140,17 @@ new FormModel {
 					} )
 				} )
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
-				"gap": 15
-			} ) {
-				name: "panelDynamic"
-				"background": new java.awt.Color( 255, 255, 255, 255 )
-				"preferredSize": new java.awt.Dimension( 400, 800 )
-				"border": new javax.swing.border.BevelBorder( 1, null, null, null, null )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
+					"gap": 15
+				} ) {
+					name: "panelDynamic"
+					"background": new java.awt.Color( 255, 255, 255, 255 )
+					"preferredSize": new java.awt.Dimension( 400, 800 )
+					"border": new javax.swing.border.BevelBorder( 1, null, null, null, null )
+					"minimumSize": new java.awt.Dimension( 400, 800 )
+				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

@@ -159,7 +159,7 @@ new FormModel {
 			} ) {
 				name: "panelBtnLogin"
 				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "button1"
+					name: "btnLogin"
 					"text": "Login"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 					"hAlign": 2

@@ -4,13 +4,30 @@
 
 package com.socialcdeIntellij.staticview;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.EventListenerList;
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Vector;
 
 /**
  * @author Davide Rossi
  */
 public class LoginPanel extends JPanel {
+    private JLabel lblSign_No;
+    private JLabel lblSign_Ok;
+    private JLabel lblHidden;
+    private static EventListenerList lista;
+    Vector<JPanel> vec;
+
+    public Image get_ImageStream(InputStream stream) throws IOException {
+        Image image = ImageIO.read(stream);
+        return image;
+    }//prende immagine da stream
+
     public LoginPanel() {
         initComponents();
     }
@@ -34,7 +51,7 @@ public class LoginPanel extends JPanel {
         txtPassword = new JTextField();
         lblSign5 = new JLabel();
         panelBtnLogin = new JPanel();
-        button1 = new JButton();
+        btnLogin = new JButton();
         panelCheckBtn = new JPanel();
         ckBxAuto_login = new JCheckBox();
         ckBxSave_psw = new JCheckBox();
@@ -47,8 +64,8 @@ public class LoginPanel extends JPanel {
         setBorder(new javax.swing.border.CompoundBorder(
             new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
                 "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                javax.swing.border.TitledBorder.BOTTOM, new Font("Dialog", Font.BOLD, 12),
-                Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
         setLayout(new GridLayout(9, 2, 2, 2));
 
@@ -195,9 +212,9 @@ public class LoginPanel extends JPanel {
             ((GridBagLayout)panelBtnLogin.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
             ((GridBagLayout)panelBtnLogin.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
 
-            //---- button1 ----
-            button1.setText("Login");
-            panelBtnLogin.add(button1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+            //---- btnLogin ----
+            btnLogin.setText("Login");
+            panelBtnLogin.add(btnLogin, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.NONE,
                 new Insets(0, 20, 0, 0), 50, 0));
         }
@@ -226,6 +243,27 @@ public class LoginPanel extends JPanel {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
+    public HashMap<String, Object> getData() {
+        HashMap<String, Object> uiData = new HashMap<String, Object>();
+        uiData.put("labelAlert", lblAlert);
+        uiData.put("txtProxyHost", txtProxy);
+        uiData.put("labelImageHostOk", lblSign_Ok);
+        uiData.put("labelImageHostNo", lblSign_No);
+        uiData.put("txtUsername", txtUsername);
+        uiData.put("labelImageUsernameOk", lblSign_Ok);
+        uiData.put("labelImageUsernameNo", lblSign_No);
+        uiData.put("txtPassword", txtPassword);
+        uiData.put("labelImagePasswordOk", lblSign_Ok);
+        uiData.put("labelImagePasswordNo", lblSign_No);
+        uiData.put("chkAutologin", ckBxAuto_login);
+        uiData.put("chkSavePassword", ckBxSave_psw);
+        uiData.put("btnLogin",btnLogin);
+        uiData.put("labelHiddenProxyHost", lblHidden);
+        uiData.put("labelHiddenUsername", lblHidden);
+        uiData.put("labelHiddenPassword", lblHidden);
+
+        return uiData;
+    }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Davide Rossi
@@ -245,7 +283,7 @@ public class LoginPanel extends JPanel {
     private JTextField txtPassword;
     private JLabel lblSign5;
     private JPanel panelBtnLogin;
-    private JButton button1;
+    private JButton btnLogin;
     private JPanel panelCheckBtn;
     private JCheckBox ckBxAuto_login;
     private JCheckBox ckBxSave_psw;

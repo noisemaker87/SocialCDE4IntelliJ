@@ -4,13 +4,40 @@
 
 package com.socialcdeIntellij.staticview;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
 
 /**
  * @author Davide Rossi
  */
 public class RegistrationPanel extends JPanel {
+    private JLabel lblSign_Ok;
+    private JLabel lblSign_No;
+    private JLabel lblHidden;
+
+    private final InputStream PATH_ICON_OK = this.getClass().getClassLoader()
+            .getResourceAsStream("images/yes_icon.png");
+    private final InputStream PATH_ICON_ERROR = this.getClass()
+            .getClassLoader().getResourceAsStream("images/no_icon.png");
+
+    private BufferedImage resize(BufferedImage originalImage, int width, int height) throws IOException {
+        BufferedImage resizedImage = null;
+        Graphics2D g = resizedImage.createGraphics();
+        g.drawImage(originalImage, 0, 0, width, height, null);
+        g.dispose();
+        return resizedImage;
+    }//ridimensione immagine
+
+    public Image get_ImageStream(InputStream stream) throws IOException {
+        Image image = ImageIO.read(stream);
+        return image;
+    }//prende immagine da stream
+
     public RegistrationPanel() {
         initComponents();
     }
@@ -45,6 +72,8 @@ public class RegistrationPanel extends JPanel {
         lblConfirmPsw = new JLabel();
         txtConfirmPsw = new JTextField();
         lblSign6 = new JLabel();
+        panel1 = new JPanel();
+        button1 = new JButton();
         lblChange = new JLabel();
 
         //======== this ========
@@ -52,10 +81,10 @@ public class RegistrationPanel extends JPanel {
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
-            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                javax.swing.border.TitledBorder.BOTTOM, new Font("Dialog", Font.BOLD, 12),
-                Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                        java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
         setLayout(new GridLayout(9, 2, 2, 2));
 
@@ -304,6 +333,22 @@ public class RegistrationPanel extends JPanel {
         }
         add(panelConfirmPsw);
 
+        //======== panel1 ========
+        {
+            panel1.setLayout(new GridBagLayout());
+            ((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {0, 0};
+            ((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {0, 0};
+            ((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
+            ((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
+
+            //---- button1 ----
+            button1.setText("Register");
+            panel1.add(button1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.WEST, GridBagConstraints.NONE,
+                new Insets(0, 20, 0, 0), 50, 0));
+        }
+        add(panel1);
+
         //---- lblChange ----
         lblChange.setText("<html><u>I already have an account, I want to sign in</u></html> ");
         lblChange.setHorizontalAlignment(SwingConstants.CENTER);
@@ -311,6 +356,46 @@ public class RegistrationPanel extends JPanel {
         add(lblChange);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
+
+    public HashMap<String, Object> getData() {
+        HashMap<String, Object> uiData = new HashMap<String, Object>();
+        uiData.put("LabelAlert", lblAlert);
+        uiData.put("ProxyHost", txtProxy);
+        uiData.put("LabelImageHostOk", lblSign_Ok);
+        uiData.put("LabelImageHostNo", lblSign_No);
+        uiData.put("LabelImageHostHidden", lblHidden);
+        uiData.put("Email", txtEmail);
+        uiData.put("LabelImageMailOk", lblSign_Ok);
+        uiData.put("LabelImageMailNo", lblSign_No);
+        uiData.put("LabelImageMailHidden", lblHidden);
+        uiData.put("InvitationCode", txtCode);
+        uiData.put("LabelImageInvitationCodeOk", lblSign_Ok);
+        uiData.put("LabelImageInvitationCodeNo", lblSign_No);
+        uiData.put("LabelImageInvitationCodeHidden", lblHidden);
+        uiData.put("Username", txtUsername);
+        uiData.put("LabelImageUsernameOk", lblSign_Ok);
+        uiData.put("LabelImageUsernameNo", lblSign_No);
+        uiData.put("LabelImageUsernameHidden", lblHidden);
+        uiData.put("Password", txtPassword);
+        uiData.put("LabelImagePasswordOk", lblSign_Ok);
+        uiData.put("LabelImagePasswordNo", lblSign_No);
+        uiData.put("LabelImagePasswordHidden", lblHidden);
+        uiData.put("ConfirmPassword", txtConfirmPsw);
+        uiData.put("LabelImageConfirmPasswordOk", lblSign_Ok);
+        uiData.put("LabelImageConfirmPasswordNo", lblSign_No);
+        uiData.put("LabelImageConfirmPasswordHidden", lblHidden);
+
+        return uiData;
+    }
+
+    public InputStream getPathIconOk() {
+        return PATH_ICON_OK;
+    }
+
+    public InputStream getPathIconError() {
+        return PATH_ICON_ERROR;
+    }
+
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Davide Rossi
@@ -341,6 +426,8 @@ public class RegistrationPanel extends JPanel {
     private JLabel lblConfirmPsw;
     private JTextField txtConfirmPsw;
     private JLabel lblSign6;
+    private JPanel panel1;
+    private JButton button1;
     private JLabel lblChange;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

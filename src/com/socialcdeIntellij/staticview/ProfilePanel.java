@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 
 /**
  * @author Davide Rossi
@@ -105,16 +106,18 @@ public class ProfilePanel extends JPanel {
         panelFollowers = new JPanel();
         lblFollowers = new JLabel();
         lblNumFollowers = new JLabel();
+        scrollPane1 = new JScrollPane();
         panelDynamic = new JPanel();
 
         //======== this ========
+        setPreferredSize(new Dimension(450, 600));
 
         // JFormDesigner evaluation mark
-        setBorder(new CompoundBorder(
-            new TitledBorder(new EmptyBorder(0, 0, 0, 0),
-                "JFormDesigner Evaluation", TitledBorder.CENTER,
-                TitledBorder.BOTTOM, new Font("Dialog", Font.BOLD, 12),
-                Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder(new javax.swing.border.CompoundBorder(
+                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                        java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
         setLayout(new VerticalLayout());
 
@@ -257,14 +260,20 @@ public class ProfilePanel extends JPanel {
         }
         add(panelProfile);
 
-        //======== panelDynamic ========
+        //======== scrollPane1 ========
         {
-            panelDynamic.setBackground(Color.white);
-            panelDynamic.setPreferredSize(new Dimension(400, 800));
-            panelDynamic.setBorder(new BevelBorder(BevelBorder.LOWERED));
-            panelDynamic.setLayout(new VerticalLayout(15));
+
+            //======== panelDynamic ========
+            {
+                panelDynamic.setBackground(Color.white);
+                panelDynamic.setPreferredSize(new Dimension(400, 800));
+                panelDynamic.setBorder(new BevelBorder(BevelBorder.LOWERED));
+                panelDynamic.setMinimumSize(new Dimension(400, 800));
+                panelDynamic.setLayout(new VerticalLayout(15));
+            }
+            scrollPane1.setViewportView(panelDynamic);
         }
-        add(panelDynamic);
+        add(scrollPane1);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -320,6 +329,11 @@ public class ProfilePanel extends JPanel {
         this.composite_static = composite_static;
     }
 
+    public HashMap<String, Object> getData() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Davide Rossi
     private JPanel panelToolbar;
@@ -347,7 +361,7 @@ public class ProfilePanel extends JPanel {
     private JPanel panelFollowers;
     private JLabel lblFollowers;
     private JLabel lblNumFollowers;
+    private JScrollPane scrollPane1;
     private JPanel panelDynamic;
-
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
