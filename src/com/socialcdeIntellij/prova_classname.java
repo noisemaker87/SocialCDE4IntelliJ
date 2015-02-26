@@ -6,9 +6,6 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
 
-/**
- * Created by noisemaker on 10/02/2015.
- */
 public class prova_classname extends AnAction {
 
     public void actionPerformed(AnActionEvent e) {
