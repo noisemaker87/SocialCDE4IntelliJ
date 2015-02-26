@@ -82,9 +82,9 @@ public class ProfilePanel extends JPanel {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Davide Rossi
         panelToolbar = new JPanel();
-        lblHome = new JLabel();
-        lblPeople = new JLabel();
         lblBoh = new JLabel();
+        lblPeople = new JLabel();
+        lblHome = new JLabel();
         lblIterationTimeline = new JLabel();
         lblInteractiveTimeline = new JLabel();
         lblLogout = new JLabel();
@@ -114,10 +114,10 @@ public class ProfilePanel extends JPanel {
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
         setLayout(new VerticalLayout());
 
@@ -126,17 +126,17 @@ public class ProfilePanel extends JPanel {
             panelToolbar.setBackground(new Color(204, 204, 204));
             panelToolbar.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
-            //---- lblHome ----
-            lblHome.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Home.png"));
-            panelToolbar.add(lblHome);
+            //---- lblBoh ----
+            lblBoh.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Profile.png"));
+            panelToolbar.add(lblBoh);
 
             //---- lblPeople ----
             lblPeople.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\People.png"));
             panelToolbar.add(lblPeople);
 
-            //---- lblBoh ----
-            lblBoh.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Back.png"));
-            panelToolbar.add(lblBoh);
+            //---- lblHome ----
+            lblHome.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Home.png"));
+            panelToolbar.add(lblHome);
 
             //---- lblIterationTimeline ----
             lblIterationTimeline.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\IterationTimeline.png"));
@@ -155,6 +155,7 @@ public class ProfilePanel extends JPanel {
         //======== panelProfile ========
         {
             panelProfile.setBackground(Color.white);
+            panelProfile.setVisible(false);
             panelProfile.setLayout(new FlowLayout(FlowLayout.LEFT));
 
             //---- lblAvatar ----
@@ -337,9 +338,9 @@ public class ProfilePanel extends JPanel {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Davide Rossi
     private JPanel panelToolbar;
-    private JLabel lblHome;
-    private JLabel lblPeople;
     private JLabel lblBoh;
+    private JLabel lblPeople;
+    private JLabel lblHome;
     private JLabel lblIterationTimeline;
     private JLabel lblInteractiveTimeline;
     private JLabel lblLogout;

@@ -13,16 +13,16 @@ new FormModel {
 				name: "panelToolbar"
 				"background": new java.awt.Color( 204, 204, 204, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "lblHome"
-					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Home.png" )
+					name: "lblBoh"
+					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Profile.png" )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblPeople"
 					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\People.png" )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "lblBoh"
-					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Back.png" )
+					name: "lblHome"
+					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Home.png" )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblIterationTimeline"
@@ -42,6 +42,7 @@ new FormModel {
 			} ) {
 				name: "panelProfile"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
+				"visible": false
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblAvatar"
 					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png" )
