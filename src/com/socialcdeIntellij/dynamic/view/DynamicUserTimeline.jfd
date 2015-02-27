@@ -8,40 +8,14 @@ new FormModel {
 			"preferredSize": new java.awt.Dimension( 450, 600 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 				"alignment": 0
-				"hgap": 15
-			} ) {
-				name: "panelToolbar"
-				"background": new java.awt.Color( 204, 204, 204, 255 )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "lblBoh"
-					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Profile.png" )
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "lblPeople"
-					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\People.png" )
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "lblHome"
-					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Home.png" )
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "lblIterationTimeline"
-					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\IterationTimeline.png" )
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "lblInteractiveTimeline"
-					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\InteractiveTimeline.png" )
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "lblLogout"
-					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Logout.png" )
-				} )
-			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-				"alignment": 0
 			} ) {
 				name: "panelProfile"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lblReturn"
+					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Back.png" )
+					"background": new java.awt.Color( 204, 204, 204, 255 )
+				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblAvatar"
 					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
@@ -54,6 +28,7 @@ new FormModel {
 					"background": new java.awt.Color( 255, 255, 255, 255 )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 						"hgap": 25
+						"alignment": 0
 					} ) {
 						name: "panelSettings"
 						"background": new java.awt.Color( 255, 255, 255, 255 )
@@ -61,18 +36,6 @@ new FormModel {
 							name: "lblNickname"
 							"text": "nickname qui"
 							"horizontalAlignment": 2
-						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
-							name: "panelSubSettings"
-							"background": new java.awt.Color( 255, 255, 255, 255 )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblSkills"
-								"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\skills.png" )
-							} )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblSettings"
-								"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\settings.png" )
-							} )
 						} )
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
@@ -140,6 +103,25 @@ new FormModel {
 					} )
 				} )
 			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+				"alignment": 0
+				"hgap": 25
+			} ) {
+				name: "panelIcon"
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lblFollow"
+					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Follow.png" )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lblSkill"
+					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\skills.png" )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "lblHide"
+					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Hide.png" )
+				} )
+			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
@@ -154,7 +136,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 500, 490 )
+			"size": new java.awt.Dimension( 545, 510 )
 		} )
 	}
 }

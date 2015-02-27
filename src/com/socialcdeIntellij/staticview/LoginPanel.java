@@ -124,7 +124,7 @@ public class LoginPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign ----
-            lblSign.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\no_icon.png"));
+            lblSign.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
             lblSign.setHorizontalAlignment(SwingConstants.CENTER);
             panelProxy.add(lblSign, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -160,7 +160,7 @@ public class LoginPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign4 ----
-            lblSign4.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\no_icon.png"));
+            lblSign4.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
             lblSign4.setHorizontalAlignment(SwingConstants.CENTER);
             panelUsername.add(lblSign4, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -196,7 +196,7 @@ public class LoginPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign5 ----
-            lblSign5.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\no_icon.png"));
+            lblSign5.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
             lblSign5.setHorizontalAlignment(SwingConstants.CENTER);
             panelPassword.add(lblSign5, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,

@@ -131,23 +131,23 @@ public class ProfilePanel extends JPanel {
             panelToolbar.add(lblBoh);
 
             //---- lblPeople ----
-            lblPeople.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\People.png"));
+            lblPeople.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\People.png"));
             panelToolbar.add(lblPeople);
 
             //---- lblHome ----
-            lblHome.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Home.png"));
+            lblHome.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Home.png"));
             panelToolbar.add(lblHome);
 
             //---- lblIterationTimeline ----
-            lblIterationTimeline.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\IterationTimeline.png"));
+            lblIterationTimeline.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\IterationTimeline.png"));
             panelToolbar.add(lblIterationTimeline);
 
             //---- lblInteractiveTimeline ----
-            lblInteractiveTimeline.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\InteractiveTimeline.png"));
+            lblInteractiveTimeline.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\InteractiveTimeline.png"));
             panelToolbar.add(lblInteractiveTimeline);
 
             //---- lblLogout ----
-            lblLogout.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Logout.png"));
+            lblLogout.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Logout.png"));
             panelToolbar.add(lblLogout);
         }
         add(panelToolbar);
@@ -155,11 +155,10 @@ public class ProfilePanel extends JPanel {
         //======== panelProfile ========
         {
             panelProfile.setBackground(Color.white);
-            panelProfile.setVisible(false);
             panelProfile.setLayout(new FlowLayout(FlowLayout.LEFT));
 
             //---- lblAvatar ----
-            lblAvatar.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png"));
+            lblAvatar.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
             panelProfile.add(lblAvatar);
 
             //======== panelInfo ========
@@ -183,11 +182,11 @@ public class ProfilePanel extends JPanel {
                         panelSubSettings.setLayout(new FlowLayout());
 
                         //---- lblSkills ----
-                        lblSkills.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\skills.png"));
+                        lblSkills.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\skills.png"));
                         panelSubSettings.add(lblSkills);
 
                         //---- lblSettings ----
-                        lblSettings.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\settings.png"));
+                        lblSettings.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\settings.png"));
                         panelSubSettings.add(lblSettings);
                     }
                     panelSettings.add(panelSubSettings);

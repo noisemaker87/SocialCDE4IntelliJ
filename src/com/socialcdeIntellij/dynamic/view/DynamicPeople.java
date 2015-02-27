@@ -103,11 +103,11 @@ public class DynamicPeople extends JScrollPane {
                     User1.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
                     //---- lblImgUser ----
-                    lblImgUser.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png"));
+                    lblImgUser.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
                     User1.add(lblImgUser);
 
                     //---- lblNickUser ----
-                    lblNickUser.setText("nicname user");
+                    lblNickUser.setText("nickname user");
                     User1.add(lblNickUser);
 
                     //======== panel2 ========
@@ -116,7 +116,7 @@ public class DynamicPeople extends JScrollPane {
                         panel2.setLayout(new BorderLayout(10, 0));
 
                         //---- lblOther ----
-                        lblOther.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Next.png"));
+                        lblOther.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
                         lblOther.setHorizontalAlignment(SwingConstants.RIGHT);
                         panel2.add(lblOther, BorderLayout.CENTER);
                     }
@@ -129,11 +129,11 @@ public class DynamicPeople extends JScrollPane {
                     User2.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
                     //---- lblImgUser2 ----
-                    lblImgUser2.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png"));
+                    lblImgUser2.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
                     User2.add(lblImgUser2);
 
                     //---- lblNickUser2 ----
-                    lblNickUser2.setText("nicname user");
+                    lblNickUser2.setText("nickname user");
                     User2.add(lblNickUser2);
 
                     //======== panel4 ========
@@ -142,7 +142,7 @@ public class DynamicPeople extends JScrollPane {
                         panel4.setLayout(new BorderLayout(10, 0));
 
                         //---- lblOther2 ----
-                        lblOther2.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Next.png"));
+                        lblOther2.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
                         lblOther2.setHorizontalAlignment(SwingConstants.RIGHT);
                         panel4.add(lblOther2, BorderLayout.CENTER);
                     }
@@ -155,11 +155,11 @@ public class DynamicPeople extends JScrollPane {
                     User3.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
                     //---- lblImgUser3 ----
-                    lblImgUser3.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png"));
+                    lblImgUser3.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
                     User3.add(lblImgUser3);
 
                     //---- lblNickUser3 ----
-                    lblNickUser3.setText("nicname user");
+                    lblNickUser3.setText("nickname user");
                     User3.add(lblNickUser3);
 
                     //======== panel6 ========
@@ -168,7 +168,7 @@ public class DynamicPeople extends JScrollPane {
                         panel6.setLayout(new BorderLayout(10, 0));
 
                         //---- lblOther3 ----
-                        lblOther3.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Next.png"));
+                        lblOther3.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
                         lblOther3.setHorizontalAlignment(SwingConstants.RIGHT);
                         panel6.add(lblOther3, BorderLayout.CENTER);
                     }
@@ -181,11 +181,11 @@ public class DynamicPeople extends JScrollPane {
                     User4.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
                     //---- lblImgUser4 ----
-                    lblImgUser4.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png"));
+                    lblImgUser4.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
                     User4.add(lblImgUser4);
 
                     //---- lblNickUser4 ----
-                    lblNickUser4.setText("nicname user");
+                    lblNickUser4.setText("nickname user");
                     User4.add(lblNickUser4);
 
                     //======== panel8 ========
@@ -194,7 +194,7 @@ public class DynamicPeople extends JScrollPane {
                         panel8.setLayout(new BorderLayout(10, 0));
 
                         //---- lblOther4 ----
-                        lblOther4.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Next.png"));
+                        lblOther4.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
                         lblOther4.setHorizontalAlignment(SwingConstants.RIGHT);
                         panel8.add(lblOther4, BorderLayout.CENTER);
                     }
@@ -207,11 +207,11 @@ public class DynamicPeople extends JScrollPane {
                     User5.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
                     //---- lblImgUser5 ----
-                    lblImgUser5.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png"));
+                    lblImgUser5.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
                     User5.add(lblImgUser5);
 
                     //---- lblNickUser5 ----
-                    lblNickUser5.setText("nicname user");
+                    lblNickUser5.setText("nickname user");
                     User5.add(lblNickUser5);
 
                     //======== panel10 ========
@@ -220,7 +220,7 @@ public class DynamicPeople extends JScrollPane {
                         panel10.setLayout(new BorderLayout(10, 0));
 
                         //---- lblOther5 ----
-                        lblOther5.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Next.png"));
+                        lblOther5.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
                         lblOther5.setHorizontalAlignment(SwingConstants.RIGHT);
                         panel10.add(lblOther5, BorderLayout.CENTER);
                     }
@@ -244,11 +244,11 @@ public class DynamicPeople extends JScrollPane {
                     User6.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
                     //---- lblImgUser6 ----
-                    lblImgUser6.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png"));
+                    lblImgUser6.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
                     User6.add(lblImgUser6);
 
                     //---- lblNickUser6 ----
-                    lblNickUser6.setText("nicname user");
+                    lblNickUser6.setText("nickname user");
                     User6.add(lblNickUser6);
 
                     //======== panel14 ========
@@ -257,7 +257,7 @@ public class DynamicPeople extends JScrollPane {
                         panel14.setLayout(new BorderLayout(10, 0));
 
                         //---- lblOther6 ----
-                        lblOther6.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Next.png"));
+                        lblOther6.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
                         lblOther6.setHorizontalAlignment(SwingConstants.RIGHT);
                         panel14.add(lblOther6, BorderLayout.CENTER);
                     }
@@ -270,11 +270,11 @@ public class DynamicPeople extends JScrollPane {
                     User7.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
                     //---- lblImgUser7 ----
-                    lblImgUser7.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png"));
+                    lblImgUser7.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
                     User7.add(lblImgUser7);
 
                     //---- lblNickUser7 ----
-                    lblNickUser7.setText("nicname user");
+                    lblNickUser7.setText("nickname user");
                     User7.add(lblNickUser7);
 
                     //======== panel16 ========
@@ -283,7 +283,7 @@ public class DynamicPeople extends JScrollPane {
                         panel16.setLayout(new BorderLayout(10, 0));
 
                         //---- lblOther7 ----
-                        lblOther7.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Next.png"));
+                        lblOther7.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
                         lblOther7.setHorizontalAlignment(SwingConstants.RIGHT);
                         panel16.add(lblOther7, BorderLayout.CENTER);
                     }
@@ -296,11 +296,11 @@ public class DynamicPeople extends JScrollPane {
                     User8.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
                     //---- lblImgUser8 ----
-                    lblImgUser8.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png"));
+                    lblImgUser8.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
                     User8.add(lblImgUser8);
 
                     //---- lblNickUser8 ----
-                    lblNickUser8.setText("nicname user");
+                    lblNickUser8.setText("nickname user");
                     User8.add(lblNickUser8);
 
                     //======== panel18 ========
@@ -309,7 +309,7 @@ public class DynamicPeople extends JScrollPane {
                         panel18.setLayout(new BorderLayout(10, 0));
 
                         //---- lblOther8 ----
-                        lblOther8.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Next.png"));
+                        lblOther8.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
                         lblOther8.setHorizontalAlignment(SwingConstants.RIGHT);
                         panel18.add(lblOther8, BorderLayout.CENTER);
                     }
@@ -322,11 +322,11 @@ public class DynamicPeople extends JScrollPane {
                     User9.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
                     //---- lblImgUser9 ----
-                    lblImgUser9.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png"));
+                    lblImgUser9.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
                     User9.add(lblImgUser9);
 
                     //---- lblNickUser9 ----
-                    lblNickUser9.setText("nicname user");
+                    lblNickUser9.setText("nickname user");
                     User9.add(lblNickUser9);
 
                     //======== panel20 ========
@@ -335,7 +335,7 @@ public class DynamicPeople extends JScrollPane {
                         panel20.setLayout(new BorderLayout(10, 0));
 
                         //---- lblOther9 ----
-                        lblOther9.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Next.png"));
+                        lblOther9.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
                         lblOther9.setHorizontalAlignment(SwingConstants.RIGHT);
                         panel20.add(lblOther9, BorderLayout.CENTER);
                     }
@@ -348,11 +348,11 @@ public class DynamicPeople extends JScrollPane {
                     User10.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
                     //---- lblImgUser10 ----
-                    lblImgUser10.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png"));
+                    lblImgUser10.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
                     User10.add(lblImgUser10);
 
                     //---- lblNickUser10 ----
-                    lblNickUser10.setText("nicname user");
+                    lblNickUser10.setText("nickname user");
                     User10.add(lblNickUser10);
 
                     //======== panel22 ========
@@ -361,7 +361,7 @@ public class DynamicPeople extends JScrollPane {
                         panel22.setLayout(new BorderLayout(10, 0));
 
                         //---- lblOther10 ----
-                        lblOther10.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\Toolbar\\Next.png"));
+                        lblOther10.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
                         lblOther10.setHorizontalAlignment(SwingConstants.RIGHT);
                         panel22.add(lblOther10, BorderLayout.CENTER);
                     }

@@ -51,7 +51,7 @@ public class DynamicHome extends JPanel {
         setLayout(new FlowLayout(FlowLayout.CENTER, 15, 5));
 
         //---- lblAvatar ----
-        lblAvatar.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\DefaultAvatar.png"));
+        lblAvatar.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
         add(lblAvatar);
 
         //======== panelInfo ========
@@ -75,11 +75,11 @@ public class DynamicHome extends JPanel {
                     panelSubSettings.setLayout(new FlowLayout());
 
                     //---- lblSkills ----
-                    lblSkills.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\skills.png"));
+                    lblSkills.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\skills.png"));
                     panelSubSettings.add(lblSkills);
 
                     //---- lblSettings ----
-                    lblSettings.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\settings.png"));
+                    lblSettings.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\settings.png"));
                     panelSubSettings.add(lblSettings);
                 }
                 panelSettings.add(panelSubSettings);

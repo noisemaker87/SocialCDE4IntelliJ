@@ -81,10 +81,10 @@ public class RegistrationPanel extends JPanel {
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
         setLayout(new GridLayout(9, 2, 2, 2));
 
@@ -143,7 +143,7 @@ public class RegistrationPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign ----
-            lblSign.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\no_icon.png"));
+            lblSign.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
             lblSign.setHorizontalAlignment(SwingConstants.CENTER);
             panelProxy.add(lblSign, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -182,7 +182,7 @@ public class RegistrationPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign2 ----
-            lblSign2.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\no_icon.png"));
+            lblSign2.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
             lblSign2.setHorizontalAlignment(SwingConstants.CENTER);
             panelEmail.add(lblSign2, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -217,7 +217,7 @@ public class RegistrationPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign3 ----
-            lblSign3.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\no_icon.png"));
+            lblSign3.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
             lblSign3.setHorizontalAlignment(SwingConstants.CENTER);
             panelCode.add(lblSign3, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -253,7 +253,7 @@ public class RegistrationPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign4 ----
-            lblSign4.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\no_icon.png"));
+            lblSign4.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
             lblSign4.setHorizontalAlignment(SwingConstants.CENTER);
             panelUsername.add(lblSign4, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -289,7 +289,7 @@ public class RegistrationPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign5 ----
-            lblSign5.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\no_icon.png"));
+            lblSign5.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
             lblSign5.setHorizontalAlignment(SwingConstants.CENTER);
             panelPassword.add(lblSign5, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -325,7 +325,7 @@ public class RegistrationPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign6 ----
-            lblSign6.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\SocialCDEplugin\\images\\no_icon.png"));
+            lblSign6.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
             lblSign6.setHorizontalAlignment(SwingConstants.CENTER);
             panelConfirmPsw.add(lblSign6, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,

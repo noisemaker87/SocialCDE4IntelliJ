@@ -1,0 +1,96 @@
+/*
+ * Created by JFormDesigner on Fri Feb 27 11:36:02 CET 2015
+ */
+
+package com.socialcdeIntellij.dynamic.view;
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import com.socialcdeIntellij.object.*;
+import org.jdesktop.swingx.*;
+
+/**
+ * @author Davide Rossi
+ */
+public class DynamicHomeTimeline extends JPanel {
+    public DynamicHomeTimeline() {
+        initComponents();
+    }
+
+    private void createUIComponents() {
+        // TODO: add custom component creation code here
+    }
+
+    private void initComponents() {
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - Davide Rossi
+        scrollPane1 = new JScrollPane();
+        panelDynamic = new JPanel();
+        panelMsg = new JPanel();
+        customTextArea1 = new CustomTextArea();
+        lblEnter = new JLabel();
+
+        //======== this ========
+
+        // JFormDesigner evaluation mark
+        setBorder(new javax.swing.border.CompoundBorder(
+            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+
+        setLayout(new VerticalLayout(30));
+
+        //======== scrollPane1 ========
+        {
+            scrollPane1.setPreferredSize(new Dimension(403, 400));
+
+            //======== panelDynamic ========
+            {
+                panelDynamic.setBackground(Color.white);
+                panelDynamic.setPreferredSize(new Dimension(400, 800));
+                panelDynamic.setBorder(new BevelBorder(BevelBorder.LOWERED));
+                panelDynamic.setMinimumSize(new Dimension(400, 800));
+                panelDynamic.setLayout(new VerticalLayout(15));
+            }
+            scrollPane1.setViewportView(panelDynamic);
+        }
+        add(scrollPane1);
+
+        //======== panelMsg ========
+        {
+            panelMsg.setLayout(new GridBagLayout());
+            ((GridBagLayout)panelMsg.getLayout()).rowWeights = new double[] {1.0};
+
+            //---- customTextArea1 ----
+            customTextArea1.setMinimumSize(new Dimension(20, 16));
+            customTextArea1.setPreferredSize(new Dimension(330, 70));
+            customTextArea1.setWrapStyleWord(true);
+            panelMsg.add(customTextArea1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                new Insets(0, 0, 0, 5), 0, 0));
+
+            //---- lblEnter ----
+            lblEnter.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\send_message.png"));
+            lblEnter.setHorizontalAlignment(SwingConstants.LEFT);
+            lblEnter.setVerticalAlignment(SwingConstants.TOP);
+            lblEnter.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+            lblEnter.setVerticalTextPosition(SwingConstants.TOP);
+            panelMsg.add(lblEnter, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                new Insets(0, 0, 0, 0), 0, 0));
+        }
+        add(panelMsg);
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    }
+
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Davide Rossi
+    private JScrollPane scrollPane1;
+    private JPanel panelDynamic;
+    private JPanel panelMsg;
+    private CustomTextArea customTextArea1;
+    private JLabel lblEnter;
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
+}
