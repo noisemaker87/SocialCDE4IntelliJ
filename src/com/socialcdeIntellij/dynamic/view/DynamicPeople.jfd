@@ -47,87 +47,6 @@ new FormModel {
 						"alignment": 0
 						"hgap": 15
 					} ) {
-						name: "User2"
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lblImgUser2"
-							"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
-						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lblNickUser2"
-							"text": "nickname user"
-						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
-							"hgap": 10
-						} ) {
-							name: "panel4"
-							"preferredSize": #Dimension0
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblOther2"
-								"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png" )
-								"horizontalAlignment": 4
-							}, new FormLayoutConstraints( class java.lang.String ) {
-								"value": "Center"
-							} )
-						} )
-					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-						"alignment": 0
-						"hgap": 15
-					} ) {
-						name: "User3"
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lblImgUser3"
-							"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
-						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lblNickUser3"
-							"text": "nickname user"
-						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
-							"hgap": 10
-						} ) {
-							name: "panel6"
-							"preferredSize": #Dimension0
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblOther3"
-								"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png" )
-								"horizontalAlignment": 4
-							}, new FormLayoutConstraints( class java.lang.String ) {
-								"value": "Center"
-							} )
-						} )
-					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-						"alignment": 0
-						"hgap": 15
-					} ) {
-						name: "User4"
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lblImgUser4"
-							"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
-						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lblNickUser4"
-							"text": "nickname user"
-						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
-							"hgap": 10
-						} ) {
-							name: "panel8"
-							"preferredSize": #Dimension0
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblOther4"
-								"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png" )
-								"horizontalAlignment": 4
-							}, new FormLayoutConstraints( class java.lang.String ) {
-								"value": "Center"
-							} )
-						} )
-					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-						"alignment": 0
-						"hgap": 15
-					} ) {
 						name: "User5"
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "lblImgUser5"
@@ -166,7 +85,7 @@ new FormModel {
 						name: "User6"
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "lblImgUser6"
-							"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
+							"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "lblNickUser6"
@@ -179,12 +98,20 @@ new FormModel {
 							"preferredSize": #Dimension0
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "lblOther6"
-								"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png" )
+								"icon": &SwingIcon1 new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png" )
 								"horizontalAlignment": 4
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "Center"
 							} )
 						} )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
+					name: "panelFollowers"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "lblFollowers"
+						"text": "Followers"
+						"font": #Font0
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 						"alignment": 0
@@ -193,7 +120,7 @@ new FormModel {
 						name: "User7"
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "lblImgUser7"
-							"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
+							"icon": #SwingIcon0
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "lblNickUser7"
@@ -202,16 +129,24 @@ new FormModel {
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
 							"hgap": 10
 						} ) {
-							name: "panel16"
+							name: "panel15"
 							"preferredSize": #Dimension0
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "lblOther7"
-								"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png" )
+								"icon": #SwingIcon1
 								"horizontalAlignment": 4
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "Center"
 							} )
 						} )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
+					name: "panelHidden"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "lblHidden"
+						"text": "Hidden"
+						"font": #Font0
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 						"alignment": 0
@@ -220,7 +155,7 @@ new FormModel {
 						name: "User8"
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "lblImgUser8"
-							"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
+							"icon": #SwingIcon0
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "lblNickUser8"
@@ -229,65 +164,11 @@ new FormModel {
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
 							"hgap": 10
 						} ) {
-							name: "panel18"
+							name: "panel16"
 							"preferredSize": #Dimension0
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "lblOther8"
-								"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png" )
-								"horizontalAlignment": 4
-							}, new FormLayoutConstraints( class java.lang.String ) {
-								"value": "Center"
-							} )
-						} )
-					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-						"alignment": 0
-						"hgap": 15
-					} ) {
-						name: "User9"
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lblImgUser9"
-							"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
-						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lblNickUser9"
-							"text": "nickname user"
-						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
-							"hgap": 10
-						} ) {
-							name: "panel20"
-							"preferredSize": #Dimension0
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblOther9"
-								"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png" )
-								"horizontalAlignment": 4
-							}, new FormLayoutConstraints( class java.lang.String ) {
-								"value": "Center"
-							} )
-						} )
-					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-						"alignment": 0
-						"hgap": 15
-					} ) {
-						name: "User10"
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lblImgUser10"
-							"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
-						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lblNickUser10"
-							"text": "nickname user"
-						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
-							"hgap": 10
-						} ) {
-							name: "panel22"
-							"preferredSize": #Dimension0
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblOther10"
-								"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png" )
+								"icon": #SwingIcon1
 								"horizontalAlignment": 4
 							}, new FormLayoutConstraints( class java.lang.String ) {
 								"value": "Center"

@@ -1,5 +1,5 @@
 /*
- * Created by JFormDesigner on Fri Feb 27 11:36:02 CET 2015
+ * Created by JFormDesigner on Mon Mar 02 12:18:08 CET 2015
  */
 
 package com.socialcdeIntellij.dynamic.view;
@@ -13,13 +13,9 @@ import org.jdesktop.swingx.*;
 /**
  * @author Davide Rossi
  */
-public class DynamicHomeTimeline extends JPanel {
-    public DynamicHomeTimeline() {
+public class DynamicIterationTimeline extends JPanel {
+    public DynamicIterationTimeline() {
         initComponents();
-    }
-
-    private void createUIComponents() {
-        // TODO: add custom component creation code here
     }
 
     private void initComponents() {
