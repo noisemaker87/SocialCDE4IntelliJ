@@ -1,5 +1,5 @@
 /*
- * Created by JFormDesigner on Mon Mar 02 11:36:02 CET 2015
+ * Created by JFormDesigner on Mon Mar 02 17:58:11 CET 2015
  */
 
 package com.socialcdeIntellij.dynamic.view;
@@ -11,8 +11,8 @@ import org.jdesktop.swingx.*;
 /**
  * @author Davide Rossi
  */
-public class SettingsPanel extends JPanel {
-    public SettingsPanel() {
+public class SettingPanel extends JPanel {
+    public SettingPanel() {
         initComponents();
     }
 
