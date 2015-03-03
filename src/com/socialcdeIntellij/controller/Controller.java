@@ -1,5 +1,6 @@
 package com.socialcdeIntellij.controller;
 
+import com.intellij.ide.util.PropertiesComponent;
 import com.socialcdeIntellij.dynamic.view.*;
 import com.socialcdeIntellij.model.ProxyWrapper;
 import com.socialcdeIntellij.shared.library.WUser;
@@ -30,7 +31,7 @@ public class Controller {
 
     private static DynamicHome homeWindow = null;
 
-    private static DynamicIterationTimeline interationTimelineWindow = null;
+    private static DynamicIterationTimeline iterationTimelineWindow = null;
 
     private static DynamicInteractiveTimeline interactiveTimelineWindow = null;
 
@@ -104,13 +105,13 @@ public class Controller {
         homeWindow = newhomeWindow;
     }
 
-    public static DynamicIterationTimeline getInteractionTimelineWindow() {
-        return interationTimelineWindow;
+    public static DynamicIterationTimeline getIterationTimelineWindow() {
+        return iterationTimelineWindow;
     }
 
-    public static void setInteractionTimelineWindow(
+    public static void setIterationTimelineWindow(
             DynamicIterationTimeline newinteractionTimelineWindow) {
-        interationTimelineWindow = newinteractionTimelineWindow;
+        iterationTimelineWindow = newinteractionTimelineWindow;
     }
 
     public static DynamicInteractiveTimeline getInteractiveTimelineWindow() {
@@ -168,60 +169,50 @@ public class Controller {
     }
 
     // other methods
-   /* public static void closeAllDynamicPanel() {
+    public static void closeAllDynamicPanel() {
         if (dynamicUserWindow != null) {
-            dynamicUserWindow.dispose(Controller.getProfilePanel()
-                    .getComposite_dinamic());
+            Controller.getProfilePanel().remove(dynamicUserWindow);
             dynamicUserWindow = null;
         }
 
         if (homeTimelineWindow != null) {
-            homeTimelineWindow.dispose(Controller.getProfilePanel()
-                    .getComposite_dinamic());
+            Controller.getProfilePanel().remove(homeTimelineWindow);
             homeTimelineWindow = null;
         }
 
         if (homeWindow != null) {
-            homeWindow.dispose(Controller.getProfilePanel()
-                    .getComposite_dinamic());
+            Controller.getProfilePanel().remove(homeWindow);
             homeWindow = null;
 
         }
 
-        if (interationTimelineWindow != null) {
-            interationTimelineWindow.dispose(Controller.getProfilePanel()
-                    .getComposite_dinamic());
-            interationTimelineWindow = null;
+        if (iterationTimelineWindow != null) {
+            Controller.getProfilePanel().remove(iterationTimelineWindow);
+            iterationTimelineWindow = null;
         }
 
         if (interactiveTimelineWindow != null) {
-            interactiveTimelineWindow.dispose(Controller.getProfilePanel()
-                    .getComposite_dinamic());
+            Controller.getProfilePanel().remove(interactiveTimelineWindow);
             interactiveTimelineWindow = null;
         }
 
         if (peopleWindow != null) {
-            peopleWindow.dispose(Controller.getProfilePanel()
-                    .getComposite_dinamic());
+            Controller.getProfilePanel().remove(peopleWindow);
             peopleWindow = null;
         }
 
         if (settingWindow != null) {
-            settingWindow.dispose(Controller.getProfilePanel()
-                    .getComposite_dinamic());
+            Controller.getProfilePanel().remove(settingWindow);
             settingWindow = null;
         }
 
     }
 
-    public static void selectDynamicWindow(int choose) {
+    /*public static void selectDynamicWindow(int choose) {
         Composite dynamicComposite;
         GridData gridData;
         ProgressBarWindow pbNewW = null;
         ProgressBarThread pbWindow = null;
-
-
-
 
         if(Controller.OSisWindows())
         {
@@ -660,7 +651,7 @@ public class Controller {
 
             case 5:
 
-                interationTimelineWindow = new DynamicIterationTimeline();
+                iterationTimelineWindow = new DynamicIterationTimeline();
 
                 if (Controller.getProfilePanel().getComposite_dinamic() == null) {
                     dynamicComposite = new Composite(getWindow(), SWT.None);
@@ -716,7 +707,7 @@ public class Controller {
                 }
                 long secondCallpostStartTime = System.currentTimeMillis();
 
-                interationTimelineWindow.inizialize(Controller.getProfilePanel()
+                iterationTimelineWindow.inizialize(Controller.getProfilePanel()
                         .getComposite_dinamic());
                 long secondCallpostEndTime = System.currentTimeMillis();
 
@@ -809,33 +800,33 @@ public class Controller {
                 break;
         }
 
-    }
+    }*/
+
 
     public static String getPreferences(String node) {
-
         String value;
         final String prefix = "SocialCDE";
         try {
-            value = Activator.getDefault().getPreferenceStore().getString(prefix + node);
+            value = PropertiesComponent.getInstance().getValue(prefix + node);
+            //value = Activator.getDefault().getPreferenceStore().getString(prefix + node);
         } catch (Exception e) {
             value = null;
         }
-
         return value;
-    }
+    }//prende le preferenze memorizzate - cambiato
 
     public static boolean setPreferences(String node, String value) {
         boolean flag = false;
         final String prefix = "SocialCDE";
         try {
-            Activator.getDefault().getPreferenceStore().setValue(prefix + node, value);
+            PropertiesComponent.getInstance().setValue(prefix + node,value);
+            //Activator.getDefault().getPreferenceStore().setValue(prefix + node, value);
             flag = true;
         } catch (Exception e) {
             flag = false;
         }
-
         return flag;
-    }
+    }//memorizza le preferenze - cambiato
 
     public static boolean isRegistered() {
 
@@ -845,8 +836,7 @@ public class Controller {
         } else {
             return false;
         }
-
-    }*/
+    }
 
     public static boolean isUsernameAvailable(String username) {
         return getProxy().IsAvailable(username);

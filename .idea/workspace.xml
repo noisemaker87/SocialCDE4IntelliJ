@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f05318d9-41b8-4734-bb10-dd821cb30d88" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionRegistration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/controller/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/action/InterceptingFilter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionRegistration.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionRegistration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/controller/Controller.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/controller/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\src\com\socialcdeIntellij\dynamic\view\SettingsPanel.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamic/view/SettingPanel.java" />
-      <change type="MOVED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\src\com\socialcdeIntellij\dynamic\view\SettingsPanel.jfd" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamic/view/SettingPanel.jfd" />
     </list>
     <ignored path="IntelliJPlugin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,74 +35,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ActionRegistration.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ActionRegistration.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionRegistration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-              <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+            <state vertical-scroll-proportion="1.1590909" vertical-offset="867" max-vertical-offset="7633">
+              <caret line="130" column="83" selection-start-line="130" selection-start-column="83" selection-end-line="130" selection-end-column="83" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#get_ImageStream#0;class#ActionRegistration#0" expanded="false" />
+                <element signature="method#actionRegister#0;class#ActionRegistration#0" expanded="false" />
+                <element signature="e#14121#14137#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.116041" vertical-offset="13762" max-vertical-offset="16048">
-              <caret line="848" column="7" selection-start-line="848" selection-start-column="7" selection-end-line="848" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2263" max-vertical-offset="14926">
+              <caret line="828" column="33" selection-start-line="828" selection-start-column="33" selection-end-line="828" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1331#1347#0" expanded="true" />
-                <element signature="e#1418#1432#0" expanded="true" />
-                <element signature="e#1506#1520#0" expanded="true" />
-                <element signature="e#1585#1586#0" expanded="true" />
-                <element signature="e#1619#1620#0" expanded="true" />
-                <element signature="e#1682#1683#0" expanded="true" />
-                <element signature="e#1718#1719#0" expanded="true" />
-                <element signature="e#1766#1767#0" expanded="true" />
-                <element signature="e#1799#1800#0" expanded="true" />
-                <element signature="e#1864#1865#0" expanded="true" />
-                <element signature="e#1905#1906#0" expanded="true" />
-                <element signature="e#2136#2137#0" expanded="true" />
-                <element signature="e#2176#2177#0" expanded="true" />
-                <element signature="e#2392#2393#0" expanded="true" />
-                <element signature="e#2428#2429#0" expanded="true" />
-                <element signature="e#2499#2500#0" expanded="true" />
-                <element signature="e#2555#2556#0" expanded="true" />
-                <element signature="e#2608#2609#0" expanded="true" />
-                <element signature="e#2650#2651#0" expanded="true" />
-                <element signature="e#2844#2845#0" expanded="true" />
-                <element signature="e#2877#2878#0" expanded="true" />
-                <element signature="e#2944#2945#0" expanded="true" />
-                <element signature="e#2986#2987#0" expanded="true" />
-                <element signature="e#3063#3064#0" expanded="true" />
-                <element signature="e#3110#3111#0" expanded="true" />
-                <element signature="e#3383#3384#0" expanded="true" />
-                <element signature="e#3431#3432#0" expanded="true" />
-                <element signature="e#3681#3682#0" expanded="true" />
-                <element signature="e#3716#3717#0" expanded="true" />
-                <element signature="e#3789#3790#0" expanded="true" />
-                <element signature="e#3835#3836#0" expanded="true" />
-                <element signature="e#3887#3888#0" expanded="true" />
-                <element signature="e#3922#3923#0" expanded="true" />
-                <element signature="e#3994#3995#0" expanded="true" />
-                <element signature="e#4040#4041#0" expanded="true" />
-                <element signature="e#4084#4085#0" expanded="true" />
-                <element signature="e#4118#4119#0" expanded="true" />
-                <element signature="e#4181#4182#0" expanded="true" />
-                <element signature="e#4225#4226#0" expanded="true" />
-                <element signature="e#4291#4292#0" expanded="true" />
-                <element signature="e#4344#4345#0" expanded="true" />
-                <element signature="e#4389#4390#0" expanded="true" />
-                <element signature="e#4417#4418#0" expanded="true" />
-                <element signature="e#4475#4476#0" expanded="true" />
-                <element signature="e#4507#4508#0" expanded="true" />
-                <element signature="e#4569#4570#0" expanded="true" />
-                <element signature="e#4609#4610#0" expanded="true" />
-                <element signature="e#30621#30622#0" expanded="true" />
-                <element signature="e#30676#30677#0" expanded="true" />
+                <element signature="method#setHomeTimelineWindow#0;class#Controller#0" expanded="false" />
+                <element signature="method#setDynamicUserWindow#0;class#Controller#0" expanded="false" />
+                <element signature="method#setCurrentUserPassword#0;class#Controller#0" expanded="false" />
+                <element signature="method#setIterationTimelineWindow#0;class#Controller#0" expanded="false" />
+                <element signature="method#setInteractiveTimelineWindow#0;class#Controller#0" expanded="false" />
+                <element signature="method#setRegistration_panel#0;class#Controller#0" expanded="false" />
+                <element signature="e#30579#30580#0" expanded="true" />
+                <element signature="e#30634#30635#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,13 +73,20 @@
       <file leaf-file-name="RegistrationPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/staticview/RegistrationPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1394">
-              <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="38" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="416" max-vertical-offset="1394">
+              <caret line="362" column="40" selection-start-line="362" selection-start-column="32" selection-end-line="362" selection-end-column="40" />
               <folding>
                 <marker date="1425030530770" expanded="false" signature="1378:17881" placeholder="// JFormDesigner - Component initialization - DO NOT MODIFY" />
                 <marker date="1425030530770" expanded="false" signature="19562:20734" placeholder="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegistrationPanel.jfd" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/staticview/RegistrationPanel.jfd">
+          <provider selected="true" editor-type-id="JFormDesigner">
+            <state />
           </provider>
         </entry>
       </file>
@@ -162,8 +129,9 @@
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamic/view/DynamicPeople.jfd" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamic/view/DynamicHomeTimeline.jfd" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/prova.form" />
-        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionRegistration.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/InterceptingFilter.java" />
+        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionRegistration.java" />
       </list>
     </option>
   </component>
@@ -199,6 +167,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -275,28 +245,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IntelliJPlugin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IntelliJPlugin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="socialcdeIntellij" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -325,8 +273,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -341,7 +287,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SocialCDEIntellij" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
   </component>
@@ -352,6 +298,9 @@
       <recent name="D:\workspaceIntelliJ\IntelliJPlugin\src\com\socialcdeIntellij" />
       <recent name="D:\workspaceIntelliJ\IntelliJPlugin\images\Toolbar" />
       <recent name="D:\workspaceIntelliJ\IntelliJPlugin" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.socialcdeIntellij.action" />
     </key>
   </component>
   <component name="RunManager" selected="Plugin.Plugin">
@@ -547,8 +496,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -728,11 +677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/staticview/RegistrationPanel.jfd">
-      <provider selected="true" editor-type-id="JFormDesigner">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamic/view/DynamicHome.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
@@ -890,10 +834,51 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamic/view/SettingPanel.jfd">
+      <provider selected="true" editor-type-id="JFormDesigner">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/action/InterceptingFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35664335" vertical-offset="0" max-vertical-offset="572">
+          <caret line="51" column="65" selection-start-line="51" selection-start-column="65" selection-end-line="51" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#verifyText#0;class#InterceptingFilter#0" expanded="false" />
+            <element signature="method#verifyMail#0;class#InterceptingFilter#0" expanded="false" />
+            <element signature="method#verifyRegistrationPanel#0;class#InterceptingFilter#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/staticview/RegistrationPanel.jfd">
+      <provider selected="true" editor-type-id="JFormDesigner">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2263" max-vertical-offset="14926">
+          <caret line="828" column="33" selection-start-line="828" selection-start-column="33" selection-end-line="828" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setHomeTimelineWindow#0;class#Controller#0" expanded="false" />
+            <element signature="method#setDynamicUserWindow#0;class#Controller#0" expanded="false" />
+            <element signature="method#setCurrentUserPassword#0;class#Controller#0" expanded="false" />
+            <element signature="method#setIterationTimelineWindow#0;class#Controller#0" expanded="false" />
+            <element signature="method#setInteractiveTimelineWindow#0;class#Controller#0" expanded="false" />
+            <element signature="method#setRegistration_panel#0;class#Controller#0" expanded="false" />
+            <element signature="e#30579#30580#0" expanded="true" />
+            <element signature="e#30634#30635#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/staticview/RegistrationPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1394">
-          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="38" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="416" max-vertical-offset="1394">
+          <caret line="362" column="40" selection-start-line="362" selection-start-column="32" selection-end-line="362" selection-end-column="40" />
           <folding>
             <marker date="1425030530770" expanded="false" signature="1378:17881" placeholder="// JFormDesigner - Component initialization - DO NOT MODIFY" />
             <marker date="1425030530770" expanded="false" signature="19562:20734" placeholder="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
@@ -903,74 +888,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionRegistration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+        <state vertical-scroll-proportion="1.1590909" vertical-offset="867" max-vertical-offset="7633">
+          <caret line="130" column="83" selection-start-line="130" selection-start-column="83" selection-end-line="130" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamic/view/SettingPanel.jfd">
-      <provider selected="true" editor-type-id="JFormDesigner">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.116041" vertical-offset="13762" max-vertical-offset="16048">
-          <caret line="848" column="7" selection-start-line="848" selection-start-column="7" selection-end-line="848" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1331#1347#0" expanded="true" />
-            <element signature="e#1418#1432#0" expanded="true" />
-            <element signature="e#1506#1520#0" expanded="true" />
-            <element signature="e#1585#1586#0" expanded="true" />
-            <element signature="e#1619#1620#0" expanded="true" />
-            <element signature="e#1682#1683#0" expanded="true" />
-            <element signature="e#1718#1719#0" expanded="true" />
-            <element signature="e#1766#1767#0" expanded="true" />
-            <element signature="e#1799#1800#0" expanded="true" />
-            <element signature="e#1864#1865#0" expanded="true" />
-            <element signature="e#1905#1906#0" expanded="true" />
-            <element signature="e#2136#2137#0" expanded="true" />
-            <element signature="e#2176#2177#0" expanded="true" />
-            <element signature="e#2392#2393#0" expanded="true" />
-            <element signature="e#2428#2429#0" expanded="true" />
-            <element signature="e#2499#2500#0" expanded="true" />
-            <element signature="e#2555#2556#0" expanded="true" />
-            <element signature="e#2608#2609#0" expanded="true" />
-            <element signature="e#2650#2651#0" expanded="true" />
-            <element signature="e#2844#2845#0" expanded="true" />
-            <element signature="e#2877#2878#0" expanded="true" />
-            <element signature="e#2944#2945#0" expanded="true" />
-            <element signature="e#2986#2987#0" expanded="true" />
-            <element signature="e#3063#3064#0" expanded="true" />
-            <element signature="e#3110#3111#0" expanded="true" />
-            <element signature="e#3383#3384#0" expanded="true" />
-            <element signature="e#3431#3432#0" expanded="true" />
-            <element signature="e#3681#3682#0" expanded="true" />
-            <element signature="e#3716#3717#0" expanded="true" />
-            <element signature="e#3789#3790#0" expanded="true" />
-            <element signature="e#3835#3836#0" expanded="true" />
-            <element signature="e#3887#3888#0" expanded="true" />
-            <element signature="e#3922#3923#0" expanded="true" />
-            <element signature="e#3994#3995#0" expanded="true" />
-            <element signature="e#4040#4041#0" expanded="true" />
-            <element signature="e#4084#4085#0" expanded="true" />
-            <element signature="e#4118#4119#0" expanded="true" />
-            <element signature="e#4181#4182#0" expanded="true" />
-            <element signature="e#4225#4226#0" expanded="true" />
-            <element signature="e#4291#4292#0" expanded="true" />
-            <element signature="e#4344#4345#0" expanded="true" />
-            <element signature="e#4389#4390#0" expanded="true" />
-            <element signature="e#4417#4418#0" expanded="true" />
-            <element signature="e#4475#4476#0" expanded="true" />
-            <element signature="e#4507#4508#0" expanded="true" />
-            <element signature="e#4569#4570#0" expanded="true" />
-            <element signature="e#4609#4610#0" expanded="true" />
-            <element signature="e#30621#30622#0" expanded="true" />
-            <element signature="e#30676#30677#0" expanded="true" />
+            <element signature="method#get_ImageStream#0;class#ActionRegistration#0" expanded="false" />
+            <element signature="method#actionRegister#0;class#ActionRegistration#0" expanded="false" />
+            <element signature="e#14121#14137#0" expanded="true" />
           </folding>
         </state>
       </provider>
