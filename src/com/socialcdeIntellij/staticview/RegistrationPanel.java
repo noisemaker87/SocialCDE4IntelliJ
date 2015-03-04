@@ -4,12 +4,15 @@
 
 package com.socialcdeIntellij.staticview;
 
+import com.intellij.util.ui.UIUtil;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 
 /**
@@ -20,20 +23,19 @@ public class RegistrationPanel extends JPanel {
     private JLabel lblSign_No;
     private JLabel lblHidden;
 
-    private final InputStream PATH_ICON_OK = this.getClass().getClassLoader()
-            .getResourceAsStream("images/yes_icon.png");
-    private final InputStream PATH_ICON_ERROR = this.getClass()
-            .getClassLoader().getResourceAsStream("images/no_icon.png");
+    private final URL PATH_ICON_OK = this.getClass().getResource("images/yes_icon.png");
+    private final URL PATH_ICON_ERROR = this.getClass().getResource("images/no_icon.png");
 
     private BufferedImage resize(BufferedImage originalImage, int width, int height) throws IOException {
-        BufferedImage resizedImage = null;
+        int type = originalImage.getType();
+        BufferedImage resizedImage = UIUtil.createImage(width, height, type);//;new BufferedImage(width,height,type);
         Graphics2D g = resizedImage.createGraphics();
         g.drawImage(originalImage, 0, 0, width, height, null);
         g.dispose();
         return resizedImage;
     }//ridimensione immagine
 
-    public Image get_ImageStream(InputStream stream) throws IOException {
+    public Image get_ImageStream(URL stream) throws IOException {
         Image image = ImageIO.read(stream);
         return image;
     }//prende immagine da stream
@@ -73,7 +75,7 @@ public class RegistrationPanel extends JPanel {
         txtConfirmPsw = new JTextField();
         lblSign6 = new JLabel();
         panel1 = new JPanel();
-        button1 = new JButton();
+        btnRegister = new JButton();
         lblChange = new JLabel();
 
         //======== this ========
@@ -341,9 +343,9 @@ public class RegistrationPanel extends JPanel {
             ((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
             ((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
 
-            //---- button1 ----
-            button1.setText("Register");
-            panel1.add(button1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+            //---- btnRegister ----
+            btnRegister.setText("Register");
+            panel1.add(btnRegister, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.NONE,
                 new Insets(0, 20, 0, 0), 50, 0));
         }
@@ -384,15 +386,17 @@ public class RegistrationPanel extends JPanel {
         uiData.put("LabelImageConfirmPasswordOk", lblSign_Ok);
         uiData.put("LabelImageConfirmPasswordNo", lblSign_No);
         uiData.put("LabelImageConfirmPasswordHidden", lblHidden);
+        //mio
+        uiData.put("ButtonRegister",btnRegister);
 
         return uiData;
     }
 
-    public InputStream getPathIconOk() {
+    public URL getPathIconOk() {
         return PATH_ICON_OK;
     }
 
-    public InputStream getPathIconError() {
+    public URL getPathIconError() {
         return PATH_ICON_ERROR;
     }
 
@@ -427,7 +431,7 @@ public class RegistrationPanel extends JPanel {
     private JTextField txtConfirmPsw;
     private JLabel lblSign6;
     private JPanel panel1;
-    private JButton button1;
+    private JButton btnRegister;
     private JLabel lblChange;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

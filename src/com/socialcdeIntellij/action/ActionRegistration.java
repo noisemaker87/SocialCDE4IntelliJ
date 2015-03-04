@@ -2,6 +2,8 @@ package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.model.ProxyWrapper;
+import com.socialcdeIntellij.object.LoginProgressBar;
+import com.socialcdeIntellij.object.OperationProgressBar;
 import com.socialcdeIntellij.staticview.LoginPanel;
 
 import javax.imageio.ImageIO;
@@ -18,6 +20,7 @@ import java.util.HashMap;
 public class ActionRegistration {
     private static Image IMAGE_OK;
     private static Image IMAGE_NO;
+    private OperationProgressBar opBar;
 
     public ActionRegistration() {}
 
@@ -132,146 +135,79 @@ public class ActionRegistration {
 
                     }
                 }
-
                 break;
 
             case "txtUsername":
 
-                if (type == SWT.FocusOut) {
+                if (!((JTextField)uiData.get("Username")).isFocusOwner()){
                     if (InterceptingFilter.verifyText(((JTextField) uiData
                             .get("Username")).getText())) {
                         if (Controller.getProxy() != null) {
                             if (!Controller.getProxy().IsAvailable(
                                     ((JTextField) uiData.get("Username")).getText())) {
 
-                                ((Label) uiData.get("LabelAlert"))
+                                ((JLabel) uiData.get("LabelAlert"))
                                         .setText("Please insert a valid username!");
-                                ((Label) uiData.get("LabelAlert")).setVisible(true);
+                                ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                                GridData tempGrid = (GridData) ((Label) uiData.get("LabelImageUsernameNo")).getLayoutData();
-                                tempGrid.exclude = false;
-                                ((Label) uiData.get("LabelImageUsernameNo")).setVisible(true);
+                                ((JLabel) uiData.get("LabelImageUsernameNo")).setVisible(true);
+                                ((JLabel) uiData.get("LabelImageUsernameOk")).setVisible(false);
+                                ((JLabel) uiData.get("LabelImageUsernameHidden")).setVisible(false);
 
-                                tempGrid = (GridData) ((Label) uiData.get("LabelImageUsernameOk")).getLayoutData();
-                                tempGrid.exclude = true;
-                                ((Label) uiData.get("LabelImageUsernameOk")).setVisible(false);
-
-                                tempGrid = (GridData) ((Label) uiData.get("LabelImageUsernameHidden")).getLayoutData();
-                                tempGrid.exclude = true;
-                                ((Label) uiData.get("LabelImageUsernameHidden")).setVisible(false);
-
-
-                                Controller.getWindow().layout();
                             } else {
 
-                                GridData tempGrid = (GridData)	((Label) uiData.get("LabelImageUsernameOk")).getLayoutData();
-                                tempGrid.exclude = false;
-                                ((Label) uiData.get("LabelImageUsernameOk")).setVisible(true);
+                                ((JLabel) uiData.get("LabelImageUsernameNo")).setVisible(false);
+                                ((JLabel) uiData.get("LabelImageUsernameOk")).setVisible(true);
+                                ((JLabel) uiData.get("LabelImageUsernameHidden")).setVisible(false);
 
-                                tempGrid = (GridData)	((Label) uiData.get("LabelImageUsernameNo")).getLayoutData();
-                                tempGrid.exclude = true;
-                                ((Label) uiData.get("LabelImageUsernameNo")).setVisible(false);
-
-                                tempGrid = (GridData)	((Label) uiData.get("LabelImageUsernameHidden")).getLayoutData();
-                                tempGrid.exclude = true;
-                                ((Label) uiData.get("LabelImageUsernameHidden")).setVisible(false);
-                                ((Label) uiData.get("LabelAlert"))
-                                        .setVisible(false);
-                                Controller.getWindow().layout();
+                                ((JLabel) uiData.get("LabelAlert")).setVisible(false);
                             }
                         } else {
-                            ((Label) uiData.get("LabelAlert"))
+                            ((JLabel) uiData.get("LabelAlert"))
                                     .setText("Please enter a valid proxy first!");
-                            ((Label) uiData.get("LabelAlert")).setVisible(true);
+                            ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                            GridData tempGrid = (GridData) ((Label) uiData.get("LabelImageUsernameNo")).getLayoutData();
-                            tempGrid.exclude = false;
-                            ((Label) uiData.get("LabelImageUsernameNo")).setVisible(true);
+                            ((JLabel) uiData.get("LabelImageUsernameNo")).setVisible(true);
+                            ((JLabel) uiData.get("LabelImageUsernameOk")).setVisible(false);
+                            ((JLabel) uiData.get("LabelImageUsernameHidden")).setVisible(false);
 
-                            tempGrid = (GridData) ((Label) uiData.get("LabelImageUsernameOk")).getLayoutData();
-                            tempGrid.exclude = true;
-                            ((Label) uiData.get("LabelImageUsernameOk")).setVisible(false);
-
-                            tempGrid = (GridData) ((Label) uiData.get("LabelImageUsernameHidden")).getLayoutData();
-                            tempGrid.exclude = true;
-                            ((Label) uiData.get("LabelImageUsernameHidden")).setVisible(false);
-
-                            tempGrid = (GridData) ((Label) uiData.get("LabelImageHostNo")).getLayoutData();
-                            tempGrid.exclude = false;
-                            ((Label) uiData.get("LabelImageHostNo")).setVisible(true);
-
-                            tempGrid = (GridData) ((Label) uiData.get("LabelImageHostOk")).getLayoutData();
-                            tempGrid.exclude = true;
-                            ((Label) uiData.get("LabelImageHostOk")).setVisible(false);
-
-                            tempGrid = (GridData) ((Label) uiData.get("LabelImageHostHidden")).getLayoutData();
-                            tempGrid.exclude = true;
-                            ((Label) uiData.get("LabelImageHostHidden")).setVisible(false);
-
-                            Controller.getWindow().layout();
+                            ((JLabel) uiData.get("LabelImageHostOk")).setVisible(false);
+                            ((JLabel) uiData.get("LabelImageHostHidden")).setVisible(false);
+                            ((JLabel) uiData.get("LabelImageHostNo")).setVisible(true);
 
                         }
                     } else {
-                        ((Label) uiData.get("LabelAlert"))
+                        ((JLabel) uiData.get("LabelAlert"))
                                 .setText("Please enter a valid username!");
-                        ((Label) uiData.get("LabelAlert")).setVisible(true);
-                        GridData tempGrid = (GridData) ((Label) uiData.get("LabelImageUsernameNo")).getLayoutData();
-                        tempGrid.exclude = false;
-                        ((Label) uiData.get("LabelImageUsernameNo")).setVisible(true);
+                        ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        tempGrid = (GridData) ((Label) uiData.get("LabelImageUsernameOk")).getLayoutData();
-                        tempGrid.exclude = true;
-                        ((Label) uiData.get("LabelImageUsernameOk")).setVisible(false);
-
-                        tempGrid = (GridData) ((Label) uiData.get("LabelImageUsernameHidden")).getLayoutData();
-                        tempGrid.exclude = true;
-                        ((Label) uiData.get("LabelImageUsernameHidden")).setVisible(false);
-
-                        Controller.getWindow().layout();
+                        ((JLabel) uiData.get("LabelImageUsernameNo")).setVisible(true);
+                        ((JLabel) uiData.get("LabelImageUsernameOk")).setVisible(false);
+                        ((JLabel) uiData.get("LabelImageUsernameHidden")).setVisible(false);
                     }
                 }
-
                 break;
-            case "txtMail":
-                if (type == SWT.FocusOut) {
+
+            case "txtEmail":
+                if (!((JTextField)uiData.get("Email")).isFocusOwner()){
                     if (InterceptingFilter.verifyMail(((JTextField) uiData.get("Email"))
                             .getText())) {
 
-                        GridData tempGrid = (GridData) ((Label) uiData.get("LabelImageMailOk")).getLayoutData();
-                        tempGrid.exclude = false;
-                        ((Label) uiData.get("LabelImageMailOk")).setVisible(true);
+                        ((JLabel) uiData.get("LabelImageMailOk")).setVisible(true);
+                        ((JLabel) uiData.get("LabelImageMailNo")).setVisible(false);
+                        ((JLabel) uiData.get("LabelImageMailHidden")).setVisible(false);
 
-                        tempGrid = (GridData) ((Label) uiData.get("LabelImageMailNo")).getLayoutData();
-                        tempGrid.exclude = true;
-                        ((Label) uiData.get("LabelImageMailNo")).setVisible(false);
+                        ((JLabel) uiData.get("LabelAlert")).setVisible(false);
 
-                        tempGrid = (GridData) ((Label) uiData.get("LabelImageMailHidden")).getLayoutData();
-                        tempGrid.exclude = true;
-                        ((Label) uiData.get("LabelImageMailHidden")).setVisible(false);
-
-
-                        ((Label) uiData.get("LabelAlert")).setVisible(false);
-                        Controller.getWindow().layout();
 
                     } else {
-                        ((Label) uiData.get("LabelAlert"))
+                        ((JLabel) uiData.get("LabelAlert"))
                                 .setText("Please insert a valid mail!");
-                        ((Label) uiData.get("LabelAlert")).setVisible(true);
+                        ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        GridData tempGrid = (GridData) ((Label) uiData.get("LabelImageMailNo")).getLayoutData();
-                        tempGrid.exclude = false;
-                        ((Label) uiData.get("LabelImageMailNo")).setVisible(true);
-
-                        tempGrid = (GridData) ((Label) uiData.get("LabelImageMailOk")).getLayoutData();
-                        tempGrid.exclude = true;
-                        ((Label) uiData.get("LabelImageMailOk")).setVisible(false);
-
-                        tempGrid = (GridData) ((Label) uiData.get("LabelImageMailHidden")).getLayoutData();
-                        tempGrid.exclude = true;
-                        ((Label) uiData.get("LabelImageMailHidden")).setVisible(false);
-
-
-                        Controller.getWindow().layout();
+                        ((JLabel) uiData.get("LabelImageMailOk")).setVisible(false);
+                        ((JLabel) uiData.get("LabelImageMailNo")).setVisible(true);
+                        ((JLabel) uiData.get("LabelImageMailHidden")).setVisible(false);
 
                     }
                 }
@@ -280,27 +216,15 @@ public class ActionRegistration {
 
             case "btnRegister":
 
-                if (type == SWT.Selection) {
+                if (((JButton)uiData.get("ButtonRegister")).getModel().isPressed()){
 
+                    opBar = new OperationProgressBar();
+                    //pbWindow = new ProgressBarThread();
+                    Controller.temporaryInformation.put("ProgressBarThread", opBar);
 
-                    pbWindow = new ProgressBarThread();
-                    Controller.temporaryInformation.put("ProgressBarThread", pbWindow);
-                    pbWindow.setLabelTxt("Login in progress..");
-                    pbWindow.setxCoordinate(Controller.getWindow().toDisplay(
-                            Controller.getWindow().getLocation().x,
-                            Controller.getWindow().getLocation().y).x);
-                    pbWindow.setyCoordinate(Controller.getWindow().toDisplay(
-                            Controller.getWindow().getLocation().x,
-                            Controller.getWindow().getLocation().y).y);
-                    Controller.setProgressBarPositionX(Controller.getWindow()
-                            .toDisplay(Controller.getWindow().getLocation().x,
-                                    Controller.getWindow().getLocation().y).x);
-                    Controller.setProgressBarPositionY(Controller.getWindow()
-                            .toDisplay(Controller.getWindow().getLocation().x,
-                                    Controller.getWindow().getLocation().y).y);
+                    opBar.setLabelBar("Login in progress..");
+                    opBar.start();
 
-
-                    pbWindow.start();
                     HashMap<String, String> dataExtracted = new HashMap<String, String>();
                     dataExtracted.put("Username",
                             ((JTextField) uiData.get("Username")).getText());

@@ -9,7 +9,7 @@ import javax.swing.*;
 import javax.swing.event.EventListenerList;
 import java.awt.*;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -23,7 +23,12 @@ public class LoginPanel extends JPanel {
     private static EventListenerList lista;
     Vector<JPanel> vec;
 
-    public Image get_ImageStream(InputStream stream) throws IOException {
+    private final URL PATH_ICON_OK = this.getClass().getResource("images/yes_icon.png");
+	private final URL PATH_ICON_ERROR = this.getClass().getResource("images/no_icon.png");
+	private final URL PATH_WALLPAPER = this.getClass().getResource("images/Wallpaper.png");
+
+
+    public Image get_ImageStream(URL stream) throws IOException {
         Image image = ImageIO.read(stream);
         return image;
     }//prende immagine da stream

@@ -4,45 +4,34 @@
 
 package com.socialcdeIntellij.staticview;
 
-import org.jdesktop.swingx.VerticalLayout;
 
+
+import com.intellij.util.ui.UIUtil;
+import org.jdesktop.swingx.VerticalLayout;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 
 /**
  * @author Davide Rossi
  */
 public class ProfilePanel extends JPanel {
-    private final InputStream PATH_DEFAULT_AVATAR = this.getClass()
-            .getClassLoader().getResourceAsStream("images/DefaultAvatar.png");
-    private final InputStream PATH_BALOON = this.getClass().getClassLoader()
-            .getResourceAsStream("images/Baloon.png");
-    private final InputStream PATH_BACK = this.getClass().getClassLoader()
-            .getResourceAsStream("images/Toolbar/Back.png");
-    private final InputStream PATH_FOLLOW = this.getClass().getClassLoader()
-            .getResourceAsStream("images/Toolbar/Follow.png");
-    private final InputStream PATH_HIDE = this.getClass().getClassLoader()
-            .getResourceAsStream("images/Toolbar/Hide.png");
-    private final InputStream PATH_HOME = this.getClass().getClassLoader()
-            .getResourceAsStream("images/Toolbar/Home.png");
-    private final InputStream PATH_INTERACTIVE_TIMELINE = this.getClass()
-            .getClassLoader()
-            .getResourceAsStream("images/Toolbar/InteractiveTimeline.png");
-    private final InputStream PATH_INTERACTION_TIMELINE = this.getClass()
-            .getClassLoader()
-            .getResourceAsStream("images/Toolbar/IterationTimeline.png");
-    private final InputStream PATH_LOGOUT = this.getClass().getClassLoader()
-            .getResourceAsStream("images/Toolbar/Logout.png");
-    private final InputStream PATH_PEOPLE = this.getClass().getClassLoader()
-            .getResourceAsStream("images/Toolbar/People.png");
-    private final InputStream PATH_WALLPAPER = this.getClass().getClassLoader()
-            .getResourceAsStream("images/Wallpaper.png");
+    private final URL PATH_DEFAULT_AVATAR = this.getClass().getResource("images/DefaultAvatar.png");
+    private final URL PATH_BALOON = this.getClass().getResource("images/Baloon.png");
+    private final URL PATH_BACK = this.getClass().getResource("images/Toolbar/Back.png");
+    private final URL PATH_FOLLOW = this.getClass().getResource("images/Toolbar/Follow.png");
+    private final URL PATH_HIDE = this.getClass().getResource("images/Toolbar/Hide.png");
+    private final URL PATH_HOME = this.getClass().getResource("images/Toolbar/Home.png");
+    private final URL PATH_INTERACTIVE_TIMELINE = this.getClass().getResource("images/Toolbar/InteractiveTimeline.png");
+    private final URL PATH_INTERACTION_TIMELINE = this.getClass().getResource("images/Toolbar/IterationTimeline.png");
+    private final URL PATH_LOGOUT = this.getClass().getResource("images/Toolbar/Logout.png");
+    private final URL PATH_PEOPLE = this.getClass().getResource("images/Toolbar/People.png");
+    private final URL PATH_WALLPAPER = this.getClass().getResource("images/Wallpaper.png");
 
     private JPanel composite_static;
     private JPanel composite_dinamic;
@@ -62,14 +51,15 @@ public class ProfilePanel extends JPanel {
     }*/
 
     private BufferedImage resize(BufferedImage originalImage, int width, int height) throws IOException {
-        BufferedImage resizedImage = null;
+        int type = originalImage.getType();
+        BufferedImage resizedImage = UIUtil.createImage(width,height,type);//;new BufferedImage(width,height,type);
         Graphics2D g = resizedImage.createGraphics();
         g.drawImage(originalImage, 0, 0, width, height, null);
         g.dispose();
         return resizedImage;
     }//ridimensione immagine
 
-    public Image get_ImageStream(InputStream stream) throws IOException {
+    public Image get_ImageStream(URL stream) throws IOException {
         Image image = ImageIO.read(stream);
         return image;
     }//prende immagine da stream
