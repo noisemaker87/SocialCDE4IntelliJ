@@ -5,6 +5,7 @@
 package com.socialcdeIntellij.staticview;
 
 import com.intellij.util.ui.UIUtil;
+import com.socialcdeIntellij.object.ImagesMod;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -22,29 +23,16 @@ public class RegistrationPanel extends JPanel {
     private JLabel lblSign_Ok;
     private JLabel lblSign_No;
     private JLabel lblHidden;
+    final ImagesMod im = new ImagesMod();
 
-    private final URL PATH_ICON_OK = this.getClass().getResource("images/yes_icon.png");
-    private final URL PATH_ICON_ERROR = this.getClass().getResource("images/no_icon.png");
+   // private final URL PATH_ICON_OK = this.getClass().getResource("images/yes_icon.png");
+   // private final URL PATH_ICON_ERROR = this.getClass().getResource("images/no_icon.png"); + i 2 get
 
-    private BufferedImage resize(BufferedImage originalImage, int width, int height) throws IOException {
-        int type = originalImage.getType();
-        BufferedImage resizedImage = UIUtil.createImage(width, height, type);//;new BufferedImage(width,height,type);
-        Graphics2D g = resizedImage.createGraphics();
-        g.drawImage(originalImage, 0, 0, width, height, null);
-        g.dispose();
-        return resizedImage;
-    }//ridimensione immagine
-
-    public Image get_ImageStream(URL stream) throws IOException {
-        Image image = ImageIO.read(stream);
-        return image;
-    }//prende immagine da stream
-
-    public RegistrationPanel() {
+    public RegistrationPanel() throws IOException {
         initComponents();
     }
 
-    private void initComponents() {
+    private void initComponents() throws IOException {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Davide Rossi
         panelRegAndAlert = new JPanel();
@@ -145,7 +133,12 @@ public class RegistrationPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign ----
-            lblSign.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
+            //lblSign.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
+            //System.out.println(im.getNO_ICON(32,16));
+            //ImageIcon image = new ImageIcon(getClass().getResource("/pkimg/dado.png"));
+            //System.out.println("qui****** "+im.getPATH_NO_ICON());
+            //ImageIcon icon = new ImageIcon(im.getPATH_NO_ICON());
+            lblSign.setIcon(new ImageIcon(im.getNO_ICON(32,16)));
             lblSign.setHorizontalAlignment(SwingConstants.CENTER);
             panelProxy.add(lblSign, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -184,7 +177,8 @@ public class RegistrationPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign2 ----
-            lblSign2.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
+            //
+            lblSign2.setIcon(new ImageIcon(im.getYES_ICON(32,16)));
             lblSign2.setHorizontalAlignment(SwingConstants.CENTER);
             panelEmail.add(lblSign2, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -219,7 +213,7 @@ public class RegistrationPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign3 ----
-            lblSign3.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
+            //lblSign3.setIcon(new ImageIcon(im.getNO_ICON(32,32)));
             lblSign3.setHorizontalAlignment(SwingConstants.CENTER);
             panelCode.add(lblSign3, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -255,7 +249,7 @@ public class RegistrationPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign4 ----
-            lblSign4.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
+            //lblSign4.setIcon(new ImageIcon(im.getNO_ICON(32,32)));
             lblSign4.setHorizontalAlignment(SwingConstants.CENTER);
             panelUsername.add(lblSign4, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -291,7 +285,7 @@ public class RegistrationPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign5 ----
-            lblSign5.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
+            //lblSign5.setIcon(new ImageIcon(im.getNO_ICON(32,32)));
             lblSign5.setHorizontalAlignment(SwingConstants.CENTER);
             panelPassword.add(lblSign5, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -327,7 +321,7 @@ public class RegistrationPanel extends JPanel {
                 new Insets(0, 0, 0, 0), 0, 0));
 
             //---- lblSign6 ----
-            lblSign6.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
+            //lblSign6.setIcon(new ImageIcon(im.getNO_ICON(32,32)));
             lblSign6.setHorizontalAlignment(SwingConstants.CENTER);
             panelConfirmPsw.add(lblSign6, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                 GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
@@ -390,14 +384,6 @@ public class RegistrationPanel extends JPanel {
         uiData.put("ButtonRegister",btnRegister);
 
         return uiData;
-    }
-
-    public URL getPathIconOk() {
-        return PATH_ICON_OK;
-    }
-
-    public URL getPathIconError() {
-        return PATH_ICON_ERROR;
     }
 
 

@@ -4,6 +4,8 @@
 
 package com.socialcdeIntellij.staticview;
 
+import com.socialcdeIntellij.object.ImagesMod;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.EventListenerList;
@@ -22,16 +24,11 @@ public class LoginPanel extends JPanel {
     private JLabel lblHidden;
     private static EventListenerList lista;
     Vector<JPanel> vec;
+    ImagesMod im = new ImagesMod();
 
-    private final URL PATH_ICON_OK = this.getClass().getResource("images/yes_icon.png");
+    /*private final URL PATH_ICON_OK = this.getClass().getResource("images/yes_icon.png");
 	private final URL PATH_ICON_ERROR = this.getClass().getResource("images/no_icon.png");
-	private final URL PATH_WALLPAPER = this.getClass().getResource("images/Wallpaper.png");
-
-
-    public Image get_ImageStream(URL stream) throws IOException {
-        Image image = ImageIO.read(stream);
-        return image;
-    }//prende immagine da stream
+	private final URL PATH_WALLPAPER = this.getClass().getResource("images/Wallpaper.png");*/
 
     public LoginPanel() {
         initComponents();

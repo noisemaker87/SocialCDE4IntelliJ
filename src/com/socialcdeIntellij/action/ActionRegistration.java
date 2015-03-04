@@ -1,3 +1,4 @@
+/*
 package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
@@ -14,9 +15,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 
+*/
 /**
  * Created by Teo on 02/03/2015.
- */
+ *//*
+
 public class ActionRegistration {
     private static Image IMAGE_OK;
     private static Image IMAGE_NO;
@@ -405,3 +408,4 @@ public class ActionRegistration {
 
     }
 }
+*/
