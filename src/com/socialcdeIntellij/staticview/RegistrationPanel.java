@@ -12,8 +12,8 @@ import org.jdesktop.swingx.*;
 /**
  * @author Davide Rossi
  */
-public class RegistrationPanel2 extends JPanel {
-    public RegistrationPanel2() {
+public class RegistrationPanel extends JPanel {
+    public RegistrationPanel() {
         initComponents();
     }
 

@@ -63,26 +63,21 @@ public class DynamicInteractiveTimeline extends JPanel {
 
         //======== panelMsg ========
         {
-            panelMsg.setLayout(new GridBagLayout());
-            ((GridBagLayout)panelMsg.getLayout()).rowWeights = new double[] {1.0};
+            panelMsg.setLayout(new FlowLayout());
 
             //---- customTextArea1 ----
             customTextArea1.setMinimumSize(new Dimension(20, 16));
             customTextArea1.setPreferredSize(new Dimension(330, 70));
             customTextArea1.setWrapStyleWord(true);
-            panelMsg.add(customTextArea1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                new Insets(0, 0, 0, 5), 0, 0));
+            panelMsg.add(customTextArea1);
 
             //---- lblEnter ----
-            lblEnter.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\send_message.png"));
+            lblEnter.setIcon(new ImageIcon(getClass().getResource("/images/send_message.png")));
             lblEnter.setHorizontalAlignment(SwingConstants.LEFT);
             lblEnter.setVerticalAlignment(SwingConstants.TOP);
             lblEnter.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
             lblEnter.setVerticalTextPosition(SwingConstants.TOP);
-            panelMsg.add(lblEnter, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                new Insets(0, 0, 0, 0), 0, 0));
+            panelMsg.add(lblEnter);
         }
         add(panelMsg);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents

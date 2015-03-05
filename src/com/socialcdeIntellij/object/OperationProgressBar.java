@@ -14,7 +14,7 @@ import java.io.InputStream;
  * @author Davide Rossi
  */
 public class OperationProgressBar extends JPanel {
-    ImagesMod im = new ImagesMod();
+     private final Image img = new ImageIcon(this.getClass().getClassLoader().getResource("images/Wallpaper.png")).getImage();
 
     public OperationProgressBar() {
         initComponents();
@@ -91,13 +91,13 @@ public class OperationProgressBar extends JPanel {
         }
     }
 
+    public void stop(){
+        remove(this);
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
-        try {
-            g.drawImage(im.getWALLPAPER(400,400), 0, 0, null);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        g.drawImage(img, 0, 0, null);
     }
 
 

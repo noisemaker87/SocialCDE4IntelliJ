@@ -61,12 +61,12 @@ public class DynamicUserTimeline extends JPanel {
             panelProfile.setLayout(new FlowLayout(FlowLayout.LEFT));
 
             //---- lblReturn ----
-            lblReturn.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Back.png"));
+            lblReturn.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Back.png")));
             lblReturn.setBackground(new Color(204, 204, 204));
             panelProfile.add(lblReturn);
 
             //---- lblAvatar ----
-            lblAvatar.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
+            lblAvatar.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
             panelProfile.add(lblAvatar);
 
             //======== panelInfo ========
@@ -159,15 +159,15 @@ public class DynamicUserTimeline extends JPanel {
             panelIcon.setLayout(new FlowLayout(FlowLayout.LEFT, 25, 5));
 
             //---- lblFollow ----
-            lblFollow.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Follow.png"));
+            lblFollow.setIcon(new ImageIcon(getClass().getResource("/images/Follow.png")));
             panelIcon.add(lblFollow);
 
             //---- lblSkill ----
-            lblSkill.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\skills.png"));
+            lblSkill.setIcon(new ImageIcon(getClass().getResource("/images/skills.png")));
             panelIcon.add(lblSkill);
 
             //---- lblHide ----
-            lblHide.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Hide.png"));
+            lblHide.setIcon(new ImageIcon(getClass().getResource("/images/Hide.png")));
             panelIcon.add(lblHide);
         }
         add(panelIcon);

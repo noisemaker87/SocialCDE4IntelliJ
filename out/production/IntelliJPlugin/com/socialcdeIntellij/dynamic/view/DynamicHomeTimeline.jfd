@@ -26,32 +26,25 @@ new FormModel {
 					} )
 				} )
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-				"$columnSpecs": "0, 0"
-				"$rowSpecs": "center:0:1.0"
-				"$hGap": 5
-			} ) {
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 				name: "panelMsg"
+				"preferredSize": new java.awt.Dimension( 382, 80 )
 				add( new FormComponent( "com.socialcdeIntellij.object.CustomTextArea" ) {
 					name: "customTextArea1"
-					"minimumSize": new java.awt.Dimension( 20, 16 )
 					"preferredSize": new java.awt.Dimension( 330, 70 )
-					"wrapStyleWord": true
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblEnter"
-					"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\send_message.png" )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/send_message.png" )
 					"horizontalAlignment": 2
 					"verticalAlignment": 1
 					"componentOrientation": sfield java.awt.ComponentOrientation LEFT_TO_RIGHT
 					"verticalTextPosition": 1
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-					"gridx": 1
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 370, 535 )
+			"size": new java.awt.Dimension( 420, 535 )
 		} )
 	}
 }

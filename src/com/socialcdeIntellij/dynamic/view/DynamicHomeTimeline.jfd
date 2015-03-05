@@ -26,14 +26,12 @@ new FormModel {
 					} )
 				} )
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-				"hgap": 10
-			} ) {
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 				name: "panelMsg"
 				"preferredSize": new java.awt.Dimension( 382, 80 )
 				add( new FormComponent( "com.socialcdeIntellij.object.CustomTextArea" ) {
 					name: "customTextArea1"
-					"preferredSize": new java.awt.Dimension( 306, 70 )
+					"preferredSize": new java.awt.Dimension( 330, 70 )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblEnter"

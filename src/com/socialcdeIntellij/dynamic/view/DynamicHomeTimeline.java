@@ -68,10 +68,10 @@ public class DynamicHomeTimeline extends JPanel {
         //======== panelMsg ========
         {
             panelMsg.setPreferredSize(new Dimension(382, 80));
-            panelMsg.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
+            panelMsg.setLayout(new FlowLayout());
 
             //---- customTextArea1 ----
-            customTextArea1.setPreferredSize(new Dimension(306, 70));
+            customTextArea1.setPreferredSize(new Dimension(330, 70));
             panelMsg.add(customTextArea1);
 
             //---- lblEnter ----

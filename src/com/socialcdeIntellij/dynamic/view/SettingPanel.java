@@ -87,22 +87,17 @@ public class SettingPanel extends JPanel {
 
         //======== panel4 ========
         {
-            panel4.setLayout(new GridBagLayout());
-            ((GridBagLayout)panel4.getLayout()).rowHeights = new int[] {0, 0};
-            ((GridBagLayout)panel4.getLayout()).rowWeights = new double[] {0.0, 1.0E-4};
+            panel4.setLayout(new FlowLayout());
 
             //---- button2 ----
             button2.setText("Cancel");
-            panel4.add(button2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 5), 0, 0));
+            button2.setPreferredSize(new Dimension(75, 32));
+            panel4.add(button2);
 
             //---- button1 ----
             button1.setText("Ok");
-            button1.setPreferredSize(new Dimension(73, 26));
-            panel4.add(button1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 0, 0), 0, 0));
+            button1.setPreferredSize(new Dimension(75, 32));
+            panel4.add(button1);
         }
         add(panel4);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents

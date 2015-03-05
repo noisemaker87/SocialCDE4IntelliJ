@@ -8,6 +8,7 @@ import com.socialcdeIntellij.staticview.LoginPanel;
 import com.socialcdeIntellij.staticview.ProfilePanel;
 import com.socialcdeIntellij.staticview.RegistrationPanel;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 
@@ -16,32 +17,25 @@ import java.util.HashMap;
  */
 public class Controller {
 
+    private static RegistrationPanel registrationPanel = new RegistrationPanel();
+    private static LoginPanel loginPanel = new LoginPanel();
+    private static ProfilePanel profilePanel = new ProfilePanel();
+    private static DynamicPeople peopleWindow = new DynamicPeople();
+    private static DynamicHome homeWindow = new DynamicHome();
+    private static DynamicHomeTimeline homeTimelineWindow = new DynamicHomeTimeline();
+    private static DynamicIterationTimeline iterationTimelineWindow = new DynamicIterationTimeline();
+    private static DynamicInteractiveTimeline interactiveTimelineWindow = new DynamicInteractiveTimeline();
+    private static SettingPanel settingWindow = new SettingPanel();
+    private static DynamicUserTimeline dynamicUserWindow = new DynamicUserTimeline();
+
     // attributes
+    private static JPanel window = null;
+    private static String windowName = null;
     private static ProxyWrapper proxy = null;
-
-    private static RegistrationPanel registrationPanel = null;
-
-    private static LoginPanel loginPanel = null;
-
-    private static ProfilePanel profilePanel = null;
 
     private static WUser currentUser = null;
 
     private static String currentUserPassword = null;
-
-    private static DynamicHome homeWindow = null;
-
-    private static DynamicIterationTimeline iterationTimelineWindow = null;
-
-    private static DynamicInteractiveTimeline interactiveTimelineWindow = null;
-
-    private static DynamicHomeTimeline homeTimelineWindow = null;
-
-    private static DynamicPeople peopleWindow = null;
-
-    private static SettingPanel settingWindow = null;
-
-    private static DynamicUserTimeline dynamicUserWindow = null;
 
     public static HashMap<String, Object> temporaryInformation = new HashMap<String, Object>();
 
@@ -49,7 +43,37 @@ public class Controller {
 
     private static HashMap<String, Image> servicesImage = new HashMap<String,Image>();
 
+    public HashMap<String, JPanel> getPanel(){
+        HashMap<String, JPanel> dataPanel = new HashMap<>();
+        dataPanel.put("RegistrationPanel", registrationPanel);
+        dataPanel.put("LoginPanel", loginPanel);
+        dataPanel.put("ProfilePanel", profilePanel);
+        dataPanel.put("Home", homeWindow);
+        dataPanel.put("HomeTimeline",homeTimelineWindow);
+        dataPanel.put("InteractiveTimeline", interactiveTimelineWindow);
+        dataPanel.put("IterationTimeline", iterationTimelineWindow);
+        dataPanel.put("People", peopleWindow);
+        dataPanel.put("UserTimeline", dynamicUserWindow);
+        dataPanel.put("SettingPanel", settingWindow);
 
+        return dataPanel;
+    }
+
+    public static JPanel getWindow() {
+		return window;
+	}
+
+	public static void setWindow(JPanel newWindow) {
+		window = newWindow;
+	}
+
+	public static String getWindowName() {
+		return windowName;
+	}
+
+	public static void setWindowName(String newWindowName) {
+		windowName = newWindowName;
+	}
 
     public static HashMap<String, Image> getUsersAvatar() {
         return usersAvatar;
@@ -841,6 +865,7 @@ public class Controller {
     public static boolean isUsernameAvailable(String username) {
         return getProxy().IsAvailable(username);
     }
+
     public static boolean OSisWindows() {
         String OS = System.getProperty("os.name").toLowerCase();
         return (OS.indexOf("win") >= 0);

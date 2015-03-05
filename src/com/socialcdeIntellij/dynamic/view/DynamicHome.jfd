@@ -10,7 +10,7 @@ new FormModel {
 			"background": new java.awt.Color( 255, 255, 255, 255 )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "lblAvatar"
-				"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/DefaultAvatar.png" )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
 				"rows": 2
@@ -33,11 +33,11 @@ new FormModel {
 						"background": new java.awt.Color( 255, 255, 255, 255 )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "lblSkills"
-							"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\skills.png" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/skills.png" )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "lblSettings"
-							"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\settings.png" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/settings.png" )
 						} )
 					} )
 				} )

@@ -1,97 +1,32 @@
-/*
 package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.model.ProxyWrapper;
-import com.socialcdeIntellij.object.LoginProgressBar;
+import com.socialcdeIntellij.object.ImagesMod;
 import com.socialcdeIntellij.object.OperationProgressBar;
 import com.socialcdeIntellij.staticview.LoginPanel;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 
-*/
-/**
- * Created by Teo on 02/03/2015.
- *//*
 
 public class ActionRegistration {
-    private static Image IMAGE_OK;
+    private static Image IMAGE_YES;
     private static Image IMAGE_NO;
     private OperationProgressBar opBar;
+    private ImagesMod im = new ImagesMod();
 
     public ActionRegistration() {}
 
-    private BufferedImage resize(BufferedImage originalImage, int width, int height) throws IOException {
-        BufferedImage resizedImage = null;
-        Graphics2D g = resizedImage.createGraphics();
-        g.drawImage(originalImage, 0, 0, width, height, null);
-        g.dispose();
-        return resizedImage;
-    }//ridimensione immagine
-
-    public Image get_ImageStream(InputStream stream) throws IOException {
-        Image image = ImageIO.read(stream);
-        return image;
-    }//prende immagine da stream
-
-    public int actionRegister(HashMap<String, String> dataExtracted) {
-        int res = -4;
-
-        if (InterceptingFilter.verifyRegistrationPanel(dataExtracted)) {
-
-            if (Controller.getProxy() != null) {
-
-                // register
-                res = Controller.getProxy().SubscribeUser(
-                        dataExtracted.get("Email"),
-                        dataExtracted.get("InvitationCode"),
-                        dataExtracted.get("Username"));
-
-            } else {
-
-                Controller.setProxy(new ProxyWrapper());
-
-                Controller.getProxy().setHost(dataExtracted.get("ProxyHost"));
-
-                if (Controller.getProxy().IsWebServiceRunning()) {
-
-                    res = Controller.getProxy().SubscribeUser(
-                            dataExtracted.get("Email"),
-                            dataExtracted.get("InvitationCode"),
-                            dataExtracted.get("Username"));
-
-                } else {
-                    res = -2;
-                }
-
-            }
-        } else {
-            res = -3;
-
-        }
-
-        return res;
-    }
-
     public ActionRegistration(HashMap<String, Object> uiData) {
         String widgetName = uiData.get("ID_action").toString();
-        int type = (Integer) uiData.get("Event_type");
-        Event event = (Event) uiData.get("Event");
+        //int type = (Integer) uiData.get("Event_type");
+       // Event event = (Event) uiData.get("Event");
 
         try {
-            IMAGE_NO = Controller.getRegistrationPanel().get_ImageStream(
-                    this.getClass().getClassLoader()
-                            .getResourceAsStream("images/no_icon.png"));
-            IMAGE_OK = Controller.getRegistrationPanel().get_ImageStream(
-                    this.getClass().getClassLoader()
-                            .getResourceAsStream("images/yes_icon.png"));
-
+            IMAGE_NO = im.getNO_ICON(32,16);
+            IMAGE_YES = im.getYES_ICON(32,16);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,33 +43,26 @@ public class ActionRegistration {
                         Controller.getProxy().setHost(
                                 ((JTextField) uiData.get("ProxyHost")).getText());
                         if (Controller.getProxy().IsWebServiceRunning()) {
-
-                            ((JLabel) uiData.get("LabelImageHostOk")).setVisible(true);
-                            ((JLabel) uiData.get("LabelImageHostHidden")).setVisible(false);
-                            ((JLabel) uiData.get("LabelImageHostNo")).setVisible(false);
+                            ((JLabel) uiData.get("LabelImageProxy")).setIcon(new ImageIcon(IMAGE_YES));
+                            ((JLabel) uiData.get("LabelImageProxy")).setVisible(true);
 
                         } else {
-
                             Controller.setProxy(null);
-
                             ((JLabel) uiData.get("LabelAlert"))
                                     .setText("Please insert a valid proxy!");
                             ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                            ((JLabel) uiData.get("LabelImageHostOk")).setVisible(false);
-                            ((JLabel) uiData.get("LabelImageHostHidden")).setVisible(false);
-                            ((JLabel) uiData.get("LabelImageHostNo")).setVisible(true);
+                            ((JLabel) uiData.get("LabelImageProxy")).setIcon(new ImageIcon(IMAGE_NO));
+                            ((JLabel) uiData.get("LabelImageProxy")).setVisible(true);
                         }
                     } else {
                         Controller.setProxy(null);
-
                         ((JLabel) uiData.get("LabelAlert"))
                                 .setText("Please insert a valid proxy!");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        ((JLabel) uiData.get("LabelImageHostOk")).setVisible(false);
-                        ((JLabel) uiData.get("LabelImageHostHidden")).setVisible(false);
-                        ((JLabel) uiData.get("LabelImageHostNo")).setVisible(true);
+                        ((JLabel) uiData.get("LabelImageProxy")).setIcon(new ImageIcon(IMAGE_NO));
+                        ((JLabel) uiData.get("LabelImageProxy")).setVisible(true);
 
                     }
                 }
@@ -148,20 +76,16 @@ public class ActionRegistration {
                         if (Controller.getProxy() != null) {
                             if (!Controller.getProxy().IsAvailable(
                                     ((JTextField) uiData.get("Username")).getText())) {
-
                                 ((JLabel) uiData.get("LabelAlert"))
                                         .setText("Please insert a valid username!");
                                 ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                                ((JLabel) uiData.get("LabelImageUsernameNo")).setVisible(true);
-                                ((JLabel) uiData.get("LabelImageUsernameOk")).setVisible(false);
-                                ((JLabel) uiData.get("LabelImageUsernameHidden")).setVisible(false);
+                                ((JLabel) uiData.get("LabelImageUsername")).setIcon(new ImageIcon(IMAGE_NO));
+                                ((JLabel) uiData.get("LabelImageUsername")).setVisible(true);
 
                             } else {
-
-                                ((JLabel) uiData.get("LabelImageUsernameNo")).setVisible(false);
-                                ((JLabel) uiData.get("LabelImageUsernameOk")).setVisible(true);
-                                ((JLabel) uiData.get("LabelImageUsernameHidden")).setVisible(false);
+                                ((JLabel) uiData.get("LabelImageUsername")).setIcon(new ImageIcon(IMAGE_YES));
+                                ((JLabel) uiData.get("LabelImageUsername")).setVisible(true);
 
                                 ((JLabel) uiData.get("LabelAlert")).setVisible(false);
                             }
@@ -170,13 +94,11 @@ public class ActionRegistration {
                                     .setText("Please enter a valid proxy first!");
                             ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                            ((JLabel) uiData.get("LabelImageUsernameNo")).setVisible(true);
-                            ((JLabel) uiData.get("LabelImageUsernameOk")).setVisible(false);
-                            ((JLabel) uiData.get("LabelImageUsernameHidden")).setVisible(false);
+                            ((JLabel) uiData.get("LabelImageUsername")).setIcon(new ImageIcon(IMAGE_NO));
+                            ((JLabel) uiData.get("LabelImageUsername")).setVisible(true);
 
-                            ((JLabel) uiData.get("LabelImageHostOk")).setVisible(false);
-                            ((JLabel) uiData.get("LabelImageHostHidden")).setVisible(false);
-                            ((JLabel) uiData.get("LabelImageHostNo")).setVisible(true);
+                            ((JLabel) uiData.get("LabelImageProxy")).setIcon(new ImageIcon(IMAGE_NO));
+                            ((JLabel) uiData.get("LabelImageProxy")).setVisible(true);
 
                         }
                     } else {
@@ -184,33 +106,30 @@ public class ActionRegistration {
                                 .setText("Please enter a valid username!");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        ((JLabel) uiData.get("LabelImageUsernameNo")).setVisible(true);
-                        ((JLabel) uiData.get("LabelImageUsernameOk")).setVisible(false);
-                        ((JLabel) uiData.get("LabelImageUsernameHidden")).setVisible(false);
+                        ((JLabel) uiData.get("LabelImageUsername")).setIcon(new ImageIcon(IMAGE_NO));
+                        ((JLabel) uiData.get("LabelImageUsername")).setVisible(true);
                     }
                 }
                 break;
 
             case "txtEmail":
+
                 if (!((JTextField)uiData.get("Email")).isFocusOwner()){
                     if (InterceptingFilter.verifyMail(((JTextField) uiData.get("Email"))
                             .getText())) {
 
-                        ((JLabel) uiData.get("LabelImageMailOk")).setVisible(true);
-                        ((JLabel) uiData.get("LabelImageMailNo")).setVisible(false);
-                        ((JLabel) uiData.get("LabelImageMailHidden")).setVisible(false);
+                        ((JLabel) uiData.get("LabelImageMail")).setIcon(new ImageIcon(IMAGE_YES));
+                        ((JLabel) uiData.get("LabelImageMail")).setVisible(true);
 
                         ((JLabel) uiData.get("LabelAlert")).setVisible(false);
-
 
                     } else {
                         ((JLabel) uiData.get("LabelAlert"))
                                 .setText("Please insert a valid mail!");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        ((JLabel) uiData.get("LabelImageMailOk")).setVisible(false);
-                        ((JLabel) uiData.get("LabelImageMailNo")).setVisible(true);
-                        ((JLabel) uiData.get("LabelImageMailHidden")).setVisible(false);
+                        ((JLabel) uiData.get("LabelImageMail")).setIcon(new ImageIcon(IMAGE_NO));
+                        ((JLabel) uiData.get("LabelImageMail")).setVisible(true);
 
                     }
                 }
@@ -232,11 +151,11 @@ public class ActionRegistration {
                     dataExtracted.put("Username",
                             ((JTextField) uiData.get("Username")).getText());
 
-                    dataExtracted.put("Password1",
-                            ((JTextField) uiData.get("Password1")).getText());
+                    dataExtracted.put("Password",
+                            ((JTextField) uiData.get("Password")).getText());
 
-                    dataExtracted.put("Password2",
-                            ((JTextField) uiData.get("Password2")).getText());
+                    dataExtracted.put("ConfirmPassword",
+                            ((JTextField) uiData.get("ConfirmPassword")).getText());
 
                     dataExtracted.put("InvitationCode",
                             ((JTextField) uiData.get("InvitationCode")).getText());
@@ -259,8 +178,8 @@ public class ActionRegistration {
                                     .setText("Please compile all field correctly!");
                             ((Label) uiData.get("LabelAlert")).setVisible(true);
 
-                            pbWindow.setStop(1);
-                            pbWindow = null;
+                            opBar.stop();
+                            opBar = null;
                             break;
 
                         case -2:
@@ -269,8 +188,8 @@ public class ActionRegistration {
                                     .setText("Please enter a valid proxy!");
                             ((Label) uiData.get("LabelAlert")).setVisible(true);
 
-                            pbWindow.setStop(1);
-                            pbWindow = null;
+                            opBar.stop();
+                            opBar = null;
                             break;
 
                         case -1:
@@ -278,8 +197,8 @@ public class ActionRegistration {
                             ((Label) uiData.get("LabelAlert"))
                                     .setText("There's a problem. Check your connection and try again");
 
-                            pbWindow.setStop(1);
-                            pbWindow = null;
+                            opBar.stop();
+                            opBar = null;
 
                             break;
                         case 0:
@@ -287,7 +206,7 @@ public class ActionRegistration {
                             boolean password = Controller.getProxy().ChangePassword(
                                     ((JTextField) uiData.get("Username")).getText(),
                                     ((JTextField) uiData.get("InvitationCode")).getText(),
-                                    ((JTextField) uiData.get("Password1")).getText());
+                                    ((JTextField) uiData.get("Password")).getText());
 
                             if (password) {
 
@@ -300,7 +219,7 @@ public class ActionRegistration {
                                         ((JTextField) uiData.get("ProxyHost")).getText());
 
                                 Controller.setPreferences("password",
-                                        ((JTextField) uiData.get("Password1")).getText());
+                                        ((JTextField) uiData.get("Password")).getText());
 
                                 Controller.setPreferences("email",
                                         ((JTextField) uiData.get("Email")).getText());
@@ -311,8 +230,8 @@ public class ActionRegistration {
 
                                 ((Label) uiData.get("LabelAlert")).setVisible(true);
 
-                                pbWindow.setStop(1);
-                                pbWindow = null;
+                                opBar.stop();
+                                opBar = null;
 
                             }
 
@@ -324,8 +243,8 @@ public class ActionRegistration {
 
                             ((Label) uiData.get("LabelAlert")).setVisible(true);
 
-                            pbWindow.setStop(1);
-                            pbWindow = null;
+                            opBar.stop();
+                            opBar = null;
 
                             break;
                         case 2:
@@ -336,8 +255,8 @@ public class ActionRegistration {
 
                             ((Label) uiData.get("LabelAlert")).setVisible(true);
 
-                            pbWindow.setStop(1);
-                            pbWindow = null;
+                            opBar.stop();
+                            opBar = null;
 
                             break;
                         case 3: // if username is already used by another user
@@ -347,8 +266,8 @@ public class ActionRegistration {
 
                             ((Label) uiData.get("LabelAlert")).setVisible(true);
 
-                            pbWindow.setStop(1);
-                            pbWindow = null;
+                            opBar.stop();
+                            opBar = null;
 
                             break;
                         default:
@@ -358,47 +277,35 @@ public class ActionRegistration {
 
                             ((Label) uiData.get("LabelAlert")).setVisible(true);
 
-                            pbWindow.setStop(1);
-                            pbWindow = null;
+                            opBar.stop();
+                            opBar = null;
 
                             break;
                     }
 
                     if (res == 0) {
 
-                        Controller.getRegistrationPanel().dispose(
-                                Controller.getWindow());
-
+                        Controller.getRegistrationPanel().remove(Controller.getRegistrationPanel());
                         Controller.setRegistration_panel(null);
 
-                        Controller.setWindowName("Login");
-
                         Controller.setLoginPanel(new LoginPanel());
+                        Controller.getLoginPanel().setVisible(true);
 
-                        Controller.getLoginPanel().inizialize(
-                                Controller.getWindow());
-
-
-                        pbWindow.setStop(1);
-                        pbWindow = null;
+                        opBar.stop();
+                        opBar = null;
 
                     }
 
-                    Controller.getWindow().layout();
-
-
                 }
-
                 break;
+
             case "labelLogin":
 
-                Controller.getRegistrationPanel().dispose(Controller.getWindow());
-
+                Controller.getRegistrationPanel().remove(Controller.getRegistrationPanel());
                 Controller.setRegistration_panel(null);
+
                 Controller.setLoginPanel(new LoginPanel());
-                Controller.setWindowName("Login");
-                Controller.getLoginPanel().inizialize(Controller.getWindow());
-                Controller.getWindow().layout();
+                Controller.getLoginPanel().setVisible(true);
 
                 break;
 
@@ -407,5 +314,42 @@ public class ActionRegistration {
         }
 
     }
+
+
+    public int actionRegister(HashMap<String, String> dataExtracted) {
+        int res = -4;
+
+        if (InterceptingFilter.verifyRegistrationPanel(dataExtracted)) {
+
+            if (Controller.getProxy() != null) {
+                // register
+                res = Controller.getProxy().SubscribeUser(
+                        dataExtracted.get("Email"),
+                        dataExtracted.get("InvitationCode"),
+                        dataExtracted.get("Username"));
+
+            } else {
+
+                Controller.setProxy(new ProxyWrapper());
+                Controller.getProxy().setHost(dataExtracted.get("ProxyHost"));
+
+                if (Controller.getProxy().IsWebServiceRunning()) {
+
+                    res = Controller.getProxy().SubscribeUser(
+                            dataExtracted.get("Email"),
+                            dataExtracted.get("InvitationCode"),
+                            dataExtracted.get("Username"));
+
+                } else {
+                    res = -2;
+                }
+
+            }
+        } else {
+            res = -3;
+
+        }
+
+        return res;
+    }
 }
-*/

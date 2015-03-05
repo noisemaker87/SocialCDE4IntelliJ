@@ -11,7 +11,7 @@ import org.jdesktop.swingx.*;
 /**
  * @author Davide Rossi
  */
-public class DynamicPeople extends JScrollPane {
+public class DynamicPeople extends JPanel {
     public DynamicPeople() {
         initComponents();
     }
@@ -19,6 +19,7 @@ public class DynamicPeople extends JScrollPane {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Davide Rossi
+        scrollPane1 = new JScrollPane();
         panelPeople = new JPanel();
         panelSuggestions = new JPanel();
         lblSuggestions = new JLabel();
@@ -56,198 +57,205 @@ public class DynamicPeople extends JScrollPane {
 
         //======== this ========
 
-        //======== panelPeople ========
+        // JFormDesigner evaluation mark
+        setBorder(new javax.swing.border.CompoundBorder(
+            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+
+        setLayout(new BorderLayout());
+
+        //======== scrollPane1 ========
         {
 
-            // JFormDesigner evaluation mark
-            panelPeople.setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                    "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                    javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                    java.awt.Color.red), panelPeople.getBorder())); panelPeople.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
-
-            panelPeople.setLayout(new VerticalLayout(2));
-
-            //======== panelSuggestions ========
+            //======== panelPeople ========
             {
-                panelSuggestions.setLayout(new VerticalLayout());
+                panelPeople.setLayout(new VerticalLayout(2));
 
-                //---- lblSuggestions ----
-                lblSuggestions.setText("Suggestions");
-                lblSuggestions.setFont(new Font("Dialog", Font.BOLD, 18));
-                panelSuggestions.add(lblSuggestions);
-
-                //======== User1 ========
+                //======== panelSuggestions ========
                 {
-                    User1.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
+                    panelSuggestions.setLayout(new VerticalLayout());
 
-                    //---- lblImgUser ----
-                    lblImgUser.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
-                    User1.add(lblImgUser);
+                    //---- lblSuggestions ----
+                    lblSuggestions.setText("Suggestions");
+                    lblSuggestions.setFont(new Font("Dialog", Font.BOLD, 18));
+                    panelSuggestions.add(lblSuggestions);
 
-                    //---- lblNickUser ----
-                    lblNickUser.setText("nickname user");
-                    User1.add(lblNickUser);
-
-                    //======== panel2 ========
+                    //======== User1 ========
                     {
-                        panel2.setPreferredSize(new Dimension(100, 32));
-                        panel2.setLayout(new BorderLayout(10, 0));
+                        User1.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
-                        //---- lblOther ----
-                        lblOther.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
-                        lblOther.setHorizontalAlignment(SwingConstants.RIGHT);
-                        panel2.add(lblOther, BorderLayout.CENTER);
+                        //---- lblImgUser ----
+                        lblImgUser.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
+                        User1.add(lblImgUser);
+
+                        //---- lblNickUser ----
+                        lblNickUser.setText("nickname user");
+                        User1.add(lblNickUser);
+
+                        //======== panel2 ========
+                        {
+                            panel2.setPreferredSize(new Dimension(100, 32));
+                            panel2.setLayout(new BorderLayout(10, 0));
+
+                            //---- lblOther ----
+                            lblOther.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Next.png")));
+                            lblOther.setHorizontalAlignment(SwingConstants.RIGHT);
+                            panel2.add(lblOther, BorderLayout.CENTER);
+                        }
+                        User1.add(panel2);
                     }
-                    User1.add(panel2);
-                }
-                panelSuggestions.add(User1);
+                    panelSuggestions.add(User1);
 
-                //======== User5 ========
+                    //======== User5 ========
+                    {
+                        User5.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
+
+                        //---- lblImgUser5 ----
+                        lblImgUser5.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
+                        User5.add(lblImgUser5);
+
+                        //---- lblNickUser5 ----
+                        lblNickUser5.setText("nickname user");
+                        User5.add(lblNickUser5);
+
+                        //======== panel10 ========
+                        {
+                            panel10.setPreferredSize(new Dimension(100, 32));
+                            panel10.setLayout(new BorderLayout(10, 0));
+
+                            //---- lblOther5 ----
+                            lblOther5.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Next.png")));
+                            lblOther5.setHorizontalAlignment(SwingConstants.RIGHT);
+                            panel10.add(lblOther5, BorderLayout.CENTER);
+                        }
+                        User5.add(panel10);
+                    }
+                    panelSuggestions.add(User5);
+                }
+                panelPeople.add(panelSuggestions);
+
+                //======== panelFollowings ========
                 {
-                    User5.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
+                    panelFollowings.setLayout(new VerticalLayout());
 
-                    //---- lblImgUser5 ----
-                    lblImgUser5.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
-                    User5.add(lblImgUser5);
+                    //---- lblFollowings ----
+                    lblFollowings.setText("Followings");
+                    lblFollowings.setFont(new Font("Dialog", Font.BOLD, 18));
+                    panelFollowings.add(lblFollowings);
 
-                    //---- lblNickUser5 ----
-                    lblNickUser5.setText("nickname user");
-                    User5.add(lblNickUser5);
-
-                    //======== panel10 ========
+                    //======== User6 ========
                     {
-                        panel10.setPreferredSize(new Dimension(100, 32));
-                        panel10.setLayout(new BorderLayout(10, 0));
+                        User6.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
-                        //---- lblOther5 ----
-                        lblOther5.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
-                        lblOther5.setHorizontalAlignment(SwingConstants.RIGHT);
-                        panel10.add(lblOther5, BorderLayout.CENTER);
+                        //---- lblImgUser6 ----
+                        lblImgUser6.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
+                        User6.add(lblImgUser6);
+
+                        //---- lblNickUser6 ----
+                        lblNickUser6.setText("nickname user");
+                        User6.add(lblNickUser6);
+
+                        //======== panel14 ========
+                        {
+                            panel14.setPreferredSize(new Dimension(100, 32));
+                            panel14.setLayout(new BorderLayout(10, 0));
+
+                            //---- lblOther6 ----
+                            lblOther6.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Next.png")));
+                            lblOther6.setHorizontalAlignment(SwingConstants.RIGHT);
+                            panel14.add(lblOther6, BorderLayout.CENTER);
+                        }
+                        User6.add(panel14);
                     }
-                    User5.add(panel10);
+                    panelFollowings.add(User6);
                 }
-                panelSuggestions.add(User5);
+                panelPeople.add(panelFollowings);
+
+                //======== panelFollowers ========
+                {
+                    panelFollowers.setLayout(new VerticalLayout());
+
+                    //---- lblFollowers ----
+                    lblFollowers.setText("Followers");
+                    lblFollowers.setFont(new Font("Dialog", Font.BOLD, 18));
+                    panelFollowers.add(lblFollowers);
+
+                    //======== User7 ========
+                    {
+                        User7.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
+
+                        //---- lblImgUser7 ----
+                        lblImgUser7.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
+                        User7.add(lblImgUser7);
+
+                        //---- lblNickUser7 ----
+                        lblNickUser7.setText("nickname user");
+                        User7.add(lblNickUser7);
+
+                        //======== panel15 ========
+                        {
+                            panel15.setPreferredSize(new Dimension(100, 32));
+                            panel15.setLayout(new BorderLayout(10, 0));
+
+                            //---- lblOther7 ----
+                            lblOther7.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Next.png")));
+                            lblOther7.setHorizontalAlignment(SwingConstants.RIGHT);
+                            panel15.add(lblOther7, BorderLayout.CENTER);
+                        }
+                        User7.add(panel15);
+                    }
+                    panelFollowers.add(User7);
+                }
+                panelPeople.add(panelFollowers);
+
+                //======== panelHidden ========
+                {
+                    panelHidden.setLayout(new VerticalLayout());
+
+                    //---- lblHidden ----
+                    lblHidden.setText("Hidden");
+                    lblHidden.setFont(new Font("Dialog", Font.BOLD, 18));
+                    panelHidden.add(lblHidden);
+
+                    //======== User8 ========
+                    {
+                        User8.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
+
+                        //---- lblImgUser8 ----
+                        lblImgUser8.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
+                        User8.add(lblImgUser8);
+
+                        //---- lblNickUser8 ----
+                        lblNickUser8.setText("nickname user");
+                        User8.add(lblNickUser8);
+
+                        //======== panel16 ========
+                        {
+                            panel16.setPreferredSize(new Dimension(100, 32));
+                            panel16.setLayout(new BorderLayout(10, 0));
+
+                            //---- lblOther8 ----
+                            lblOther8.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Next.png")));
+                            lblOther8.setHorizontalAlignment(SwingConstants.RIGHT);
+                            panel16.add(lblOther8, BorderLayout.CENTER);
+                        }
+                        User8.add(panel16);
+                    }
+                    panelHidden.add(User8);
+                }
+                panelPeople.add(panelHidden);
             }
-            panelPeople.add(panelSuggestions);
-
-            //======== panelFollowings ========
-            {
-                panelFollowings.setLayout(new VerticalLayout());
-
-                //---- lblFollowings ----
-                lblFollowings.setText("Followings");
-                lblFollowings.setFont(new Font("Dialog", Font.BOLD, 18));
-                panelFollowings.add(lblFollowings);
-
-                //======== User6 ========
-                {
-                    User6.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
-
-                    //---- lblImgUser6 ----
-                    lblImgUser6.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
-                    User6.add(lblImgUser6);
-
-                    //---- lblNickUser6 ----
-                    lblNickUser6.setText("nickname user");
-                    User6.add(lblNickUser6);
-
-                    //======== panel14 ========
-                    {
-                        panel14.setPreferredSize(new Dimension(100, 32));
-                        panel14.setLayout(new BorderLayout(10, 0));
-
-                        //---- lblOther6 ----
-                        lblOther6.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
-                        lblOther6.setHorizontalAlignment(SwingConstants.RIGHT);
-                        panel14.add(lblOther6, BorderLayout.CENTER);
-                    }
-                    User6.add(panel14);
-                }
-                panelFollowings.add(User6);
-            }
-            panelPeople.add(panelFollowings);
-
-            //======== panelFollowers ========
-            {
-                panelFollowers.setLayout(new VerticalLayout());
-
-                //---- lblFollowers ----
-                lblFollowers.setText("Followers");
-                lblFollowers.setFont(new Font("Dialog", Font.BOLD, 18));
-                panelFollowers.add(lblFollowers);
-
-                //======== User7 ========
-                {
-                    User7.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
-
-                    //---- lblImgUser7 ----
-                    lblImgUser7.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
-                    User7.add(lblImgUser7);
-
-                    //---- lblNickUser7 ----
-                    lblNickUser7.setText("nickname user");
-                    User7.add(lblNickUser7);
-
-                    //======== panel15 ========
-                    {
-                        panel15.setPreferredSize(new Dimension(100, 32));
-                        panel15.setLayout(new BorderLayout(10, 0));
-
-                        //---- lblOther7 ----
-                        lblOther7.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
-                        lblOther7.setHorizontalAlignment(SwingConstants.RIGHT);
-                        panel15.add(lblOther7, BorderLayout.CENTER);
-                    }
-                    User7.add(panel15);
-                }
-                panelFollowers.add(User7);
-            }
-            panelPeople.add(panelFollowers);
-
-            //======== panelHidden ========
-            {
-                panelHidden.setLayout(new VerticalLayout());
-
-                //---- lblHidden ----
-                lblHidden.setText("Hidden");
-                lblHidden.setFont(new Font("Dialog", Font.BOLD, 18));
-                panelHidden.add(lblHidden);
-
-                //======== User8 ========
-                {
-                    User8.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
-
-                    //---- lblImgUser8 ----
-                    lblImgUser8.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
-                    User8.add(lblImgUser8);
-
-                    //---- lblNickUser8 ----
-                    lblNickUser8.setText("nickname user");
-                    User8.add(lblNickUser8);
-
-                    //======== panel16 ========
-                    {
-                        panel16.setPreferredSize(new Dimension(100, 32));
-                        panel16.setLayout(new BorderLayout(10, 0));
-
-                        //---- lblOther8 ----
-                        lblOther8.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Next.png"));
-                        lblOther8.setHorizontalAlignment(SwingConstants.RIGHT);
-                        panel16.add(lblOther8, BorderLayout.CENTER);
-                    }
-                    User8.add(panel16);
-                }
-                panelHidden.add(User8);
-            }
-            panelPeople.add(panelHidden);
+            scrollPane1.setViewportView(panelPeople);
         }
-        setViewportView(panelPeople);
+        add(scrollPane1, BorderLayout.CENTER);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Davide Rossi
+    private JScrollPane scrollPane1;
     private JPanel panelPeople;
     private JPanel panelSuggestions;
     private JLabel lblSuggestions;

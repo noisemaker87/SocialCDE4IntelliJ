@@ -49,24 +49,17 @@ new FormModel {
 					} )
 				} )
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-				"$columnSpecs": "0, 0"
-				"$rowSpecs": "0"
-				"$hGap": 5
-				"$vGap": 5
-				"$alignTop": true
-			} ) {
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 				name: "panel4"
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button2"
 					"text": "Cancel"
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+					"preferredSize": new java.awt.Dimension( 75, 32 )
+				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button1"
 					"text": "Ok"
-					"preferredSize": new java.awt.Dimension( 73, 26 )
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-					"gridx": 1
+					"preferredSize": new java.awt.Dimension( 75, 32 )
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
