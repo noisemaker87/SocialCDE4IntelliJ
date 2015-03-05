@@ -37,7 +37,7 @@ public class ImagesMod {
     private final URL PATH_PEOPLE = this.getClass().getClassLoader().getResource("images/Toolbar/People.png");
     private final URL PATH_PROFILE = this.getClass().getClassLoader().getResource("images/Toolbar/Profile.png");
 
-    private BufferedImage resize(BufferedImage originalImage, int width, int height) throws IOException {
+    public BufferedImage resize(BufferedImage originalImage, int width, int height) throws IOException {
         int type = originalImage.getType();
         BufferedImage resizedImage = UIUtil.createImage(width, height, type);//;new BufferedImage(width,height,type);
         Graphics2D g = resizedImage.createGraphics();

@@ -14,22 +14,7 @@ import java.io.InputStream;
  * @author Davide Rossi
  */
 public class OperationProgressBar extends JPanel {
-    private int max,stop =0;
-    private final InputStream PATH_WALLPAPER = this.getClass().getClassLoader()
-            .getResourceAsStream("images/Wallpaper.png");
-
-    private BufferedImage resize(BufferedImage originalImage, int width, int height) throws IOException {
-        BufferedImage resizedImage = null;
-        Graphics2D g = resizedImage.createGraphics();
-        g.drawImage(originalImage, 0, 0, width, height, null);
-        g.dispose();
-        return resizedImage;
-    }//ridimensione immagine
-
-    public Image get_ImageStream(InputStream stream) throws IOException {
-        Image image = ImageIO.read(stream);
-        return image;
-    }//prende immagine da stream
+    ImagesMod im = new ImagesMod();
 
     public OperationProgressBar() {
         initComponents();
@@ -85,10 +70,6 @@ public class OperationProgressBar extends JPanel {
         lblOpBar.setText(label);
     }
 
-    /*public void setStop(int stop) {
-        this.stop = stop;
-    }*/
-
     public void updateBar(int newValue) {
         progressOpBar.setValue(newValue);
         update(this.getGraphics());
@@ -113,7 +94,7 @@ public class OperationProgressBar extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         try {
-            g.drawImage(get_ImageStream(PATH_WALLPAPER), 0, 0, null);
+            g.drawImage(im.getWALLPAPER(400,400), 0, 0, null);
         } catch (IOException e) {
             e.printStackTrace();
         }

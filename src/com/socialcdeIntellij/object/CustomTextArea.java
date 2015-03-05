@@ -8,26 +8,24 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class CustomTextArea extends JTextArea {
-    //private final InputStream PATH = this.getClass()
-    //        .getClassLoader().getResourceAsStream("images/Baloon.png");
+public class CustomTextArea extends JTextArea{
 
-    //private final Image img  = new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Baloon.png")).getImage();
-    private static final Image img = new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Baloon.png" ).getImage();
+
+    private final Image img = new ImageIcon(this.getClass().getClassLoader().getResource("images/Baloon.png")).getImage();//getClass().getResource("/images/Baloon.png")).getImage();
 
     public CustomTextArea() {
-        super();
+        super(3,0);
         setOpaque( false );
-      /*  try{
-            img = ImageIO.read(PATH);
-        } catch(IOException e) {
-            System.out.println(e.toString());
-        }*/
+
+        setWrapStyleWord(true);
+        setLineWrap(true);
     }
 
     @Override
     protected void paintComponent(Graphics g) {
+
         g.drawImage(img,0,0,null);
         super.paintComponent(g);
+
     }
 }

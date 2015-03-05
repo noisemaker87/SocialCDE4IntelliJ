@@ -21,48 +21,10 @@ import java.util.HashMap;
  * @author Davide Rossi
  */
 public class ProfilePanel extends JPanel {
-    private final URL PATH_DEFAULT_AVATAR = this.getClass().getResource("images/DefaultAvatar.png");
-    private final URL PATH_BALOON = this.getClass().getResource("images/Baloon.png");
-    private final URL PATH_BACK = this.getClass().getResource("images/Toolbar/Back.png");
-    private final URL PATH_FOLLOW = this.getClass().getResource("images/Toolbar/Follow.png");
-    private final URL PATH_HIDE = this.getClass().getResource("images/Toolbar/Hide.png");
-    private final URL PATH_HOME = this.getClass().getResource("images/Toolbar/Home.png");
-    private final URL PATH_INTERACTIVE_TIMELINE = this.getClass().getResource("images/Toolbar/InteractiveTimeline.png");
-    private final URL PATH_INTERACTION_TIMELINE = this.getClass().getResource("images/Toolbar/IterationTimeline.png");
-    private final URL PATH_LOGOUT = this.getClass().getResource("images/Toolbar/Logout.png");
-    private final URL PATH_PEOPLE = this.getClass().getResource("images/Toolbar/People.png");
-    private final URL PATH_WALLPAPER = this.getClass().getResource("images/Wallpaper.png");
 
     private JPanel composite_static;
     private JPanel composite_dinamic;
 
-    /* private Image getUserImage() throws IOException {
-        try
-        {
-            return resize((BufferedImage) get_ImageStream(new URL(Controller
-                    .getCurrentUser().Avatar).openStream()),32,32);
-        } catch (IOException e)
-        {
-            return resize((BufferedImage) get_ImageStream(PATH_DEFAULT_AVATAR),32,32);
-        } catch (NullPointerException e)
-        {
-            return resize((BufferedImage) get_ImageStream(PATH_DEFAULT_AVATAR),32,32);
-        }
-    }*/
-
-    private BufferedImage resize(BufferedImage originalImage, int width, int height) throws IOException {
-        int type = originalImage.getType();
-        BufferedImage resizedImage = UIUtil.createImage(width,height,type);//;new BufferedImage(width,height,type);
-        Graphics2D g = resizedImage.createGraphics();
-        g.drawImage(originalImage, 0, 0, width, height, null);
-        g.dispose();
-        return resizedImage;
-    }//ridimensione immagine
-
-    public Image get_ImageStream(URL stream) throws IOException {
-        Image image = ImageIO.read(stream);
-        return image;
-    }//prende immagine da stream
 
     public ProfilePanel() {
         initComponents();
@@ -117,27 +79,27 @@ public class ProfilePanel extends JPanel {
             panelToolbar.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
             //---- lblBoh ----
-            lblBoh.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Profile.png"));
+            lblBoh.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Profile.png")));
             panelToolbar.add(lblBoh);
 
             //---- lblPeople ----
-            lblPeople.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\People.png"));
+            lblPeople.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/People.png")));
             panelToolbar.add(lblPeople);
 
             //---- lblHome ----
-            lblHome.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Home.png"));
+            lblHome.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Home.png")));
             panelToolbar.add(lblHome);
 
             //---- lblIterationTimeline ----
-            lblIterationTimeline.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\IterationTimeline.png"));
+            lblIterationTimeline.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/IterationTimeline.png")));
             panelToolbar.add(lblIterationTimeline);
 
             //---- lblInteractiveTimeline ----
-            lblInteractiveTimeline.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\InteractiveTimeline.png"));
+            lblInteractiveTimeline.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/InteractiveTimeline.png")));
             panelToolbar.add(lblInteractiveTimeline);
 
             //---- lblLogout ----
-            lblLogout.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\Toolbar\\Logout.png"));
+            lblLogout.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Logout.png")));
             panelToolbar.add(lblLogout);
         }
         add(panelToolbar);
@@ -148,7 +110,7 @@ public class ProfilePanel extends JPanel {
             panelProfile.setLayout(new FlowLayout(FlowLayout.LEFT));
 
             //---- lblAvatar ----
-            lblAvatar.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
+            lblAvatar.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
             panelProfile.add(lblAvatar);
 
             //======== panelInfo ========
@@ -172,11 +134,11 @@ public class ProfilePanel extends JPanel {
                         panelSubSettings.setLayout(new FlowLayout());
 
                         //---- lblSkills ----
-                        lblSkills.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\skills.png"));
+                        lblSkills.setIcon(new ImageIcon(getClass().getResource("/images/skills.png")));
                         panelSubSettings.add(lblSkills);
 
                         //---- lblSettings ----
-                        lblSettings.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\settings.png"));
+                        lblSettings.setIcon(new ImageIcon(getClass().getResource("/images/settings.png")));
                         panelSubSettings.add(lblSettings);
                     }
                     panelSettings.add(panelSubSettings);
@@ -268,7 +230,6 @@ public class ProfilePanel extends JPanel {
     }
 
 
-
     public JLabel getLblAvatar() {
         return lblAvatar;
     }
@@ -277,31 +238,7 @@ public class ProfilePanel extends JPanel {
         this.lblAvatar = lblAvatar;
     }
 
-    public JLabel getLblPeople() {
 
-        return lblPeople;
-    }
-
-    public void setLblPeople(JLabel lblPeople) {
-        this.lblPeople = lblPeople;
-    }
-
-    public JLabel getLblInteractiveTimeline() {
-
-        return lblInteractiveTimeline;
-    }
-
-    public void setLblInteractiveTimeline(JLabel lblInteractiveTimeline) {
-        this.lblInteractiveTimeline = lblInteractiveTimeline;
-    }
-
-    public JLabel getLblIterationTimeline() {
-        return lblIterationTimeline;
-    }
-
-    public void setLblIterationTimeline(JLabel lblIterationTimeline) {
-        this.lblIterationTimeline = lblIterationTimeline;
-    }
 
     public JPanel getComposite_dinamic() {
         return composite_dinamic;
@@ -319,10 +256,6 @@ public class ProfilePanel extends JPanel {
         this.composite_static = composite_static;
     }
 
-    public HashMap<String, Object> getData() {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Davide Rossi
