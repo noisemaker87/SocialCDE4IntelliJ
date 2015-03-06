@@ -3,27 +3,33 @@ package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
 
+import javax.swing.event.EventListenerList;
 import java.awt.*;
+import java.awt.event.*;
 import java.util.EventListener;
 import java.util.HashMap;
 
 /**
  * Created by Teo on 05/03/2015.
  */
-public class ActionGeneral implements EventListener {
+public class ActionGeneral implements ActionListener, FocusListener , MouseListener{
 
     Controller controller = new Controller();
     private HashMap<String, Object> uiData;
 
-    public void handleEvent(Event event) {
+
+    public void actionPerformed(ActionEvent event) {
         switch (Controller.getWindowName()) {
+
             case "Registration":
+
                 uiData = Controller.getRegistrationPanel().getData();
                 uiData.put("Event", event);
-                //uiData.put("Event_type", event.type);
-               // uiData.put("ID_action", widget.getData("ID_action").toString());
-
-
+                uiData.put("Event_type", event.getID());
+                uiData.put("ID_action",event.getActionCommand());
+                System.out.println("event - "+event.toString()+
+                    "\n"+"eventType - "+event.getID()+
+                    "\n"+"idAction - "+event.getSource().toString());
                 new ActionRegistration(uiData);
 
                 break;
@@ -69,7 +75,7 @@ public class ActionGeneral implements EventListener {
                     new ActionDynamicPeople(widget, event);
                 }
                 break;
-            case "userTimeline":
+            case "UserTimeline":
                 if (widgetProfile.contains(widget.getData("ID_action").toString())) {
                     new ActionProfile(widget, event);
                 } else {
@@ -81,7 +87,7 @@ public class ActionGeneral implements EventListener {
                     new ActionDynamicUserTimeline(uiData);
                 }
                 break;
-            case "homeTimeline":
+            case "HomeTimeline":
                 if (widgetProfile.contains(widget.getData("ID_action").toString())) {
                     new ActionProfile(widget, event);
                 } else {
@@ -104,7 +110,7 @@ public class ActionGeneral implements EventListener {
                     new ActionHomeTimeline(uiData);
                 }
                 break;
-            case "iterationTimeline":
+            case "IterationTimeline":
                 if (widgetProfile.contains(widget.getData("ID_action").toString())) {
                     new ActionProfile(widget, event);
                 } else {
@@ -124,7 +130,7 @@ public class ActionGeneral implements EventListener {
                     new ActionIterationTimeline(uiData);
                 }
                 break;
-            case "interactiveTimeline":
+            case "InteractiveTimeline":
                 if (widgetProfile.contains(widget.getData("ID_action").toString())) {
                     new ActionProfile(widget, event);
                 } else {
@@ -145,5 +151,72 @@ public class ActionGeneral implements EventListener {
                 }
                 break;*/
         }
+    }
+
+    @Override
+    public void focusGained(FocusEvent e) {
+
+    }
+
+    @Override
+    public void focusLost(FocusEvent event) {
+            switch (Controller.getWindowName()) {
+
+                case "Registration":
+                    uiData = Controller.getRegistrationPanel().getData();
+                    uiData.put("Event", event);
+                    uiData.put("Event_type", event.getID());
+                    uiData.put("ID_action",event.getComponent().getClass().getSimpleName());//cambiare
+                    //uiData.put("ID_action",event.getSource().toString() );
+
+                    System.out.println("event - "+event.toString()+
+                            "\n"+"eventType - "+event.getID()+
+                            "\n"+"idAction - "+event.getComponent().toString());//cambiare
+                   // new ActionRegistration(uiData);
+
+                    break;
+        }
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent event) {
+        switch (Controller.getWindowName()) {
+
+            case "Registration":
+
+                uiData = Controller.getRegistrationPanel().getData();
+                uiData.put("Event", event);
+                uiData.put("Event_type", event.getID());
+                uiData.put("ID_action", event.getSource().getClass().getCanonicalName());//cambiare
+
+                System.out.println("event - "+event.toString()+
+                        "\n"+"eventType - "+event.getID()+
+                        "\n"+"idAction - "+(event.getComponent()));//cambiare
+               // new ActionRegistration(uiData);
+
+                break;
+        }
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }

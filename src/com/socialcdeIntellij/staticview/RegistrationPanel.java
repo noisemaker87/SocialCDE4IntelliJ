@@ -5,21 +5,29 @@
 package com.socialcdeIntellij.staticview;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import javax.swing.*;
+
+import com.socialcdeIntellij.action.ActionGeneral;
 import org.jdesktop.swingx.*;
 
 /**
  * @author Davide Rossi
  */
 public class RegistrationPanel extends JPanel {
+    private ActionGeneral listener;
+
     public RegistrationPanel() {
         initComponents();
     }
 
     private void initComponents() {
+
+        listener = new ActionGeneral();
+
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Davide Rossi
+        // Generated using JFormDesigner Evaluation license - Pablo Rossi
         lblRegistration = new JLabel();
         lblAlert = new JLabel();
         panelDati = new JPanel();
@@ -35,8 +43,8 @@ public class RegistrationPanel extends JPanel {
         txtEmail = new JTextField();
         txtCode = new JTextField();
         txtUsername = new JTextField();
-        txtPassword = new JTextField();
-        txtConfirmPsw = new JTextField();
+        txtPassword = new JPasswordField();
+        txtConfirmPassword = new JPasswordField();
         panel3 = new JPanel();
         signProxy = new JLabel();
         signEmail = new JLabel();
@@ -69,6 +77,7 @@ public class RegistrationPanel extends JPanel {
         lblAlert.setText("text");
         lblAlert.setForeground(Color.red);
         lblAlert.setHorizontalAlignment(SwingConstants.CENTER);
+        lblAlert.setVisible(false);
         add(lblAlert);
 
         //======== panelDati ========
@@ -156,24 +165,8 @@ public class RegistrationPanel extends JPanel {
                 txtUsername.setAlignmentX(28.5F);
                 txtUsername.setMaximumSize(new Dimension(1000, 24));
                 panelTxt.add(txtUsername);
-
-                //---- txtPassword ----
-                txtPassword.setMinimumSize(new Dimension(76, 24));
-                txtPassword.setPreferredSize(new Dimension(250, 24));
-                txtPassword.setAutoscrolls(false);
-                txtPassword.setMargin(new Insets(20, 10, 20, 59));
-                txtPassword.setAlignmentX(28.5F);
-                txtPassword.setMaximumSize(new Dimension(1000, 24));
                 panelTxt.add(txtPassword);
-
-                //---- txtConfirmPsw ----
-                txtConfirmPsw.setMinimumSize(new Dimension(76, 24));
-                txtConfirmPsw.setPreferredSize(new Dimension(250, 24));
-                txtConfirmPsw.setAutoscrolls(false);
-                txtConfirmPsw.setMargin(new Insets(20, 10, 20, 59));
-                txtConfirmPsw.setAlignmentX(28.5F);
-                txtConfirmPsw.setMaximumSize(new Dimension(1000, 24));
-                panelTxt.add(txtConfirmPsw);
+                panelTxt.add(txtConfirmPassword);
             }
             panelDati.add(panelTxt);
 
@@ -182,42 +175,42 @@ public class RegistrationPanel extends JPanel {
                 panel3.setLayout(new VerticalLayout(4));
 
                 //---- signProxy ----
-                signProxy.setIcon(new ImageIcon(getClass().getResource("/images/no_icon.png")));
+                signProxy.setIcon(null);
                 signProxy.setHorizontalAlignment(SwingConstants.LEFT);
                 signProxy.setPreferredSize(new Dimension(32, 24));
                 signProxy.setFocusable(false);
                 panel3.add(signProxy);
 
                 //---- signEmail ----
-                signEmail.setIcon(new ImageIcon(getClass().getResource("/images/yes_icon.png")));
+                signEmail.setIcon(null);
                 signEmail.setHorizontalAlignment(SwingConstants.LEFT);
                 signEmail.setPreferredSize(new Dimension(32, 24));
                 signEmail.setFocusable(false);
                 panel3.add(signEmail);
 
                 //---- signCode ----
-                signCode.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
+                signCode.setIcon(null);
                 signCode.setHorizontalAlignment(SwingConstants.LEFT);
                 signCode.setPreferredSize(new Dimension(32, 24));
                 signCode.setFocusable(false);
                 panel3.add(signCode);
 
                 //---- signUsername ----
-                signUsername.setIcon(new ImageIcon(getClass().getResource("/images/yes_icon.png")));
+                signUsername.setIcon(null);
                 signUsername.setHorizontalAlignment(SwingConstants.LEFT);
                 signUsername.setPreferredSize(new Dimension(32, 24));
                 signUsername.setFocusable(false);
                 panel3.add(signUsername);
 
                 //---- signPassword ----
-                signPassword.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
+                signPassword.setIcon(null);
                 signPassword.setHorizontalAlignment(SwingConstants.LEFT);
                 signPassword.setPreferredSize(new Dimension(32, 24));
                 signPassword.setFocusable(false);
                 panel3.add(signPassword);
 
                 //---- signConfirmPassword ----
-                signConfirmPassword.setIcon(new ImageIcon(getClass().getResource("/images/yes_icon.png")));
+                signConfirmPassword.setIcon(null);
                 signConfirmPassword.setHorizontalAlignment(SwingConstants.LEFT);
                 signConfirmPassword.setPreferredSize(new Dimension(32, 24));
                 signConfirmPassword.setFocusable(false);
@@ -245,10 +238,19 @@ public class RegistrationPanel extends JPanel {
         lblChange.setForeground(Color.blue);
         add(lblChange);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
+        txtProxy.addFocusListener(listener);
+        txtEmail.addFocusListener(listener);
+        txtCode.addFocusListener(listener);
+        txtUsername.addFocusListener(listener);
+        txtPassword.addFocusListener(listener);
+        txtConfirmPassword.addFocusListener(listener);
+        btnRegister.addActionListener(listener);
+        lblChange.addMouseListener(listener);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Davide Rossi
+    // Generated using JFormDesigner Evaluation license - Pablo Rossi
     private JLabel lblRegistration;
     private JLabel lblAlert;
     private JPanel panelDati;
@@ -264,8 +266,8 @@ public class RegistrationPanel extends JPanel {
     private JTextField txtEmail;
     private JTextField txtCode;
     private JTextField txtUsername;
-    private JTextField txtPassword;
-    private JTextField txtConfirmPsw;
+    private JPasswordField txtPassword;
+    private JPasswordField txtConfirmPassword;
     private JPanel panel3;
     private JLabel signProxy;
     private JLabel signEmail;
@@ -291,9 +293,10 @@ public class RegistrationPanel extends JPanel {
         uiData.put("LabelImageUsername",signUsername);
         uiData.put("Password", txtPassword);
         uiData.put("LabelImagePassword",signPassword);
-        uiData.put("ConfirmPassword", txtConfirmPsw);
+        uiData.put("ConfirmPassword", txtConfirmPassword);
         uiData.put("LabelImageConfirmPassword",signConfirmPassword);
         uiData.put("ButtonRegister",btnRegister);
+        uiData.put("LabelChange", lblChange);
 
         return uiData;
     }

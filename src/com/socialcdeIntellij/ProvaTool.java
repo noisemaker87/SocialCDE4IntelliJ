@@ -17,21 +17,27 @@ import java.io.IOException;
  * Created by noisemaker on 11/02/2015.
  */
 public class ProvaTool implements ToolWindowFactory {
+    Controller controller = new Controller();
 
     @Override
     public void createToolWindowContent(Project project, ToolWindow toolWindow) {
 
-        Controller controller = new Controller();
+       /* Controller controller = new Controller();
         JPanel panel = controller.getRegistrationPanel();
-        panel.setVisible(true);
+        panel.setVisible(true);*/
 
         ToolWindowManager twm= ToolWindowManager.getInstance(project);
         toolWindow = twm.registerToolWindow("SocialCDE",true, ToolWindowAnchor.RIGHT);
 
-        Content content=ContentFactory.SERVICE.getInstance().createContent(panel,"",true);
+        Content content=ContentFactory.SERVICE.getInstance().createContent(getPanel(),"",true);
         toolWindow.getContentManager().addContent(content);//aggiunge il content (la view di eclipse)
 
+    }
 
+    public JPanel getPanel(){
 
+        JPanel panel = controller.getRegistrationPanel();
+        panel.setVisible(true);
+        return panel;
     }
 }

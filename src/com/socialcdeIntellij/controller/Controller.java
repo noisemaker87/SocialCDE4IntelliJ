@@ -32,16 +32,135 @@ public class Controller {
     private static JPanel window = null;
     private static String windowName = null;
     private static ProxyWrapper proxy = null;
-
     private static WUser currentUser = null;
-
     private static String currentUserPassword = null;
-
     public static HashMap<String, Object> temporaryInformation = new HashMap<String, Object>();
-
     private static HashMap<String,Image> usersAvatar = new HashMap<String,Image>();
-
     private static HashMap<String, Image> servicesImage = new HashMap<String,Image>();
+
+
+    public static RegistrationPanel getRegistrationPanel() {
+        setWindow(registrationPanel);
+        setWindowName("Registration");
+        return registrationPanel;
+    }
+
+    public static void setRegistration_panel(RegistrationPanel newRegistrationPanel) {
+        Controller.registrationPanel = newRegistrationPanel;
+    }
+
+    public static LoginPanel getLoginPanel() {
+        setWindow(loginPanel);
+        setWindowName("Login");
+        return loginPanel;
+    }
+
+    public static void setLoginPanel(LoginPanel newLoginPanel) {
+        Controller.loginPanel = newLoginPanel;
+    }
+
+    public static ProfilePanel getProfilePanel() {
+        setWindow(profilePanel);
+        setWindowName("Profile");
+        return profilePanel;
+    }
+
+    public static void setProfilePanel(ProfilePanel newProfilePanel) {
+        profilePanel = newProfilePanel;
+    }
+
+    public static DynamicPeople getPeopleWindow() {
+        setWindow(peopleWindow);
+        setWindowName("People");
+        return peopleWindow;
+    }
+
+    public static void setPeopleWindow(DynamicPeople newpeopleWindow) {
+        peopleWindow = newpeopleWindow;
+    }
+
+    public static DynamicHome getHomeWindow() {
+        setWindow(homeWindow);
+        setWindowName("Home");
+        return homeWindow;
+    }
+
+    public static void setHomeWindow(DynamicHome newhomeWindow) {
+        homeWindow = newhomeWindow;
+    }
+
+    public static DynamicHomeTimeline getHomeTimelineWindow() {
+        setWindow(homeTimelineWindow);
+        setWindowName("HomeTimeline");
+        return homeTimelineWindow;
+    }
+
+    public static void setHomeTimelineWindow(DynamicHomeTimeline homeTimelineWindow) {
+        Controller.homeTimelineWindow = homeTimelineWindow;
+    }
+
+    public static DynamicIterationTimeline getIterationTimelineWindow() {
+        setWindow(iterationTimelineWindow);
+        setWindowName("IterationTimeline");
+        return iterationTimelineWindow;
+    }
+
+    public static void setIterationTimelineWindow(DynamicIterationTimeline newinteractionTimelineWindow) {
+        iterationTimelineWindow = newinteractionTimelineWindow;
+    }
+
+    public static DynamicInteractiveTimeline getInteractiveTimelineWindow() {
+        setWindow(interactiveTimelineWindow);
+        setWindowName("InteractiveTimeline");
+        return interactiveTimelineWindow;
+    }
+
+    public static void setInteractiveTimelineWindow(DynamicInteractiveTimeline newinteractiveTimelineWindow) {
+        interactiveTimelineWindow = newinteractiveTimelineWindow;
+    }
+
+    public static SettingPanel getSettingWindow() {
+        setWindow(settingWindow);
+        setWindowName("Settings");
+        return settingWindow;
+    }
+
+    public static void setSettingWindow(SettingPanel settingWindow) {
+        Controller.settingWindow = settingWindow;
+    }
+
+    public static DynamicUserTimeline getUserWindow() {
+        setWindow(dynamicUserWindow);
+        setWindowName("UserTimeline");
+        return dynamicUserWindow;
+    }
+
+    public static void setUserWindow(DynamicUserTimeline dynamicUserWindow) {
+        Controller.dynamicUserWindow = dynamicUserWindow;
+    }
+
+
+    public static JPanel getWindow() {
+        return window;
+    }
+
+    public static void setWindow(JPanel newWindow) {
+        window = newWindow;
+    }
+
+    public static String getWindowName() {
+        return windowName;
+    }
+
+    public static void setWindowName(String newWindowName) {
+        windowName = newWindowName;
+    }
+
+
+
+
+
+
 
     public HashMap<String, JPanel> getPanel(){
         HashMap<String, JPanel> dataPanel = new HashMap<>();
@@ -57,23 +176,9 @@ public class Controller {
         dataPanel.put("SettingPanel", settingWindow);
 
         return dataPanel;
-    }
+    }// mia****
 
-    public static JPanel getWindow() {
-		return window;
-	}
 
-	public static void setWindow(JPanel newWindow) {
-		window = newWindow;
-	}
-
-	public static String getWindowName() {
-		return windowName;
-	}
-
-	public static void setWindowName(String newWindowName) {
-		windowName = newWindowName;
-	}
 
     public static HashMap<String, Image> getUsersAvatar() {
         return usersAvatar;
@@ -83,35 +188,13 @@ public class Controller {
         return servicesImage;
     }
 
-    public static LoginPanel getLoginPanel() {
-        return loginPanel;
-    }
 
-    public static DynamicHomeTimeline getHomeTimelineWindow() {
-        return homeTimelineWindow;
-    }
 
-    public static void setHomeTimelineWindow(
-            DynamicHomeTimeline homeTimelineWindow) {
-        Controller.homeTimelineWindow = homeTimelineWindow;
-    }
 
-    public static DynamicUserTimeline getDynamicUserWindow() {
-        return dynamicUserWindow;
-    }
 
-    public static void setDynamicUserWindow(
-            DynamicUserTimeline dynamicUserWindow) {
-        Controller.dynamicUserWindow = dynamicUserWindow;
-    }
 
-    public static SettingPanel getSettingWindow() {
-        return settingWindow;
-    }
 
-    public static void setSettingWindow(SettingPanel settingWindow) {
-        Controller.settingWindow = settingWindow;
-    }
+
 
     public static String getCurrentUserPassword() {
         return currentUserPassword;
@@ -121,47 +204,15 @@ public class Controller {
         Controller.currentUserPassword = currentUserPassword;
     }
 
-    public static DynamicHome getHomeWindow() {
-        return homeWindow;
-    }
 
-    public static void setHomeWindow(DynamicHome newhomeWindow) {
-        homeWindow = newhomeWindow;
-    }
 
-    public static DynamicIterationTimeline getIterationTimelineWindow() {
-        return iterationTimelineWindow;
-    }
 
-    public static void setIterationTimelineWindow(
-            DynamicIterationTimeline newinteractionTimelineWindow) {
-        iterationTimelineWindow = newinteractionTimelineWindow;
-    }
 
-    public static DynamicInteractiveTimeline getInteractiveTimelineWindow() {
-        return interactiveTimelineWindow;
-    }
 
-    public static void setInteractiveTimelineWindow(
-            DynamicInteractiveTimeline newinteractiveTimelineWindow) {
-        interactiveTimelineWindow = newinteractiveTimelineWindow;
-    }
 
-    public static DynamicPeople getPeopleWindow() {
-        return peopleWindow;
-    }
 
-    public static void setPeopleWindow(DynamicPeople newpeopleWindow) {
-        peopleWindow = newpeopleWindow;
-    }
 
-    public static ProfilePanel getProfilePanel() {
-        return profilePanel;
-    }
 
-    public static void setProfilePanel(ProfilePanel newProfilePanel) {
-        profilePanel = newProfilePanel;
-    }
 
     public static WUser getCurrentUser() {
         return currentUser;
@@ -171,9 +222,7 @@ public class Controller {
         currentUser = newCurrentUser;
     }
 
-    public static void setLoginPanel(LoginPanel newLoginPanel) {
-        Controller.loginPanel = newLoginPanel;
-    }
+
 
     public static ProxyWrapper getProxy() {
         return proxy;
@@ -183,14 +232,7 @@ public class Controller {
         proxy = newProxy;
     }
 
-    public static RegistrationPanel getRegistrationPanel() {
-        return registrationPanel;
-    }
 
-    public static void setRegistration_panel(
-            RegistrationPanel newRegistrationPanel) {
-        Controller.registrationPanel = newRegistrationPanel;
-    }
 
     // other methods
     public static void closeAllDynamicPanel() {

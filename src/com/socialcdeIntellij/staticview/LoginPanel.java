@@ -19,7 +19,7 @@ public class LoginPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Davide Rossi
+        // Generated using JFormDesigner Evaluation license - Pablo Rossi
         lblRegistration = new JLabel();
         lblAlert = new JLabel();
         panelDati = new JPanel();
@@ -30,7 +30,7 @@ public class LoginPanel extends JPanel {
         panelTxt = new JPanel();
         txtProxy = new JTextField();
         txtUsername = new JTextField();
-        txtPassword = new JTextField();
+        txtPassword = new JPasswordField();
         panel3 = new JPanel();
         signProxy = new JLabel();
         signUsername = new JLabel();
@@ -115,14 +115,6 @@ public class LoginPanel extends JPanel {
                 txtUsername.setAlignmentX(28.5F);
                 txtUsername.setMaximumSize(new Dimension(1000, 24));
                 panelTxt.add(txtUsername);
-
-                //---- txtPassword ----
-                txtPassword.setMinimumSize(new Dimension(76, 24));
-                txtPassword.setPreferredSize(new Dimension(250, 24));
-                txtPassword.setAutoscrolls(false);
-                txtPassword.setMargin(new Insets(20, 10, 20, 59));
-                txtPassword.setAlignmentX(28.5F);
-                txtPassword.setMaximumSize(new Dimension(1000, 24));
                 panelTxt.add(txtPassword);
             }
             panelDati.add(panelTxt);
@@ -192,7 +184,7 @@ public class LoginPanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Davide Rossi
+    // Generated using JFormDesigner Evaluation license - Pablo Rossi
     private JLabel lblRegistration;
     private JLabel lblAlert;
     private JPanel panelDati;
@@ -203,7 +195,7 @@ public class LoginPanel extends JPanel {
     private JPanel panelTxt;
     private JTextField txtProxy;
     private JTextField txtUsername;
-    private JTextField txtPassword;
+    private JPasswordField txtPassword;
     private JPanel panel3;
     private JLabel signProxy;
     private JLabel signUsername;

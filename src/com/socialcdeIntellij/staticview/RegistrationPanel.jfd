@@ -18,6 +18,7 @@ new FormModel {
 				"text": "text"
 				"foreground": sfield java.awt.Color red
 				"horizontalAlignment": 0
+				"visible": false
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 				name: "panelDati"
@@ -102,23 +103,11 @@ new FormModel {
 						"alignmentX": 28.5f
 						"maximumSize": #Dimension1
 					} )
-					add( new FormComponent( "javax.swing.JTextField" ) {
+					add( new FormComponent( "javax.swing.JPasswordField" ) {
 						name: "txtPassword"
-						"minimumSize": #Dimension0
-						"preferredSize": new java.awt.Dimension( 250, 24 )
-						"autoscrolls": false
-						"margin": #Insets0
-						"alignmentX": 28.5f
-						"maximumSize": #Dimension1
 					} )
-					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "txtConfirmPsw"
-						"minimumSize": #Dimension0
-						"preferredSize": new java.awt.Dimension( 250, 24 )
-						"autoscrolls": false
-						"margin": #Insets0
-						"alignmentX": 28.5f
-						"maximumSize": #Dimension1
+					add( new FormComponent( "javax.swing.JPasswordField" ) {
+						name: "txtConfirmPassword"
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
@@ -127,42 +116,42 @@ new FormModel {
 					name: "panel3"
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "signProxy"
-						"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/no_icon.png" )
+						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"horizontalAlignment": 2
 						"preferredSize": new java.awt.Dimension( 32, 24 )
 						"focusable": false
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "signEmail"
-						"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 0, "/images/yes_icon.png" )
+						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"horizontalAlignment": 2
 						"preferredSize": new java.awt.Dimension( 32, 24 )
 						"focusable": false
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "signCode"
-						"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png" )
+						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"horizontalAlignment": 2
 						"preferredSize": new java.awt.Dimension( 32, 24 )
 						"focusable": false
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "signUsername"
-						"icon": #SwingIcon0
+						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"horizontalAlignment": 2
 						"preferredSize": new java.awt.Dimension( 32, 24 )
 						"focusable": false
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "signPassword"
-						"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png" )
+						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"horizontalAlignment": 2
 						"preferredSize": new java.awt.Dimension( 32, 24 )
 						"focusable": false
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "signConfirmPassword"
-						"icon": #SwingIcon0
+						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"horizontalAlignment": 2
 						"preferredSize": new java.awt.Dimension( 32, 24 )
 						"focusable": false

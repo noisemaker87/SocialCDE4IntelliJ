@@ -7,6 +7,7 @@ import com.socialcdeIntellij.object.OperationProgressBar;
 import com.socialcdeIntellij.staticview.LoginPanel;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -21,9 +22,9 @@ public class ActionRegistration {
 
     public ActionRegistration(HashMap<String, Object> uiData) {
         String widgetName = uiData.get("ID_action").toString();
-        //int type = (Integer) uiData.get("Event_type");
-       // Event event = (Event) uiData.get("Event");
-
+        int type = (Integer) uiData.get("Event_type");
+       // ActionEvent event = (ActionEvent) uiData.get("Event");
+        System.out.println("questo confronta nello switch: "+widgetName);
         try {
             IMAGE_NO = im.getNO_ICON(32,16);
             IMAGE_YES = im.getYES_ICON(32,16);
@@ -35,8 +36,8 @@ public class ActionRegistration {
 
             case "txtProxy":
 
-                if (!((JTextField)uiData.get("ProxyHost")).isFocusOwner()){
-
+               // if (!((JTextField)uiData.get("ProxyHost")).isFocusOwner()){
+                System.out.println("ARRIVA????");
                     if (InterceptingFilter.verifyText(((JTextField) uiData
                             .get("ProxyHost")).getText())) {
                         Controller.setProxy(new ProxyWrapper());
@@ -65,12 +66,12 @@ public class ActionRegistration {
                         ((JLabel) uiData.get("LabelImageProxy")).setVisible(true);
 
                     }
-                }
+               // }
                 break;
 
             case "txtUsername":
 
-                if (!((JTextField)uiData.get("Username")).isFocusOwner()){
+                //if (!((JTextField)uiData.get("Username")).isFocusOwner()){
                     if (InterceptingFilter.verifyText(((JTextField) uiData
                             .get("Username")).getText())) {
                         if (Controller.getProxy() != null) {
@@ -109,12 +110,12 @@ public class ActionRegistration {
                         ((JLabel) uiData.get("LabelImageUsername")).setIcon(new ImageIcon(IMAGE_NO));
                         ((JLabel) uiData.get("LabelImageUsername")).setVisible(true);
                     }
-                }
+               // }
                 break;
 
             case "txtEmail":
 
-                if (!((JTextField)uiData.get("Email")).isFocusOwner()){
+                //if (!((JTextField)uiData.get("Email")).isFocusOwner()){
                     if (InterceptingFilter.verifyMail(((JTextField) uiData.get("Email"))
                             .getText())) {
 
@@ -132,13 +133,13 @@ public class ActionRegistration {
                         ((JLabel) uiData.get("LabelImageMail")).setVisible(true);
 
                     }
-                }
+               // }
 
                 break;
 
             case "btnRegister":
 
-                if (((JButton)uiData.get("ButtonRegister")).getModel().isPressed()){
+               // if (((JButton)uiData.get("ButtonRegister")).getModel().isPressed()){
 
                     opBar = new OperationProgressBar();
                     //pbWindow = new ProgressBarThread();
@@ -296,15 +297,15 @@ public class ActionRegistration {
 
                     }
 
-                }
+               // }
                 break;
 
-            case "labelLogin":
+            case "lblChange":
 
-                Controller.getRegistrationPanel().remove(Controller.getRegistrationPanel());
+                //Controller.getRegistrationPanel().remove(Controller.getRegistrationPanel());
                 Controller.setRegistration_panel(null);
 
-                Controller.setLoginPanel(new LoginPanel());
+               // Controller.setLoginPanel(new LoginPanel());
                 Controller.getLoginPanel().setVisible(true);
 
                 break;
