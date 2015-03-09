@@ -29,8 +29,8 @@ public class Controller {
     private static DynamicUserTimeline dynamicUserWindow = new DynamicUserTimeline();
 
     // attributes
-    private static JPanel window = null;
-    private static String windowName = null;
+    private static JPanel window = getRegistrationPanel();// qui x cambiare pannello iniziale
+    private static String windowName = getRegistrationPanel().getName();
     private static ProxyWrapper proxy = null;
     private static WUser currentUser = null;
     private static String currentUserPassword = null;
@@ -41,7 +41,7 @@ public class Controller {
 
     public static RegistrationPanel getRegistrationPanel() {
         setWindow(registrationPanel);
-        setWindowName("Registration");
+        //setWindowName("Registration");
         return registrationPanel;
     }
 
@@ -51,7 +51,7 @@ public class Controller {
 
     public static LoginPanel getLoginPanel() {
         setWindow(loginPanel);
-        setWindowName("Login");
+        //setWindowName("Login");
         return loginPanel;
     }
 
@@ -61,7 +61,7 @@ public class Controller {
 
     public static ProfilePanel getProfilePanel() {
         setWindow(profilePanel);
-        setWindowName("Profile");
+        //setWindowName("Profile");
         return profilePanel;
     }
 
@@ -71,7 +71,7 @@ public class Controller {
 
     public static DynamicPeople getPeopleWindow() {
         setWindow(peopleWindow);
-        setWindowName("People");
+        //setWindowName("People");
         return peopleWindow;
     }
 
@@ -81,7 +81,7 @@ public class Controller {
 
     public static DynamicHome getHomeWindow() {
         setWindow(homeWindow);
-        setWindowName("Home");
+        //setWindowName("Home");
         return homeWindow;
     }
 
@@ -91,7 +91,7 @@ public class Controller {
 
     public static DynamicHomeTimeline getHomeTimelineWindow() {
         setWindow(homeTimelineWindow);
-        setWindowName("HomeTimeline");
+        //setWindowName("HomeTimeline");
         return homeTimelineWindow;
     }
 
@@ -101,7 +101,7 @@ public class Controller {
 
     public static DynamicIterationTimeline getIterationTimelineWindow() {
         setWindow(iterationTimelineWindow);
-        setWindowName("IterationTimeline");
+        //setWindowName("IterationTimeline");
         return iterationTimelineWindow;
     }
 
@@ -111,7 +111,7 @@ public class Controller {
 
     public static DynamicInteractiveTimeline getInteractiveTimelineWindow() {
         setWindow(interactiveTimelineWindow);
-        setWindowName("InteractiveTimeline");
+        //setWindowName("InteractiveTimeline");
         return interactiveTimelineWindow;
     }
 
@@ -121,7 +121,7 @@ public class Controller {
 
     public static SettingPanel getSettingWindow() {
         setWindow(settingWindow);
-        setWindowName("Settings");
+        //setWindowName("Settings");
         return settingWindow;
     }
 
@@ -131,7 +131,7 @@ public class Controller {
 
     public static DynamicUserTimeline getUserWindow() {
         setWindow(dynamicUserWindow);
-        setWindowName("UserTimeline");
+        //setWindowName("UserTimeline");
         return dynamicUserWindow;
     }
 
@@ -152,8 +152,8 @@ public class Controller {
         return windowName;
     }
 
-    public static void setWindowName(String newWindowName) {
-        windowName = newWindowName;
+    public static void setWindowName(JPanel newWindowName) {
+        windowName = newWindowName.getName();
     }
 
 
@@ -930,6 +930,10 @@ public class Controller {
         String OS = System.getProperty("os.name").toLowerCase();
         return (OS.indexOf("sunos") >= 0);
 
+    }
+
+    public JPanel getCurrentPanel() {
+        return getWindow();
     }
 
     /*public  static void openConnectionLostPanel(String message)

@@ -36,8 +36,11 @@ public class ProvaTool implements ToolWindowFactory {
 
     public JPanel getPanel(){
 
-        JPanel panel = controller.getRegistrationPanel();
+        JPanel panel = new JPanel();
+        panel.add(controller.getCurrentPanel());
+
         panel.setVisible(true);
+
         return panel;
     }
 }

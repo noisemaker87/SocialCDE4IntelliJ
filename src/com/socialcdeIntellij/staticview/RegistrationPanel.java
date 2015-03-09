@@ -57,6 +57,7 @@ public class RegistrationPanel extends JPanel {
         lblChange = new JLabel();
 
         //======== this ========
+        setName("Registration");
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
@@ -135,6 +136,7 @@ public class RegistrationPanel extends JPanel {
                 txtProxy.setMaximumSize(new Dimension(300, 24));
                 txtProxy.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
                 txtProxy.setHorizontalAlignment(SwingConstants.LEFT);
+                txtProxy.setName("txtProxy");
                 panelTxt.add(txtProxy);
 
                 //---- txtEmail ----
@@ -146,6 +148,7 @@ public class RegistrationPanel extends JPanel {
                 txtEmail.setMaximumSize(new Dimension(1000, 24));
                 txtEmail.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
                 txtEmail.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+                txtEmail.setName("txtEmail");
                 panelTxt.add(txtEmail);
 
                 //---- txtCode ----
@@ -155,6 +158,7 @@ public class RegistrationPanel extends JPanel {
                 txtCode.setMargin(new Insets(20, 10, 20, 59));
                 txtCode.setAlignmentX(28.5F);
                 txtCode.setMaximumSize(new Dimension(1000, 24));
+                txtCode.setName("txtCode");
                 panelTxt.add(txtCode);
 
                 //---- txtUsername ----
@@ -164,8 +168,15 @@ public class RegistrationPanel extends JPanel {
                 txtUsername.setMargin(new Insets(20, 10, 20, 59));
                 txtUsername.setAlignmentX(28.5F);
                 txtUsername.setMaximumSize(new Dimension(1000, 24));
+                txtUsername.setName("txtUsername");
                 panelTxt.add(txtUsername);
+
+                //---- txtPassword ----
+                txtPassword.setName("txtPassword");
                 panelTxt.add(txtPassword);
+
+                //---- txtConfirmPassword ----
+                txtConfirmPassword.setName("txtConfirmPassword");
                 panelTxt.add(txtConfirmPassword);
             }
             panelDati.add(panelTxt);
@@ -228,6 +239,8 @@ public class RegistrationPanel extends JPanel {
             btnRegister.setText("Register");
             btnRegister.setHorizontalTextPosition(SwingConstants.CENTER);
             btnRegister.setPreferredSize(new Dimension(100, 40));
+            btnRegister.setName("btnRegister");
+            btnRegister.setActionCommand("btnRegister");
             panelButton.add(btnRegister);
         }
         add(panelButton);
@@ -236,6 +249,7 @@ public class RegistrationPanel extends JPanel {
         lblChange.setText("<html><u>I already have an account, I want to sign in</u></html> ");
         lblChange.setHorizontalAlignment(SwingConstants.CENTER);
         lblChange.setForeground(Color.blue);
+        lblChange.setName("lblChange");
         add(lblChange);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
 

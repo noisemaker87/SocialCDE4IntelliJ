@@ -11,7 +11,7 @@ public class InterceptingFilter {
 	}//verifica che il testo sia stato inserito
 
 	public static boolean verifyMail(String mail) {
-		if (mail.startsWith(".") || mail.startsWith("@")) {
+		if (mail.startsWith(".") || mail.startsWith("@") || mail == null) {
 			return false;
 		} else {
 			Pattern p = Pattern.compile(".+@.+\\.[a-z]+");

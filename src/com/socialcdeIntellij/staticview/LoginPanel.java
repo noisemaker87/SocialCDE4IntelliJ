@@ -43,6 +43,7 @@ public class LoginPanel extends JPanel {
         lblChange = new JLabel();
 
         //======== this ========
+        setName("Login");
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(

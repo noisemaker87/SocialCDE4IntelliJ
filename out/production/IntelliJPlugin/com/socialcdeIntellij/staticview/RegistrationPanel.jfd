@@ -7,6 +7,7 @@ new FormModel {
 			"gap": 10
 		} ) {
 			name: "this"
+			"name": "Registration"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "lblRegistration"
 				"text": "REGISTRATION"
@@ -73,6 +74,7 @@ new FormModel {
 						"maximumSize": new java.awt.Dimension( 300, 24 )
 						"cursor": &Cursor0 new java.awt.Cursor( 2 )
 						"horizontalAlignment": 2
+						"name": "txtProxy"
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "txtEmail"
@@ -84,6 +86,7 @@ new FormModel {
 						"maximumSize": &Dimension1 new java.awt.Dimension( 1000, 24 )
 						"cursor": #Cursor0
 						"componentOrientation": sfield java.awt.ComponentOrientation LEFT_TO_RIGHT
+						"name": "txtEmail"
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "txtCode"
@@ -93,6 +96,7 @@ new FormModel {
 						"margin": #Insets0
 						"alignmentX": 28.5f
 						"maximumSize": #Dimension1
+						"name": "txtCode"
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "txtUsername"
@@ -102,12 +106,15 @@ new FormModel {
 						"margin": #Insets0
 						"alignmentX": 28.5f
 						"maximumSize": #Dimension1
+						"name": "txtUsername"
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
 						name: "txtPassword"
+						"name": "txtPassword"
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
 						name: "txtConfirmPassword"
+						"name": "txtConfirmPassword"
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
@@ -165,6 +172,8 @@ new FormModel {
 					"text": "Register"
 					"horizontalTextPosition": 0
 					"preferredSize": new java.awt.Dimension( 100, 40 )
+					"name": "btnRegister"
+					"actionCommand": "btnRegister"
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -172,6 +181,7 @@ new FormModel {
 				"text": "<html><u>I already have an account, I want to sign in</u></html> "
 				"horizontalAlignment": 0
 				"foreground": sfield java.awt.Color blue
+				"name": "lblChange"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

@@ -17,7 +17,6 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
     Controller controller = new Controller();
     private HashMap<String, Object> uiData;
 
-
     public void actionPerformed(ActionEvent event) {
         switch (Controller.getWindowName()) {
 
@@ -27,9 +26,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                 uiData.put("Event", event);
                 uiData.put("Event_type", event.getID());
                 uiData.put("ID_action",event.getActionCommand());
-                System.out.println("event - "+event.toString()+
-                    "\n"+"eventType - "+event.getID()+
-                    "\n"+"idAction - "+event.getSource().toString());
+
                 new ActionRegistration(uiData);
 
                 break;
@@ -166,13 +163,9 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                     uiData = Controller.getRegistrationPanel().getData();
                     uiData.put("Event", event);
                     uiData.put("Event_type", event.getID());
-                    uiData.put("ID_action",event.getComponent().getClass().getSimpleName());//cambiare
-                    //uiData.put("ID_action",event.getSource().toString() );
+                    uiData.put("ID_action",event.getComponent().getName());//cambiare
 
-                    System.out.println("event - "+event.toString()+
-                            "\n"+"eventType - "+event.getID()+
-                            "\n"+"idAction - "+event.getComponent().toString());//cambiare
-                   // new ActionRegistration(uiData);
+                    new ActionRegistration(uiData);
 
                     break;
         }
@@ -188,12 +181,19 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                 uiData = Controller.getRegistrationPanel().getData();
                 uiData.put("Event", event);
                 uiData.put("Event_type", event.getID());
-                uiData.put("ID_action", event.getSource().getClass().getCanonicalName());//cambiare
+                uiData.put("ID_action", event.getComponent().getName());
 
-                System.out.println("event - "+event.toString()+
-                        "\n"+"eventType - "+event.getID()+
-                        "\n"+"idAction - "+(event.getComponent()));//cambiare
-               // new ActionRegistration(uiData);
+                new ActionRegistration(uiData);
+
+                break;
+
+            case "Login":
+                uiData = Controller.getLoginPanel().getData();
+                uiData.put("Event", event);
+                uiData.put("Event_type", event.getID());
+                uiData.put("ID_action", event.getComponent().getName());
+
+                //new ActionLoginPanel(uiData);
 
                 break;
         }
