@@ -14,7 +14,9 @@ import java.io.InputStream;
  * @author Davide Rossi
  */
 public class OperationProgressBar extends JPanel {
-     private final Image img = new ImageIcon(this.getClass().getClassLoader().getResource("images/Wallpaper.png")).getImage();
+    private final Image img = new ImageIcon(this.getClass().getClassLoader().getResource("images/Wallpaper.png")).getImage();
+    OperationProgressBarThread opt;
+
 
     public OperationProgressBar() {
         initComponents();
@@ -22,13 +24,15 @@ public class OperationProgressBar extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Davide Rossi
-        panel1 = new JPanel();
-        panelOperationBar = new JPanel();
+        // Generated using JFormDesigner Evaluation license - Pablo Rossi
+        panel2 = new JPanel();
+        panel3 = new JPanel();
         lblOpBar = new JLabel();
         progressOpBar = new JProgressBar();
 
         //======== this ========
+        setBackground(UIManager.getColor("Button.background"));
+        setOpaque(false);
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
@@ -39,30 +43,28 @@ public class OperationProgressBar extends JPanel {
 
         setLayout(new BorderLayout());
 
-        //======== panel1 ========
+        //======== panel2 ========
         {
-            panel1.setBackground(Color.white);
-            panel1.setLayout(new CardLayout(50, 150));
+            panel2.setLayout(new CardLayout(0, 190));
 
-            //======== panelOperationBar ========
+            //======== panel3 ========
             {
-                panelOperationBar.setBackground(Color.white);
-                panelOperationBar.setLayout(new VerticalLayout(10));
+                panel3.setLayout(new VerticalLayout(10));
 
                 //---- lblOpBar ----
-                lblOpBar.setText("Operation in progress");
+                lblOpBar.setText("Operation in progress..");
                 lblOpBar.setHorizontalAlignment(SwingConstants.CENTER);
-                lblOpBar.setFont(new Font("Dialog", Font.BOLD, 22));
-                panelOperationBar.add(lblOpBar);
+                lblOpBar.setFont(new Font("Dialog", Font.BOLD, 20));
+                panel3.add(lblOpBar);
 
                 //---- progressOpBar ----
                 progressOpBar.setStringPainted(true);
                 progressOpBar.setBackground(Color.white);
-                panelOperationBar.add(progressOpBar);
+                panel3.add(progressOpBar);
             }
-            panel1.add(panelOperationBar, "card1");
+            panel2.add(panel3, "card1");
         }
-        add(panel1, BorderLayout.CENTER);
+        add(panel2, BorderLayout.CENTER);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -95,16 +97,22 @@ public class OperationProgressBar extends JPanel {
         remove(this);
     }
 
-    @Override
+    /*public void start(){
+        opt = new OperationProgressBarThread(progressOpBar);
+        opt.run();
+    }*/
+
+    /*@Override
     protected void paintComponent(Graphics g) {
         g.drawImage(img, 0, 0, null);
-    }
+        super.paintComponent(g);
+    }*/
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Davide Rossi
-    private JPanel panel1;
-    private JPanel panelOperationBar;
+    // Generated using JFormDesigner Evaluation license - Pablo Rossi
+    private JPanel panel2;
+    private JPanel panel3;
     private JLabel lblOpBar;
     private JProgressBar progressOpBar;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

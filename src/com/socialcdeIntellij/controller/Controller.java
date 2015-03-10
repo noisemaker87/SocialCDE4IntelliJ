@@ -3,6 +3,7 @@ package com.socialcdeIntellij.controller;
 import com.intellij.ide.util.PropertiesComponent;
 import com.socialcdeIntellij.dynamic.view.*;
 import com.socialcdeIntellij.model.ProxyWrapper;
+import com.socialcdeIntellij.object.OperationProgressBar;
 import com.socialcdeIntellij.shared.library.WUser;
 import com.socialcdeIntellij.staticview.LoginPanel;
 import com.socialcdeIntellij.staticview.ProfilePanel;
@@ -27,6 +28,16 @@ public class Controller {
     private static DynamicInteractiveTimeline interactiveTimelineWindow = new DynamicInteractiveTimeline();
     private static SettingPanel settingWindow = new SettingPanel();
     private static DynamicUserTimeline dynamicUserWindow = new DynamicUserTimeline();
+
+    private static OperationProgressBar opBar = new OperationProgressBar();
+
+    public static OperationProgressBar getOpBar() {
+        return opBar;
+    }
+
+    public static void setOpBar(OperationProgressBar newOpBar) {
+        opBar = newOpBar;
+    }
 
     // attributes
     private static boolean flag = false;

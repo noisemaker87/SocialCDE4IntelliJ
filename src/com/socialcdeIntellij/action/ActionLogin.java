@@ -203,10 +203,10 @@ public class ActionLogin {
                             */
 
                         if (Controller.OSisWindows()) {
-                            opBar.stop();
+                            //opBar.stop();
                             opBar = null;
                         } else if (Controller.OSisUnix()) {
-                            opBar.stop();
+                            //opBar.stop();
                             opBar = null;
                         }
 
@@ -331,10 +331,10 @@ public class ActionLogin {
 
 
                     if (Controller.OSisWindows()) {
-                        opBar.stop();
+                        //opBar.stop();
                         opBar = null;
                     } else if (Controller.OSisUnix()) {
-                        opBar.stop();
+                       // opBar.stop();
                         opBar = null;
                     }
 
@@ -346,9 +346,9 @@ public class ActionLogin {
             case "lblChange":
                 Controller.setWindowName("Registration");
                 Controller.setWindow(Controller.getRegistrationPanel());
-
-                //Controller.getWindow().doLayout();
                 Controller.getWindow().revalidate();
+                clear(uiData);
+
                 break;
 
             default:
@@ -356,4 +356,16 @@ public class ActionLogin {
         }
     }
 
+    private void clear(HashMap<String, Object> uiData) {
+
+        ((JTextField) uiData.get("ProxyHost")).setText("");
+        ((JTextField) uiData.get("Username")).setText("");
+        ((JTextField) uiData.get("Password")).setText("");
+        ((JLabel) uiData.get("LabelImageProxy")).setIcon(null);
+        ((JLabel) uiData.get("LabelImageUsername")).setIcon(null);
+        ((JLabel) uiData.get("LabelImagePassword")).setIcon(null);
+        ((JLabel) uiData.get("LabelImagePassword")).setIcon(null);
+        ((JLabel) uiData.get("LabelAlert")).setVisible(false);
+
+    }
 }

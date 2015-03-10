@@ -1,0 +1,40 @@
+JFDML JFormDesigner: "5.2.1.0.138" Java: "1.8.0_25" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"background": new com.jformdesigner.model.SwingColor( "Button.background" )
+			"opaque": false
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.CardLayout ) {
+				"vgap": 190
+			} ) {
+				name: "panel2"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
+					"gap": 10
+				} ) {
+					name: "panel3"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "lblOpBar"
+						"text": "Operation in progress"
+						"horizontalAlignment": 0
+						"font": new java.awt.Font( "Dialog", 1, 22 )
+					} )
+					add( new FormComponent( "javax.swing.JProgressBar" ) {
+						name: "progressOpBar"
+						"stringPainted": true
+						"background": new java.awt.Color( 255, 255, 255, 255 )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card1"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 430, 510 )
+		} )
+	}
+}
