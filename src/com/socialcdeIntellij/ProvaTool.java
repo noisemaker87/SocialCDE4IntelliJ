@@ -17,7 +17,7 @@ import java.io.IOException;
  * Created by noisemaker on 11/02/2015.
  */
 public class ProvaTool implements ToolWindowFactory {
-    Controller controller = new Controller();
+
 
     @Override
     public void createToolWindowContent(Project project, ToolWindow toolWindow) {
@@ -37,7 +37,7 @@ public class ProvaTool implements ToolWindowFactory {
     public JPanel getPanel(){
 
         JPanel panel = new JPanel();
-        panel.add(controller.getCurrentPanel());
+        panel.add(Controller.getCurrentPanel());
 
         panel.setVisible(true);
 

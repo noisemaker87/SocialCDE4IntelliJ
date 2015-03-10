@@ -19,8 +19,8 @@ public class Controller {
 
     private static RegistrationPanel registrationPanel = new RegistrationPanel();
     private static LoginPanel loginPanel = new LoginPanel();
-    private static ProfilePanel profilePanel = new ProfilePanel();
-    private static DynamicPeople peopleWindow = new DynamicPeople();
+    private static ProfilePanel profilePanel = null;
+    private static DynamicPeople peopleWindow = null;
     private static DynamicHome homeWindow = new DynamicHome();
     private static DynamicHomeTimeline homeTimelineWindow = new DynamicHomeTimeline();
     private static DynamicIterationTimeline iterationTimelineWindow = new DynamicIterationTimeline();
@@ -29,8 +29,10 @@ public class Controller {
     private static DynamicUserTimeline dynamicUserWindow = new DynamicUserTimeline();
 
     // attributes
-    private static JPanel window = getRegistrationPanel();// qui x cambiare pannello iniziale
-    private static String windowName = getRegistrationPanel().getName();
+    private static boolean flag = false;
+    private static CardLayout cardLayout = new CardLayout();
+    private static JPanel window = new JPanel(cardLayout);// qui x cambiare pannello iniziale
+    private static String windowName = null;
     private static ProxyWrapper proxy = null;
     private static WUser currentUser = null;
     private static String currentUserPassword = null;
@@ -39,25 +41,73 @@ public class Controller {
     private static HashMap<String, Image> servicesImage = new HashMap<String,Image>();
 
 
-    public static RegistrationPanel getRegistrationPanel() {
-        setWindow(registrationPanel);
-        //setWindowName("Registration");
-        return registrationPanel;
+
+    public static JPanel getWindow() {
+        return window;
     }
+
+    public static void setWindow(JPanel newWindow) {
+        flag = true;
+        window.removeAll();
+        window.add(newWindow);
+        cardLayout.show(window,getWindowName());
+    }
+
+    public static String getWindowName() {
+        return windowName;
+    }
+
+    public static void setWindowName(String newWindowName) {
+        windowName = newWindowName;
+    }
+
+    public static void setWindowName(JPanel newWindowName) {
+        windowName = newWindowName.getName();
+    }
+
+
+
+   //public JPanel getPnl(){return pnl;}
+
+    public static JPanel getCurrentPanel() {
+        if (flag == false) {
+            setWindowName("Registration");
+            setWindow(getRegistrationPanel());
+            return getWindow();
+        }
+        else
+            return getWindow();
+    }
+
+    public static RegistrationPanel getRegistrationPanel() { return registrationPanel;  }
 
     public static void setRegistration_panel(RegistrationPanel newRegistrationPanel) {
         Controller.registrationPanel = newRegistrationPanel;
     }
 
-    public static LoginPanel getLoginPanel() {
-        setWindow(loginPanel);
-        //setWindowName("Login");
-        return loginPanel;
-    }
+    public static LoginPanel getLoginPanel() { return loginPanel;  }
 
     public static void setLoginPanel(LoginPanel newLoginPanel) {
         Controller.loginPanel = newLoginPanel;
     }
+
+
+
+
+    /*public static void switchPanel(JPanel panel, String name){
+        cardLayout = new CardLayout();
+
+        setWindow(panel);
+        setWindowName(name);
+
+        pnl = new JPanel();
+        pnl.setLayout(cardLayout);
+        pnl.add(getWindow(),getWindowName());
+        cardLayout.show(pnl,getWindowName());
+
+        //setWindow(pnl);
+        //return window;
+    }*/
 
     public static ProfilePanel getProfilePanel() {
         setWindow(profilePanel);
@@ -140,43 +190,9 @@ public class Controller {
     }
 
 
-    public static JPanel getWindow() {
-        return window;
-    }
-
-    public static void setWindow(JPanel newWindow) {
-        window = newWindow;
-    }
-
-    public static String getWindowName() {
-        return windowName;
-    }
-
-    public static void setWindowName(JPanel newWindowName) {
-        windowName = newWindowName.getName();
-    }
 
 
 
-
-
-
-
-    public HashMap<String, JPanel> getPanel(){
-        HashMap<String, JPanel> dataPanel = new HashMap<>();
-        dataPanel.put("RegistrationPanel", registrationPanel);
-        dataPanel.put("LoginPanel", loginPanel);
-        dataPanel.put("ProfilePanel", profilePanel);
-        dataPanel.put("Home", homeWindow);
-        dataPanel.put("HomeTimeline",homeTimelineWindow);
-        dataPanel.put("InteractiveTimeline", interactiveTimelineWindow);
-        dataPanel.put("IterationTimeline", iterationTimelineWindow);
-        dataPanel.put("People", peopleWindow);
-        dataPanel.put("UserTimeline", dynamicUserWindow);
-        dataPanel.put("SettingPanel", settingWindow);
-
-        return dataPanel;
-    }// mia****
 
 
 
@@ -932,9 +948,7 @@ public class Controller {
 
     }
 
-    public JPanel getCurrentPanel() {
-        return getWindow();
-    }
+
 
     /*public  static void openConnectionLostPanel(String message)
     {

@@ -38,10 +38,10 @@
 
   <actions>
     <!-- Add your actions here -->
-      <group id="MyPlugin.SampleMenu" text="SocialCDE" description="Menù for socialCDE">
+      <group id="MyPlugin.SampleMenu" text="SocialCDE" description="Menù for SocialCDE">
           <add-to-group group-id="MainMenu" anchor="last"  />
           <action id="view" class="com.socialcdeIntellij.prova_classname" text="SocialCDE view"
-                  description="open the socialCDE plugin" />
+                  description="open the SocialCDE plugin" />
       </group>
   </actions>
 

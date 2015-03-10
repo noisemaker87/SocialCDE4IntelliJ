@@ -290,8 +290,12 @@ public class ActionRegistration {
                 break;
 
             case "lblChange":
-                //********************************************
-                System.out.println("nome - " + Controller.getWindowName());
+                Controller.setWindowName("Login");
+                Controller.setWindow(Controller.getLoginPanel());
+
+                //Controller.getWindow().doLayout();
+                Controller.getWindow().revalidate();
+                System.out.println("che window ha? - " + Controller.getWindow());
 
                 break;
 
