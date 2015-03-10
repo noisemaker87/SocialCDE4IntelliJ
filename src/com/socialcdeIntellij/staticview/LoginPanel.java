@@ -7,20 +7,27 @@ package com.socialcdeIntellij.staticview;
 import java.awt.*;
 import java.util.HashMap;
 import javax.swing.*;
+
+import com.socialcdeIntellij.action.ActionGeneral;
 import org.jdesktop.swingx.*;
 
 /**
  * @author Davide Rossi
  */
 public class LoginPanel extends JPanel {
+    private ActionGeneral listener;
+
     public LoginPanel() {
         initComponents();
     }
 
     private void initComponents() {
+
+        listener = new ActionGeneral();
+
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Pablo Rossi
-        lblRegistration = new JLabel();
+        lblLogin = new JLabel();
         lblAlert = new JLabel();
         panelDati = new JPanel();
         panelLabel = new JPanel();
@@ -31,7 +38,7 @@ public class LoginPanel extends JPanel {
         txtProxy = new JTextField();
         txtUsername = new JTextField();
         txtPassword = new JPasswordField();
-        panel3 = new JPanel();
+        panelSign = new JPanel();
         signProxy = new JLabel();
         signUsername = new JLabel();
         signPassword = new JLabel();
@@ -54,16 +61,17 @@ public class LoginPanel extends JPanel {
 
         setLayout(new VerticalLayout(10));
 
-        //---- lblRegistration ----
-        lblRegistration.setText("LOGIN");
-        lblRegistration.setFont(new Font("Calibri", Font.BOLD, 16));
-        lblRegistration.setHorizontalAlignment(SwingConstants.CENTER);
-        add(lblRegistration);
+        //---- lblLogin ----
+        lblLogin.setText("LOGIN");
+        lblLogin.setFont(new Font("Calibri", Font.BOLD, 16));
+        lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
+        add(lblLogin);
 
         //---- lblAlert ----
         lblAlert.setText("text prova");
         lblAlert.setForeground(Color.red);
         lblAlert.setHorizontalAlignment(SwingConstants.CENTER);
+        lblAlert.setVisible(false);
         add(lblAlert);
 
         //======== panelDati ========
@@ -106,6 +114,7 @@ public class LoginPanel extends JPanel {
                 txtProxy.setMaximumSize(new Dimension(300, 24));
                 txtProxy.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
                 txtProxy.setHorizontalAlignment(SwingConstants.LEFT);
+                txtProxy.setName("txtProxy");
                 panelTxt.add(txtProxy);
 
                 //---- txtUsername ----
@@ -115,37 +124,41 @@ public class LoginPanel extends JPanel {
                 txtUsername.setMargin(new Insets(20, 10, 20, 59));
                 txtUsername.setAlignmentX(28.5F);
                 txtUsername.setMaximumSize(new Dimension(1000, 24));
+                txtUsername.setName("txtUsername");
                 panelTxt.add(txtUsername);
+
+                //---- txtPassword ----
+                txtPassword.setName("txtPassword");
                 panelTxt.add(txtPassword);
             }
             panelDati.add(panelTxt);
 
-            //======== panel3 ========
+            //======== panelSign ========
             {
-                panel3.setLayout(new VerticalLayout(4));
+                panelSign.setLayout(new VerticalLayout(4));
 
                 //---- signProxy ----
-                signProxy.setIcon(new ImageIcon(getClass().getResource("/images/no_icon.png")));
+                signProxy.setIcon(null);
                 signProxy.setHorizontalAlignment(SwingConstants.LEFT);
                 signProxy.setPreferredSize(new Dimension(32, 24));
                 signProxy.setFocusable(false);
-                panel3.add(signProxy);
+                panelSign.add(signProxy);
 
                 //---- signUsername ----
-                signUsername.setIcon(new ImageIcon(getClass().getResource("/images/yes_icon.png")));
+                signUsername.setIcon(null);
                 signUsername.setHorizontalAlignment(SwingConstants.LEFT);
                 signUsername.setPreferredSize(new Dimension(32, 24));
                 signUsername.setFocusable(false);
-                panel3.add(signUsername);
+                panelSign.add(signUsername);
 
                 //---- signPassword ----
-                signPassword.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\no_icon.png"));
+                signPassword.setIcon(null);
                 signPassword.setHorizontalAlignment(SwingConstants.LEFT);
                 signPassword.setPreferredSize(new Dimension(32, 24));
                 signPassword.setFocusable(false);
-                panel3.add(signPassword);
+                panelSign.add(signPassword);
             }
-            panelDati.add(panel3);
+            panelDati.add(panelSign);
         }
         add(panelDati);
 
@@ -157,6 +170,8 @@ public class LoginPanel extends JPanel {
             btnLogin.setText("Login");
             btnLogin.setHorizontalTextPosition(SwingConstants.CENTER);
             btnLogin.setPreferredSize(new Dimension(100, 40));
+            btnLogin.setName("btnLogin");
+            btnLogin.setActionCommand("btnLogin");
             panelButton.add(btnLogin);
         }
         add(panelButton);
@@ -167,11 +182,15 @@ public class LoginPanel extends JPanel {
 
             //---- ckBxAuto_login ----
             ckBxAuto_login.setText("Auto login");
+            ckBxAuto_login.setName("ckBxAuto_login");
+            ckBxAuto_login.setActionCommand("ckBxAuto_login");
             panelCheckBtn.add(ckBxAuto_login);
 
             //---- ckBxSave_psw ----
             ckBxSave_psw.setText("Save password");
             ckBxSave_psw.setMargin(new Insets(2, 12, 2, 2));
+            ckBxSave_psw.setActionCommand("ckBxSave_psw");
+            ckBxSave_psw.setName("ckBxSave_psw");
             panelCheckBtn.add(ckBxSave_psw);
         }
         add(panelCheckBtn);
@@ -180,13 +199,22 @@ public class LoginPanel extends JPanel {
         lblChange.setText("<html><u>I have no account, I want to register</u></html> ");
         lblChange.setHorizontalAlignment(SwingConstants.CENTER);
         lblChange.setForeground(Color.blue);
+        lblChange.setName("lblChange");
         add(lblChange);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
+        txtProxy.addFocusListener(listener);
+        txtUsername.addFocusListener(listener);
+        txtPassword.addFocusListener(listener);
+        btnLogin.addActionListener(listener);
+        ckBxAuto_login.addActionListener(listener);
+        ckBxSave_psw.addActionListener(listener);
+        lblChange.addMouseListener(listener);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Pablo Rossi
-    private JLabel lblRegistration;
+    private JLabel lblLogin;
     private JLabel lblAlert;
     private JPanel panelDati;
     private JPanel panelLabel;
@@ -197,7 +225,7 @@ public class LoginPanel extends JPanel {
     private JTextField txtProxy;
     private JTextField txtUsername;
     private JPasswordField txtPassword;
-    private JPanel panel3;
+    private JPanel panelSign;
     private JLabel signProxy;
     private JLabel signUsername;
     private JLabel signPassword;

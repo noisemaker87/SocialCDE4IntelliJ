@@ -31,7 +31,7 @@ public class ActionRegistration {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("il widget corrente è: "+widgetName);
+
         switch (widgetName) {
 
             case "txtProxy":
@@ -127,166 +127,161 @@ public class ActionRegistration {
                 break;
 
             case "btnRegister":
+                opBar = new OperationProgressBar();
+                //pbWindow = new ProgressBarThread();
+                Controller.temporaryInformation.put("ProgressBarThread", opBar);
 
-               // if (((JButton)uiData.get("ButtonRegister")).getModel().isPressed()){
+                opBar.setLabelBar("Login in progress..");
+                opBar.start();
 
-                    opBar = new OperationProgressBar();
-                    //pbWindow = new ProgressBarThread();
-                    Controller.temporaryInformation.put("ProgressBarThread", opBar);
+                HashMap<String, String> dataExtracted = new HashMap<String, String>();
+                dataExtracted.put("Username",
+                        ((JTextField) uiData.get("Username")).getText());
 
-                    opBar.setLabelBar("Login in progress..");
-                    opBar.start();
+                dataExtracted.put("Password",
+                        ((JTextField) uiData.get("Password")).getText());
 
-                    HashMap<String, String> dataExtracted = new HashMap<String, String>();
-                    dataExtracted.put("Username",
-                            ((JTextField) uiData.get("Username")).getText());
+                dataExtracted.put("ConfirmPassword",
+                        ((JTextField) uiData.get("ConfirmPassword")).getText());
 
-                    dataExtracted.put("Password",
-                            ((JTextField) uiData.get("Password")).getText());
+                dataExtracted.put("InvitationCode",
+                        ((JTextField) uiData.get("InvitationCode")).getText());
 
-                    dataExtracted.put("ConfirmPassword",
-                            ((JTextField) uiData.get("ConfirmPassword")).getText());
+                dataExtracted.put("Email",
+                        ((JTextField) uiData.get("Email")).getText());
 
-                    dataExtracted.put("InvitationCode",
-                            ((JTextField) uiData.get("InvitationCode")).getText());
+                dataExtracted.put("ProxyHost",
+                        ((JTextField) uiData.get("ProxyHost")).getText());
 
-                    dataExtracted.put("Email",
-                            ((JTextField) uiData.get("Email")).getText());
+                int res = actionRegister(dataExtracted);
 
-                    dataExtracted.put("ProxyHost",
-                            ((JTextField) uiData.get("ProxyHost")).getText());
+                dataExtracted.clear();
 
-                    int res = actionRegister(dataExtracted);
+                switch (res) {
 
-                    dataExtracted.clear();
+                    case -3:
 
-                    switch (res) {
+                        ((JLabel) uiData.get("LabelAlert"))
+                                .setText("Please compile all field correctly!");
+                        ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        case -3:
+                        opBar.stop();
+                        opBar = null;
+                        break;
 
-                            ((JLabel) uiData.get("LabelAlert"))
-                                    .setText("Please compile all field correctly!");
-                            ((JLabel) uiData.get("LabelAlert")).setVisible(true);
+                    case -2:
 
-                            opBar.stop();
-                            opBar = null;
-                            break;
+                        ((JLabel) uiData.get("LabelAlert"))
+                                .setText("Please enter a valid proxy!");
+                        ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        case -2:
+                        opBar.stop();
+                        opBar = null;
+                        break;
 
-                            ((JLabel) uiData.get("LabelAlert"))
-                                    .setText("Please enter a valid proxy!");
-                            ((JLabel) uiData.get("LabelAlert")).setVisible(true);
+                    case -1:
 
-                            opBar.stop();
-                            opBar = null;
-                            break;
-
-                        case -1:
-
-                            ((JLabel) uiData.get("LabelAlert"))
-                                    .setText("There's a problem. Check your connection and try again");
-
-                            opBar.stop();
-                            opBar = null;
-
-                            break;
-                        case 0:
-
-                            boolean password = Controller.getProxy().ChangePassword(
-                                    ((JTextField) uiData.get("Username")).getText(),
-                                    ((JTextField) uiData.get("InvitationCode")).getText(),
-                                    ((JTextField) uiData.get("Password")).getText());
-
-                            if (password) {
-
-                                Controller.setPreferences("proxyHost", ((JTextField) uiData.get("ProxyHost")).getText());
-
-                                Controller.setPreferences("username",
-                                        ((JTextField) uiData.get("Username")).getText());
-
-                                Controller.setPreferences("proxyRoot",
-                                        ((JTextField) uiData.get("ProxyHost")).getText());
-
-                                Controller.setPreferences("password",
-                                        ((JTextField) uiData.get("Password")).getText());
-
-                                Controller.setPreferences("email",
-                                        ((JTextField) uiData.get("Email")).getText());
-
-                            } else {
-                                ((JLabel) uiData.get("LabelAlert"))
-                                        .setText("There's a problem. Check your connection and try again");
-
-                                ((JLabel) uiData.get("LabelAlert")).setVisible(true);
-
-                                opBar.stop();
-                                opBar = null;
-
-                            }
-
-                            break;
-                        case 1: // if e-mail address does not exist in the database
-
-                            ((JLabel) uiData.get("LabelAlert"))
-                                    .setText("Please enter the email on which you recived the invite");
-
-                            ((JLabel) uiData.get("LabelAlert")).setVisible(true);
-
-                            opBar.stop();
-                            opBar = null;
-
-                            break;
-                        case 2:
-                            // if password does not match with the e-mail address sent
-
-                            ((JLabel) uiData.get("LabelAlert"))
-                                    .setText("Please enter the invitation code that you recived in the invite");
-
-                            ((JLabel) uiData.get("LabelAlert")).setVisible(true);
-
-                            opBar.stop();
-                            opBar = null;
-
-                            break;
-                        case 3: // if username is already used by another user
-
-                            ((JLabel) uiData.get("LabelAlert"))
-                                    .setText("The Username chosen is not aviable");
-
-                            ((JLabel) uiData.get("LabelAlert")).setVisible(true);
-
-                            opBar.stop();
-                            opBar = null;
-
-                            break;
-                        default:
-
-                            ((JLabel) uiData.get("LabelAlert"))
-                                    .setText("Response not valid from the server");
-
-                            ((JLabel) uiData.get("LabelAlert")).setVisible(true);
-
-                            opBar.stop();
-                            opBar = null;
-
-                            break;
-                    }
-
-                    if (res == 0) {
-
-                        Controller.getRegistrationPanel().remove(Controller.getRegistrationPanel());
-                        Controller.setRegistration_panel(null);
-
-                        Controller.setLoginPanel(new LoginPanel());
-                        Controller.getLoginPanel().setVisible(true);
+                        ((JLabel) uiData.get("LabelAlert"))
+                                .setText("There's a problem. Check your connection and try again");
 
                         opBar.stop();
                         opBar = null;
 
-                    }
+                        break;
+                    case 0:
 
-               // }
+                        boolean password = Controller.getProxy().ChangePassword(
+                                ((JTextField) uiData.get("Username")).getText(),
+                                ((JTextField) uiData.get("InvitationCode")).getText(),
+                                ((JTextField) uiData.get("Password")).getText());
+
+                        if (password) {
+
+                            Controller.setPreferences("proxyHost", ((JTextField) uiData.get("ProxyHost")).getText());
+
+                            Controller.setPreferences("username",
+                                    ((JTextField) uiData.get("Username")).getText());
+
+                            Controller.setPreferences("proxyRoot",
+                                    ((JTextField) uiData.get("ProxyHost")).getText());
+
+                            Controller.setPreferences("password",
+                                    ((JTextField) uiData.get("Password")).getText());
+
+                            Controller.setPreferences("email",
+                                    ((JTextField) uiData.get("Email")).getText());
+
+                        } else {
+                            ((JLabel) uiData.get("LabelAlert"))
+                                    .setText("There's a problem. Check your connection and try again");
+
+                            ((JLabel) uiData.get("LabelAlert")).setVisible(true);
+
+                            opBar.stop();
+                            opBar = null;
+
+                        }
+
+                        break;
+                    case 1: // if e-mail address does not exist in the database
+
+                        ((JLabel) uiData.get("LabelAlert"))
+                                .setText("Please enter the email on which you recived the invite");
+
+                        ((JLabel) uiData.get("LabelAlert")).setVisible(true);
+
+                        opBar.stop();
+                        opBar = null;
+
+                        break;
+                    case 2:
+                        // if password does not match with the e-mail address sent
+
+                        ((JLabel) uiData.get("LabelAlert"))
+                                .setText("Please enter the invitation code that you recived in the invite");
+
+                        ((JLabel) uiData.get("LabelAlert")).setVisible(true);
+
+                        opBar.stop();
+                        opBar = null;
+
+                        break;
+                    case 3: // if username is already used by another user
+
+                        ((JLabel) uiData.get("LabelAlert"))
+                                .setText("The Username chosen is not aviable");
+
+                        ((JLabel) uiData.get("LabelAlert")).setVisible(true);
+
+                        opBar.stop();
+                        opBar = null;
+
+                        break;
+                    default:
+
+                        ((JLabel) uiData.get("LabelAlert"))
+                                .setText("Response not valid from the server");
+
+                        ((JLabel) uiData.get("LabelAlert")).setVisible(true);
+
+                        opBar.stop();
+                        opBar = null;
+
+                        break;
+                }
+
+                if (res == 0) {
+
+                    Controller.setWindowName("Login");
+                    Controller.setWindow(Controller.getLoginPanel());
+
+                    //Controller.getWindow().doLayout();
+                    Controller.getWindow().revalidate();
+
+                    opBar.stop();
+                    opBar = null;
+
+                }
                 break;
 
             case "lblChange":
@@ -295,7 +290,6 @@ public class ActionRegistration {
 
                 //Controller.getWindow().doLayout();
                 Controller.getWindow().revalidate();
-                System.out.println("che window ha? - " + Controller.getWindow());
 
                 break;
 

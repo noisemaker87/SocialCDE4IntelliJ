@@ -21,7 +21,6 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
         switch (Controller.getWindowName()) {
 
             case "Registration":
-
                 uiData = Controller.getRegistrationPanel().getData();
                 uiData.put("Event", event);
                 uiData.put("Event_type", event.getID());
@@ -30,17 +29,18 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                 new ActionRegistration(uiData);
 
                 break;
-            /*case "Login":
+
+            case "Login":
                 uiData = Controller.getLoginPanel().getData();
                 uiData.put("Event", event);
-                uiData.put("Event_type", event.type);
-                uiData.put("ID_action", widget.getData("ID_action").toString());
+                uiData.put("Event_type", event.getID());
+                uiData.put("ID_action", event.getActionCommand());
 
-
-                new ActionLoginPanel(uiData);
+                new ActionLogin(uiData);
 
                 break;
-            case "Profile":
+
+            /*case "Profile":
                 //System.out.println("Action profile avviata");
                 new ActionProfile(widget, event);
                 break;
@@ -168,6 +168,16 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                     new ActionRegistration(uiData);
 
                     break;
+
+                case "Login":
+                    uiData = Controller.getLoginPanel().getData();
+                    uiData.put("Event", event);
+                    uiData.put("Event_type", event.getID());
+                    uiData.put("ID_action", event.getComponent().getName());
+
+                    new ActionLogin(uiData);
+
+                    break;
         }
 
     }
@@ -177,7 +187,6 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
         switch (Controller.getWindowName()) {
 
             case "Registration":
-
                 uiData = Controller.getRegistrationPanel().getData();
                 uiData.put("Event", event);
                 uiData.put("Event_type", event.getID());
@@ -193,7 +202,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                 uiData.put("Event_type", event.getID());
                 uiData.put("ID_action", event.getComponent().getName());
 
-                //new ActionLoginPanel(uiData);
+                new ActionLogin(uiData);
 
                 break;
         }
