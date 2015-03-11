@@ -13,10 +13,13 @@ import java.io.InputStream;
 /**
  * @author Davide Rossi
  */
-public class OperationProgressBar extends JPanel {
-    private final Image img = new ImageIcon(this.getClass().getClassLoader().getResource("images/Wallpaper.png")).getImage();
-    OperationProgressBarThread opt;
+public class OperationProgressBar extends JPanel  {
+    //private final Image img = new ImageIcon(this.getClass().getClassLoader().getResource("images/Wallpaper.png")).getImage();
 
+    int stop = 0;
+    int max = 100;
+    boolean flag = false;
+    Thread thread;
 
     public OperationProgressBar() {
         initComponents();
@@ -45,21 +48,22 @@ public class OperationProgressBar extends JPanel {
 
         //======== panel2 ========
         {
-            panel2.setLayout(new CardLayout(0, 190));
+            panel2.setLayout(new CardLayout(0, 160));
 
             //======== panel3 ========
             {
                 panel3.setLayout(new VerticalLayout(10));
 
                 //---- lblOpBar ----
-                lblOpBar.setText("Operation in progress..");
+                lblOpBar.setText("Operation in progress");
                 lblOpBar.setHorizontalAlignment(SwingConstants.CENTER);
                 lblOpBar.setFont(new Font("Dialog", Font.BOLD, 20));
                 panel3.add(lblOpBar);
 
                 //---- progressOpBar ----
-                progressOpBar.setStringPainted(true);
                 progressOpBar.setBackground(Color.white);
+                progressOpBar.setPreferredSize(new Dimension(146, 20));
+                progressOpBar.setStringPainted(true);
                 panel3.add(progressOpBar);
             }
             panel2.add(panel3, "card1");
@@ -72,35 +76,64 @@ public class OperationProgressBar extends JPanel {
         lblOpBar.setText(label);
     }
 
-    public void updateBar(int newValue) {
-        progressOpBar.setValue(newValue);
-        update(this.getGraphics());
+    public void updateBar() {
+        int count = (progressOpBar.getValue() == 100 ? 0 : progressOpBar.getValue() + 10);
+        progressOpBar.setValue(count);
+        //this.updateUI();
+       // update(getGraphics());
+        this.revalidate();
     }
 
+    public void setStop(int stop) {
+        this.stop = stop;
+    }
+
+    public void setFlag(boolean newflag){this.flag = newflag;}
+
+    public boolean getFlag(){return this.flag;}
+
     public void start(){
-        for (int i = 0; i <= 100; i++) {
-            final int percent = i;
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                //setVisible(true);
+                thread = new Thread(new UpdateRunnable());
+                thread.start();
+
+            }
+        });
+    }
+
+    public int getStop(){return stop; }
+
+    private class UpdateRunnable implements Runnable {
+        public void run() {
             try {
-                SwingUtilities.invokeLater(new Runnable() {
-                    public void run() {
-                        updateBar(percent);
+                for (int i = 1; i <= 100; i++) {
+                    Thread.sleep(100);   // 100 ms
+
+                    final int val = i;
+
+                    if(stop == 1) {
+                        setFlag(true);
+                        System.out.println(val);
+                        //System.out.println("qui invece "+getFlag());
+                        //progressOpBar.setValue(0);
+                       // thread.interrupt();
+                        return;
                     }
-                });
-                java.lang.Thread.sleep(100);
+
+                    SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            progressOpBar.setValue(val);
+                        }
+                    });
+                }
             } catch (InterruptedException e) {
-                ;
+                System.err.println(e);
             }
         }
     }
 
-    public void stop(){
-        remove(this);
-    }
-
-    /*public void start(){
-        opt = new OperationProgressBarThread(progressOpBar);
-        opt.run();
-    }*/
 
     /*@Override
     protected void paintComponent(Graphics g) {

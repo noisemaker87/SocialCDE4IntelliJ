@@ -4,7 +4,6 @@ import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.model.ProxyWrapper;
 import com.socialcdeIntellij.object.ImagesMod;
 import com.socialcdeIntellij.object.OperationProgressBar;
-import com.socialcdeIntellij.object.OperationProgressBarThread;
 import com.socialcdeIntellij.staticview.LoginPanel;
 import javax.swing.*;
 import java.awt.*;
@@ -127,18 +126,59 @@ public class ActionRegistration {
                 }
                 break;
 
-            case "btnRegister":
-                //opBar = new OperationProgressBar();
+            case "txtPassword":
+                if (InterceptingFilter.verifyText(((JTextField) uiData.get("Password"))
+                        .getText())) {
 
-                /*Controller.setWindowName("ProgressBar");
+                    ((JLabel) uiData.get("LabelImagePassword")).setIcon(new ImageIcon(IMAGE_YES));
+                    ((JLabel) uiData.get("LabelImagePassword")).setVisible(true);
+
+                    ((JLabel) uiData.get("LabelAlert")).setVisible(false);
+
+                } else {
+                    ((JLabel) uiData.get("LabelAlert"))
+                            .setText("Please insert a password!");
+                    ((JLabel) uiData.get("LabelAlert")).setVisible(true);
+
+                    ((JLabel) uiData.get("LabelImagePassword")).setIcon(new ImageIcon(IMAGE_NO));
+                    ((JLabel) uiData.get("LabelImagePassword")).setVisible(true);
+
+                }
+                break;
+
+            case "txtConfirmPassword":
+                if (InterceptingFilter.verifyText(((JTextField) uiData.get("ConfirmPassword"))
+                        .getText()) && ((JTextField) uiData.get("ConfirmPassword")).getText()
+                        .equals(((JTextField) uiData.get("Password")).getText())) {
+
+                    ((JLabel) uiData.get("LabelImageConfirmPassword")).setIcon(new ImageIcon(IMAGE_YES));
+                    ((JLabel) uiData.get("LabelImageConfirmPassword")).setVisible(true);
+
+                    ((JLabel) uiData.get("LabelAlert")).setVisible(false);
+
+                } else {
+                    ((JLabel) uiData.get("LabelAlert"))
+                            .setText("Please confirm password!");
+                    ((JLabel) uiData.get("LabelAlert")).setVisible(true);
+
+                    ((JLabel) uiData.get("LabelImageConfirmPassword")).setIcon(new ImageIcon(IMAGE_NO));
+                    ((JLabel) uiData.get("LabelImageConfirmPassword")).setVisible(true);
+
+                }
+                break;
+
+            case "btnRegister":
+                /*//opBar = new OperationProgressBar();*/
+
+                Controller.setWindowName("ProgressBar");
                 Controller.setWindow(Controller.getOpBar());
 
                 Controller.getWindow().revalidate();
+                Controller.getOpBar().setFlag(false);
                 Controller.getOpBar().start();
 
-                Controller.temporaryInformation.put("ProgressBarThread", Controller.getOpBar());*/
 
-
+                Controller.temporaryInformation.put("ProgressBarThread", Controller.getOpBar());
 
                 HashMap<String, String> dataExtracted = new HashMap<String, String>();
                 dataExtracted.put("Username",
@@ -163,6 +203,20 @@ public class ActionRegistration {
 
                 dataExtracted.clear();
 
+                /*System.out.println("ora il flag è: " + Controller.getOpBar().getFlag());
+                Controller.getOpBar().setStop(1);
+                System.out.println("qua il flag è: " + Controller.getOpBar().getFlag());
+
+                if(Controller.getOpBar().getFlag()==true) {
+                    Controller.setWindowName("Login");
+                    Controller.setWindow(Controller.getLoginPanel());
+                    Controller.getWindow().revalidate();
+                    clear(uiData);
+                    Controller.getOpBar().setFlag(false);
+                }
+
+                break;*/
+
                 switch (res) {
 
                     case -3:
@@ -171,8 +225,7 @@ public class ActionRegistration {
                                 .setText("Please compile all field correctly!");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        //opBar.stop();
-                        //opBar = null;
+                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
@@ -183,8 +236,7 @@ public class ActionRegistration {
                                 .setText("Please enter a valid proxy!");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        //opBar.stop();
-                        //opBar = null;
+                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
@@ -195,8 +247,7 @@ public class ActionRegistration {
                                 .setText("There's a problem. Check your connection and try again");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        //opBar.stop();
-                        //opBar = null;
+                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
@@ -229,8 +280,7 @@ public class ActionRegistration {
 
                             ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                           // opBar.stop();
-                            //opBar = null;
+                            Controller.getOpBar().setStop(1);
                             reRegistration();
 
                         }
@@ -242,8 +292,7 @@ public class ActionRegistration {
                                 .setText("Please enter the email on which you recived the invite");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        //opBar.stop();
-                        //opBar = null;
+                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
@@ -254,8 +303,7 @@ public class ActionRegistration {
                                 .setText("Please enter the invitation code that you recived in the invite");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                       //opBar.stop();
-                        //opBar = null;
+                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
@@ -265,8 +313,7 @@ public class ActionRegistration {
                                 .setText("The Username chosen is not aviable");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        //opBar.stop();
-                        //opBar = null;
+                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
@@ -276,21 +323,20 @@ public class ActionRegistration {
                                 .setText("Response not valid from the server");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        //opBar.stop();
-                        //opBar = null;
+                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
                 }
 
                 if (res == 0) {
-                    //opBar.stop();
-                   // opBar = null;
+                    Controller.getOpBar().setStop(1);
 
                     Controller.setWindowName("Login");
                     Controller.setWindow(Controller.getLoginPanel());
                     Controller.getWindow().revalidate();
                     clear(uiData);
+
                 }
                 break;
 

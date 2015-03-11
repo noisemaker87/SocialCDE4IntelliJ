@@ -109,236 +109,120 @@ public class ActionLogin {
                 }
                 break;
 
-            case "btnLogin":
-                if (Controller.OSisWindows()) {
-                    opBar = new OperationProgressBar();
-                    opBar.setLabelBar("Login in progress..");
-                    opBar.start();
-                    Controller.temporaryInformation.put("OperationProgressBar", opBar);
+            case "txtPassword":
+                if (! (((JTextField)uiData.get("Password")).getText().isEmpty()) ){
 
-                } else if (Controller.OSisUnix()) {
-                    opBar = new OperationProgressBar();
-                    opBar.setLabelBar("Login in progress..");
-                    //pbNewW.inizialize(Controller.getWindow());
+                    ((JLabel) uiData.get("LabelImagePassword")).setIcon(new ImageIcon(IMAGE_YES));
+                    ((JLabel) uiData.get("LabelImagePassword")).setVisible(true);
+
+                    ((JLabel) uiData.get("LabelAlert")).setVisible(false);
+
+                } else {
+                    ((JLabel) uiData.get("LabelAlert"))
+                            .setText("Please insert a password!");
+                    ((JLabel) uiData.get("LabelAlert")).setVisible(true);
+
+                    ((JLabel) uiData.get("LabelImagePassword")).setIcon(new ImageIcon(IMAGE_NO));
+                    ((JLabel) uiData.get("LabelImagePassword")).setVisible(true);
 
                 }
+                break;
 
+            case "btnLogin":
+
+                    Controller.setWindowName("ProgressBar");
+                    Controller.setWindow(Controller.getOpBar());
+                    Controller.getWindow().revalidate();
+                    Controller.getOpBar().setFlag(false);
+                    Controller.getOpBar().setLabelBar("Login in progress..");
+                    Controller.getOpBar().start();
+
+                    Controller.temporaryInformation.put("OperationProgressBar",  Controller.getOpBar());
 
                 if (Controller.getProxy() == null) {
                     Controller.setProxy(new ProxyWrapper());
-                    if (Controller.OSisUnix()) {
-                        //opBar.updateProgressBar();
-                    }
+
                     Controller.getProxy().setHost(
-                            ((JTextField) uiData.get("txtProxy")).getText());
-                    if (Controller.OSisUnix()) {
-                        //pbNewW.updateProgressBar();
-                    }
+                            ((JTextField) uiData.get("ProxyHost")).getText());
+
                 } else {
                     Controller.getProxy().setHost(
-                            ((JTextField) uiData.get("txtProxy")).getText());
-                    if (Controller.OSisUnix()) {
-                        //pbNewW.updateProgressBar();
-                    }
-                }
-                if (Controller.OSisUnix()) {
-                    //pbNewW.updateProgressBar();
+                            ((JTextField) uiData.get("ProxyHost")).getText());
+
                 }
 
                 if (Controller.getProxy().IsWebServiceRunning()) {
 
-                    if (Controller.OSisUnix()) {
-                        //pbNewW.updateProgressBar();
-                    }
-
                     user = Controller.getProxy().GetUser(
-                            ((JTextField) uiData.get("txtUsername")).getText(),
-                            ((JTextField) uiData.get("txtPassword")).getText());
-
-                    if (Controller.OSisUnix()) {
-                        //pbNewW.updateProgressBar();
-                    }
+                            ((JTextField) uiData.get("Username")).getText(),
+                            ((JTextField) uiData.get("Password")).getText());
 
                     if (user == null) {
-
-                        if (Controller.OSisUnix()) {
-                            //pbNewW.updateProgressBar();
-                        }
-
-                        ((JLabel) uiData.get("labelAlert"))
+                        ((JLabel) uiData.get("LabelAlert"))
                                 .setText("username or password not valid!");
-                        ((JLabel) uiData.get("labelAlert")).setVisible(true);
-                        if (Controller.OSisUnix()) {
-                            //pbNewW.updateProgressBar();
-                        }
+                        ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
                         ((JLabel) uiData.get("LabelImageUsername")).setIcon(new ImageIcon(IMAGE_NO));
                         ((JLabel) uiData.get("LabelImageUsername")).setVisible(true);
-
-                        if (Controller.OSisUnix()) {
-                            // pbNewW.updateProgressBar();
-                        }
-
                         ((JLabel) uiData.get("LabelImagePassword")).setIcon(new ImageIcon(IMAGE_NO));
                         ((JLabel) uiData.get("LabelImagePassword")).setVisible(true);
 
-                            /*if (Controller.OSisUnix()) {
-                                pbNewW.updateProgressBar();
-                            }
-                            if (Controller.OSisUnix()) {
-                                pbNewW.updateProgressBar();
-                            }
-                            if (Controller.OSisUnix()) {
-                                pbNewW.updateProgressBar();
-                            }
-                            if (Controller.OSisUnix()) {
-                                pbNewW.updateProgressBar();
-                            }
-                            if (Controller.OSisUnix()) {
-                                pbNewW.updateProgressBar();
-                            }
-                            if (Controller.OSisUnix()) {
-                                pbNewW.updateProgressBar();
-                            }
-                            */
+                        Controller.getOpBar().setStop(1);
+                        reLogin();
 
-                        if (Controller.OSisWindows()) {
-                            //opBar.stop();
-                            opBar = null;
-                        } else if (Controller.OSisUnix()) {
-                            //opBar.stop();
-                            opBar = null;
-                        }
-
-                        // Controller.getWindow().layout();
 
                     } else {
-                        if (Controller.OSisUnix()) {
-                            //opBar.updateProgressBar();
-                        }
-
-                        if (((JCheckBox) uiData.get("ckBxSave_psw"))
+                        if (((JCheckBox) uiData.get("SavePassword"))
                                 .isSelected()) {
 
-                            if (Controller.OSisUnix()) {
-                                //opBar.updateProgressBar();
-                            }
-
                             Controller.setPreferences("password",
-                                    ((JTextField) uiData.get("txtPassword"))
+                                    ((JTextField) uiData.get("Password"))
                                             .getText());
                         } else {
-
-                            if (Controller.OSisUnix()) {
-                                //opBar.updateProgressBar();
-                            }
-
                             Controller.setPreferences("password", "");
                         }
 
-                        if (Controller.OSisUnix()) {
-                            //opBar.updateProgressBar();
-                        }
-
-                        if (((JCheckBox) uiData.get("ckBxAuto_login"))
+                        if (((JCheckBox) uiData.get("Autologin"))
                                 .isSelected()) {
                             Controller.setPreferences("autoLogin", "true");
-
-                            if (Controller.OSisUnix()) {
-                                //opBar.updateProgressBar();
-                            }
-
                             Controller.setPreferences("FlagAutologin", "False");
-                            if (Controller.OSisUnix()) {
-                                // opBar.updateProgressBar();
-                            }
+
                         } else {
                             Controller.setPreferences("autoLogin", "false");
-                            if (Controller.OSisUnix()) {
-                                //opBar.updateProgressBar();
-                            }
                             Controller.setPreferences("FlagAutologin", "False");
-                            if (Controller.OSisUnix()) {
-                                // opBar.updateProgressBar();
-                            }
                         }
 
                         Controller.setCurrentUser(user);
-                        if (Controller.OSisUnix()) {
-                            //opBar.updateProgressBar();
-                        }
                         Controller.setCurrentUserPassword(((JTextField) uiData
-                                .get("txtPassword")).getText());
-                        if (Controller.OSisUnix()) {
-                            // opBar.updateProgressBar();
-                        }
-                        Controller.setPreferences("proxyHost", ((JTextField) uiData.get("txtProxy")).getText());
-                        if (Controller.OSisUnix()) {
-                            // opBar.updateProgressBar();
-                        }
+                                .get("Password")).getText());
+
+                        Controller.setPreferences("proxyHost", ((JTextField) uiData.get("ProxyHost")).getText());
+
                         Controller.setPreferences("proxyRoot",
-                                ((JTextField) uiData.get("txtProxy")).getText());
-                        if (Controller.OSisUnix()) {
-                            //opBar.updateProgressBar();
-                        }
+                                ((JTextField) uiData.get("ProxyHost")).getText());
+
                         Controller.setPreferences("username", user.Username);
-                        if (Controller.OSisUnix()) {
-                            // opBar.updateProgressBar();
-                        }
-
-                        //************************ cambio pannello ********************************************
-                            /*Controller.setWindowName("Profile");
-                            if (Controller.OSisUnix()) {
-                                //opBar.updateProgressBar();
-                            }
-                            Controller.getLoginPanel().dispose(null);
-                            if (Controller.OSisUnix()) {
-                                opBar.updateProgressBar();
-                            }
-                            Controller.setLoginPanel(null);
-                            if (Controller.OSisUnix()) {
-                                opBar.updateProgressBar();
-                            }
-                            SquareButtonService.yCoordinateValue = 5;
-                            SquareButtonService.counterPosition = 0;
-                            Controller.setProfilePanel(new ProfilePanel());
-                            if (Controller.OSisUnix()) {
-                                opBar.updateProgressBar();
-                            }
-                            Controller.getProfilePanel().inizialize(
-                                    Controller.getWindow());
-
-                            if (Controller.OSisWindows()) {
-                                opBar.setStop(1);
-                                opBar = null;
-                            } else if (Controller.OSisUnix()) {
-                                opBar.dispose(null);
-                                opBar = null;
-                            }*/
 
 
+                        Controller.setWindowName("Profile");
+                        Controller.setWindow(Controller.getProfilePanel());
+                        Controller.getWindow().revalidate();
+                        clear(uiData);
+
+                        Controller.getOpBar().setStop(1);
+                        reLogin();
                     }
                 } else {
-                    if (Controller.OSisUnix()) {
-                        //opBar.updateProgressBar();
-                    }
-                    ((JLabel) uiData.get("labelAlert"))
+
+                    ((JLabel) uiData.get("LabelAlert"))
                             .setText("The connection with the Proxy failed");
-                    ((JLabel) uiData.get("labelAlert")).setVisible(true);
+                    ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
                     ((JLabel) uiData.get("LabelImageProxy")).setIcon(new ImageIcon(IMAGE_NO));
                     ((JLabel) uiData.get("LabelImageProxy")).setVisible(true);
 
-
-                    if (Controller.OSisWindows()) {
-                        //opBar.stop();
-                        opBar = null;
-                    } else if (Controller.OSisUnix()) {
-                       // opBar.stop();
-                        opBar = null;
-                    }
-
-                    // Controller.getWindow().layout();
+                    Controller.getOpBar().setStop(1);
+                    reLogin();
                 }
 
             break;
@@ -366,6 +250,13 @@ public class ActionLogin {
         ((JLabel) uiData.get("LabelImagePassword")).setIcon(null);
         ((JLabel) uiData.get("LabelImagePassword")).setIcon(null);
         ((JLabel) uiData.get("LabelAlert")).setVisible(false);
+
+    }
+
+    private void reLogin(){
+        Controller.setWindowName("Login");
+        Controller.setWindow(Controller.getLoginPanel());
+        Controller.getWindow().revalidate();
 
     }
 }

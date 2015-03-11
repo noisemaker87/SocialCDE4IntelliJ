@@ -82,8 +82,11 @@ public class Controller {
 
     public static JPanel getCurrentPanel() {
         if (flag == false) {
-            setWindowName("Registration");
-            setWindow(getRegistrationPanel());
+            /*setWindowName("Login");
+            setWindow(getLoginPanel());
+            return getWindow();*/
+            setWindowName("Profile");
+            setWindow(getProfilePanel());
             return getWindow();
         }
         else
@@ -121,13 +124,12 @@ public class Controller {
     }*/
 
     public static ProfilePanel getProfilePanel() {
-        setWindow(profilePanel);
-        //setWindowName("Profile");
+
         return profilePanel;
     }
 
     public static void setProfilePanel(ProfilePanel newProfilePanel) {
-        profilePanel = newProfilePanel;
+        Controller.profilePanel = newProfilePanel;
     }
 
     public static DynamicPeople getPeopleWindow() {
