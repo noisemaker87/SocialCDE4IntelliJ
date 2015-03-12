@@ -20,7 +20,7 @@ public class Controller {
 
     private static RegistrationPanel registrationPanel = new RegistrationPanel();
     private static LoginPanel loginPanel = new LoginPanel();
-    private static ProfilePanel profilePanel = null;
+    private static ProfilePanel profilePanel = new ProfilePanel();
     private static DynamicPeople peopleWindow = null;
     private static DynamicHome homeWindow = new DynamicHome();
     private static DynamicHomeTimeline homeTimelineWindow = new DynamicHomeTimeline();
@@ -82,12 +82,12 @@ public class Controller {
 
     public static JPanel getCurrentPanel() {
         if (flag == false) {
-            /*setWindowName("Login");
+            setWindowName("Login");
             setWindow(getLoginPanel());
-            return getWindow();*/
-            setWindowName("Profile");
-            setWindow(getProfilePanel());
             return getWindow();
+            /*setWindowName("Profile");
+            setWindow(getProfilePanel());
+            return getWindow();*/
         }
         else
             return getWindow();

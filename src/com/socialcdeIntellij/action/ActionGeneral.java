@@ -40,11 +40,16 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
 
                 break;
 
-            /*case "Profile":
-                //System.out.println("Action profile avviata");
-                new ActionProfile(widget, event);
+            case "Profile":
+                uiData = Controller.getProfilePanel().getData();
+                uiData.put("Event", event);
+                uiData.put("Event_type", event.getID());
+                uiData.put("ID_action", event.getActionCommand());
+
+                new ActionProfile(uiData);
                 break;
-            default:
+
+            /*default:
                 break;
             case "Home":
                 if (widgetProfile.contains(widget.getData("ID_action").toString())) {

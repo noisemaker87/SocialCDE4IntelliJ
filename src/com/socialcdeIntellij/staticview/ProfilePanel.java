@@ -32,7 +32,7 @@ public class ProfilePanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Davide Rossi
+        // Generated using JFormDesigner Evaluation license - Pablo Rossi
         panelToolbar = new JPanel();
         lblBoh = new JLabel();
         lblPeople = new JLabel();
@@ -62,7 +62,8 @@ public class ProfilePanel extends JPanel {
         panelDynamic = new JPanel();
 
         //======== this ========
-        setPreferredSize(new Dimension(450, 600));
+        setPreferredSize(new Dimension(399, 304));
+        setMinimumSize(new Dimension(399, 304));
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
@@ -71,7 +72,7 @@ public class ProfilePanel extends JPanel {
                 javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
                 java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
-        setLayout(new VerticalLayout());
+        setLayout(new VerticalLayout(2));
 
         //======== panelToolbar ========
         {
@@ -258,7 +259,7 @@ public class ProfilePanel extends JPanel {
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Davide Rossi
+    // Generated using JFormDesigner Evaluation license - Pablo Rossi
     private JPanel panelToolbar;
     private JLabel lblBoh;
     private JLabel lblPeople;
