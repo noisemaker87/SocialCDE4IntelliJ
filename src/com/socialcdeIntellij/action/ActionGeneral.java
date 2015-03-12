@@ -183,6 +183,15 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                     new ActionLogin(uiData);
 
                     break;
+
+                case "Profile":
+                    uiData = Controller.getProfilePanel().getData();
+                    uiData.put("Event", event);
+                    uiData.put("Event_type", event.getID());
+                    uiData.put("ID_action", event.getComponent().getName());
+
+                    new ActionProfile(uiData);
+                    break;
         }
 
     }
@@ -209,6 +218,15 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
 
                 new ActionLogin(uiData);
 
+                break;
+
+            case "Profile":
+                uiData = Controller.getProfilePanel().getData();
+                uiData.put("Event", event);
+                uiData.put("Event_type", event.getID());
+                uiData.put("ID_action", event.getComponent().getName());
+
+                new ActionProfile(uiData);
                 break;
         }
 

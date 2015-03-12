@@ -7,6 +7,8 @@ package com.socialcdeIntellij.staticview;
 
 
 import com.intellij.util.ui.UIUtil;
+import com.socialcdeIntellij.action.ActionGeneral;
+import com.socialcdeIntellij.object.ImagesMod;
 import org.jdesktop.swingx.VerticalLayout;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -24,19 +26,22 @@ public class ProfilePanel extends JPanel {
 
     private JPanel composite_static;
     private JPanel composite_dinamic;
+    private ImagesMod im = new ImagesMod();
+
+    private ActionGeneral listener;
 
 
     public ProfilePanel() {
         initComponents();
     }
 
-    private void initComponents() {
+    private void initComponents()  {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Pablo Rossi
         panelToolbar = new JPanel();
-        lblBoh = new JLabel();
+        lblProfile = new JLabel();
         lblPeople = new JLabel();
-        lblHome = new JLabel();
+        lblHomeTimeline = new JLabel();
         lblIterationTimeline = new JLabel();
         lblInteractiveTimeline = new JLabel();
         lblLogout = new JLabel();
@@ -62,7 +67,7 @@ public class ProfilePanel extends JPanel {
         panelDynamic = new JPanel();
 
         //======== this ========
-        setPreferredSize(new Dimension(399, 304));
+        setPreferredSize(new Dimension(399, 604));
         setMinimumSize(new Dimension(399, 304));
 
         // JFormDesigner evaluation mark
@@ -79,28 +84,46 @@ public class ProfilePanel extends JPanel {
             panelToolbar.setBackground(new Color(204, 204, 204));
             panelToolbar.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
-            //---- lblBoh ----
-            lblBoh.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Profile.png")));
-            panelToolbar.add(lblBoh);
+            //---- lblProfile ----
+            lblProfile.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Profile.png")));
+            lblProfile.setToolTipText("Profile");
+            lblProfile.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            lblProfile.setName("lblProfile");
+            panelToolbar.add(lblProfile);
 
             //---- lblPeople ----
             lblPeople.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/People.png")));
+            lblPeople.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            lblPeople.setName("lblPeople");
+            lblPeople.setToolTipText("People");
             panelToolbar.add(lblPeople);
 
-            //---- lblHome ----
-            lblHome.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Home.png")));
-            panelToolbar.add(lblHome);
+            //---- lblHomeTimeline ----
+            lblHomeTimeline.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Home.png")));
+            lblHomeTimeline.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            lblHomeTimeline.setName("lblHomeTimeline");
+            lblHomeTimeline.setToolTipText("Home Timeline");
+            panelToolbar.add(lblHomeTimeline);
 
             //---- lblIterationTimeline ----
             lblIterationTimeline.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/IterationTimeline.png")));
+            lblIterationTimeline.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            lblIterationTimeline.setToolTipText("Iteration Timeline");
+            lblIterationTimeline.setName("lblIterationTimeline");
             panelToolbar.add(lblIterationTimeline);
 
             //---- lblInteractiveTimeline ----
             lblInteractiveTimeline.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/InteractiveTimeline.png")));
+            lblInteractiveTimeline.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            lblInteractiveTimeline.setName("lblInteractiveTimeline");
+            lblInteractiveTimeline.setToolTipText("Interactive Timeline");
             panelToolbar.add(lblInteractiveTimeline);
 
             //---- lblLogout ----
             lblLogout.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Logout.png")));
+            lblLogout.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            lblLogout.setToolTipText("Logout");
+            lblLogout.setName("lblLogout");
             panelToolbar.add(lblLogout);
         }
         add(panelToolbar);
@@ -112,6 +135,8 @@ public class ProfilePanel extends JPanel {
 
             //---- lblAvatar ----
             lblAvatar.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
+            lblAvatar.setName("lblAvatar");
+            lblAvatar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             panelProfile.add(lblAvatar);
 
             //======== panelInfo ========
@@ -127,6 +152,7 @@ public class ProfilePanel extends JPanel {
                     //---- lblNickname ----
                     lblNickname.setText("nickname qui");
                     lblNickname.setHorizontalAlignment(SwingConstants.LEFT);
+                    lblNickname.setName("lblNickname");
                     panelSettings.add(lblNickname);
 
                     //======== panelSubSettings ========
@@ -136,10 +162,16 @@ public class ProfilePanel extends JPanel {
 
                         //---- lblSkills ----
                         lblSkills.setIcon(new ImageIcon(getClass().getResource("/images/skills.png")));
+                        lblSkills.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                        lblSkills.setToolTipText("Skills");
+                        lblSkills.setName("lblSkills");
                         panelSubSettings.add(lblSkills);
 
                         //---- lblSettings ----
                         lblSettings.setIcon(new ImageIcon(getClass().getResource("/images/settings.png")));
+                        lblSettings.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                        lblSettings.setName("lblSettings");
+                        lblSettings.setToolTipText("Change Password");
                         panelSubSettings.add(lblSettings);
                     }
                     panelSettings.add(panelSubSettings);
@@ -165,6 +197,7 @@ public class ProfilePanel extends JPanel {
                         //---- lblNumPost ----
                         lblNumPost.setText("0");
                         lblNumPost.setHorizontalAlignment(SwingConstants.CENTER);
+                        lblNumPost.setName("lblNumPost");
                         panelPost.add(lblNumPost);
                     }
                     panelInfo2.add(panelPost);
@@ -182,6 +215,7 @@ public class ProfilePanel extends JPanel {
                         //---- lblNumFollowing ----
                         lblNumFollowing.setText("1");
                         lblNumFollowing.setHorizontalAlignment(SwingConstants.CENTER);
+                        lblNumFollowing.setName("lblNumFollowing");
                         panelfollowing.add(lblNumFollowing);
                     }
                     panelInfo2.add(panelfollowing);
@@ -203,6 +237,7 @@ public class ProfilePanel extends JPanel {
                         //---- lblNumFollowers ----
                         lblNumFollowers.setText("0");
                         lblNumFollowers.setHorizontalAlignment(SwingConstants.CENTER);
+                        lblNumFollowers.setName("lblNumFollowers");
                         panelFollowers.add(lblNumFollowers);
                     }
                     panelInfo2.add(panelFollowers);
@@ -228,6 +263,18 @@ public class ProfilePanel extends JPanel {
         }
         add(scrollPane1);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
+        listener = new ActionGeneral();
+
+        lblProfile.addMouseListener(listener);
+        lblPeople.addMouseListener(listener);
+        lblHomeTimeline.addMouseListener(listener);
+        lblIterationTimeline.addMouseListener(listener);
+        lblInteractiveTimeline.addMouseListener(listener);
+        lblLogout.addMouseListener(listener);
+
+        lblSkills.addMouseListener(listener);
+        lblSettings.addMouseListener(listener);
     }
 
 
@@ -239,7 +286,7 @@ public class ProfilePanel extends JPanel {
         this.lblAvatar = lblAvatar;
     }
 
-
+    public JPanel getInfoPanel(){return this.panelProfile;}
 
     public JPanel getComposite_dinamic() {
         return composite_dinamic;
@@ -261,9 +308,9 @@ public class ProfilePanel extends JPanel {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Pablo Rossi
     private JPanel panelToolbar;
-    private JLabel lblBoh;
+    private JLabel lblProfile;
     private JLabel lblPeople;
-    private JLabel lblHome;
+    private JLabel lblHomeTimeline;
     private JLabel lblIterationTimeline;
     private JLabel lblInteractiveTimeline;
     private JLabel lblLogout;
@@ -288,4 +335,25 @@ public class ProfilePanel extends JPanel {
     private JScrollPane scrollPane1;
     private JPanel panelDynamic;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+
+    public HashMap<String, Object> getData() {
+        HashMap<String, Object> uiData = new HashMap<String, Object>();
+        uiData.put("LabelProfile", lblProfile);
+        uiData.put("LabelPeople", lblPeople);
+        uiData.put("LabelHomeTimeline",lblHomeTimeline);
+        uiData.put("LabelIterationTimeline", lblIterationTimeline);
+        uiData.put("LabelInteractiveTimeline",lblInteractiveTimeline);
+        uiData.put("LabelLogout", lblLogout);
+
+        uiData.put("LabelUsername",lblNickname);
+        uiData.put("LabelAvatar", lblAvatar);
+        uiData.put("LabelN_Post",lblNumPost);
+        uiData.put("LabelN_Following", lblNumFollowing);
+        uiData.put("LabelN_Followers",lblNumFollowers);
+        uiData.put("LabelSkills", lblSkills);
+        uiData.put("LabelSettings",lblSettings);
+
+        return uiData;
+    }
 }

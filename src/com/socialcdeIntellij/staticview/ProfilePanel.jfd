@@ -7,7 +7,7 @@ new FormModel {
 			"gap": 2
 		} ) {
 			name: "this"
-			"preferredSize": new java.awt.Dimension( 399, 304 )
+			"preferredSize": new java.awt.Dimension( 399, 604 )
 			"minimumSize": new java.awt.Dimension( 399, 304 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 				"alignment": 0
@@ -16,28 +16,46 @@ new FormModel {
 				name: "panelToolbar"
 				"background": new java.awt.Color( 204, 204, 204, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "lblBoh"
+					name: "lblProfile"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/Toolbar/Profile.png" )
+					"toolTipText": "Profile"
+					"cursor": &Cursor0 new java.awt.Cursor( 12 )
+					"name": "lblProfile"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblPeople"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/Toolbar/People.png" )
+					"cursor": #Cursor0
+					"name": "lblPeople"
+					"toolTipText": "People"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "lblHome"
+					name: "lblHomeTimeline"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/Toolbar/Home.png" )
+					"cursor": #Cursor0
+					"name": "lblHomeTimeline"
+					"toolTipText": "Home Timeline"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblIterationTimeline"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/Toolbar/IterationTimeline.png" )
+					"cursor": #Cursor0
+					"toolTipText": "Iteration Timeline"
+					"name": "lblIterationTimeline"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblInteractiveTimeline"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/Toolbar/InteractiveTimeline.png" )
+					"cursor": #Cursor0
+					"name": "lblInteractiveTimeline"
+					"toolTipText": "Interactive Timeline"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblLogout"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/Toolbar/Logout.png" )
+					"cursor": #Cursor0
+					"toolTipText": "Logout"
+					"name": "lblLogout"
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
@@ -48,6 +66,8 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblAvatar"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/DefaultAvatar.png" )
+					"name": "lblAvatar"
+					"cursor": #Cursor0
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
 					"rows": 2
@@ -64,6 +84,7 @@ new FormModel {
 							name: "lblNickname"
 							"text": "nickname qui"
 							"horizontalAlignment": 2
+							"name": "lblNickname"
 						} )
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 							name: "panelSubSettings"
@@ -71,10 +92,16 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "lblSkills"
 								"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/skills.png" )
+								"cursor": #Cursor0
+								"toolTipText": "Skills"
+								"name": "lblSkills"
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "lblSettings"
 								"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/settings.png" )
+								"cursor": #Cursor0
+								"name": "lblSettings"
+								"toolTipText": "Change Password"
 							} )
 						} )
 					} )
@@ -100,6 +127,7 @@ new FormModel {
 								name: "lblNumPost"
 								"text": "0"
 								"horizontalAlignment": 0
+								"name": "lblNumPost"
 							} )
 						} )
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
@@ -117,6 +145,7 @@ new FormModel {
 								name: "lblNumFollowing"
 								"text": "1"
 								"horizontalAlignment": 0
+								"name": "lblNumFollowing"
 							} )
 						} )
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
@@ -138,6 +167,7 @@ new FormModel {
 								name: "lblNumFollowers"
 								"text": "0"
 								"horizontalAlignment": 0
+								"name": "lblNumFollowers"
 							} )
 						} )
 					} )

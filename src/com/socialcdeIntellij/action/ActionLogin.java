@@ -37,6 +37,7 @@ public class ActionLogin {
         }
 
         switch (widgetName) {
+
             case "txtProxy":
                 if (InterceptingFilter.verifyText(((JTextField) uiData
                         .get("ProxyHost")).getText())) {

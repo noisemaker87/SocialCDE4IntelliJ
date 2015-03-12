@@ -42,7 +42,9 @@ public class Controller {
     // attributes
     private static boolean flag = false;
     private static CardLayout cardLayout = new CardLayout();
+    private static CardLayout cardLayout2 = new CardLayout();
     private static JPanel window = new JPanel(cardLayout);// qui x cambiare pannello iniziale
+    private static JPanel dynamicPanel = new JPanel(cardLayout2);
     private static String windowName = null;
     private static ProxyWrapper proxy = null;
     private static WUser currentUser = null;
@@ -82,12 +84,12 @@ public class Controller {
 
     public static JPanel getCurrentPanel() {
         if (flag == false) {
-            setWindowName("Login");
+            /*setWindowName("Login");
             setWindow(getLoginPanel());
-            return getWindow();
-            /*setWindowName("Profile");
-            setWindow(getProfilePanel());
             return getWindow();*/
+            setWindowName("Profile");
+            setWindow(getProfilePanel());
+            return getWindow();
         }
         else
             return getWindow();
@@ -217,14 +219,6 @@ public class Controller {
         return servicesImage;
     }
 
-
-
-
-
-
-
-
-
     public static String getCurrentUserPassword() {
         return currentUserPassword;
     }
@@ -232,16 +226,6 @@ public class Controller {
     public static void setCurrentUserPassword(String currentUserPassword) {
         Controller.currentUserPassword = currentUserPassword;
     }
-
-
-
-
-
-
-
-
-
-
 
     public static WUser getCurrentUser() {
         return currentUser;
@@ -251,8 +235,6 @@ public class Controller {
         currentUser = newCurrentUser;
     }
 
-
-
     public static ProxyWrapper getProxy() {
         return proxy;
     }
@@ -261,6 +243,68 @@ public class Controller {
         proxy = newProxy;
     }
 
+    public static String getPreferences(String node) {
+        String value;
+        final String prefix = "SocialCDE";
+        try {
+            value = PropertiesComponent.getInstance().getValue(prefix + node);
+            //value = Activator.getDefault().getPreferenceStore().getString(prefix + node);
+        } catch (Exception e) {
+            value = null;
+        }
+        return value;
+    }//prende le preferenze memorizzate - cambiato
+
+    public static boolean setPreferences(String node, String value) {
+        boolean flag = false;
+        final String prefix = "SocialCDE";
+        try {
+            PropertiesComponent.getInstance().setValue(prefix + node,value);
+            //Activator.getDefault().getPreferenceStore().setValue(prefix + node, value);
+            flag = true;
+        } catch (Exception e) {
+            flag = false;
+        }
+        return flag;
+    }//memorizza le preferenze - cambiato
+
+    public static boolean isRegistered() {
+
+        if ((!getPreferences("username").equals(""))
+                && (!getPreferences("proxyHost").equals(""))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean isUsernameAvailable(String username) {
+        return getProxy().IsAvailable(username);
+    }
+
+    public static boolean OSisWindows() {
+        String OS = System.getProperty("os.name").toLowerCase();
+        return (OS.indexOf("win") >= 0);
+
+    }
+
+    public static boolean OSisMac() {
+        String OS = System.getProperty("os.name").toLowerCase();
+        return (OS.indexOf("mac") >= 0);
+
+    }
+
+    public static boolean OSisUnix() {
+        String OS = System.getProperty("os.name").toLowerCase();
+        return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
+
+    }
+
+    public static boolean OSisSolaris() {
+        String OS = System.getProperty("os.name").toLowerCase();
+        return (OS.indexOf("sunos") >= 0);
+
+    }
 
 
     // other methods
@@ -303,57 +347,25 @@ public class Controller {
 
     }
 
-    /*public static void selectDynamicWindow(int choose) {
-        Composite dynamicComposite;
-        GridData gridData;
-        ProgressBarWindow pbNewW = null;
-        ProgressBarThread pbWindow = null;
 
-        if(Controller.OSisWindows())
-        {
-            pbWindow = new ProgressBarThread();
-            Controller.temporaryInformation.put("ProgressBarThread", pbWindow);
-            pbWindow.setLabelTxt("Operation in progress..");
-            pbWindow.setxCoordinate(Controller.getWindow().toDisplay(
-                    Controller.getWindow().getParent().getParent().getParent()
-                            .getLocation()).x);
-            pbWindow.setyCoordinate(Controller.getWindow().toDisplay(
-                    Controller.getWindow().getParent().getParent().getParent()
-                            .getLocation()).y);
-            pbWindow.start();
-        }
-        else if(Controller.OSisUnix())
-        {
-            pbNewW = new ProgressBarWindow();
-            pbNewW.setLabelTxt("Operation in progress..");
-            pbNewW.setxCoordinate(Controller.getWindow().toDisplay(
-                    Controller.getWindow().getParent().getParent().getParent()
-                            .getLocation()).x);
-            pbNewW.setyCoordinate(Controller.getWindow().toDisplay(
-                    Controller.getWindow().getParent().getParent().getParent()
-                            .getLocation()).y);
+    public static void selectDynamicWindow(int choose) {
+        JPanel dynamicComposite;
 
-            pbNewW.inizialize(getWindow());
+        Controller.temporaryInformation.put("ProgressBarThread", getOpBar());
+        getOpBar().setLabelBar("Operation in progress..");
+        getOpBar().start();
 
-        }
+       // closeAllDynamicPanel();
 
-        closeAllDynamicPanel();
-        if (Controller.getProfilePanel().getComposite_dinamic() != null) {
+        /*if (Controller.getProfilePanel().getComposite_dinamic() != null) {
             Controller.getProfilePanel().getComposite_dinamic().dispose();
-        }
+        }*/
 
         switch (choose) {
-            case 0:
-
-                homeWindow = new DynamicHome();
-
-                if(Controller.OSisUnix())
-                {
-                    pbNewW.updateProgressBar();
-                }
+            case 0://home
 
                 if (Controller.getProfilePanel().getComposite_dinamic() == null) {
-                    dynamicComposite = new Composite(getWindow(), SWT.None);
+                    dynamicComposite = new J(getWindow(), SWT.None);
 
                     gridData = new GridData();
                     if(Controller.OSisUnix())
@@ -432,7 +444,7 @@ public class Controller {
                 }
                 Controller.getWindow().layout();
                 break;
-            case 1:
+            case 1://setting
                 settingWindow = new SettingPanel();
                 if (Controller.getProfilePanel().getComposite_dinamic() == null) {
                     if(Controller.OSisUnix())
@@ -508,7 +520,7 @@ public class Controller {
                 Controller.getWindow().layout();
 
                 break;
-            case 2:
+            case 2://people
 
                 peopleWindow = new DynamicPeople();
                 if (Controller.getProfilePanel().getComposite_dinamic() == null) {
@@ -583,7 +595,7 @@ public class Controller {
 
                 Controller.getWindow().layout();
                 break;
-            case 3:
+            case 3://user
 
                 dynamicUserWindow = new DynamicUserTimeline();
 
@@ -671,7 +683,7 @@ public class Controller {
 
                 break;
 
-            case 4:
+            case 4://hometimeline
 
                 homeTimelineWindow = new DynamicHomeTimeline();
 
@@ -744,7 +756,7 @@ public class Controller {
 
                 break;
 
-            case 5:
+            case 5://iteration timeline
 
                 iterationTimelineWindow = new DynamicIterationTimeline();
 
@@ -821,7 +833,7 @@ public class Controller {
 
                 break;
 
-            case 6:
+            case 6://interactive
 
                 interactiveTimelineWindow = new DynamicInteractiveTimeline();
 
@@ -895,132 +907,7 @@ public class Controller {
                 break;
         }
 
-    }*/
-
-
-    public static String getPreferences(String node) {
-        String value;
-        final String prefix = "SocialCDE";
-        try {
-            value = PropertiesComponent.getInstance().getValue(prefix + node);
-            //value = Activator.getDefault().getPreferenceStore().getString(prefix + node);
-        } catch (Exception e) {
-            value = null;
-        }
-        return value;
-    }//prende le preferenze memorizzate - cambiato
-
-    public static boolean setPreferences(String node, String value) {
-        boolean flag = false;
-        final String prefix = "SocialCDE";
-        try {
-            PropertiesComponent.getInstance().setValue(prefix + node,value);
-            //Activator.getDefault().getPreferenceStore().setValue(prefix + node, value);
-            flag = true;
-        } catch (Exception e) {
-            flag = false;
-        }
-        return flag;
-    }//memorizza le preferenze - cambiato
-
-    public static boolean isRegistered() {
-
-        if ((!getPreferences("username").equals(""))
-                && (!getPreferences("proxyHost").equals(""))) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public static boolean isUsernameAvailable(String username) {
-        return getProxy().IsAvailable(username);
-    }
-
-    public static boolean OSisWindows() {
-        String OS = System.getProperty("os.name").toLowerCase();
-        return (OS.indexOf("win") >= 0);
-
-    }
-
-    public static boolean OSisMac() {
-        String OS = System.getProperty("os.name").toLowerCase();
-        return (OS.indexOf("mac") >= 0);
-
-    }
-
-    public static boolean OSisUnix() {
-        String OS = System.getProperty("os.name").toLowerCase();
-        return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
-
-    }
-
-    public static boolean OSisSolaris() {
-        String OS = System.getProperty("os.name").toLowerCase();
-        return (OS.indexOf("sunos") >= 0);
-
     }
 
 
-
-    /*public  static void openConnectionLostPanel(String message)
-    {
-        final ConnLostPanel panel1 = new ConnLostPanel();
-
-        panel1
-                .setxCoordinate(Controller.getWindow()
-                        .toDisplay(
-                                Controller.getWindow()
-                                        .getLocation().x,
-                                Controller.getWindow()
-                                        .getLocation().y).x);
-        panel1
-                .setyCoordinate(Controller.getWindow()
-                        .toDisplay(
-                                Controller.getWindow()
-                                        .getLocation().x,
-                                Controller.getWindow()
-                                        .getLocation().y).y);
-        panel1
-                .setxCoordinateWithOffset(Controller
-                        .getWindow().toDisplay(
-                                Controller.getWindow()
-                                        .getLocation().x,
-                                Controller.getWindow()
-                                        .getLocation().y).x- 30);
-        panel1
-                .setyCoordinateWithOffset(Controller
-                        .getWindow().toDisplay(
-                                Controller.getWindow()
-                                        .getLocation().x,
-                                Controller.getWindow()
-                                        .getLocation().y).y
-                        + (Controller.getWindow().getBounds().height - 200)
-                        / 2);
-
-        panel1.setMessage(message);
-
-        panel1.setOkListener(new Listener() {
-
-            @Override
-            public void handleEvent(Event event) {
-
-
-                panel1.dispose(null);
-                Controller.closeAllDynamicPanel();
-                Controller.setCurrentUser(null);
-                Controller.setCurrentUserPassword(null);
-                Controller.setWindowName("Login");
-                Controller.getProfilePanel().dispose(Controller.getWindow());
-                Controller.setProfilePanel(null);
-                Controller.setLoginPanel(new LoginPanel());
-                Controller.getLoginPanel().inizialize(Controller.getWindow());
-                Controller.getWindow().layout();
-
-
-            }
-        });
-
-        panel1.inizialize(Controller.getWindow());
-    }*/
 }
