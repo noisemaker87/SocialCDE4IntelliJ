@@ -8,10 +8,8 @@ import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import com.socialcdeIntellij.controller.Controller;
-import com.socialcdeIntellij.staticview.RegistrationPanel;
-
 import javax.swing.*;
-import java.io.IOException;
+
 
 /**
  * Created by noisemaker on 11/02/2015.

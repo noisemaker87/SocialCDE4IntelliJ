@@ -1,8 +1,8 @@
 /*
- * Created by JFormDesigner on Mon Mar 02 12:18:08 CET 2015
+ * Created by JFormDesigner on Mon Mar 02 12:18:31 CET 2015
  */
 
-package com.socialcdeIntellij.dynamic.view;
+package com.socialcdeIntellij.dynamicview;
 
 import java.awt.*;
 import javax.swing.*;
@@ -13,8 +13,8 @@ import org.jdesktop.swingx.*;
 /**
  * @author Davide Rossi
  */
-public class DynamicIterationTimeline extends JPanel {
-    public DynamicIterationTimeline() {
+public class DynamicInteractiveTimeline extends JPanel {
+    public DynamicInteractiveTimeline() {
         initComponents();
     }
 

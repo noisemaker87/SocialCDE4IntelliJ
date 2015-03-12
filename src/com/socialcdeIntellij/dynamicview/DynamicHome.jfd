@@ -8,6 +8,7 @@ new FormModel {
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
+			"preferredSize": new java.awt.Dimension( 400, 650 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 				"hgap": 15
 			} ) {

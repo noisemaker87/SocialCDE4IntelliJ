@@ -158,11 +158,8 @@ public class ActionLogin {
                     user = Controller.getProxy().GetUser(
                             ((JTextField) uiData.get("Username")).getText(),
                             ((JTextField) uiData.get("Password")).getText());
-                    System.out.println("user: "+((JTextField) uiData.get("Username")).getText()+
-                            "\npassword: "+((JTextField) uiData.get("Password")).getText());//*****************************
 
                     if (user == null) {
-                        System.out.println("non dovrebbe arrivare");//***************************************************
                         ((JLabel) uiData.get("LabelAlert"))
                                 .setText("username or password not valid!");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
@@ -177,26 +174,21 @@ public class ActionLogin {
 
 
                     } else {
-                        System.out.println("arriva1");//*****************************************************************
                         if (((JCheckBox) uiData.get("SavePassword"))
                                 .isSelected()) {
-                            System.out.println("va nel save password");//************************************************
                             Controller.setPreferences("password",
                                     ((JTextField) uiData.get("Password"))
                                             .getText());
                         } else {
-                            System.out.println("evita il save password");//**********************************************
                             Controller.setPreferences("password", "");
                         }
 
                         if (((JCheckBox) uiData.get("Autologin"))
                                 .isSelected()) {
-                            System.out.println("va nell autologin");//***************************************************
                             Controller.setPreferences("autoLogin", "true");
                             Controller.setPreferences("FlagAutologin", "False");
 
                         } else {
-                            System.out.println("evita autologin");//*****************************************************
                             Controller.setPreferences("autoLogin", "false");
                             Controller.setPreferences("FlagAutologin", "False");
                         }

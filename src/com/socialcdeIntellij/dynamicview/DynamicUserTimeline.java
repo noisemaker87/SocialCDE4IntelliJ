@@ -1,8 +1,8 @@
 /*
- * Created by JFormDesigner on Thu Feb 26 17:53:14 CET 2015
+ * Created by JFormDesigner on Fri Feb 27 12:57:28 CET 2015
  */
 
-package com.socialcdeIntellij.dynamic.view;
+package com.socialcdeIntellij.dynamicview;
 
 import java.awt.*;
 import javax.swing.*;
@@ -12,22 +12,20 @@ import org.jdesktop.swingx.*;
 /**
  * @author Davide Rossi
  */
-public class DynamicHome extends JPanel {
-    public DynamicHome() {
+public class DynamicUserTimeline extends JPanel {
+    public DynamicUserTimeline() {
         initComponents();
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Pablo Rossi
-        panelInfoUser = new JPanel();
+        // Generated using JFormDesigner Evaluation license - Davide Rossi
+        panelProfile = new JPanel();
+        lblReturn = new JLabel();
         lblAvatar = new JLabel();
         panelInfo = new JPanel();
         panelSettings = new JPanel();
         lblNickname = new JLabel();
-        panelSubSettings = new JPanel();
-        lblSkills = new JLabel();
-        lblSettings = new JLabel();
         panelInfo2 = new JPanel();
         panelPost = new JPanel();
         lblPosts = new JLabel();
@@ -38,21 +36,15 @@ public class DynamicHome extends JPanel {
         panelFollowers = new JPanel();
         lblFollowers = new JLabel();
         lblNumFollowers = new JLabel();
+        panelIcon = new JPanel();
+        lblFollow = new JLabel();
+        lblSkill = new JLabel();
+        lblHide = new JLabel();
         scrollPane1 = new JScrollPane();
-        panelService = new JPanel();
-        panelserviceDemo = new JPanel();
-        lblImageService = new JLabel();
-        panel2 = new JPanel();
-        lblService = new JLabel();
-        lblStatus = new JLabel();
-        panelserviceDemo2 = new JPanel();
-        lblImageService2 = new JLabel();
-        panel3 = new JPanel();
-        lblService2 = new JLabel();
-        lblStatus2 = new JLabel();
+        panelDynamic = new JPanel();
 
         //======== this ========
-        setBackground(Color.white);
+        setPreferredSize(new Dimension(450, 600));
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
@@ -61,16 +53,21 @@ public class DynamicHome extends JPanel {
                 javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
                 java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
-        setLayout(new VerticalLayout(10));
+        setLayout(new VerticalLayout());
 
-        //======== panelInfoUser ========
+        //======== panelProfile ========
         {
-            panelInfoUser.setBackground(Color.white);
-            panelInfoUser.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 5));
+            panelProfile.setBackground(Color.white);
+            panelProfile.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+            //---- lblReturn ----
+            lblReturn.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Back.png")));
+            lblReturn.setBackground(new Color(204, 204, 204));
+            panelProfile.add(lblReturn);
 
             //---- lblAvatar ----
             lblAvatar.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
-            panelInfoUser.add(lblAvatar);
+            panelProfile.add(lblAvatar);
 
             //======== panelInfo ========
             {
@@ -80,27 +77,12 @@ public class DynamicHome extends JPanel {
                 //======== panelSettings ========
                 {
                     panelSettings.setBackground(Color.white);
-                    panelSettings.setLayout(new FlowLayout(FlowLayout.CENTER, 25, 5));
+                    panelSettings.setLayout(new FlowLayout(FlowLayout.LEFT, 25, 5));
 
                     //---- lblNickname ----
                     lblNickname.setText("nickname qui");
                     lblNickname.setHorizontalAlignment(SwingConstants.LEFT);
                     panelSettings.add(lblNickname);
-
-                    //======== panelSubSettings ========
-                    {
-                        panelSubSettings.setBackground(Color.white);
-                        panelSubSettings.setLayout(new FlowLayout());
-
-                        //---- lblSkills ----
-                        lblSkills.setIcon(new ImageIcon(getClass().getResource("/images/skills.png")));
-                        panelSubSettings.add(lblSkills);
-
-                        //---- lblSettings ----
-                        lblSettings.setIcon(new ImageIcon(getClass().getResource("/images/settings.png")));
-                        panelSubSettings.add(lblSettings);
-                    }
-                    panelSettings.add(panelSubSettings);
                 }
                 panelInfo.add(panelSettings);
 
@@ -167,89 +149,54 @@ public class DynamicHome extends JPanel {
                 }
                 panelInfo.add(panelInfo2);
             }
-            panelInfoUser.add(panelInfo);
+            panelProfile.add(panelInfo);
         }
-        add(panelInfoUser);
+        add(panelProfile);
+
+        //======== panelIcon ========
+        {
+            panelIcon.setBackground(Color.white);
+            panelIcon.setLayout(new FlowLayout(FlowLayout.LEFT, 25, 5));
+
+            //---- lblFollow ----
+            lblFollow.setIcon(new ImageIcon(getClass().getResource("/images/Follow.png")));
+            panelIcon.add(lblFollow);
+
+            //---- lblSkill ----
+            lblSkill.setIcon(new ImageIcon(getClass().getResource("/images/skills.png")));
+            panelIcon.add(lblSkill);
+
+            //---- lblHide ----
+            lblHide.setIcon(new ImageIcon(getClass().getResource("/images/Hide.png")));
+            panelIcon.add(lblHide);
+        }
+        add(panelIcon);
 
         //======== scrollPane1 ========
         {
-            scrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-            //======== panelService ========
+            //======== panelDynamic ========
             {
-                panelService.setBackground(Color.white);
-                panelService.setLayout(new VerticalLayout(5));
-
-                //======== panelserviceDemo ========
-                {
-                    panelserviceDemo.setBackground(Color.white);
-                    panelserviceDemo.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 10));
-
-                    //---- lblImageService ----
-                    lblImageService.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
-                    panelserviceDemo.add(lblImageService);
-
-                    //======== panel2 ========
-                    {
-                        panel2.setBackground(Color.white);
-                        panel2.setLayout(new VerticalLayout(5));
-
-                        //---- lblService ----
-                        lblService.setText("Service");
-                        panel2.add(lblService);
-
-                        //---- lblStatus ----
-                        lblStatus.setText("Status:");
-                        lblStatus.setForeground(Color.red);
-                        panel2.add(lblStatus);
-                    }
-                    panelserviceDemo.add(panel2);
-                }
-                panelService.add(panelserviceDemo);
-
-                //======== panelserviceDemo2 ========
-                {
-                    panelserviceDemo2.setBackground(Color.white);
-                    panelserviceDemo2.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 10));
-
-                    //---- lblImageService2 ----
-                    lblImageService2.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
-                    panelserviceDemo2.add(lblImageService2);
-
-                    //======== panel3 ========
-                    {
-                        panel3.setBackground(Color.white);
-                        panel3.setLayout(new VerticalLayout(5));
-
-                        //---- lblService2 ----
-                        lblService2.setText("Service");
-                        panel3.add(lblService2);
-
-                        //---- lblStatus2 ----
-                        lblStatus2.setText("Status:");
-                        lblStatus2.setForeground(Color.red);
-                        panel3.add(lblStatus2);
-                    }
-                    panelserviceDemo2.add(panel3);
-                }
-                panelService.add(panelserviceDemo2);
+                panelDynamic.setBackground(Color.white);
+                panelDynamic.setPreferredSize(new Dimension(400, 800));
+                panelDynamic.setBorder(new BevelBorder(BevelBorder.LOWERED));
+                panelDynamic.setMinimumSize(new Dimension(400, 800));
+                panelDynamic.setLayout(new VerticalLayout(15));
             }
-            scrollPane1.setViewportView(panelService);
+            scrollPane1.setViewportView(panelDynamic);
         }
         add(scrollPane1);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Pablo Rossi
-    private JPanel panelInfoUser;
+    // Generated using JFormDesigner Evaluation license - Davide Rossi
+    private JPanel panelProfile;
+    private JLabel lblReturn;
     private JLabel lblAvatar;
     private JPanel panelInfo;
     private JPanel panelSettings;
     private JLabel lblNickname;
-    private JPanel panelSubSettings;
-    private JLabel lblSkills;
-    private JLabel lblSettings;
     private JPanel panelInfo2;
     private JPanel panelPost;
     private JLabel lblPosts;
@@ -260,17 +207,11 @@ public class DynamicHome extends JPanel {
     private JPanel panelFollowers;
     private JLabel lblFollowers;
     private JLabel lblNumFollowers;
+    private JPanel panelIcon;
+    private JLabel lblFollow;
+    private JLabel lblSkill;
+    private JLabel lblHide;
     private JScrollPane scrollPane1;
-    private JPanel panelService;
-    private JPanel panelserviceDemo;
-    private JLabel lblImageService;
-    private JPanel panel2;
-    private JLabel lblService;
-    private JLabel lblStatus;
-    private JPanel panelserviceDemo2;
-    private JLabel lblImageService2;
-    private JPanel panel3;
-    private JLabel lblService2;
-    private JLabel lblStatus2;
+    private JPanel panelDynamic;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

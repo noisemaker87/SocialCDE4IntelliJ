@@ -49,13 +49,22 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                 new ActionProfile(uiData);
                 break;
 
+            case "Home":
+                uiData = Controller.getProfilePanel().getData();
+                uiData.put("Event", event);
+                uiData.put("Event_type", event.getID());
+                uiData.put("ID_action", event.getActionCommand());
+
+                //new ActionProfile(uiData);
+                break;
+
             /*default:
                 break;
             case "Home":
                 if (widgetProfile.contains(widget.getData("ID_action").toString())) {
                     new ActionProfile(widget, event);
                 } else {
-                    uiData = Controller.getHomeWindow().getData();
+                    uiData = Controller.getHomePanel().getData();
                     uiData.put("Event", event);
                     uiData.put("Event_type", event.type);
                     uiData.put("ID_action", widget.getData("ID_action").toString());
@@ -192,6 +201,15 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
 
                     new ActionProfile(uiData);
                     break;
+
+                case "Home":
+                    uiData = Controller.getProfilePanel().getData();
+                    uiData.put("Event", event);
+                    uiData.put("Event_type", event.getID());
+                    uiData.put("ID_action", event.getComponent().getName());
+
+                   // new ActionProfile(uiData);
+                    break;
         }
 
     }
@@ -227,6 +245,15 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                 uiData.put("ID_action", event.getComponent().getName());
 
                 new ActionProfile(uiData);
+                break;
+
+            case "Home":
+                uiData = Controller.getProfilePanel().getData();
+                uiData.put("Event", event);
+                uiData.put("Event_type", event.getID());
+                uiData.put("ID_action", event.getComponent().getName());
+
+                //new ActionProfile(uiData);
                 break;
         }
 

@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Mon Mar 02 17:58:11 CET 2015
  */
 
-package com.socialcdeIntellij.dynamic.view;
+package com.socialcdeIntellij.dynamicview;
 
 import java.awt.*;
 import javax.swing.*;
