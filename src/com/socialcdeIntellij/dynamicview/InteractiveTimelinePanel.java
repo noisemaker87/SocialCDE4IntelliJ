@@ -13,8 +13,8 @@ import org.jdesktop.swingx.*;
 /**
  * @author Davide Rossi
  */
-public class DynamicInteractiveTimeline extends JPanel {
-    public DynamicInteractiveTimeline() {
+public class InteractiveTimelinePanel extends JPanel {
+    public InteractiveTimelinePanel() {
         initComponents();
     }
 

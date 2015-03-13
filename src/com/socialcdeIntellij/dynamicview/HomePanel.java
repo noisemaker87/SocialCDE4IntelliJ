@@ -6,19 +6,22 @@ package com.socialcdeIntellij.dynamicview;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.HashMap;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import com.socialcdeIntellij.action.ActionGeneral;
 import com.socialcdeIntellij.object.ImagesMod;
 import org.jdesktop.swingx.*;
 
 /**
  * @author Davide Rossi
  */
-public class DynamicHome extends JPanel {
+public class HomePanel extends JPanel {
     private ImagesMod im = new ImagesMod();
+    private ActionGeneral listener = new ActionGeneral();
 
-    public DynamicHome() {
+    public HomePanel() {
         initComponents();
     }
 
@@ -50,15 +53,11 @@ public class DynamicHome extends JPanel {
         panel2 = new JPanel();
         lblService = new JLabel();
         lblStatus = new JLabel();
-        panelserviceDemo2 = new JPanel();
-        lblImageService2 = new JLabel();
-        panel3 = new JPanel();
-        lblService2 = new JLabel();
-        lblStatus2 = new JLabel();
 
         //======== this ========
         setBackground(Color.white);
-        setPreferredSize(new Dimension(400, 650));
+        setPreferredSize(new Dimension(391, 264));
+        setName("Home");
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
@@ -75,7 +74,7 @@ public class DynamicHome extends JPanel {
             panelInfoUser.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 5));
 
             //---- lblAvatar ----
-            lblAvatar.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
+            lblAvatar.setIcon(new ImageIcon(getClass().getResource("/images/Follow.png")));
             panelInfoUser.add(lblAvatar);
 
             //======== panelInfo ========
@@ -100,10 +99,13 @@ public class DynamicHome extends JPanel {
 
                         //---- lblSkills ----
                         lblSkills.setIcon(new ImageIcon(getClass().getResource("/images/skills.png")));
+                        lblSkills.setName("lblSkills");
+                        lblSkills.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                         panelSubSettings.add(lblSkills);
 
                         //---- lblSettings ----
                         lblSettings.setIcon(new ImageIcon(getClass().getResource("/images/settings.png")));
+                        lblSettings.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                         panelSubSettings.add(lblSettings);
                     }
                     panelSettings.add(panelSubSettings);
@@ -212,38 +214,16 @@ public class DynamicHome extends JPanel {
                     panelserviceDemo.add(panel2);
                 }
                 panelService.add(panelserviceDemo);
-
-                //======== panelserviceDemo2 ========
-                {
-                    panelserviceDemo2.setBackground(Color.white);
-                    panelserviceDemo2.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 10));
-
-                    //---- lblImageService2 ----
-                    lblImageService2.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
-                    panelserviceDemo2.add(lblImageService2);
-
-                    //======== panel3 ========
-                    {
-                        panel3.setBackground(Color.white);
-                        panel3.setLayout(new VerticalLayout(5));
-
-                        //---- lblService2 ----
-                        lblService2.setText("Service");
-                        panel3.add(lblService2);
-
-                        //---- lblStatus2 ----
-                        lblStatus2.setText("Status:");
-                        lblStatus2.setForeground(Color.red);
-                        panel3.add(lblStatus2);
-                    }
-                    panelserviceDemo2.add(panel3);
-                }
-                panelService.add(panelserviceDemo2);
             }
             scrollPane1.setViewportView(panelService);
         }
         add(scrollPane1);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
+        lblAvatar.addMouseListener(listener);
+        lblSkills.addMouseListener(listener);
+        lblSettings.addMouseListener(listener);
+        lblImageService.addMouseListener(listener);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -273,10 +253,21 @@ public class DynamicHome extends JPanel {
     private JPanel panel2;
     private JLabel lblService;
     private JLabel lblStatus;
-    private JPanel panelserviceDemo2;
-    private JLabel lblImageService2;
-    private JPanel panel3;
-    private JLabel lblService2;
-    private JLabel lblStatus2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    public HashMap<String, Object> getData() {
+        HashMap<String, Object> uiData = new HashMap<String, Object>();
+        uiData.put("LabelAvatar", lblAvatar);
+        uiData.put("LabelNickname", lblNickname);
+        uiData.put("LabelImageSkills",lblSkills);
+        uiData.put("LabelImageSettings", lblSettings);
+        uiData.put("LabelNumPost",lblNumPost);
+        uiData.put("LabelNumFollowing", lblNumFollowing);
+        uiData.put("LabelNumFollowers",lblNumFollowers);
+
+        //dinamico
+        uiData.put("LabelImageService", lblImageService);
+
+        return uiData;
+    }
 }

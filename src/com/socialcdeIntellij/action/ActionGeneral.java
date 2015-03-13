@@ -47,16 +47,23 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                 uiData.put("ID_action", event.getActionCommand());
 
                 new ActionProfile(uiData);
+
+                switch (Controller.getDynamicPanelName()){
+
+                    case "Home":
+                        uiData = Controller.getHomePanel().getData();
+                        uiData.put("Event", event);
+                        uiData.put("Event_type", event.getID());
+                        uiData.put("ID_action", event.getActionCommand());
+
+                        new ActionHome(uiData);
+                        break;
+
+                }
+
                 break;
 
-            case "Home":
-                uiData = Controller.getProfilePanel().getData();
-                uiData.put("Event", event);
-                uiData.put("Event_type", event.getID());
-                uiData.put("ID_action", event.getActionCommand());
 
-                //new ActionProfile(uiData);
-                break;
 
             /*default:
                 break;
@@ -200,16 +207,22 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                     uiData.put("ID_action", event.getComponent().getName());
 
                     new ActionProfile(uiData);
+
+                    switch (Controller.getDynamicPanelName()){
+
+                        case "Home":
+                            uiData = Controller.getHomePanel().getData();
+                            uiData.put("Event", event);
+                            uiData.put("Event_type", event.getID());
+                            uiData.put("ID_action", event.getComponent().getName());
+
+                            new ActionHome(uiData);
+                            break;
+
+                    }
                     break;
 
-                case "Home":
-                    uiData = Controller.getProfilePanel().getData();
-                    uiData.put("Event", event);
-                    uiData.put("Event_type", event.getID());
-                    uiData.put("ID_action", event.getComponent().getName());
 
-                   // new ActionProfile(uiData);
-                    break;
         }
 
     }
@@ -245,16 +258,30 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                 uiData.put("ID_action", event.getComponent().getName());
 
                 new ActionProfile(uiData);
+
+                switch (Controller.getDynamicPanelName()){
+
+                    case "Home":
+                        uiData = Controller.getHomePanel().getData();
+                        uiData.put("Event", event);
+                        uiData.put("Event_type", event.getID());
+                        uiData.put("ID_action", event.getComponent().getName());
+
+                        new ActionHome(uiData);
+                        break;
+
+                    case "People":
+                        uiData = Controller.getHomePanel().getData();
+                        uiData.put("Event", event);
+                        uiData.put("Event_type", event.getID());
+                        uiData.put("ID_action", event.getComponent().getName());
+
+                        new ActionHome(uiData);
+                        break;
+
+                }
                 break;
 
-            case "Home":
-                uiData = Controller.getProfilePanel().getData();
-                uiData.put("Event", event);
-                uiData.put("Event_type", event.getID());
-                uiData.put("ID_action", event.getComponent().getName());
-
-                //new ActionProfile(uiData);
-                break;
         }
 
     }

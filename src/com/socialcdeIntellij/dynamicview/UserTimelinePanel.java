@@ -12,8 +12,8 @@ import org.jdesktop.swingx.*;
 /**
  * @author Davide Rossi
  */
-public class DynamicUserTimeline extends JPanel {
-    public DynamicUserTimeline() {
+public class UserTimelinePanel extends JPanel {
+    public UserTimelinePanel() {
         initComponents();
     }
 

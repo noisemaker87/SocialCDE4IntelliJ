@@ -38,11 +38,10 @@ public class ProfilePanel extends JPanel {
         lblIterationTimeline = new JLabel();
         lblInteractiveTimeline = new JLabel();
         lblLogout = new JLabel();
-        panelDynamic = new JPanel();
 
         //======== this ========
-        setPreferredSize(new Dimension(400, 650));
-        setMinimumSize(new Dimension(400, 650));
+        setPreferredSize(new Dimension(450, 42));
+        setMinimumSize(new Dimension(450, 570));
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
@@ -56,6 +55,9 @@ public class ProfilePanel extends JPanel {
         //======== panelToolbar ========
         {
             panelToolbar.setBackground(new Color(204, 204, 204));
+            panelToolbar.setMaximumSize(new Dimension(450, 42));
+            panelToolbar.setMinimumSize(new Dimension(450, 42));
+            panelToolbar.setPreferredSize(new Dimension(450, 42));
             panelToolbar.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
             //---- lblProfile ----
@@ -101,16 +103,6 @@ public class ProfilePanel extends JPanel {
             panelToolbar.add(lblLogout);
         }
         add(panelToolbar);
-
-        //======== panelDynamic ========
-        {
-            panelDynamic.setBackground(Color.white);
-            panelDynamic.setPreferredSize(new Dimension(400, 800));
-            panelDynamic.setBorder(new BevelBorder(BevelBorder.LOWERED));
-            panelDynamic.setMinimumSize(new Dimension(400, 800));
-            panelDynamic.setLayout(new VerticalLayout(15));
-        }
-        add(panelDynamic);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
         listener = new ActionGeneral();
@@ -123,17 +115,15 @@ public class ProfilePanel extends JPanel {
         lblLogout.addMouseListener(listener);
 
         //Controller.selectDynamicWindow(0);
-        panelDynamic.add(Controller.getHomePanel());
+
+       /* panelDynamic.add(Controller.getHomePanel()); //cosi no
+        panelDynamic.add(new HomePanel()); // cosi si*/
     }
 
 
-    public JPanel getDynamic() {
-        return panelDynamic;
-    }
+   // public JPanel getDynamic() {  return panelDynamic;}
 
-    public void setDynamic(JPanel panelDynamic) {
-        this.panelDynamic = panelDynamic;
-    }
+   // public void setDynamic(JPanel panelDynamic) {  this.panelDynamic = panelDynamic;    }
 
 
 
@@ -146,7 +136,6 @@ public class ProfilePanel extends JPanel {
     private JLabel lblIterationTimeline;
     private JLabel lblInteractiveTimeline;
     private JLabel lblLogout;
-    private JPanel panelDynamic;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 
@@ -158,14 +147,6 @@ public class ProfilePanel extends JPanel {
         uiData.put("LabelIterationTimeline", lblIterationTimeline);
         uiData.put("LabelInteractiveTimeline",lblInteractiveTimeline);
         uiData.put("LabelLogout", lblLogout);
-
-        /*uiData.put("LabelUsername",lblNickname);
-        uiData.put("LabelAvatar", lblAvatar);
-        uiData.put("LabelN_Post",lblNumPost);
-        uiData.put("LabelN_Following", lblNumFollowing);
-        uiData.put("LabelN_Followers",lblNumFollowers);
-        uiData.put("LabelSkills", lblSkills);
-        uiData.put("LabelSettings",lblSettings);*/
 
         return uiData;
     }

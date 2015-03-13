@@ -7,14 +7,17 @@ new FormModel {
 			"gap": 2
 		} ) {
 			name: "this"
-			"preferredSize": new java.awt.Dimension( 400, 650 )
-			"minimumSize": new java.awt.Dimension( 400, 650 )
+			"preferredSize": new java.awt.Dimension( 450, 42 )
+			"minimumSize": new java.awt.Dimension( 450, 570 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 				"alignment": 0
 				"hgap": 15
 			} ) {
 				name: "panelToolbar"
 				"background": new java.awt.Color( 204, 204, 204, 255 )
+				"maximumSize": new java.awt.Dimension( 450, 42 )
+				"minimumSize": new java.awt.Dimension( 450, 42 )
+				"preferredSize": new java.awt.Dimension( 450, 42 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblProfile"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/Toolbar/Profile.png" )
@@ -58,18 +61,9 @@ new FormModel {
 					"name": "lblLogout"
 				} )
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
-				"gap": 15
-			} ) {
-				name: "panelDynamic"
-				"background": new java.awt.Color( 255, 255, 255, 255 )
-				"preferredSize": new java.awt.Dimension( 400, 800 )
-				"border": new javax.swing.border.BevelBorder( 1, null, null, null, null )
-				"minimumSize": new java.awt.Dimension( 400, 800 )
-			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 500, 490 )
+			"size": new java.awt.Dimension( 500, 45 )
 		} )
 	}
 }

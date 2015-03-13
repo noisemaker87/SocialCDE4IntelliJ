@@ -7,7 +7,6 @@ package com.socialcdeIntellij.staticview;
 import java.awt.*;
 import java.util.HashMap;
 import javax.swing.*;
-
 import com.socialcdeIntellij.action.ActionGeneral;
 import org.jdesktop.swingx.*;
 

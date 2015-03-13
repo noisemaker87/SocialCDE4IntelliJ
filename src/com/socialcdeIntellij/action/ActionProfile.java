@@ -33,21 +33,37 @@ public class ActionProfile {
                 }*/
                 break;
 
-            /*case "labelPeople":
+            case "lblPeople":
 
-                if (event.type == SWT.MouseDown && Controller.getProxy().IsWebServiceRunning()) {
+              //  if (event.type == SWT.MouseDown && Controller.getProxy().IsWebServiceRunning()) {
 
                     Controller.selectDynamicWindow(2);
-                    Controller.getWindow().layout();
+                    Controller.getWindow().revalidate();
 
-                }
+               /* }
                 else
                 {
                     Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }
+                }*/
                 break;
 
-            case "labelAvatarProfile":
+            case "lblProfile":
+
+                //  if (event.type == SWT.MouseDown && Controller.getProxy().IsWebServiceRunning()) {
+
+                Controller.selectDynamicWindow(0);
+                Controller.getWindow().revalidate();
+
+                //Controller.getWindow().layout();
+
+               /* }
+                else
+                {
+                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
+                }*/
+                break;
+
+           /* case "labelAvatarProfile":
                 if (event.type == SWT.MouseDown && Controller.getProxy().IsWebServiceRunning()) {
                     Controller.selectDynamicWindow(0);
                     Controller.getWindow().layout();

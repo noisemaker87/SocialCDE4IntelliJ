@@ -6,6 +6,8 @@ import com.socialcdeIntellij.model.ProxyWrapper;
 import com.socialcdeIntellij.object.OperationProgressBar;
 import com.socialcdeIntellij.shared.library.WUser;
 import com.socialcdeIntellij.staticview.*;
+import org.jdesktop.swingx.VerticalLayout;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
@@ -18,15 +20,33 @@ public class Controller {
     private static RegistrationPanel registrationPanel = new RegistrationPanel();
     private static LoginPanel loginPanel = new LoginPanel();
     private static ProfilePanel profilePanel = new ProfilePanel();
-    private static DynamicHome homePanel = new DynamicHome();
+    private static HomePanel homePanel = new HomePanel();
+    private static PeoplePanel peoplePanel = new PeoplePanel();
+    private static HomeTimelinePanel homeTimelinePanel = new HomeTimelinePanel();
+    private static IterationTimelinePanel iterationTimelinePanel = new IterationTimelinePanel();
+    private static InteractiveTimelinePanel interactiveTimelinePanel = new InteractiveTimelinePanel();
+    private static SettingPanel settingPanel = new SettingPanel();
+    private static UserTimelinePanel userTimelinePanel = new UserTimelinePanel();
 
-    private static DynamicPeople peopleWindow = new DynamicPeople();
-    private static DynamicHomeTimeline homeTimelineWindow = new DynamicHomeTimeline();
-    private static DynamicIterationTimeline iterationTimelineWindow = new DynamicIterationTimeline();
-    private static DynamicInteractiveTimeline interactiveTimelineWindow = new DynamicInteractiveTimeline();
-    private static SettingPanel settingWindow = new SettingPanel();
-    private static DynamicUserTimeline dynamicUserWindow = new DynamicUserTimeline();
 
+
+    // attributes
+    private static boolean flag = false;
+    private static CardLayout cardLayout = new CardLayout();
+    private static CardLayout cardLayout2 = new CardLayout();
+    private static JPanel window = new JPanel(cardLayout);// qui x cambiare pannello iniziale
+    private static JPanel dynamicPanel = new JPanel(cardLayout2);
+    private static String windowName = null;
+    private static String dynamicPanelName = null;
+
+    private static ProxyWrapper proxy = null;
+    private static WUser currentUser = null;
+    private static String currentUserPassword = null;
+    public static HashMap<String, Object> temporaryInformation = new HashMap<String, Object>();
+    private static HashMap<String,Image> usersAvatar = new HashMap<String,Image>();
+    private static HashMap<String, Image> servicesImage = new HashMap<String,Image>();
+
+//progress bar***************************************************************************
     private static OperationProgressBar opBar = new OperationProgressBar();
 
     public static OperationProgressBar getOpBar() {
@@ -36,23 +56,25 @@ public class Controller {
     public static void setOpBar(OperationProgressBar newOpBar) {
         opBar = newOpBar;
     }
+ //***************************************************************************************
 
-    // attributes
-    private static boolean flag = false;
-    private static CardLayout cardLayout = new CardLayout();
-    private static CardLayout cardLayout2 = new CardLayout();
-    private static JPanel window = new JPanel(cardLayout);// qui x cambiare pannello iniziale
-    private static JPanel dynamicPanel = new JPanel(cardLayout2);
-    private static String windowName = null;
-
-    private static ProxyWrapper proxy = null;
-    private static WUser currentUser = null;
-    private static String currentUserPassword = null;
-    public static HashMap<String, Object> temporaryInformation = new HashMap<String, Object>();
-    private static HashMap<String,Image> usersAvatar = new HashMap<String,Image>();
-    private static HashMap<String, Image> servicesImage = new HashMap<String,Image>();
-
-
+//metodi cambio pannelli*************************************************************************************
+    public static JPanel getCurrentPanel() {
+        if (flag == false) {
+            /*setWindowName("Login");
+            setWindow(getLoginPanel());
+            return getWindow();*/
+            setWindowName("Profile");
+            selectDynamicWindow(0);
+            //setWindow(getProfilePanel());
+            /*setWindowName("Home");
+            setDynamicPanel(getHomePanel());
+            setWindow(getDynamicPanel());*/
+            return getWindow();
+        }
+        else
+            return getWindow();
+    }
 
     public static JPanel getWindow() {
         return window;
@@ -65,6 +87,14 @@ public class Controller {
         cardLayout.show(window,getWindowName());
     }
 
+    public static String getWindowName() {
+        return windowName;
+    }
+
+    public static void setWindowName(String newWindowName) {
+        windowName = newWindowName;
+    }
+
     public static void setDynamicPanel(JPanel newWindow) {
         dynamicPanel.removeAll();
         dynamicPanel.add(newWindow);
@@ -75,38 +105,20 @@ public class Controller {
         return dynamicPanel;
     }
 
-    public static String getWindowName() {
-        return windowName;
+    public static String getDynamicPanelName() {
+        return dynamicPanelName;
     }
 
-    public static void setWindowName(String newWindowName) {
-        windowName = newWindowName;
+    public static void setDynamicPanelName(String dynamicPanelName) {
+        Controller.dynamicPanelName = dynamicPanelName;
     }
+//*********************************************************************************************************************
 
-    public static void setWindowName(JPanel newWindowName) {
-        windowName = newWindowName.getName();
-    }
-
-    public static JPanel getCurrentPanel() {
-        if (flag == false) {
-            /*setWindowName("Login");
-            setWindow(getLoginPanel());
-            return getWindow();*/
-            setWindowName("Profile");
-            setWindow(getProfilePanel());
-            /*setWindowName("Home");
-            setDynamicPanel(getHomePanel());
-            setWindow(getDynamicPanel());*/
-            return getWindow();
-        }
-        else
-            return getWindow();
-    }
-
+//getter and setter **********************************************************************************************
     public static RegistrationPanel getRegistrationPanel() { return registrationPanel;  }
 
-    public static void setRegistration_panel(RegistrationPanel newRegistrationPanel) {
-        Controller.registrationPanel = newRegistrationPanel;
+    public static void setRegistrationPanel(RegistrationPanel registrationPanel) {
+        Controller.registrationPanel = registrationPanel;
     }
 
     public static LoginPanel getLoginPanel() { return loginPanel;  }
@@ -121,75 +133,68 @@ public class Controller {
         Controller.profilePanel = newProfilePanel;
     }
 
-    public static DynamicHome getHomePanel(){ return homePanel;  }
+    public static HomePanel getHomePanel(){ return homePanel;  }
 
-    public static void setHomePanel(DynamicHome newhomeWindow) {
+    public static void setHomePanel(HomePanel newhomeWindow) {
         Controller.homePanel = newhomeWindow;
     }
 
 
     //**************************************************************
-    public static DynamicPeople getPeopleWindow() {
-        setWindow(peopleWindow);
-        //setWindowName("People");
-        return peopleWindow;
+
+
+    public static PeoplePanel getPeoplePanel() {
+        return peoplePanel;
     }
 
-    public static void setPeopleWindow(DynamicPeople newpeopleWindow) {
-        peopleWindow = newpeopleWindow;
+    public static void setPeoplePanel(PeoplePanel peoplePanel) {
+        Controller.peoplePanel = peoplePanel;
     }
 
-    public static DynamicHomeTimeline getHomeTimelineWindow() {
-        setWindow(homeTimelineWindow);
-        //setWindowName("HomeTimeline");
-        return homeTimelineWindow;
+    public static HomeTimelinePanel getHomeTimelinePanel() {
+        return homeTimelinePanel;
     }
 
-    public static void setHomeTimelineWindow(DynamicHomeTimeline homeTimelineWindow) {
-        Controller.homeTimelineWindow = homeTimelineWindow;
+    public static void setHomeTimelinePanel(HomeTimelinePanel homeTimelinePanel) {
+        Controller.homeTimelinePanel = homeTimelinePanel;
     }
 
-    public static DynamicIterationTimeline getIterationTimelineWindow() {
-        setWindow(iterationTimelineWindow);
-        //setWindowName("IterationTimeline");
-        return iterationTimelineWindow;
+    public static IterationTimelinePanel getIterationTimelinePanel() {
+        return iterationTimelinePanel;
     }
 
-    public static void setIterationTimelineWindow(DynamicIterationTimeline newinteractionTimelineWindow) {
-        iterationTimelineWindow = newinteractionTimelineWindow;
+    public static void setIterationTimelinePanel(IterationTimelinePanel iterationTimelinePanel) {
+        Controller.iterationTimelinePanel = iterationTimelinePanel;
     }
 
-    public static DynamicInteractiveTimeline getInteractiveTimelineWindow() {
-        setWindow(interactiveTimelineWindow);
-        //setWindowName("InteractiveTimeline");
-        return interactiveTimelineWindow;
+    public static InteractiveTimelinePanel getInteractiveTimelinePanel() {
+        return interactiveTimelinePanel;
     }
 
-    public static void setInteractiveTimelineWindow(DynamicInteractiveTimeline newinteractiveTimelineWindow) {
-        interactiveTimelineWindow = newinteractiveTimelineWindow;
+    public static void setInteractiveTimelinePanel(InteractiveTimelinePanel interactiveTimelinePanel) {
+        Controller.interactiveTimelinePanel = interactiveTimelinePanel;
     }
 
-    public static SettingPanel getSettingWindow() {
-        setWindow(settingWindow);
-        //setWindowName("Settings");
-        return settingWindow;
+    public static SettingPanel getSettingPanel() {
+        return settingPanel;
     }
 
-    public static void setSettingWindow(SettingPanel settingWindow) {
-        Controller.settingWindow = settingWindow;
+    public static void setSettingPanel(SettingPanel settingPanel) {
+        Controller.settingPanel = settingPanel;
     }
 
-    public static DynamicUserTimeline getUserWindow() {
-        setWindow(dynamicUserWindow);
-        //setWindowName("UserTimeline");
-        return dynamicUserWindow;
+    public static UserTimelinePanel getUserTimelinePanel() {
+        return userTimelinePanel;
     }
 
-    public static void setUserWindow(DynamicUserTimeline dynamicUserWindow) {
-        Controller.dynamicUserWindow = dynamicUserWindow;
+    public static void setUserTimelinePanel(UserTimelinePanel userTimelinePanel) {
+        Controller.userTimelinePanel = userTimelinePanel;
     }
 
 
+
+
+    //*******************************************************************************************
 
     public static HashMap<String, Image> getUsersAvatar() {
         return usersAvatar;
@@ -289,14 +294,14 @@ public class Controller {
 
     // other methods
     public static void closeAllDynamicPanel() {
-        if (dynamicUserWindow != null) {
-            Controller.getProfilePanel().remove(dynamicUserWindow);
-            dynamicUserWindow = null;
+        if (userTimelinePanel != null) {
+            Controller.getProfilePanel().remove(userTimelinePanel);
+            userTimelinePanel = null;
         }
 
-        if (homeTimelineWindow != null) {
-            Controller.getProfilePanel().remove(homeTimelineWindow);
-            homeTimelineWindow = null;
+        if (homeTimelinePanel != null) {
+            Controller.getProfilePanel().remove(homeTimelinePanel);
+            homeTimelinePanel = null;
         }
 
         if (homePanel != null) {
@@ -305,521 +310,132 @@ public class Controller {
 
         }
 
-        if (iterationTimelineWindow != null) {
-            Controller.getProfilePanel().remove(iterationTimelineWindow);
-            iterationTimelineWindow = null;
+        if (iterationTimelinePanel != null) {
+            Controller.getProfilePanel().remove(iterationTimelinePanel);
+            iterationTimelinePanel = null;
         }
 
-        if (interactiveTimelineWindow != null) {
-            Controller.getProfilePanel().remove(interactiveTimelineWindow);
-            interactiveTimelineWindow = null;
+        if (interactiveTimelinePanel != null) {
+            Controller.getProfilePanel().remove(interactiveTimelinePanel);
+            interactiveTimelinePanel = null;
         }
 
-        if (peopleWindow != null) {
-            Controller.getProfilePanel().remove(peopleWindow);
-            peopleWindow = null;
+        if (peoplePanel != null) {
+            Controller.getProfilePanel().remove(peoplePanel);
+            peoplePanel = null;
         }
 
-        if (settingWindow != null) {
-            Controller.getProfilePanel().remove(settingWindow);
-            settingWindow = null;
+        if (settingPanel != null) {
+            Controller.getProfilePanel().remove(settingPanel);
+            settingPanel = null;
         }
 
     }
 
 
     public static void selectDynamicWindow(int choose) {
-
+        JPanel container = new JPanel();
+        container.setLayout(new VerticalLayout(2));
+       // container.add(getProfilePanel());
        /* Controller.temporaryInformation.put("ProgressBarThread", getOpBar());
         Controller.getOpBar().setLabelBar("Operation in progress..");
         Controller.getOpBar().start();*/
 
-       // closeAllDynamicPanel();
-
-        /*if (Controller.getProfilePanel().getComposite_dinamic() != null) {
-            Controller.getProfilePanel().getComposite_dinamic().dispose();
-        }*/
-
         switch (choose) {
             case 0://home profile
 
-               // if (Controller.getProfilePanel().getComposite_dinamic() == null) {
-                System.out.println("arriva");
-                    setWindowName("Home");
-                System.out.println(getLoginPanel());
-                   setDynamicPanel(getLoginPanel());
+                setDynamicPanelName("Home");
 
-                System.out.println("arriva 2");
-                    Controller.getProfilePanel().setDynamic(Controller.getDynamicPanel());
-                System.out.println("prova: "+Controller.getProfilePanel().getDynamic().toString());
-                Controller.getProfilePanel().getDynamic().revalidate();
+                setDynamicPanel(getHomePanel());
+                container.removeAll();
+                container.add(getProfilePanel());
+                container.add(getDynamicPanel());
+
+                container.revalidate();
+                setWindow(container);
+
+                break;
+
+            case 1://settings
+
+                setDynamicPanelName("Settings");
+
+                setDynamicPanel(getSettingPanel());
+                container.removeAll();
+                container.add(getProfilePanel());
+                container.add(getDynamicPanel());
+
+                container.revalidate();
+                setWindow(container);
 
                 break;
 
-            /*case 1://setting
-                settingWindow = new SettingPanel();
-                if (Controller.getProfilePanel().getComposite_dinamic() == null) {
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    dynamicComposite = new Composite(getWindow(), SWT.NONE);
-                    gridData = new GridData();
-
-                    gridData.widthHint = Controller.getWindowWidth() - 10;
-                    gridData.grabExcessVerticalSpace = true;
-                    gridData.verticalAlignment = gridData.FILL;
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    dynamicComposite.setLayoutData(gridData);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    Controller.getProfilePanel().setComposite_dinamic(
-                            dynamicComposite);
-
-                } else {
-                    Controller.getProfilePanel().getComposite_dinamic().dispose();
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    dynamicComposite = new Composite(getWindow(), SWT.NONE);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData = new GridData();
-                    gridData.widthHint = Controller.getWindowWidth() - 10;
-                    gridData.grabExcessVerticalSpace = true;
-                    gridData.verticalAlignment = gridData.FILL;
-                    dynamicComposite.setLayoutData(gridData);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    Controller.getProfilePanel().setComposite_dinamic(
-                            dynamicComposite);
-
-                    Controller.getProfilePanel().getComposite_dinamic().redraw();
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                }
-                if(Controller.OSisUnix())
-                {
-                    pbNewW.updateProgressBar();
-                    Controller.temporaryInformation.put("LinuxProgressBar", pbNewW);
-                }
-                settingWindow.inizialize(Controller.getProfilePanel()
-                        .getComposite_dinamic());
-
-
-                if(Controller.OSisWindows())
-                {
-                    pbWindow.setStop(1);
-                    pbWindow = null;
-                }
-                else if(Controller.OSisUnix())
-                {
-                    pbNewW.dispose(null);
-                    pbNewW = null;
-                }
-                Controller.getWindow().layout();
-
-                break;
             case 2://people
 
-                peopleWindow = new DynamicPeople();
-                if (Controller.getProfilePanel().getComposite_dinamic() == null) {
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    dynamicComposite = new Composite(getWindow(), SWT.NONE);
+                setDynamicPanelName("People");
 
-                    gridData = new GridData();
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData.widthHint = Controller.getWindowWidth() - 10;
-                    gridData.grabExcessVerticalSpace = true;
-                    gridData.verticalAlignment = GridData.FILL;
-                    dynamicComposite.setLayoutData(gridData);
+                setDynamicPanel(getPeoplePanel());
+                container.removeAll();
+                container.add(getProfilePanel());
+                container.add(getDynamicPanel());
 
-                    Controller.getProfilePanel().setComposite_dinamic(
-                            dynamicComposite);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                } else {
-                    Controller.getProfilePanel().getComposite_dinamic().dispose();
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    dynamicComposite = new Composite(getWindow(), SWT.None);
-
-                    gridData = new GridData();
-                    gridData.widthHint = Controller.getWindowWidth() - 10;
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData.grabExcessVerticalSpace = true;
-                    gridData.verticalAlignment = GridData.FILL;
-                    dynamicComposite.setLayoutData(gridData);
-
-                    Controller.getProfilePanel().setComposite_dinamic(
-                            dynamicComposite);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    Controller.getProfilePanel().getComposite_dinamic().redraw();
-
-                }
-                if(Controller.OSisUnix())
-                {
-                    pbNewW.updateProgressBar();
-                    Controller.temporaryInformation.put("LinuxProgressBar", pbNewW);
-                }
-                peopleWindow.inizialize(Controller.getProfilePanel()
-                        .getComposite_dinamic());
-
-                if(Controller.OSisWindows())
-                {
-                    pbWindow.setStop(1);
-                    pbWindow = null;
-                }
-                else if(Controller.OSisUnix())
-                {
-                    pbNewW.dispose(null);
-                    pbNewW = null;
-                }
-
-
-                Controller.getWindow().layout();
-                break;
-            case 3://user
-
-                dynamicUserWindow = new DynamicUserTimeline();
-
-                if (Controller.getProfilePanel().getComposite_dinamic() == null) {
-                    dynamicComposite = new Composite(getWindow(), SWT.NONE);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData = new GridData();
-                    gridData.grabExcessHorizontalSpace = true;
-                    gridData.horizontalAlignment = gridData.FILL;
-                    gridData.grabExcessVerticalSpace = true;
-                    gridData.verticalAlignment = gridData.FILL;
-                    dynamicComposite.setLayoutData(gridData);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    Controller.getProfilePanel().setComposite_dinamic(
-                            dynamicComposite);
-
-                } else {
-                    Controller.getProfilePanel().getComposite_dinamic().dispose();
-
-                    dynamicComposite = new Composite(getWindow(), SWT.NONE);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData = new GridData();
-                    gridData.grabExcessHorizontalSpace = true;
-                    gridData.horizontalAlignment = gridData.FILL;
-                    gridData.grabExcessVerticalSpace = true;
-                    gridData.verticalAlignment = gridData.FILL;
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    dynamicComposite.setLayoutData(gridData);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    Controller.getProfilePanel().setComposite_dinamic(
-                            dynamicComposite);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    Controller.getProfilePanel().getComposite_dinamic().redraw();
-
-                }
-
-                dynamicUserWindow.setUser((WUser) Controller.temporaryInformation
-                        .get("User_selected"));
-
-                dynamicUserWindow
-                        .setUserType((String) Controller.temporaryInformation
-                                .get("User_type"));
-
-                if(Controller.OSisUnix())
-                {
-                    pbNewW.updateProgressBar();
-                    Controller.temporaryInformation.put("LinuxProgressBar", pbNewW);
-                }
-
-                dynamicUserWindow.inizialize(Controller.getProfilePanel()
-                        .getComposite_dinamic());
-
-
-                if(Controller.OSisWindows())
-                {
-                    pbWindow.setStop(1);
-                    pbWindow = null;
-                }
-                else if(Controller.OSisUnix())
-                {
-                    pbNewW.dispose(null);
-                    pbNewW = null;
-                }
-
-
-                Controller.getWindow().layout();
+                container.revalidate();
+                setWindow(container);
 
                 break;
 
-            case 4://hometimeline
+            case 3://home timeline
 
-                homeTimelineWindow = new DynamicHomeTimeline();
+                setDynamicPanelName("HomeTimeline");
 
-                if (Controller.getProfilePanel().getComposite_dinamic() == null) {
-                    dynamicComposite = new Composite(getWindow(), SWT.None);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData = new GridData();
-                    gridData.widthHint = Controller.getWindowWidth() - 10;
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData.grabExcessVerticalSpace = true;
-                    gridData.verticalAlignment = GridData.FILL_VERTICAL;
-                    dynamicComposite.setLayoutData(gridData);
+                setDynamicPanel(getHomeTimelinePanel());
+                container.removeAll();
+                container.add(getProfilePanel());
+                container.add(getDynamicPanel());
 
-                    Controller.getProfilePanel().setComposite_dinamic(
-                            dynamicComposite);
-
-                } else {
-                    Controller.getProfilePanel().getComposite_dinamic().dispose();
-                    dynamicComposite = new Composite(getWindow(), SWT.None);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData = new GridData();
-                    gridData.widthHint = Controller.getWindowWidth() - 10;
-
-                    gridData.grabExcessVerticalSpace = true;
-                    gridData.verticalAlignment = GridData.FILL_VERTICAL;
-                    dynamicComposite.setLayoutData(gridData);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    Controller.getProfilePanel().setComposite_dinamic(
-                            dynamicComposite);
-                    Controller.getProfilePanel().getComposite_dinamic().redraw();
-
-                }
-                if(Controller.OSisUnix())
-                {
-                    Controller.temporaryInformation.put("LinuxProgressBar", pbNewW);
-                }
-                long windowStartTime = System.currentTimeMillis();
-                homeTimelineWindow.inizialize(Controller.getProfilePanel()
-                        .getComposite_dinamic());
-                long windowEndTime = System.currentTimeMillis();
-
-                System.out.println("chiamata window " + (windowEndTime - windowStartTime) + " milliseconds");
-
-                if(Controller.OSisWindows())
-                {
-                    pbWindow.setStop(1);
-                    pbWindow = null;
-                }
-                else if(Controller.OSisUnix())
-                {
-                    pbNewW.dispose(null);
-                    pbNewW = null;
-                }
-
-                //Controller.getWindow().layout();
-                //Controller.getWindow().redraw();
-                //Display.getCurrent().update();
+                container.revalidate();
+                setWindow(container);
 
                 break;
 
-            case 5://iteration timeline
+            case 4://iteration timeline
 
-                iterationTimelineWindow = new DynamicIterationTimeline();
+                setDynamicPanelName("IterationTimeline");
 
-                if (Controller.getProfilePanel().getComposite_dinamic() == null) {
-                    dynamicComposite = new Composite(getWindow(), SWT.None);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData = new GridData();
-                    gridData.widthHint = Controller.getWindowWidth() - 10;
+                setDynamicPanel(getIterationTimelinePanel());
+                container.removeAll();
+                container.add(getProfilePanel());
+                container.add(getDynamicPanel());
 
-                    gridData.grabExcessVerticalSpace = true;
-                    gridData.verticalAlignment = GridData.FILL;
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    dynamicComposite.setLayoutData(gridData);
-
-                    Controller.getProfilePanel().setComposite_dinamic(
-                            dynamicComposite);
-
-                } else {
-                    Controller.getProfilePanel().getComposite_dinamic().dispose();
-                    dynamicComposite = new Composite(getWindow(), SWT.None);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData = new GridData();
-                    gridData.widthHint = Controller.getWindowWidth() - 10;
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData.grabExcessVerticalSpace = true;
-                    gridData.verticalAlignment = GridData.FILL;
-                    dynamicComposite.setLayoutData(gridData);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    Controller.getProfilePanel().setComposite_dinamic(
-                            dynamicComposite);
-
-                    Controller.getProfilePanel().getComposite_dinamic().redraw();
-
-                }
-
-                if(Controller.OSisUnix())
-                {
-                    pbNewW.updateProgressBar();
-                    Controller.temporaryInformation.put("LinuxProgressBar", pbNewW);
-                }
-                long secondCallpostStartTime = System.currentTimeMillis();
-
-                iterationTimelineWindow.inizialize(Controller.getProfilePanel()
-                        .getComposite_dinamic());
-                long secondCallpostEndTime = System.currentTimeMillis();
-
-                System.out.println("window chiamata " + (secondCallpostEndTime - secondCallpostStartTime) + " milliseconds");
-
-                if(Controller.OSisWindows())
-                {
-                    pbWindow.setStop(1);
-                    pbWindow = null;
-                }
-                else if(Controller.OSisUnix())
-                {
-                    pbNewW.dispose(null);
-                    pbNewW = null;
-                }
+                container.revalidate();
+                setWindow(container);
 
                 break;
 
-            case 6://interactive
+            case 5://interactive timeline
 
-                interactiveTimelineWindow = new DynamicInteractiveTimeline();
+                setDynamicPanelName("InteractiveTimeline");
 
-                if (Controller.getProfilePanel().getComposite_dinamic() == null) {
-                    dynamicComposite = new Composite(getWindow(), SWT.None);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData = new GridData();
-                    gridData.widthHint = Controller.getWindowWidth() - 10;
+                setDynamicPanel(getInteractiveTimelinePanel());
+                container.removeAll();
+                container.add(getProfilePanel());
+                container.add(getDynamicPanel());
 
-                    gridData.grabExcessVerticalSpace = true;
-                    gridData.verticalAlignment = GridData.FILL;
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    dynamicComposite.setLayoutData(gridData);
+                container.revalidate();
+                setWindow(container);
 
-                    Controller.getProfilePanel().setComposite_dinamic(
-                            dynamicComposite);
-
-                } else {
-                    Controller.getProfilePanel().getComposite_dinamic().dispose();
-                    dynamicComposite = new Composite(getWindow(), SWT.None);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    gridData = new GridData();
-                    gridData.widthHint = Controller.getWindowWidth() - 10;
-
-                    gridData.grabExcessVerticalSpace = true;
-                    gridData.verticalAlignment = GridData.FILL;
-                    dynamicComposite.setLayoutData(gridData);
-                    if(Controller.OSisUnix())
-                    {
-                        pbNewW.updateProgressBar();
-                    }
-                    Controller.getProfilePanel().setComposite_dinamic(
-                            dynamicComposite);
-
-                    Controller.getProfilePanel().getComposite_dinamic().redraw();
-
-                }
-
-                if(Controller.OSisUnix())
-                {
-                    pbNewW.updateProgressBar();
-                    Controller.temporaryInformation.put("LinuxProgressBar", pbNewW);
-                }
-
-                interactiveTimelineWindow.inizialize(Controller.getProfilePanel()
-                        .getComposite_dinamic());
-
-                if(Controller.OSisWindows())
-                {
-                    pbWindow.setStop(1);
-                    pbWindow = null;
-                }
-                else if(Controller.OSisUnix())
-                {
-                    pbNewW.dispose(null);
-                    pbNewW = null;
-                }
-
-                break;*/
+                break;
 
             default:
+                container.removeAll();
+                container.add(getProfilePanel());
+                container.revalidate();
+
                 break;
         }
 
     }
+
 
 
 }

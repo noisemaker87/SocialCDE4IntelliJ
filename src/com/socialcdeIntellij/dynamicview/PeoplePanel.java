@@ -11,8 +11,8 @@ import org.jdesktop.swingx.*;
 /**
  * @author Davide Rossi
  */
-public class DynamicPeople extends JPanel {
-    public DynamicPeople() {
+public class PeoplePanel extends JPanel {
+    public PeoplePanel() {
         initComponents();
     }
 

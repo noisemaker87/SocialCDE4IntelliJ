@@ -8,7 +8,8 @@ new FormModel {
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
-			"preferredSize": new java.awt.Dimension( 400, 650 )
+			"preferredSize": new java.awt.Dimension( 391, 264 )
+			"name": "Home"
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 				"hgap": 15
 			} ) {
@@ -16,7 +17,7 @@ new FormModel {
 				"background": new java.awt.Color( 255, 255, 255, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblAvatar"
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/DefaultAvatar.png" )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/Follow.png" )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
 					"rows": 2
@@ -40,10 +41,13 @@ new FormModel {
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "lblSkills"
 								"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/skills.png" )
+								"name": "lblSkills"
+								"cursor": &Cursor0 new java.awt.Cursor( 12 )
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "lblSettings"
 								"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/settings.png" )
+								"cursor": #Cursor0
 							} )
 						} )
 					} )
@@ -126,49 +130,22 @@ new FormModel {
 						"vgap": 10
 					} ) {
 						name: "panelserviceDemo"
-						"background": &Color0 new java.awt.Color( 255, 255, 255, 255 )
+						"background": new java.awt.Color( 255, 255, 255, 255 )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "lblImageService"
-							"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 0, "/images/DefaultAvatar.png" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/DefaultAvatar.png" )
 						} )
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
 							"gap": 5
 						} ) {
 							name: "panel2"
-							"background": &Color1 new java.awt.Color( 255, 255, 255, 255 )
+							"background": new java.awt.Color( 255, 255, 255, 255 )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "lblService"
 								"text": "Service"
 							} )
 							add( new FormComponent( "javax.swing.JLabel" ) {
 								name: "lblStatus"
-								"text": "Status:"
-								"foreground": sfield java.awt.Color red
-							} )
-						} )
-					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-						"alignment": 0
-						"hgap": 30
-						"vgap": 10
-					} ) {
-						name: "panelserviceDemo2"
-						"background": #Color0
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lblImageService2"
-							"icon": #SwingIcon0
-						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
-							"gap": 5
-						} ) {
-							name: "panel3"
-							"background": #Color1
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblService2"
-								"text": "Service"
-							} )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblStatus2"
 								"text": "Status:"
 								"foreground": sfield java.awt.Color red
 							} )
