@@ -40,7 +40,7 @@ public class ProfilePanel extends JPanel {
         lblLogout = new JLabel();
 
         //======== this ========
-        setPreferredSize(new Dimension(450, 42));
+        setPreferredSize(new Dimension(450, 40));
         setMinimumSize(new Dimension(450, 570));
 
         // JFormDesigner evaluation mark
@@ -57,7 +57,7 @@ public class ProfilePanel extends JPanel {
             panelToolbar.setBackground(new Color(204, 204, 204));
             panelToolbar.setMaximumSize(new Dimension(450, 42));
             panelToolbar.setMinimumSize(new Dimension(450, 42));
-            panelToolbar.setPreferredSize(new Dimension(450, 42));
+            panelToolbar.setPreferredSize(new Dimension(450, 40));
             panelToolbar.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
 
             //---- lblProfile ----

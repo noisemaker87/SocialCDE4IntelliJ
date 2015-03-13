@@ -2,6 +2,7 @@ package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.model.ProxyWrapper;
+import com.socialcdeIntellij.popup.ChangeAvatar;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -18,6 +19,9 @@ public class ActionHome {
 
         switch (widgetName) {
 
+            case "lblAvatar":
+                //ChangeAvatar ca = new ChangeAvatar(Controller.);
+                break;
             case "lblSkills":
                 ((JLabel) uiData.get("LabelNumPost")).setText(String.valueOf(50));
                 //Controller.getHomePanel()

@@ -7,7 +7,7 @@ new FormModel {
 			"gap": 2
 		} ) {
 			name: "this"
-			"preferredSize": new java.awt.Dimension( 450, 42 )
+			"preferredSize": new java.awt.Dimension( 450, 40 )
 			"minimumSize": new java.awt.Dimension( 450, 570 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 				"alignment": 0
@@ -17,7 +17,7 @@ new FormModel {
 				"background": new java.awt.Color( 204, 204, 204, 255 )
 				"maximumSize": new java.awt.Dimension( 450, 42 )
 				"minimumSize": new java.awt.Dimension( 450, 42 )
-				"preferredSize": new java.awt.Dimension( 450, 42 )
+				"preferredSize": new java.awt.Dimension( 450, 40 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblProfile"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/Toolbar/Profile.png" )

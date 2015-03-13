@@ -6,12 +6,12 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
 
-public class prova_classname extends AnAction {
+public class MainAction extends AnAction {
 
     public void actionPerformed(AnActionEvent e) {
         Project project = e.getData(PlatformDataKeys.PROJECT);
         ToolWindow tw = null;
-        ProvaTool pt = new ProvaTool();
+        Tool pt = new Tool();
         pt.createToolWindowContent(project,tw);
 
       /*

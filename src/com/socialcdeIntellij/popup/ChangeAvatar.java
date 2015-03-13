@@ -24,7 +24,7 @@ public class ChangeAvatar extends JDialog {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Davide Rossi
+        // Generated using JFormDesigner Evaluation license - Pablo Rossi
         dialogPane = new JPanel();
         scrollPane1 = new JScrollPane();
         contentPanel = new JPanel();
@@ -105,7 +105,7 @@ public class ChangeAvatar extends JDialog {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Davide Rossi
+    // Generated using JFormDesigner Evaluation license - Pablo Rossi
     private JPanel dialogPane;
     private JScrollPane scrollPane1;
     private JPanel contentPanel;

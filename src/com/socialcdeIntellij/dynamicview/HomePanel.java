@@ -56,7 +56,7 @@ public class HomePanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setPreferredSize(new Dimension(391, 264));
+        setPreferredSize(new Dimension(448, 610));
         setName("Home");
 
         // JFormDesigner evaluation mark
@@ -71,6 +71,7 @@ public class HomePanel extends JPanel {
         //======== panelInfoUser ========
         {
             panelInfoUser.setBackground(Color.white);
+            panelInfoUser.setPreferredSize(new Dimension(446, 115));
             panelInfoUser.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 5));
 
             //---- lblAvatar ----
@@ -182,6 +183,7 @@ public class HomePanel extends JPanel {
         //======== scrollPane1 ========
         {
             scrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollPane1.setPreferredSize(new Dimension(446, 490));
 
             //======== panelService ========
             {
@@ -194,7 +196,7 @@ public class HomePanel extends JPanel {
                     panelserviceDemo.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 10));
 
                     //---- lblImageService ----
-                    lblImageService.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
+                    lblImageService.setIcon(new ImageIcon(getClass().getResource("/images/Hide.png")));
                     panelserviceDemo.add(lblImageService);
 
                     //======== panel2 ========

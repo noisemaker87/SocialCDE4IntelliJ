@@ -8,13 +8,14 @@ new FormModel {
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
-			"preferredSize": new java.awt.Dimension( 391, 264 )
+			"preferredSize": new java.awt.Dimension( 448, 610 )
 			"name": "Home"
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 				"hgap": 15
 			} ) {
 				name: "panelInfoUser"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
+				"preferredSize": new java.awt.Dimension( 446, 115 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblAvatar"
 					"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/Follow.png" )
@@ -119,6 +120,7 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				"verticalScrollBarPolicy": 22
+				"preferredSize": new java.awt.Dimension( 446, 490 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
 					"gap": 5
 				} ) {
@@ -133,7 +135,7 @@ new FormModel {
 						"background": new java.awt.Color( 255, 255, 255, 255 )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "lblImageService"
-							"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/DefaultAvatar.png" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/Hide.png" )
 						} )
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
 							"gap": 5

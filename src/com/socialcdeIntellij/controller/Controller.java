@@ -28,8 +28,6 @@ public class Controller {
     private static SettingPanel settingPanel = new SettingPanel();
     private static UserTimelinePanel userTimelinePanel = new UserTimelinePanel();
 
-
-
     // attributes
     private static boolean flag = false;
     private static CardLayout cardLayout = new CardLayout();
@@ -64,12 +62,10 @@ public class Controller {
             /*setWindowName("Login");
             setWindow(getLoginPanel());
             return getWindow();*/
+
             setWindowName("Profile");
             selectDynamicWindow(0);
-            //setWindow(getProfilePanel());
-            /*setWindowName("Home");
-            setDynamicPanel(getHomePanel());
-            setWindow(getDynamicPanel());*/
+
             return getWindow();
         }
         else
@@ -292,51 +288,11 @@ public class Controller {
     }
 
 
-    // other methods
-    public static void closeAllDynamicPanel() {
-        if (userTimelinePanel != null) {
-            Controller.getProfilePanel().remove(userTimelinePanel);
-            userTimelinePanel = null;
-        }
-
-        if (homeTimelinePanel != null) {
-            Controller.getProfilePanel().remove(homeTimelinePanel);
-            homeTimelinePanel = null;
-        }
-
-        if (homePanel != null) {
-            Controller.getProfilePanel().remove(homePanel);
-            homePanel = null;
-
-        }
-
-        if (iterationTimelinePanel != null) {
-            Controller.getProfilePanel().remove(iterationTimelinePanel);
-            iterationTimelinePanel = null;
-        }
-
-        if (interactiveTimelinePanel != null) {
-            Controller.getProfilePanel().remove(interactiveTimelinePanel);
-            interactiveTimelinePanel = null;
-        }
-
-        if (peoplePanel != null) {
-            Controller.getProfilePanel().remove(peoplePanel);
-            peoplePanel = null;
-        }
-
-        if (settingPanel != null) {
-            Controller.getProfilePanel().remove(settingPanel);
-            settingPanel = null;
-        }
-
-    }
-
 
     public static void selectDynamicWindow(int choose) {
         JPanel container = new JPanel();
         container.setLayout(new VerticalLayout(2));
-       // container.add(getProfilePanel());
+
        /* Controller.temporaryInformation.put("ProgressBarThread", getOpBar());
         Controller.getOpBar().setLabelBar("Operation in progress..");
         Controller.getOpBar().start();*/

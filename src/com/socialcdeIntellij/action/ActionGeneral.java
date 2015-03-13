@@ -14,7 +14,6 @@ import java.util.HashMap;
  */
 public class ActionGeneral implements ActionListener, FocusListener , MouseListener{
 
-    Controller controller = new Controller();
     private HashMap<String, Object> uiData;
 
     public void actionPerformed(ActionEvent event) {
@@ -59,115 +58,19 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         new ActionHome(uiData);
                         break;
 
+                    case "People":
+                        uiData = Controller.getHomePanel().getData();
+                        uiData.put("Event", event);
+                        uiData.put("Event_type", event.getID());
+                        uiData.put("ID_action", event.getActionCommand());
+
+                        //new ActionPeople(uiData);
+                        break;
+
                 }
 
                 break;
 
-
-
-            /*default:
-                break;
-            case "Home":
-                if (widgetProfile.contains(widget.getData("ID_action").toString())) {
-                    new ActionProfile(widget, event);
-                } else {
-                    uiData = Controller.getHomePanel().getData();
-                    uiData.put("Event", event);
-                    uiData.put("Event_type", event.type);
-                    uiData.put("ID_action", widget.getData("ID_action").toString());
-                    uiData.put("service", (WService) widget.getData("service"));
-                    new ActionHomePanel(uiData);
-                }
-                break;
-            case "Settings":
-                if (widgetProfile.contains(widget.getData("ID_action").toString())) {
-                    new ActionProfile(widget, event);
-                } else {
-                    new ActionSettingPanel(widget, event);
-                }
-                break;
-            case "People":
-                if (widgetProfile.contains(widget.getData("ID_action").toString())) {
-                    new ActionProfile(widget, event);
-                } else {
-                    new ActionDynamicPeople(widget, event);
-                }
-                break;
-            case "UserTimeline":
-                if (widgetProfile.contains(widget.getData("ID_action").toString())) {
-                    new ActionProfile(widget, event);
-                } else {
-                    uiData = Controller.getDynamicUserWindow().getData();
-                    uiData.put("Event", event);
-                    uiData.put("Event_type", event.type);
-                    uiData.put("ID_action", widget.getData("ID_action").toString());
-
-                    new ActionDynamicUserTimeline(uiData);
-                }
-                break;
-            case "HomeTimeline":
-                if (widgetProfile.contains(widget.getData("ID_action").toString())) {
-                    new ActionProfile(widget, event);
-                } else {
-                    uiData = Controller.getHomeTimelineWindow().getData();
-                    uiData.put("Event", event);
-                    uiData.put("Event_type", event.type);
-                    uiData.put("ID_action", widget.getData("ID_action").toString());
-
-                    if (widget.getData("ID_action").equals("labelAvatarLink")) {
-                        uiData.put("User_data",
-                                (WUser) event.widget.getData("User_data"));
-                    }
-
-                    if (widget.getData("ID_action").equals("usernameLink")) {
-                        //System.out
-                        //		.println("ottengo " + widget.getData("User_data"));
-                        uiData.put("User_data", (WUser) widget.getData("User_data"));
-                    }
-
-                    new ActionHomeTimeline(uiData);
-                }
-                break;
-            case "IterationTimeline":
-                if (widgetProfile.contains(widget.getData("ID_action").toString())) {
-                    new ActionProfile(widget, event);
-                } else {
-                    uiData = Controller.getInteractionTimelineWindow().getData();
-                    uiData.put("Event", event);
-                    uiData.put("Event_type", event.type);
-                    uiData.put("ID_action", widget.getData("ID_action").toString());
-
-                    if (widget.getData("ID_action").equals("labelAvatarLink")) {
-                        uiData.put("User_data", (WUser) widget.getData("User_data"));
-                    }
-
-                    if (widget.getData("ID_action").equals("usernameLink")) {
-                        uiData.put("User_data", (WUser) widget.getData("User_data"));
-                    }
-
-                    new ActionIterationTimeline(uiData);
-                }
-                break;
-            case "InteractiveTimeline":
-                if (widgetProfile.contains(widget.getData("ID_action").toString())) {
-                    new ActionProfile(widget, event);
-                } else {
-                    uiData = Controller.getInteractiveTimelineWindow().getData();
-                    uiData.put("Event", event);
-                    uiData.put("Event_type", event.type);
-                    uiData.put("ID_action", widget.getData("ID_action").toString());
-
-                    if (widget.getData("ID_action").equals("labelAvatarLink")) {
-                        uiData.put("User_data", (WUser) widget.getData("User_data"));
-                    }
-
-                    if (widget.getData("ID_action").equals("usernameLink")) {
-                        uiData.put("User_data", (WUser) widget.getData("User_data"));
-                    }
-
-                    new ActionInteractiveTimeline(uiData);
-                }
-                break;*/
         }
     }
 
@@ -217,6 +120,15 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                             uiData.put("ID_action", event.getComponent().getName());
 
                             new ActionHome(uiData);
+                            break;
+
+                        case "People":
+                            uiData = Controller.getHomePanel().getData();
+                            uiData.put("Event", event);
+                            uiData.put("Event_type", event.getID());
+                            uiData.put("ID_action", event.getComponent().getName());
+
+                            //new ActionPeople(uiData);
                             break;
 
                     }
@@ -276,7 +188,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         uiData.put("Event_type", event.getID());
                         uiData.put("ID_action", event.getComponent().getName());
 
-                        new ActionHome(uiData);
+                        //new ActionPeople(uiData);
                         break;
 
                 }

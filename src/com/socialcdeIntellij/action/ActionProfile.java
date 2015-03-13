@@ -9,14 +9,72 @@ import java.util.HashMap;
  */
 public class ActionProfile {
     public ActionProfile(HashMap<String, Object> uiData) {
-        //int type = (Integer) uiData.get("Event_type");
+
         String widgetName = uiData.get("ID_action").toString();
 
         switch (widgetName) {
+            case "lblProfile":
+               // if (Controller.getProxy().IsWebServiceRunning()) { //nelle prove è null xkè nn mi loggo
+                    Controller.selectDynamicWindow(0);
+                    Controller.getWindow().revalidate();
+               /* }
+                else{
+                    System.out.println("non è in funzione");
+                    //Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
+                }*/
+                break;
+
+            case "lblPeople":
+                //if (Controller.getProxy().IsWebServiceRunning()) {
+                    Controller.selectDynamicWindow(2);
+                    Controller.getWindow().revalidate();
+               // }
+              //  else{
+
+                    //Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
+               // }
+                break;
+
+            case "lblHomeTimeline":
+                //if (Controller.getProxy().IsWebServiceRunning()) {
+                    Controller.selectDynamicWindow(3);
+                    Controller.getWindow().revalidate();
+               /* }
+                else{
+                    System.out.println("neanche ora è in funzione");
+                    //Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
+                }*/
+                break;
+
+            case "lblIterationTimeline":
+                //  if (Controller.getProxy().IsWebServiceRunning()) {
+
+                Controller.selectDynamicWindow(4);
+                Controller.getWindow().revalidate();
+
+               /* }
+                else
+                {
+                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
+                }*/
+                break;
+
+            case "lblInteractiveTimeline":
+                //  if (Controller.getProxy().IsWebServiceRunning()) {
+
+                Controller.selectDynamicWindow(5);
+                Controller.getWindow().revalidate();
+
+               /* }
+                else
+                {
+                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
+                }*/
+                break;
 
             case "lblLogout":
-                //if (Controller.getProxy().IsWebServiceRunning()) { //nelle prove è null xkè nn mi loggo
-                    //Controller.closeAllDynamicPanel();
+                //if (Controller.getProxy().IsWebServiceRunning()) {
+
                     Controller.setWindowName("Login");
                     Controller.setWindow(Controller.getLoginPanel());
                     Controller.getWindow().revalidate();
@@ -33,76 +91,6 @@ public class ActionProfile {
                 }*/
                 break;
 
-            case "lblPeople":
-
-              //  if (event.type == SWT.MouseDown && Controller.getProxy().IsWebServiceRunning()) {
-
-                    Controller.selectDynamicWindow(2);
-                    Controller.getWindow().revalidate();
-
-               /* }
-                else
-                {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }*/
-                break;
-
-            case "lblProfile":
-
-                //  if (event.type == SWT.MouseDown && Controller.getProxy().IsWebServiceRunning()) {
-
-                Controller.selectDynamicWindow(0);
-                Controller.getWindow().revalidate();
-
-                //Controller.getWindow().layout();
-
-               /* }
-                else
-                {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }*/
-                break;
-
-           /* case "labelAvatarProfile":
-                if (event.type == SWT.MouseDown && Controller.getProxy().IsWebServiceRunning()) {
-                    Controller.selectDynamicWindow(0);
-                    Controller.getWindow().layout();
-                }
-                else
-                {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }
-                break;
-            case "labelHomeTimeline":
-                if (event.type == SWT.MouseDown && Controller.getProxy().IsWebServiceRunning()) {
-                    Controller.selectDynamicWindow(4);
-                    //Controller.getWindow().layout();
-                }
-                else
-                {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }
-                break;
-            case "labelIterationTimeline":
-                if (event.type == SWT.MouseDown && Controller.getProxy().IsWebServiceRunning()) {
-                    Controller.selectDynamicWindow(5);
-                    Controller.getWindow().layout();
-                }
-                else
-                {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }
-                break;
-            case "labelInteractiveTimeline":
-                if (event.type == SWT.MouseDown && Controller.getProxy().IsWebServiceRunning()) {
-                    Controller.selectDynamicWindow(6);
-                    Controller.getWindow().layout();
-                }
-                else
-                {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }
-                break;*/
             default:
                 break;
 
