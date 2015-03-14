@@ -5,6 +5,8 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.wm.WindowManager;
+import com.socialcdeIntellij.controller.Controller;
 
 public class MainAction extends AnAction {
 
@@ -14,6 +16,7 @@ public class MainAction extends AnAction {
         Tool pt = new Tool();
         pt.createToolWindowContent(project,tw);
 
+        Controller.setFrame(WindowManager.getInstance().getFrame(project));
       /*
         String txt= Messages.showInputDialog(project, "What is your name?", "Input your name", Messages.getQuestionIcon());
         Messages.showMessageDialog(project, "Hello, " + txt + "!\n I am glad to see you.", "Information", Messages.getInformationIcon());*/

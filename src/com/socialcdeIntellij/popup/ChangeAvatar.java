@@ -12,6 +12,8 @@ import javax.swing.border.*;
  * @author Davide Rossi
  */
 public class ChangeAvatar extends JDialog {
+
+
     public ChangeAvatar(Frame owner) {
         super(owner);
         initComponents();
@@ -30,12 +32,11 @@ public class ChangeAvatar extends JDialog {
         contentPanel = new JPanel();
         label1 = new JLabel();
         label2 = new JLabel();
-        label3 = new JLabel();
         panel1 = new JPanel();
         okButton = new JButton();
 
         //======== this ========
-        setResizable(false);
+        setName("ChangeAvatar");
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
@@ -65,18 +66,13 @@ public class ChangeAvatar extends JDialog {
 
                     //---- label1 ----
                     label1.setText("text");
-                    label1.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
+                    label1.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
                     contentPanel.add(label1);
 
                     //---- label2 ----
                     label2.setText("text");
-                    label2.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
+                    label2.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
                     contentPanel.add(label2);
-
-                    //---- label3 ----
-                    label3.setText("text");
-                    label3.setIcon(new ImageIcon("D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png"));
-                    contentPanel.add(label3);
                 }
                 scrollPane1.setViewportView(contentPanel);
             }
@@ -84,6 +80,7 @@ public class ChangeAvatar extends JDialog {
 
             //======== panel1 ========
             {
+                panel1.setPreferredSize(new Dimension(100, 133));
                 panel1.setLayout(new GridBagLayout());
                 ((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {0, 0};
                 ((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {133, 0};
@@ -111,7 +108,6 @@ public class ChangeAvatar extends JDialog {
     private JPanel contentPanel;
     private JLabel label1;
     private JLabel label2;
-    private JLabel label3;
     private JPanel panel1;
     private JButton okButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

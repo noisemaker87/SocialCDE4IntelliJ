@@ -18,7 +18,8 @@ public class SettingPanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Davide Rossi
+        // Generated using JFormDesigner Evaluation license - Pablo Rossi
+        panel3 = new JPanel();
         label1 = new JLabel();
         panel1 = new JPanel();
         panel2 = new JPanel();
@@ -39,72 +40,79 @@ public class SettingPanel extends JPanel {
                 javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
                 java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
-        setLayout(new VerticalLayout(40));
+        setLayout(new CardLayout(0, 50));
 
-        //---- label1 ----
-        label1.setText("Change password");
-        label1.setHorizontalAlignment(SwingConstants.CENTER);
-        label1.setFont(new Font("Dialog", Font.BOLD, 18));
-        add(label1);
-
-        //======== panel1 ========
+        //======== panel3 ========
         {
-            panel1.setLayout(new VerticalLayout());
+            panel3.setLayout(new VerticalLayout(40));
 
-            //======== panel2 ========
+            //---- label1 ----
+            label1.setText("Change password");
+            label1.setHorizontalAlignment(SwingConstants.CENTER);
+            label1.setFont(new Font("Dialog", Font.BOLD, 18));
+            panel3.add(label1);
+
+            //======== panel1 ========
             {
-                panel2.setLayout(new GridBagLayout());
-                ((GridBagLayout)panel2.getLayout()).rowHeights = new int[] {0, 0, 0};
-                ((GridBagLayout)panel2.getLayout()).rowWeights = new double[] {1.0, 0.0, 1.0E-4};
+                panel1.setLayout(new VerticalLayout());
 
-                //---- label2 ----
-                label2.setText("Old password");
-                panel2.add(label2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                    new Insets(0, 0, 20, 20), 0, 0));
+                //======== panel2 ========
+                {
+                    panel2.setLayout(new GridBagLayout());
+                    ((GridBagLayout)panel2.getLayout()).rowHeights = new int[] {0, 0, 0};
+                    ((GridBagLayout)panel2.getLayout()).rowWeights = new double[] {1.0, 0.0, 1.0E-4};
 
-                //---- textField1 ----
-                textField1.setPreferredSize(new Dimension(150, 20));
-                panel2.add(textField1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                    new Insets(0, 0, 20, 0), 0, 0));
+                    //---- label2 ----
+                    label2.setText("Old password");
+                    panel2.add(label2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 0, 20, 20), 0, 0));
 
-                //---- label4 ----
-                label4.setText("New password");
-                panel2.add(label4, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 20), 0, 0));
+                    //---- textField1 ----
+                    textField1.setPreferredSize(new Dimension(150, 20));
+                    panel2.add(textField1, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 0, 20, 0), 0, 0));
 
-                //---- textField3 ----
-                textField3.setPreferredSize(new Dimension(150, 20));
-                panel2.add(textField3, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                    new Insets(0, 0, 0, 0), 0, 0));
+                    //---- label4 ----
+                    label4.setText("New password");
+                    panel2.add(label4, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 0, 20), 0, 0));
+
+                    //---- textField3 ----
+                    textField3.setPreferredSize(new Dimension(150, 20));
+                    panel2.add(textField3, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+                        GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                        new Insets(0, 0, 0, 0), 0, 0));
+                }
+                panel1.add(panel2);
             }
-            panel1.add(panel2);
+            panel3.add(panel1);
+
+            //======== panel4 ========
+            {
+                panel4.setLayout(new FlowLayout());
+
+                //---- button2 ----
+                button2.setText("Cancel");
+                button2.setPreferredSize(new Dimension(75, 32));
+                panel4.add(button2);
+
+                //---- button1 ----
+                button1.setText("Ok");
+                button1.setPreferredSize(new Dimension(75, 32));
+                panel4.add(button1);
+            }
+            panel3.add(panel4);
         }
-        add(panel1);
-
-        //======== panel4 ========
-        {
-            panel4.setLayout(new FlowLayout());
-
-            //---- button2 ----
-            button2.setText("Cancel");
-            button2.setPreferredSize(new Dimension(75, 32));
-            panel4.add(button2);
-
-            //---- button1 ----
-            button1.setText("Ok");
-            button1.setPreferredSize(new Dimension(75, 32));
-            panel4.add(button1);
-        }
-        add(panel4);
+        add(panel3, "card1");
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Davide Rossi
+    // Generated using JFormDesigner Evaluation license - Pablo Rossi
+    private JPanel panel3;
     private JLabel label1;
     private JPanel panel1;
     private JPanel panel2;

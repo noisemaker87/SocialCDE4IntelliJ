@@ -76,6 +76,7 @@ public class HomePanel extends JPanel {
 
             //---- lblAvatar ----
             lblAvatar.setIcon(new ImageIcon(getClass().getResource("/images/Follow.png")));
+            lblAvatar.setName("lblAvatar");
             panelInfoUser.add(lblAvatar);
 
             //======== panelInfo ========
@@ -91,6 +92,7 @@ public class HomePanel extends JPanel {
                     //---- lblNickname ----
                     lblNickname.setText("nickname qui");
                     lblNickname.setHorizontalAlignment(SwingConstants.LEFT);
+                    lblNickname.setName("lblNickname");
                     panelSettings.add(lblNickname);
 
                     //======== panelSubSettings ========
@@ -107,6 +109,7 @@ public class HomePanel extends JPanel {
                         //---- lblSettings ----
                         lblSettings.setIcon(new ImageIcon(getClass().getResource("/images/settings.png")));
                         lblSettings.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                        lblSettings.setName("lblSettings");
                         panelSubSettings.add(lblSettings);
                     }
                     panelSettings.add(panelSubSettings);
@@ -132,6 +135,7 @@ public class HomePanel extends JPanel {
                         //---- lblNumPost ----
                         lblNumPost.setText("0");
                         lblNumPost.setHorizontalAlignment(SwingConstants.CENTER);
+                        lblNumPost.setName("lblNumPost");
                         panelPost.add(lblNumPost);
                     }
                     panelInfo2.add(panelPost);
@@ -149,6 +153,7 @@ public class HomePanel extends JPanel {
                         //---- lblNumFollowing ----
                         lblNumFollowing.setText("1");
                         lblNumFollowing.setHorizontalAlignment(SwingConstants.CENTER);
+                        lblNumFollowing.setName("lblNumFollowing");
                         panelfollowing.add(lblNumFollowing);
                     }
                     panelInfo2.add(panelfollowing);
@@ -170,6 +175,7 @@ public class HomePanel extends JPanel {
                         //---- lblNumFollowers ----
                         lblNumFollowers.setText("0");
                         lblNumFollowers.setHorizontalAlignment(SwingConstants.CENTER);
+                        lblNumFollowers.setName("lblNumFollowers");
                         panelFollowers.add(lblNumFollowers);
                     }
                     panelInfo2.add(panelFollowers);

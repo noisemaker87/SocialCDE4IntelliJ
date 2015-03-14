@@ -25,6 +25,8 @@ public class Tool implements ToolWindowFactory {
         Content content=ContentFactory.SERVICE.getInstance().createContent(getPanel(),"",true);
         toolWindow.getContentManager().addContent(content);
 
+
+
     }
 
     public JPanel getPanel(){

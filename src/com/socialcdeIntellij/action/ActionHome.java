@@ -1,11 +1,10 @@
 package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
-import com.socialcdeIntellij.model.ProxyWrapper;
 import com.socialcdeIntellij.popup.ChangeAvatar;
+import com.socialcdeIntellij.popup.PopupSkill;
 
-import javax.swing.*;
-import java.io.IOException;
+
 import java.util.HashMap;
 
 /**
@@ -20,11 +19,19 @@ public class ActionHome {
         switch (widgetName) {
 
             case "lblAvatar":
-                //ChangeAvatar ca = new ChangeAvatar(Controller.);
+                ChangeAvatar changeAvatar = new ChangeAvatar(Controller.getFrame());
+                changeAvatar.setVisible(true);
+
                 break;
+
             case "lblSkills":
-                ((JLabel) uiData.get("LabelNumPost")).setText(String.valueOf(50));
-                //Controller.getHomePanel()
+                PopupSkill popupSkill = new PopupSkill(Controller.getFrame());
+                popupSkill.setVisible(true);
+                break;
+
+            case "lblSettings":
+                Controller.selectDynamicWindow(1);
+                Controller.getWindow().revalidate();
                 break;
 
             default:

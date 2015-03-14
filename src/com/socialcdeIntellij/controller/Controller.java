@@ -4,6 +4,7 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.socialcdeIntellij.dynamicview.*;
 import com.socialcdeIntellij.model.ProxyWrapper;
 import com.socialcdeIntellij.object.OperationProgressBar;
+import com.socialcdeIntellij.popup.ChangeAvatar;
 import com.socialcdeIntellij.shared.library.WUser;
 import com.socialcdeIntellij.staticview.*;
 import org.jdesktop.swingx.VerticalLayout;
@@ -16,6 +17,8 @@ import java.util.HashMap;
  * Created by Teo on 02/03/2015.
  */
 public class Controller {
+
+    private static JFrame frame = null;
 
     private static RegistrationPanel registrationPanel = new RegistrationPanel();
     private static LoginPanel loginPanel = new LoginPanel();
@@ -44,7 +47,8 @@ public class Controller {
     private static HashMap<String,Image> usersAvatar = new HashMap<String,Image>();
     private static HashMap<String, Image> servicesImage = new HashMap<String,Image>();
 
-//progress bar***************************************************************************
+
+    //progress bar***************************************************************************
     private static OperationProgressBar opBar = new OperationProgressBar();
 
     public static OperationProgressBar getOpBar() {
@@ -70,6 +74,14 @@ public class Controller {
         }
         else
             return getWindow();
+    }
+
+    public static JFrame getFrame() {
+        return frame;
+    }
+
+    public static void setFrame(JFrame frame) {
+        Controller.frame = frame;
     }
 
     public static JPanel getWindow() {

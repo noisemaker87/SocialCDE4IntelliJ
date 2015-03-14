@@ -5,7 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 			name: "this"
-			"resizable": false
+			"name": "ChangeAvatar"
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
@@ -20,15 +20,10 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label1"
 							"text": "text"
-							"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
+							"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 0, "/images/DefaultAvatar.png" )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label2"
-							"text": "text"
-							"icon": new com.jformdesigner.model.SwingIcon( 1, "D:\\workspaceIntelliJ\\IntelliJPlugin\\images\\DefaultAvatar.png" )
-						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label3"
 							"text": "text"
 							"icon": #SwingIcon0
 						} )
@@ -43,6 +38,7 @@ new FormModel {
 					"$alignLeft": true
 				} ) {
 					name: "panel1"
+					"preferredSize": new java.awt.Dimension( 100, 133 )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "okButton"
 						"text": "OK"
