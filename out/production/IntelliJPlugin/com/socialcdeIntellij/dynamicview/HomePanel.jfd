@@ -126,39 +126,14 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				"verticalScrollBarPolicy": 22
-				"preferredSize": new java.awt.Dimension( 446, 490 )
+				"preferredSize": new java.awt.Dimension( 450, 400 )
+				"horizontalScrollBarPolicy": 31
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
 					"gap": 5
 				} ) {
 					name: "panelService"
 					"background": new java.awt.Color( 255, 255, 255, 255 )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-						"alignment": 0
-						"hgap": 30
-						"vgap": 10
-					} ) {
-						name: "panelserviceDemo"
-						"background": new java.awt.Color( 255, 255, 255, 255 )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "lblImageService"
-							"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/Hide.png" )
-						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
-							"gap": 5
-						} ) {
-							name: "panel2"
-							"background": new java.awt.Color( 255, 255, 255, 255 )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblService"
-								"text": "Service"
-							} )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblStatus"
-								"text": "Status:"
-								"foreground": sfield java.awt.Color red
-							} )
-						} )
-					} )
+					"preferredSize": new java.awt.Dimension( 450, 400 )
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {

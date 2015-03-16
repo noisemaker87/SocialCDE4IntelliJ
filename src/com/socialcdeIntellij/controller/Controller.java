@@ -4,11 +4,9 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.socialcdeIntellij.dynamicview.*;
 import com.socialcdeIntellij.model.ProxyWrapper;
 import com.socialcdeIntellij.object.OperationProgressBar;
-import com.socialcdeIntellij.popup.ChangeAvatar;
 import com.socialcdeIntellij.shared.library.WUser;
 import com.socialcdeIntellij.staticview.*;
 import org.jdesktop.swingx.VerticalLayout;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
@@ -23,13 +21,13 @@ public class Controller {
     private static RegistrationPanel registrationPanel = new RegistrationPanel();
     private static LoginPanel loginPanel = new LoginPanel();
     private static ProfilePanel profilePanel = new ProfilePanel();
-    private static HomePanel homePanel = new HomePanel();
-    private static PeoplePanel peoplePanel = new PeoplePanel();
-    private static HomeTimelinePanel homeTimelinePanel = new HomeTimelinePanel();
-    private static IterationTimelinePanel iterationTimelinePanel = new IterationTimelinePanel();
-    private static InteractiveTimelinePanel interactiveTimelinePanel = new InteractiveTimelinePanel();
-    private static SettingPanel settingPanel = new SettingPanel();
-    private static UserTimelinePanel userTimelinePanel = new UserTimelinePanel();
+    private static HomePanel homePanel;
+    private static PeoplePanel peoplePanel;
+    private static HomeTimelinePanel homeTimelinePanel;
+    private static IterationTimelinePanel iterationTimelinePanel;
+    private static InteractiveTimelinePanel interactiveTimelinePanel;
+    private static SettingPanel settingPanel;
+    private static UserTimelinePanel userTimelinePanel;
 
     // attributes
     private static boolean flag = false;
@@ -63,12 +61,12 @@ public class Controller {
 //metodi cambio pannelli*************************************************************************************
     public static JPanel getCurrentPanel() {
         if (flag == false) {
-            /*setWindowName("Login");
+            setWindowName("Login");
             setWindow(getLoginPanel());
-            return getWindow();*/
+            //return getWindow();
 
-            setWindowName("Profile");
-            selectDynamicWindow(0);
+            //setWindowName("Profile");
+           // selectDynamicWindow(0);
 
             return getWindow();
         }
@@ -313,7 +311,7 @@ public class Controller {
             case 0://home profile
 
                 setDynamicPanelName("Home");
-
+                setHomePanel(new HomePanel());
                 setDynamicPanel(getHomePanel());
                 container.removeAll();
                 container.add(getProfilePanel());
@@ -327,7 +325,7 @@ public class Controller {
             case 1://settings
 
                 setDynamicPanelName("Settings");
-
+                setSettingPanel(new SettingPanel());
                 setDynamicPanel(getSettingPanel());
                 container.removeAll();
                 container.add(getProfilePanel());
@@ -341,7 +339,7 @@ public class Controller {
             case 2://people
 
                 setDynamicPanelName("People");
-
+                setPeoplePanel(new PeoplePanel());
                 setDynamicPanel(getPeoplePanel());
                 container.removeAll();
                 container.add(getProfilePanel());
@@ -355,7 +353,7 @@ public class Controller {
             case 3://home timeline
 
                 setDynamicPanelName("HomeTimeline");
-
+                setHomeTimelinePanel(new HomeTimelinePanel());
                 setDynamicPanel(getHomeTimelinePanel());
                 container.removeAll();
                 container.add(getProfilePanel());
@@ -369,7 +367,7 @@ public class Controller {
             case 4://iteration timeline
 
                 setDynamicPanelName("IterationTimeline");
-
+                setIterationTimelinePanel(new IterationTimelinePanel());
                 setDynamicPanel(getIterationTimelinePanel());
                 container.removeAll();
                 container.add(getProfilePanel());
@@ -383,7 +381,7 @@ public class Controller {
             case 5://interactive timeline
 
                 setDynamicPanelName("InteractiveTimeline");
-
+                setInteractiveTimelinePanel(new InteractiveTimelinePanel());
                 setDynamicPanel(getInteractiveTimelinePanel());
                 container.removeAll();
                 container.add(getProfilePanel());

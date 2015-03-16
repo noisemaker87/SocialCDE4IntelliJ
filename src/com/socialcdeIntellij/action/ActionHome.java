@@ -1,10 +1,15 @@
 package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
+import com.socialcdeIntellij.object.ImagesMod;
 import com.socialcdeIntellij.popup.ChangeAvatar;
 import com.socialcdeIntellij.popup.PopupSkill;
 
-
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 
 /**
@@ -34,9 +39,16 @@ public class ActionHome {
                 Controller.getWindow().revalidate();
                 break;
 
+            case "btnService":
+                PopupSkill popupSkill2 = new PopupSkill(Controller.getFrame());
+                popupSkill2.setVisible(true);
+                break;
+
             default:
                 break;
         }
     }
+
+
 
 }

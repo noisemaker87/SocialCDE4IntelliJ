@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -50,6 +51,7 @@ public class ImagesMod {
         Image image = ImageIO.read(stream);
         return image;
     }//prende immagine da stream
+
 
     public Image getBALOON(int width, int height) throws IOException {
         return resize((BufferedImage)get_ImageStream(PATH_BALOON), width, height);

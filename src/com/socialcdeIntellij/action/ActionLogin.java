@@ -206,7 +206,8 @@ public class ActionLogin {
 
 
                         Controller.setWindowName("Profile");
-                        Controller.setWindow(Controller.getProfilePanel());
+                       // Controller.setWindow(Controller.getProfilePanel());
+                        Controller.selectDynamicWindow(0);
                         Controller.getWindow().revalidate();
                         //clear(uiData);
 

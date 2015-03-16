@@ -5,13 +5,19 @@
 package com.socialcdeIntellij.dynamicview;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import javax.swing.*;
 import javax.swing.border.*;
 
 import com.socialcdeIntellij.action.ActionGeneral;
+import com.socialcdeIntellij.controller.Controller;
+import com.socialcdeIntellij.object.ButtonService;
 import com.socialcdeIntellij.object.ImagesMod;
+import com.socialcdeIntellij.shared.library.WService;
 import org.jdesktop.swingx.*;
 
 /**
@@ -20,15 +26,17 @@ import org.jdesktop.swingx.*;
 public class HomePanel extends JPanel {
     private ImagesMod im = new ImagesMod();
     private ActionGeneral listener = new ActionGeneral();
+    private ButtonService services;
 
     public HomePanel() {
         initComponents();
     }
 
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Pablo Rossi
-        panelInfoUser = new JPanel();
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-
+
+                // Generated using JFormDesigner Evaluation license - Pablo Rossi
+                panelInfoUser = new JPanel();
         lblAvatar = new JLabel();
         panelInfo = new JPanel();
         panelSettings = new JPanel();
@@ -61,10 +69,19 @@ public class HomePanel extends JPanel {
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
-            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0,
+                        0),
+                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog",
+                        java.awt.Font.BOLD, 12),
+                        java.awt.Color.red), getBorder())); addPropertyChangeListener(new
+                                                                                                      java.beans.PropertyChangeListener() {
+                                                                                                          public void propertyChange(java.beans.PropertyChangeEvent
+                                                                                                                                             e) {
+                                                                                                              if ("border".equals(e.getPropertyName()))
+                                                                                                                  throw new RuntimeException();
+                                                                                                          }
+                                                                                                      });
 
         setLayout(new VerticalLayout(10));
 
@@ -75,7 +92,24 @@ public class HomePanel extends JPanel {
             panelInfoUser.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 5));
 
             //---- lblAvatar ----
-            lblAvatar.setIcon(new ImageIcon(getClass().getResource("/images/Follow.png")));
+
+            Controller.setCurrentUser(Controller.getProxy().GetUser(
+                    Controller.getCurrentUser().Username,
+                    Controller.getCurrentUserPassword()));
+
+            if (Controller.getUsersAvatar().get(Controller.getCurrentUser().Username) == null)
+            {
+                Controller.getUsersAvatar().put(Controller.getCurrentUser().Username,
+                        getUserImage(Controller.getCurrentUser().Avatar));
+            }
+            try {
+                lblAvatar.setIcon(new ImageIcon(im.resize((BufferedImage)
+                        Controller.getUsersAvatar().get(Controller.getCurrentUser().Username), 75, 75)));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
             lblAvatar.setName("lblAvatar");
             panelInfoUser.add(lblAvatar);
 
@@ -90,7 +124,7 @@ public class HomePanel extends JPanel {
                     panelSettings.setLayout(new FlowLayout(FlowLayout.CENTER, 25, 5));
 
                     //---- lblNickname ----
-                    lblNickname.setText("nickname qui");
+                    lblNickname.setText(Controller.getCurrentUser().Username);
                     lblNickname.setHorizontalAlignment(SwingConstants.LEFT);
                     lblNickname.setName("lblNickname");
                     panelSettings.add(lblNickname);
@@ -101,13 +135,15 @@ public class HomePanel extends JPanel {
                         panelSubSettings.setLayout(new FlowLayout());
 
                         //---- lblSkills ----
-                        lblSkills.setIcon(new ImageIcon(getClass().getResource("/images/skills.png")));
+                        lblSkills.setIcon(new ImageIcon(getClass().getResource
+                                ("/images/skills.png")));
                         lblSkills.setName("lblSkills");
                         lblSkills.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                         panelSubSettings.add(lblSkills);
 
                         //---- lblSettings ----
-                        lblSettings.setIcon(new ImageIcon(getClass().getResource("/images/settings.png")));
+                        lblSettings.setIcon(new ImageIcon(getClass().getResource
+                                ("/images/settings.png")));
                         lblSettings.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                         lblSettings.setName("lblSettings");
                         panelSubSettings.add(lblSettings);
@@ -133,7 +169,8 @@ public class HomePanel extends JPanel {
                         panelPost.add(lblPosts);
 
                         //---- lblNumPost ----
-                        lblNumPost.setText("0");
+                        lblNumPost.setText(String.valueOf(Controller.getCurrentUser
+                                ().getStatuses()));
                         lblNumPost.setHorizontalAlignment(SwingConstants.CENTER);
                         lblNumPost.setName("lblNumPost");
                         panelPost.add(lblNumPost);
@@ -151,7 +188,8 @@ public class HomePanel extends JPanel {
                         panelfollowing.add(lblFollowing);
 
                         //---- lblNumFollowing ----
-                        lblNumFollowing.setText("1");
+                        lblNumFollowing.setText(String.valueOf(Controller.getCurrentUser
+                                ().getFollowings()));
                         lblNumFollowing.setHorizontalAlignment(SwingConstants.CENTER);
                         lblNumFollowing.setName("lblNumFollowing");
                         panelfollowing.add(lblNumFollowing);
@@ -173,7 +211,8 @@ public class HomePanel extends JPanel {
                         panelFollowers.add(lblFollowers);
 
                         //---- lblNumFollowers ----
-                        lblNumFollowers.setText("0");
+                        lblNumFollowers.setText(String.valueOf(Controller.getCurrentUser
+                                ().getFollowers()));
                         lblNumFollowers.setHorizontalAlignment(SwingConstants.CENTER);
                         lblNumFollowers.setName("lblNumFollowers");
                         panelFollowers.add(lblNumFollowers);
@@ -188,39 +227,56 @@ public class HomePanel extends JPanel {
 
         //======== scrollPane1 ========
         {
-            scrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-            scrollPane1.setPreferredSize(new Dimension(446, 490));
+            scrollPane1.setVerticalScrollBarPolicy
+                    (ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollPane1.setHorizontalScrollBarPolicy
+                    (ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+            scrollPane1.setPreferredSize(new Dimension(200, 400));
 
             //======== panelService ========
             {
                 panelService.setBackground(Color.white);
                 panelService.setLayout(new VerticalLayout(5));
 
-                //======== panelserviceDemo ========
-                {
-                    panelserviceDemo.setBackground(Color.white);
-                    panelserviceDemo.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 10));
+                final WService[] wService = Controller.getProxy().GetServices(
+                        Controller.getCurrentUser().Username,
+                        Controller.getCurrentUserPassword());
 
-                    //---- lblImageService ----
-                    lblImageService.setIcon(new ImageIcon(getClass().getResource("/images/Hide.png")));
-                    panelserviceDemo.add(lblImageService);
+                if (wService.length > 0) {
+                    for (int i = 0; i < wService.length; i++) {
+                        final int j = i;
+                        services = new ButtonService();
 
-                    //======== panel2 ========
-                    {
-                        panel2.setBackground(Color.white);
-                        panel2.setLayout(new VerticalLayout(5));
+                        services.put("ID_action", "btnService");
+                        services.setData("service", wService[j]);
+                        services.getButton().addActionListener(listener);
 
-                        //---- lblService ----
-                        lblService.setText("Service");
-                        panel2.add(lblService);
 
-                        //---- lblStatus ----
-                        lblStatus.setText("Status:");
-                        lblStatus.setForeground(Color.red);
-                        panel2.add(lblStatus);
+                        if(Controller.getServicesImage().get(wService[j].Name) == null)
+                        {
+                            Controller.getServicesImage().put(wService[j].Name,
+                                    getServiceImage(wService[j].Image));
+                        }
+
+                        services.setImage(Controller.getServicesImage().get(wService
+                                [j].Name));
+
+                        services.setServiceName(wService[i].Name);
+
+                        if (wService[i].Registered)
+                            services.setServiceStatus(true);
+                        else
+                            services.setServiceStatus(false);
+
+                        panelService.add(services);
+
                     }
-                    panelserviceDemo.add(panel2);
+                } else {
+                    JLabel lblNothing = new JLabel("There are no services available yet.\t\nPlease try again soon or contact your admin.");
+                    lblNothing.setVisible(true);
+                    panelService.add(lblNothing);
                 }
+
                 panelService.add(panelserviceDemo);
             }
             scrollPane1.setViewportView(panelService);
@@ -232,6 +288,7 @@ public class HomePanel extends JPanel {
         lblSkills.addMouseListener(listener);
         lblSettings.addMouseListener(listener);
         lblImageService.addMouseListener(listener);
+
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -263,6 +320,40 @@ public class HomePanel extends JPanel {
     private JLabel lblStatus;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
+    private Image getServiceImage(String link){
+        try {
+
+            return im.get_ImageStream(new URL(
+                    Controller.getPreferences("proxyRoot")
+                            + link));
+
+        } catch (MalformedURLException e) {
+
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private Image getUserImage(String link) {
+        try {
+            return im.resize((BufferedImage) im.get_ImageStream(new URL(Controller
+                    .getCurrentUser().Avatar)), 48, 48);
+        } catch (IOException e) {
+            try {
+                return im.getDEFAULT_AVATAR(48, 48);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        return null;
+    }
+
+
     public HashMap<String, Object> getData() {
         HashMap<String, Object> uiData = new HashMap<String, Object>();
         uiData.put("LabelAvatar", lblAvatar);
@@ -274,7 +365,7 @@ public class HomePanel extends JPanel {
         uiData.put("LabelNumFollowers",lblNumFollowers);
 
         //dinamico
-        uiData.put("LabelImageService", lblImageService);
+        uiData.put("ButtonService", services);
 
         return uiData;
     }

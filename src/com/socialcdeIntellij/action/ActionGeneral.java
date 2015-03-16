@@ -183,7 +183,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         break;
 
                     case "People":
-                        uiData = Controller.getHomePanel().getData();
+                       // uiData = Controller.getPeoplePanel().getData();
                         uiData.put("Event", event);
                         uiData.put("Event_type", event.getID());
                         uiData.put("ID_action", event.getComponent().getName());
