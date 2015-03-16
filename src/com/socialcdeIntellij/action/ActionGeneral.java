@@ -2,6 +2,7 @@ package com.socialcdeIntellij.action;
 
 
 import com.socialcdeIntellij.controller.Controller;
+import com.socialcdeIntellij.shared.library.WService;
 
 import javax.swing.event.EventListenerList;
 import java.awt.*;
@@ -15,6 +16,11 @@ import java.util.HashMap;
 public class ActionGeneral implements ActionListener, FocusListener , MouseListener{
 
     private HashMap<String, Object> uiData;
+
+    public void addService(WService service){
+        uiData = new HashMap<>();
+        uiData.put("service", service);
+    }
 
     public void actionPerformed(ActionEvent event) {
         switch (Controller.getWindowName()) {
@@ -123,7 +129,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                             break;
 
                         case "People":
-                            uiData = Controller.getHomePanel().getData();
+                            //uiData = Controller.getPeoplePanel().getData();
                             uiData.put("Event", event);
                             uiData.put("Event_type", event.getID());
                             uiData.put("ID_action", event.getComponent().getName());

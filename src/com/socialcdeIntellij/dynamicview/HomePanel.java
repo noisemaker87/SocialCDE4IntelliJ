@@ -12,7 +12,6 @@ import java.net.URL;
 import java.util.HashMap;
 import javax.swing.*;
 import javax.swing.border.*;
-
 import com.socialcdeIntellij.action.ActionGeneral;
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.object.ButtonService;
@@ -25,8 +24,11 @@ import org.jdesktop.swingx.*;
  */
 public class HomePanel extends JPanel {
     private ImagesMod im = new ImagesMod();
-    private ActionGeneral listener = new ActionGeneral();
+    private ActionGeneral listener = new ActionGeneral();;
     private ButtonService services;
+    private WService[] wService;
+    private WService wService2;
+    private HashMap<String, Object> uiData = new HashMap<String, Object>();
 
     public HomePanel() {
         initComponents();
@@ -57,7 +59,6 @@ public class HomePanel extends JPanel {
         scrollPane1 = new JScrollPane();
         panelService = new JPanel();
         panelserviceDemo = new JPanel();
-        lblImageService = new JLabel();
         panel2 = new JPanel();
         lblService = new JLabel();
         lblStatus = new JLabel();
@@ -74,14 +75,15 @@ public class HomePanel extends JPanel {
                         "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
                         javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog",
                         java.awt.Font.BOLD, 12),
-                        java.awt.Color.red), getBorder())); addPropertyChangeListener(new
-                                                                                                      java.beans.PropertyChangeListener() {
-                                                                                                          public void propertyChange(java.beans.PropertyChangeEvent
-                                                                                                                                             e) {
-                                                                                                              if ("border".equals(e.getPropertyName()))
-                                                                                                                  throw new RuntimeException();
-                                                                                                          }
-                                                                                                      });
+                        java.awt.Color.red), getBorder()));
+        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+
+            public void propertyChange(java.beans.PropertyChangeEvent
+                                               e) {
+                if ("border".equals(e.getPropertyName()))
+                    throw new RuntimeException();
+            }
+        });
 
         setLayout(new VerticalLayout(10));
 
@@ -238,7 +240,7 @@ public class HomePanel extends JPanel {
                 panelService.setBackground(Color.white);
                 panelService.setLayout(new VerticalLayout(5));
 
-                final WService[] wService = Controller.getProxy().GetServices(
+                wService = Controller.getProxy().GetServices(
                         Controller.getCurrentUser().Username,
                         Controller.getCurrentUserPassword());
 
@@ -247,8 +249,8 @@ public class HomePanel extends JPanel {
                         final int j = i;
                         services = new ButtonService();
 
-                        services.put("ID_action", "btnService");
-                        services.setData("service", wService[j]);
+
+                        //uiData.put("service", wService2);
                         services.getButton().addActionListener(listener);
 
 
@@ -270,9 +272,13 @@ public class HomePanel extends JPanel {
 
                         panelService.add(services);
 
+
+
                     }
+                    uiData.put("service", wService);
+
                 } else {
-                    JLabel lblNothing = new JLabel("There are no services available yet.\t\nPlease try again soon or contact your admin.");
+                    JLabel lblNothing = new JLabel("There are no services available yet.\nPlease try again soon or contact your admin.");
                     lblNothing.setVisible(true);
                     panelService.add(lblNothing);
                 }
@@ -287,7 +293,8 @@ public class HomePanel extends JPanel {
         lblAvatar.addMouseListener(listener);
         lblSkills.addMouseListener(listener);
         lblSettings.addMouseListener(listener);
-        lblImageService.addMouseListener(listener);
+
+
 
     }
 
@@ -314,7 +321,7 @@ public class HomePanel extends JPanel {
     private JScrollPane scrollPane1;
     private JPanel panelService;
     private JPanel panelserviceDemo;
-    private JLabel lblImageService;
+
     private JPanel panel2;
     private JLabel lblService;
     private JLabel lblStatus;
@@ -355,7 +362,7 @@ public class HomePanel extends JPanel {
 
 
     public HashMap<String, Object> getData() {
-        HashMap<String, Object> uiData = new HashMap<String, Object>();
+
         uiData.put("LabelAvatar", lblAvatar);
         uiData.put("LabelNickname", lblNickname);
         uiData.put("LabelImageSkills",lblSkills);
@@ -365,7 +372,7 @@ public class HomePanel extends JPanel {
         uiData.put("LabelNumFollowers",lblNumFollowers);
 
         //dinamico
-        uiData.put("ButtonService", services);
+        //uiData.put("ButtonService", services);
 
         return uiData;
     }

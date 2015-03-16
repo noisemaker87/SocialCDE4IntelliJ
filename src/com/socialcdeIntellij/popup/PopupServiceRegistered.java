@@ -5,14 +5,22 @@
 package com.socialcdeIntellij.popup;
 
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.*;
+
+import com.socialcdeIntellij.action.ActionGeneral;
+import com.socialcdeIntellij.shared.library.WService;
 import org.jdesktop.swingx.*;
 
 /**
  * @author Davide Rossi
  */
 public class PopupServiceRegistered extends JDialog {
+    private WService service;
+    private ArrayList<JButton> checkboxCreated;
+    private ActionGeneral listener;
+
     public PopupServiceRegistered(Frame owner) {
         super(owner);
         initComponents();
@@ -25,19 +33,19 @@ public class PopupServiceRegistered extends JDialog {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Davide Rossi
+        // Generated using JFormDesigner Evaluation license - Pablo Rossi
         dialogPane = new JPanel();
         contentPanel = new JPanel();
         panel1 = new JPanel();
         label1 = new JLabel();
-        label2 = new JLabel();
+        lblServiceName = new JLabel();
         panel2 = new JPanel();
-        label3 = new JLabel();
+        lblServiceImage = new JLabel();
         panel3 = new JPanel();
-        checkBox1 = new JCheckBox();
-        checkBox2 = new JCheckBox();
-        checkBox3 = new JCheckBox();
-        checkBox4 = new JCheckBox();
+        ckboxAvatar = new JCheckBox();
+        ckboxTimeline = new JCheckBox();
+        ckboxFollowing = new JCheckBox();
+        ckboxFollowers = new JCheckBox();
         buttonBar = new JPanel();
         btnUnsubscrive = new JButton();
         btnSave = new JButton();
@@ -71,20 +79,21 @@ public class PopupServiceRegistered extends JDialog {
                     label1.setText("Registration of service:");
                     panel1.add(label1);
 
-                    //---- label2 ----
-                    label2.setText("text");
-                    panel1.add(label2);
+                    //---- lblServiceName ----
+                    lblServiceName.setText("text");
+                    lblServiceName.setName("lblServiceName");
+                    panel1.add(lblServiceName);
                 }
                 contentPanel.add(panel1);
 
                 //======== panel2 ========
                 {
-                    panel2.setLayout(new FlowLayout());
+                    panel2.setLayout(new HorizontalLayout(20));
 
-                    //---- label3 ----
-                    label3.setText("imm servizio");
-                    label3.setIcon(UIManager.getIcon("OptionPane.errorIcon"));
-                    panel2.add(label3);
+                    //---- lblServiceImage ----
+                    lblServiceImage.setIcon(UIManager.getIcon("OptionPane.errorIcon"));
+                    lblServiceImage.setName("lblServiceImage");
+                    panel2.add(lblServiceImage);
 
                     //======== panel3 ========
                     {
@@ -94,27 +103,31 @@ public class PopupServiceRegistered extends JDialog {
                         ((GridBagLayout)panel3.getLayout()).columnWeights = new double[] {0.0, 1.0E-4};
                         ((GridBagLayout)panel3.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
-                        //---- checkBox1 ----
-                        checkBox1.setText("Show your avatar");
-                        panel3.add(checkBox1, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                        //---- ckboxAvatar ----
+                        ckboxAvatar.setText("Show your avatar");
+                        ckboxAvatar.setActionCommand("ckboxAvatar");
+                        panel3.add(ckboxAvatar, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 10, 0), 0, 0));
 
-                        //---- checkBox2 ----
-                        checkBox2.setText("Show your timeline");
-                        panel3.add(checkBox2, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+                        //---- ckboxTimeline ----
+                        ckboxTimeline.setText("Show your timeline");
+                        ckboxTimeline.setActionCommand("ckboxTimeline");
+                        panel3.add(ckboxTimeline, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 10, 0), 0, 0));
 
-                        //---- checkBox3 ----
-                        checkBox3.setText("Access your followings");
-                        panel3.add(checkBox3, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+                        //---- ckboxFollowing ----
+                        ckboxFollowing.setText("Access your followings");
+                        ckboxFollowing.setActionCommand("ckboxFollowings");
+                        panel3.add(ckboxFollowing, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 10, 0), 0, 0));
 
-                        //---- checkBox4 ----
-                        checkBox4.setText("Access your followers");
-                        panel3.add(checkBox4, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
+                        //---- ckboxFollowers ----
+                        ckboxFollowers.setText("Access your followers");
+                        ckboxFollowers.setActionCommand("ckboxFollowers");
+                        panel3.add(ckboxFollowers, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                             new Insets(0, 0, 0, 0), 0, 0));
                     }
@@ -133,6 +146,7 @@ public class PopupServiceRegistered extends JDialog {
 
                 //---- btnUnsubscrive ----
                 btnUnsubscrive.setText("Unsubscrive");
+                btnUnsubscrive.setActionCommand("btnUnsubscrive");
                 buttonBar.add(btnUnsubscrive, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 5), 0, 0));
@@ -140,6 +154,7 @@ public class PopupServiceRegistered extends JDialog {
                 //---- btnSave ----
                 btnSave.setText("Save");
                 btnSave.setPreferredSize(new Dimension(105, 26));
+                btnSave.setActionCommand("btnSave");
                 buttonBar.add(btnSave, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 0), 0, 0));
@@ -150,24 +165,62 @@ public class PopupServiceRegistered extends JDialog {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+/*
+        listener = new ActionGeneral();
+
+        btnSave.addActionListener(listener);
+        btnUnsubscrive.addActionListener(listener);
+        ckboxAvatar.addActionListener(listener);
+        ckboxTimeline.addActionListener(listener);
+        ckboxFollowing.addActionListener(listener);
+        ckboxFollowers.addActionListener(listener);*/
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Davide Rossi
+    // Generated using JFormDesigner Evaluation license - Pablo Rossi
     private JPanel dialogPane;
     private JPanel contentPanel;
     private JPanel panel1;
     private JLabel label1;
-    private JLabel label2;
+    private JLabel lblServiceName;
     private JPanel panel2;
-    private JLabel label3;
+    private JLabel lblServiceImage;
     private JPanel panel3;
-    private JCheckBox checkBox1;
-    private JCheckBox checkBox2;
-    private JCheckBox checkBox3;
-    private JCheckBox checkBox4;
+    private JCheckBox ckboxAvatar;
+    private JCheckBox ckboxTimeline;
+    private JCheckBox ckboxFollowing;
+    private JCheckBox ckboxFollowers;
     private JPanel buttonBar;
     private JButton btnUnsubscrive;
     private JButton btnSave;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+
+    public ArrayList<JButton> getCheckboxCreated() {
+        return checkboxCreated;
+    }
+
+    public void setCheckboxCreated(ArrayList<JButton> checkboxCreated) {
+        this.checkboxCreated = checkboxCreated;
+    }
+
+    public WService getService() {
+        return service;
+    }
+
+    public void setService(WService service) {
+        this.service = service;
+    }
+
+    public JButton getSaveButton(){return btnSave;}
+
+    public JButton getUnsubscriveButton(){return btnUnsubscrive;}
+
+    public void setImage(Image img){
+        lblServiceImage.setIcon(new ImageIcon(img));
+    }
+
+    public void setServiceName(String name){
+        lblServiceName.setText(name);
+    }
 }

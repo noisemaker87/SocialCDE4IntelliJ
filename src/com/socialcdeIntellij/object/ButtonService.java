@@ -13,8 +13,11 @@ import org.jdesktop.swingx.*;
  * @author Pablo Rossi
  */
 public class ButtonService extends JPanel {
+    int count = 0;
+
     public ButtonService() {
         initComponents();
+        count++;
     }
 
     private void initComponents() {
@@ -30,6 +33,12 @@ public class ButtonService extends JPanel {
         //======== this ========
         setBackground(Color.white);
 
+        // JFormDesigner evaluation mark
+        setBorder(new javax.swing.border.CompoundBorder(
+            new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
         setLayout(new HorizontalLayout(20));
 
@@ -117,4 +126,8 @@ public class ButtonService extends JPanel {
     }
 
     public JButton getButton(){return btnService;}
+
+    public int getCount(){return count;}
+
+    public void setCount(int count){this.count = count;}
 }

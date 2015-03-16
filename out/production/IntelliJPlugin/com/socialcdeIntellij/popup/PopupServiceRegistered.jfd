@@ -22,16 +22,19 @@ new FormModel {
 							"text": "Registration of service:"
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label2"
+							name: "lblServiceName"
 							"text": "text"
+							"name": "lblServiceName"
 						} )
 					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.HorizontalLayout ) {
+						"gap": 20
+					} ) {
 						name: "panel2"
 						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label3"
-							"text": "imm servizio"
+							name: "lblServiceImage"
 							"icon": new com.jformdesigner.model.SwingIcon( 2, "OptionPane.errorIcon" )
+							"name": "lblServiceImage"
 						} )
 						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 							"$columnSpecs": "0"
@@ -43,26 +46,30 @@ new FormModel {
 						} ) {
 							name: "panel3"
 							add( new FormComponent( "javax.swing.JCheckBox" ) {
-								name: "checkBox1"
+								name: "ckboxAvatar"
 								"text": "Show your avatar"
+								"actionCommand": "ckboxAvatar"
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 								"gridy": 1
 							} )
 							add( new FormComponent( "javax.swing.JCheckBox" ) {
-								name: "checkBox2"
+								name: "ckboxTimeline"
 								"text": "Show your timeline"
+								"actionCommand": "ckboxTimeline"
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 								"gridy": 2
 							} )
 							add( new FormComponent( "javax.swing.JCheckBox" ) {
-								name: "checkBox3"
+								name: "ckboxFollowing"
 								"text": "Access your followings"
+								"actionCommand": "ckboxFollowings"
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 								"gridy": 3
 							} )
 							add( new FormComponent( "javax.swing.JCheckBox" ) {
-								name: "checkBox4"
+								name: "ckboxFollowers"
 								"text": "Access your followers"
+								"actionCommand": "ckboxFollowers"
 							}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 								"gridy": 4
 							} )
@@ -82,6 +89,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "btnUnsubscrive"
 						"text": "Unsubscrive"
+						"actionCommand": "btnUnsubscrive"
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 						"gridx": 1
 						"gridy": 0
@@ -90,6 +98,7 @@ new FormModel {
 						name: "btnSave"
 						"text": "Save"
 						"preferredSize": new java.awt.Dimension( 105, 26 )
+						"actionCommand": "btnSave"
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 						"gridx": 2
 						"gridy": 0
