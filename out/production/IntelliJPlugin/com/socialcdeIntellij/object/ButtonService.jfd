@@ -8,6 +8,7 @@ new FormModel {
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
+			"name": "btnService"
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
 				"$columnCount": 1
 				"$rowCount": 1
@@ -16,7 +17,7 @@ new FormModel {
 			} ) {
 				name: "panel1"
 				"background": &Color0 new java.awt.Color( 255, 255, 255, 255 )
-				add( new FormComponent( "javax.swing.JButton" ) {
+				add( new FormComponent( "com.socialcdeIntellij.object.GeneralButton" ) {
 					name: "btnService"
 					"preferredSize": new java.awt.Dimension( 70, 70 )
 					"name": "btnService"

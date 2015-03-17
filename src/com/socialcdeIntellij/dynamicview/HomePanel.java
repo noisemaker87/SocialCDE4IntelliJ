@@ -28,7 +28,7 @@ public class HomePanel extends JPanel {
     private ButtonService services;
     private WService[] wService;
     private WService wService2;
-    private HashMap<String, Object> uiData = new HashMap<String, Object>();
+    private HashMap<String, Object> uiData= new HashMap<String, Object>();
 
     public HomePanel() {
         initComponents();
@@ -37,8 +37,8 @@ public class HomePanel extends JPanel {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-
 
-                // Generated using JFormDesigner Evaluation license - Pablo Rossi
-                panelInfoUser = new JPanel();
+        // Generated using JFormDesigner Evaluation license - Pablo Rossi
+        panelInfoUser = new JPanel();
         lblAvatar = new JLabel();
         panelInfo = new JPanel();
         panelSettings = new JPanel();
@@ -247,36 +247,41 @@ public class HomePanel extends JPanel {
                 if (wService.length > 0) {
                     for (int i = 0; i < wService.length; i++) {
                         final int j = i;
-                        services = new ButtonService();
+
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                services = new ButtonService();
+
+                                //services.setName("btnRegister");
+                                services.setwService(wService[j]);
+                                //services.addMouseListener(listener);
+
+                                services.getButton().setService(wService[j]);
+                                services.getButton().addActionListener(listener);
 
 
-                        //uiData.put("service", wService2);
-                        services.getButton().addActionListener(listener);
+                                if(Controller.getServicesImage().get(wService[j].Name) == null)
+                                {
+                                    Controller.getServicesImage().put(wService[j].Name,
+                                            getServiceImage(wService[j].Image));
+                                }
 
+                                services.setImage(Controller.getServicesImage().get(wService
+                                        [j].Name));
 
-                        if(Controller.getServicesImage().get(wService[j].Name) == null)
-                        {
-                            Controller.getServicesImage().put(wService[j].Name,
-                                    getServiceImage(wService[j].Image));
-                        }
+                                services.setServiceName(wService[j].Name);
 
-                        services.setImage(Controller.getServicesImage().get(wService
-                                [j].Name));
+                                if (wService[j].Registered)
+                                    services.setServiceStatus(true);
+                                else
+                                    services.setServiceStatus(false);
 
-                        services.setServiceName(wService[i].Name);
-
-                        if (wService[i].Registered)
-                            services.setServiceStatus(true);
-                        else
-                            services.setServiceStatus(false);
-
-                        panelService.add(services);
-
-
-
+                                panelService.add(services);
+                            }
+                        });
                     }
-                    uiData.put("service", wService);
-
+                    //uiData.put("service", wService);
                 } else {
                     JLabel lblNothing = new JLabel("There are no services available yet.\nPlease try again soon or contact your admin.");
                     lblNothing.setVisible(true);

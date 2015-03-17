@@ -7,24 +7,32 @@ package com.socialcdeIntellij.object;
 import java.awt.*;
 import javax.swing.*;
 import com.intellij.uiDesigner.core.*;
+import com.socialcdeIntellij.shared.library.WService;
 import org.jdesktop.swingx.*;
 
 /**
  * @author Pablo Rossi
  */
 public class ButtonService extends JPanel {
-    int count = 0;
+    WService wService = null;
+
+    public WService getwService() {
+        return wService;
+    }
+
+    public void setwService(WService wService) {
+        this.wService = wService;
+    }
 
     public ButtonService() {
         initComponents();
-        count++;
     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Pablo Rossi
         panel1 = new JPanel();
-        btnService = new JButton();
+        btnService = new GeneralButton();
         panel3 = new JPanel();
         panel2 = new JPanel();
         lblService = new JLabel();
@@ -32,6 +40,7 @@ public class ButtonService extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
+        setName("btnService");
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
@@ -97,7 +106,7 @@ public class ButtonService extends JPanel {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Pablo Rossi
     private JPanel panel1;
-    private JButton btnService;
+    private GeneralButton btnService;
     private JPanel panel3;
     private JPanel panel2;
     private JLabel lblService;
@@ -125,9 +134,7 @@ public class ButtonService extends JPanel {
 
     }
 
-    public JButton getButton(){return btnService;}
+    public GeneralButton getButton(){return btnService;}
 
-    public int getCount(){return count;}
 
-    public void setCount(int count){this.count = count;}
 }

@@ -1,6 +1,8 @@
 package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
+import com.socialcdeIntellij.object.ButtonService;
+import com.socialcdeIntellij.object.GeneralButton;
 import com.socialcdeIntellij.object.ImagesMod;
 import com.socialcdeIntellij.popup.ChangeAvatar;
 import com.socialcdeIntellij.popup.PopupService;
@@ -49,11 +51,9 @@ public class ActionHome {
             case "btnService":
                 if (Controller.getProxy().IsWebServiceRunning()) {
 
-                    WService[] serviceV = (WService[]) uiData.get("service");
-                    int count = 0; //uiData.get("");
+                    GeneralButton gb = (GeneralButton) uiData.get("Object");
+                    WService service = gb.getService();
 
-                    WService service = serviceV[count];
-                    System.out.println(service);
                 // if (service.Registered) {
 
                     PopupServiceRegistered serviceSetting = new PopupServiceRegistered(Controller.getFrame());

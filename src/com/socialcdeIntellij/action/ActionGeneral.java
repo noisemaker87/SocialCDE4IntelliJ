@@ -17,10 +17,6 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
 
     private HashMap<String, Object> uiData;
 
-    public void addService(WService service){
-        uiData = new HashMap<>();
-        uiData.put("service", service);
-    }
 
     public void actionPerformed(ActionEvent event) {
         switch (Controller.getWindowName()) {
@@ -56,12 +52,15 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                 switch (Controller.getDynamicPanelName()){
 
                     case "Home":
+
                         uiData = Controller.getHomePanel().getData();
                         uiData.put("Event", event);
                         uiData.put("Event_type", event.getID());
                         uiData.put("ID_action", event.getActionCommand());
+                        uiData.put("Object", event.getSource());
 
                         new ActionHome(uiData);
+
                         break;
 
                     case "People":
@@ -184,6 +183,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         uiData.put("Event", event);
                         uiData.put("Event_type", event.getID());
                         uiData.put("ID_action", event.getComponent().getName());
+                        uiData.put("Object", event.getComponent());
 
                         new ActionHome(uiData);
                         break;
