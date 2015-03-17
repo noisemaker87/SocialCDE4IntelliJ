@@ -1,23 +1,14 @@
 package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
-import com.socialcdeIntellij.object.ButtonService;
 import com.socialcdeIntellij.object.GeneralButton;
-import com.socialcdeIntellij.object.ImagesMod;
-import com.socialcdeIntellij.popup.ChangeAvatar;
-import com.socialcdeIntellij.popup.PopupService;
-import com.socialcdeIntellij.popup.PopupServiceRegistered;
-import com.socialcdeIntellij.popup.PopupSkill;
+import com.socialcdeIntellij.popup.*;
+import com.socialcdeIntellij.shared.library.WOAuthData;
 import com.socialcdeIntellij.shared.library.WService;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -54,80 +45,49 @@ public class ActionHome {
                     GeneralButton gb = (GeneralButton) uiData.get("Object");
                     WService service = gb.getService();
 
-                // if (service.Registered) {
+                    if (service.Registered) {
 
-                    PopupServiceRegistered serviceSetting = new PopupServiceRegistered(Controller.getFrame());
-                    serviceSetting.setVisible(true);
+                        final PopupServiceRegistered popupServiceRegistered = new PopupServiceRegistered(Controller.getFrame());
+                        popupServiceRegistered.setVisible(true);
 
-                    serviceSetting.setService(service);
-                    serviceSetting.setServiceName(service.Name);
-                    serviceSetting.setImage(Controller.getServicesImage().get(service.Name));
+                        popupServiceRegistered.setService(service);
+                        popupServiceRegistered.setServiceName(service.Name);
+                        popupServiceRegistered.setImage(Controller.getServicesImage().get(service.Name));
 
-                    serviceSetting.getUnsubscriveButton().addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-
-                            JOptionPane.showMessageDialog(Controller.getFrame(), "Are you sure you want to unsubscribe?"
-                                    , "SocialCDE message", JOptionPane.NO_OPTION);
-                        }
-                    });
-                }
-                       /* serviceSetting.setBtnUnsubscriveListener(new Listener() {
-
+                        popupServiceRegistered.getUnsubscriveButton().addActionListener(new ActionListener() {
                             @Override
-                            public void handleEvent(Event event) {
-                                MessageBox messageBox = new MessageBox(Controller
-                                        .getWindow().getShell(), SWT.ICON_WARNING
-                                        | SWT.YES | SWT.NO);
-                                messageBox
-                                        .setMessage("Are you sure you want to unsubscribe?");
-                                messageBox.setText("SocialCDEforEclipse Message");
-                                int response = messageBox.open();
+                            public void actionPerformed(ActionEvent e) {
 
-                                switch (response) {
-                                    case SWT.YES:
-                                        if (!Controller
-                                                .getProxy()
-                                                .DeleteRegistredService(
-                                                        Controller.getCurrentUser().Username,
-                                                        Controller
-                                                                .getCurrentUserPassword(),
-                                                        serviceSetting.getService().Id)) {
-                                            MessageBox messageBox2 = new MessageBox(
-                                                    Controller.getWindow().getShell(),
-                                                    SWT.ICON_ERROR | SWT.OK);
-                                            messageBox2
-                                                    .setMessage("Something was wrong, please try again.");
-                                            messageBox2
-                                                    .setText("SocialCDEforEclipse Message");
-                                            messageBox2.open();
-                                        }
-                                        break;
-                                    case SWT.NO:
-                                    default:
-                                        break;
+                                int response = JOptionPane.showConfirmDialog(Controller.getFrame(), "Are you sure you want to unsubscribe?",
+                                        "SocialCDE message", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                                if(response == JOptionPane.OK_OPTION){
+                                    if (!Controller.getProxy().DeleteRegistredService(Controller.getCurrentUser().Username,
+                                            Controller.getCurrentUserPassword(),
+                                            popupServiceRegistered.getService().Id)){
+                                        JOptionPane.showMessageDialog(Controller.getFrame(),"Something was wrong, please try again.",
+                                                "SocialCDE message",JOptionPane.ERROR_MESSAGE);
+                                        popupServiceRegistered.dispose();
+                                    }
+                                    else {
+                                        popupServiceRegistered.dispose();
+                                        Controller.selectDynamicWindow(0);
+                                        Controller.getWindow().revalidate();
+                                    }
                                 }
-                                serviceSetting.dispose(null);
 
-                                SquareButtonService.yCoordinateValue = 5;
-                                SquareButtonService.counterPosition = 0;
-
-                                Controller.selectDynamicWindow(0);
 
                             }
                         });
 
-                        serviceSetting.setBtnSaveListener(new Listener() {
-
+                        popupServiceRegistered.getSaveButton().addActionListener(new ActionListener() {
                             @Override
-                            public void handleEvent(Event event) {
-
-                                ArrayList<Button> btnCheckbox = serviceSetting
-                                        .getCheckboxCreated();
+                            public void actionPerformed(ActionEvent e) {
+                                ArrayList<JCheckBox> btnCheckbox = popupServiceRegistered.getCheckboxCreated();
 
                                 int counter = 0;
                                 for (int i = 0; i < btnCheckbox.size(); i++) {
-                                    if (btnCheckbox.get(i).getSelection()) {
+                                    if (btnCheckbox.get(i).isSelected()) {
                                         counter += 1;
                                     }
                                 }
@@ -135,9 +95,8 @@ public class ActionHome {
                                 String[] strFeature = new String[counter];
                                 counter = 0;
                                 for (int i = 0; i < btnCheckbox.size(); i++) {
-                                    if (btnCheckbox.get(i).getSelection()) {
-                                        strFeature[counter] = btnCheckbox.get(i)
-                                                .getData("FeatureName").toString();
+                                    if (btnCheckbox.get(i).isSelected()) {
+                                        strFeature[counter] = btnCheckbox.get(i).getName();
                                         counter += 1;
                                     }
                                 }
@@ -145,68 +104,26 @@ public class ActionHome {
                                 if (Controller.getProxy().UpdateChosenFeatures(
                                         Controller.getCurrentUser().Username,
                                         Controller.getCurrentUserPassword(),
-                                        serviceSetting.getService().Id, strFeature)) {
-                                    serviceSetting.dispose(null);
+                                        popupServiceRegistered.getService().Id, strFeature)) {
+                                    popupServiceRegistered.dispose();
                                 } else {
-                                    MessageBox messageBox2 = new MessageBox(
-                                            Controller.getWindow().getShell(),
-                                            SWT.ICON_ERROR | SWT.OK);
-                                    messageBox2
-                                            .setMessage("Something was wrong, please try again.");
-                                    messageBox2
-                                            .setText("SocialCDEforEclipse Message");
-                                    messageBox2.open();
+                                    JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                                            "SocialCDE message", JOptionPane.ERROR_MESSAGE);
+                                    popupServiceRegistered.dispose();
 
                                 }
                             }
                         });
-
-
-
-                    } else {
-
+                    }
+                    else {
                         if (service.RequireOAuth) {
-
+                            final PinWindow pinWindow = new PinWindow(Controller.getFrame());
                             WOAuthData oauthData = Controller.getProxy()
                                     .GetOAuthData(
                                             Controller.getCurrentUser().Username,
                                             Controller.getCurrentUserPassword(),
                                             service.Id);
-						*//*System.out.println("OauthData access secret "
-								+ oauthData.AccessSecret + " token "
-								+ oauthData.AccessToken + " oauth link "
-								+ oauthData.AuthorizationLink + " id "
-								+ service.Id);*//*
-                            pinWindow
-                                    .setxCoordinate(Controller.getWindow()
-                                            .toDisplay(
-                                                    Controller.getWindow()
-                                                            .getLocation().x,
-                                                    Controller.getWindow()
-                                                            .getLocation().y).x);
-                            pinWindow
-                                    .setyCoordinate(Controller.getWindow()
-                                            .toDisplay(
-                                                    Controller.getWindow()
-                                                            .getLocation().x,
-                                                    Controller.getWindow()
-                                                            .getLocation().y).y);
-                            pinWindow
-                                    .setxCoordinateWithOffset(Controller
-                                            .getWindow().toDisplay(
-                                                    Controller.getWindow()
-                                                            .getLocation().x,
-                                                    Controller.getWindow()
-                                                            .getLocation().y).x- 30);
-                            pinWindow
-                                    .setyCoordinateWithOffset(Controller
-                                            .getWindow().toDisplay(
-                                                    Controller.getWindow()
-                                                            .getLocation().x,
-                                                    Controller.getWindow()
-                                                            .getLocation().y).y
-                                            + (Controller.getWindow().getBounds().height - 200)
-                                            / 2);
+
                             pinWindow.setService(service);
                             pinWindow.setOauthData(oauthData);
 
@@ -215,27 +132,22 @@ public class ActionHome {
 
                             Controller.temporaryInformation.put("Service", service);
 
-                            pinWindow.setOkListener(new Listener() {
-
+                            pinWindow.getBtnOk().addActionListener(new ActionListener() {
                                 @Override
-                                public void handleEvent(Event event) {
-
-                                    ServiceOkClick();
-
-                                }
-                            });
-                            pinWindow.setCancelListener(new Listener() {
-
-                                @Override
-                                public void handleEvent(Event event) {
-                                    // TODO Auto-generated method stub
-                                    ServiceCancelClick();
+                                public void actionPerformed(ActionEvent e) {
+                                   // ServiceOkClick();
                                 }
                             });
 
-                            pinWindow.inizialize(Controller.getWindow());
+                            pinWindow.getBtnCancel().addActionListener(new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    //ServiceCancelClick();
+                                }
+                            });
 
-                            try {
+
+                            /*try {
                                 PlatformUI
                                         .getWorkbench()
                                         .getActiveWorkbenchWindow()
@@ -245,264 +157,51 @@ public class ActionHome {
                             } catch (PartInitException e1) {
 
                                 e1.printStackTrace();
-                            }
+                            }*/
+                        }
+                        else if(service.RequireTFSAuthentication) {
 
-
-                        } else if (service.RequireTFSAuthentication) {
-                            final TFSLogin tfsPanel = new TFSLogin();
-                            tfsPanel.setxCoordinate(Controller.getWindow()
-                                    .toDisplay(
-                                            Controller.getWindow().getLocation().x,
-                                            Controller.getWindow().getLocation().y).x);
-                            tfsPanel.setyCoordinate(Controller.getWindow()
-                                    .toDisplay(
-                                            Controller.getWindow().getLocation().x,
-                                            Controller.getWindow().getLocation().y).y);
-                            tfsPanel.setxCoordinateWithOffset(Controller
-                                    .getWindow().toDisplay(
-                                            Controller.getWindow().getLocation().x,
-                                            Controller.getWindow().getLocation().y).x - 30 );
-                            tfsPanel.setyCoordinateWithOffset(Controller
-                                    .getWindow().toDisplay(
-                                            Controller.getWindow().getLocation().x,
-                                            Controller.getWindow().getLocation().y).y
-                                    + (Controller.getWindow().getBounds().height - 200)
-                                    / 2);
+                            final TFSLogin tfsPanel = new TFSLogin(Controller.getFrame());
                             tfsPanel.setService(service);
-                            tfsPanel.setOkListener(new Listener() {
 
+                            tfsPanel.getOkButton().addActionListener(new ActionListener() {
                                 @Override
-                                public void handleEvent(Event event) {
-                                    // TODO Auto-generated method stub
-                                    HashMap<String, Object> tfsData = tfsPanel
-                                            .getData();
-								*//*System.out.println("Domain "
-										+ tfsData.get("textDomain").toString());
-								System.out.println("Username "
-										+ ((Text) tfsData.get("textUsername"))
-												.getText());
-								System.out.println("Password "
-										+ ((Text) tfsData.get("textPassword"))
-												.getText());*//*
+                                public void actionPerformed(ActionEvent e) {
+                                    HashMap<String, Object> tfsData = tfsPanel.getData();
 
                                     if (Controller.getProxy().RecordService(
                                             Controller.getCurrentUser().Username,
                                             Controller.getCurrentUserPassword(),
                                             tfsPanel.getService().Id,
-                                            ((Text) tfsData.get("textUsername"))
+                                            ((JTextField) tfsData.get("textUsername"))
                                                     .getText(),
-                                            ((Text) tfsData.get("textPassword"))
+                                            ((JTextField) tfsData.get("textPassword"))
                                                     .getText(),
                                             tfsData.get("textDomain").toString())) {
-                                        tfsPanel.dispose(null);
+                                        tfsPanel.dispose();
                                         Controller.selectDynamicWindow(0);
 
-                                        final SettingServicePanel serviceSetting = new SettingServicePanel();
-                                        serviceSetting
-                                                .setxCoordinate(Controller
-                                                        .getWindow()
-                                                        .toDisplay(
-                                                                Controller
-                                                                        .getWindow()
-                                                                        .getLocation().x,
-                                                                Controller
-                                                                        .getWindow()
-                                                                        .getLocation().y).x);
-                                        serviceSetting
-                                                .setyCoordinate(Controller
-                                                        .getWindow()
-                                                        .toDisplay(
-                                                                Controller
-                                                                        .getWindow()
-                                                                        .getLocation().x,
-                                                                Controller
-                                                                        .getWindow()
-                                                                        .getLocation().y).y);
-                                        serviceSetting
-                                                .setxCoordinateWithOffset(Controller
-                                                        .getWindow()
-                                                        .toDisplay(
-                                                                Controller
-                                                                        .getWindow()
-                                                                        .getLocation().x,
-                                                                Controller
-                                                                        .getWindow()
-                                                                        .getLocation().y).x - 30);
-                                        serviceSetting
-                                                .setyCoordinateWithOffset(Controller
-                                                        .getWindow()
-                                                        .toDisplay(
-                                                                Controller
-                                                                        .getWindow()
-                                                                        .getLocation().x,
-                                                                Controller
-                                                                        .getWindow()
-                                                                        .getLocation().y).y
-                                                        + (Controller.getWindow()
-                                                        .getBounds().height - 200)
-                                                        / 2);
-                                        serviceSetting.setSelectAllItems(true);
-                                        serviceSetting.setService(tfsPanel
-                                                .getService());
-                                        serviceSetting
-                                                .setBtnUnsubscriveListener(new Listener() {
-
-                                                    @Override
-                                                    public void handleEvent(
-                                                            Event event) {
-                                                        MessageBox messageBox = new MessageBox(
-                                                                Controller
-                                                                        .getWindow()
-                                                                        .getShell(),
-                                                                SWT.ICON_WARNING
-                                                                        | SWT.YES
-                                                                        | SWT.NO);
-                                                        messageBox
-                                                                .setMessage("Are you sure you want to unsubscribe?");
-                                                        messageBox
-                                                                .setText("SocialCDEforEclipse Message");
-                                                        int response = messageBox
-                                                                .open();
-
-                                                        switch (response) {
-                                                            case SWT.YES:
-                                                                if (!Controller
-                                                                        .getProxy()
-                                                                        .DeleteRegistredService(
-                                                                                Controller
-                                                                                        .getCurrentUser().Username,
-                                                                                Controller
-                                                                                        .getCurrentUserPassword(),
-                                                                                serviceSetting
-                                                                                        .getService().Id)) {
-                                                                    MessageBox messageBox2 = new MessageBox(
-                                                                            Controller
-                                                                                    .getWindow()
-                                                                                    .getShell(),
-                                                                            SWT.ICON_ERROR
-                                                                                    | SWT.OK);
-                                                                    messageBox2
-                                                                            .setMessage("Something was wrong, please try again.");
-                                                                    messageBox2
-                                                                            .setText("SocialCDEforEclipse Message");
-                                                                    messageBox2.open();
-                                                                }
-                                                                break;
-                                                            case SWT.NO:
-                                                            default:
-                                                                break;
-                                                        }
-                                                        serviceSetting
-                                                                .dispose(null);
-
-                                                        SquareButtonService.yCoordinateValue = 5;
-                                                        SquareButtonService.counterPosition = 0;
-
-                                                        Controller
-                                                                .selectDynamicWindow(0);
-
-                                                    }
-                                                });
-
-                                        serviceSetting
-                                                .setBtnSaveListener(new Listener() {
-
-                                                    @Override
-                                                    public void handleEvent(
-                                                            Event event) {
-
-                                                        ArrayList<Button> btnCheckbox = serviceSetting
-                                                                .getCheckboxCreated();
-
-                                                        int counter = 0;
-                                                        for (int i = 0; i < btnCheckbox
-                                                                .size(); i++) {
-                                                            if (btnCheckbox.get(i)
-                                                                    .getSelection()) {
-                                                                counter += 1;
-                                                            }
-                                                        }
-
-                                                        String[] strFeature = new String[counter];
-                                                        counter = 0;
-                                                        for (int i = 0; i < btnCheckbox
-                                                                .size(); i++) {
-                                                            if (btnCheckbox.get(i)
-                                                                    .getSelection()) {
-                                                                strFeature[counter] = btnCheckbox
-                                                                        .get(i)
-                                                                        .getData(
-                                                                                "FeatureName")
-                                                                        .toString();
-                                                                counter += 1;
-                                                            }
-                                                        }
-
-                                                        if (Controller
-                                                                .getProxy()
-                                                                .UpdateChosenFeatures(
-                                                                        Controller
-                                                                                .getCurrentUser().Username,
-                                                                        Controller
-                                                                                .getCurrentUserPassword(),
-                                                                        serviceSetting
-                                                                                .getService().Id,
-                                                                        strFeature)) {
-                                                            serviceSetting
-                                                                    .dispose(null);
-                                                        } else {
-                                                            MessageBox messageBox2 = new MessageBox(
-                                                                    Controller
-                                                                            .getWindow()
-                                                                            .getShell(),
-                                                                    SWT.ICON_ERROR
-                                                                            | SWT.OK);
-                                                            messageBox2
-                                                                    .setMessage("Something was wrong, please try again.");
-                                                            messageBox2
-                                                                    .setText("SocialCDEforEclipse Message");
-                                                            messageBox2.open();
-
-                                                        }
-                                                    }
-                                                });
-
-                                        serviceSetting.inizialize(Controller
-                                                .getWindow());
                                     } else {
-                                        MessageBox messageBox2 = new MessageBox(
-                                                Controller.getWindow().getShell(),
-                                                SWT.ICON_ERROR | SWT.OK);
-                                        messageBox2
-                                                .setMessage("Something was wrong, please try again.");
-                                        messageBox2
-                                                .setText("SocialCDEforEclipse Message");
-                                        messageBox2.open();
+                                        JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                                                "SocialCDE message", JOptionPane.ERROR_MESSAGE);
+                                        tfsPanel.dispose();
 
                                     }
 
                                 }
-                            });
-                            tfsPanel.setCancelListener(new Listener() {
 
-                                @Override
-                                public void handleEvent(Event event) {
-                                    tfsPanel.dispose(null);
-                                }
+
                             });
-                            tfsPanel.inizialize(Controller.getWindow());
+
                         }
-                    }
 
+
+                    }
                 }
-                else
-                {
+               /* else {
                     Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
                 }*/
 
-
-
-               // }
                 break;
             default:
                 break;

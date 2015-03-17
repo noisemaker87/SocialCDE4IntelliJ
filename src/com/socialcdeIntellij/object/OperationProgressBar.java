@@ -115,7 +115,7 @@ public class OperationProgressBar extends JPanel  {
 
                     if(stop == 1) {
                         setFlag(true);
-                        
+
                         //System.out.println("qui invece "+getFlag());
                         //progressOpBar.setValue(0);
                        // thread.interrupt();

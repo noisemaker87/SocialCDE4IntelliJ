@@ -6,10 +6,13 @@ package com.socialcdeIntellij.popup;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.*;
 import javax.swing.border.*;
 
 import com.socialcdeIntellij.action.ActionGeneral;
+import com.socialcdeIntellij.controller.Controller;
+import com.socialcdeIntellij.shared.library.WFeature;
 import com.socialcdeIntellij.shared.library.WService;
 import org.jdesktop.swingx.*;
 
@@ -18,8 +21,18 @@ import org.jdesktop.swingx.*;
  */
 public class PopupServiceRegistered extends JDialog {
     private WService service;
-    private ArrayList<JButton> checkboxCreated;
+    private ArrayList<JCheckBox> checkboxCreated;
     private ActionGeneral listener;
+    private HashMap<String, Object> uiData = new HashMap<String, Object>();
+    boolean selectAllItems;
+
+    public boolean isSelectAllItems() {
+        return selectAllItems;
+    }
+
+    public void setSelectAllItems(boolean selectAllItems) {
+        this.selectAllItems = selectAllItems;
+    }
 
     public PopupServiceRegistered(Frame owner) {
         super(owner);
@@ -97,13 +110,33 @@ public class PopupServiceRegistered extends JDialog {
 
                     //======== panel3 ========
                     {
-                        panel3.setLayout(new GridBagLayout());
-                        ((GridBagLayout)panel3.getLayout()).columnWidths = new int[] {0, 0};
-                        ((GridBagLayout)panel3.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0};
-                        ((GridBagLayout)panel3.getLayout()).columnWeights = new double[] {0.0, 1.0E-4};
-                        ((GridBagLayout)panel3.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+                        panel3.setLayout(new VerticalLayout(10));
+                        //panel3.g
 
-                        //---- ckboxAvatar ----
+                        WFeature[] featuresService = Controller.getProxy().GetChosenFeatures(
+                                Controller.getCurrentUser().Username,
+                                Controller.getCurrentUserPassword(), service.Id);
+
+                        checkboxCreated = new ArrayList<JCheckBox>();
+
+                        for (int i = 0; i < featuresService.length; i++) {
+
+                            JCheckBox featureService = new JCheckBox();
+                            featureService.setText(featuresService[i].Description);
+                            setData("FeatureName", featuresService[i].Name);
+                            featureService.setActionCommand(featuresService[i].Name);
+                            if (featuresService[i].IsChosen) {
+                                featureService.setSelected(true);
+
+                            }
+                            checkboxCreated.add(featureService);
+                            panel3.add(featureService);
+
+                        }
+
+
+
+                        /*//---- ckboxAvatar ----
                         ckboxAvatar.setText("Show your avatar");
                         ckboxAvatar.setActionCommand("ckboxAvatar");
                         panel3.add(ckboxAvatar, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
@@ -129,7 +162,7 @@ public class PopupServiceRegistered extends JDialog {
                         ckboxFollowers.setActionCommand("ckboxFollowers");
                         panel3.add(ckboxFollowers, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
                             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                            new Insets(0, 0, 0, 0), 0, 0));
+                            new Insets(0, 0, 0, 0), 0, 0));*/
                     }
                     panel2.add(panel3);
                 }
@@ -196,11 +229,11 @@ public class PopupServiceRegistered extends JDialog {
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 
-    public ArrayList<JButton> getCheckboxCreated() {
+    public ArrayList<JCheckBox> getCheckboxCreated() {
         return checkboxCreated;
     }
 
-    public void setCheckboxCreated(ArrayList<JButton> checkboxCreated) {
+    public void setCheckboxCreated(ArrayList<JCheckBox> checkboxCreated) {
         this.checkboxCreated = checkboxCreated;
     }
 
@@ -222,5 +255,14 @@ public class PopupServiceRegistered extends JDialog {
 
     public void setServiceName(String name){
         lblServiceName.setText(name);
+    }
+
+    public HashMap<String, Object> getData() {
+
+        return uiData;
+    }
+
+    public void setData(String name, Object object){
+        getData().put(name, object);
     }
 }

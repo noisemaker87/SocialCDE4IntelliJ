@@ -7,8 +7,9 @@ new FormModel {
 			name: "this"
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
+				"preferredSize": new java.awt.Dimension( 450, 640 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
-					"gap": 2
+					"gap": 10
 				} ) {
 					name: "panelPeople"
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
@@ -18,59 +19,9 @@ new FormModel {
 							"text": "Suggestions"
 							"font": &Font0 new java.awt.Font( "Dialog", 1, 18 )
 						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-							"alignment": 0
-							"hgap": 15
-						} ) {
-							name: "User1"
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblImgUser"
-								"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 0, "/images/DefaultAvatar.png" )
-							} )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblNickUser"
-								"text": "nickname user"
-							} )
-							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
-								"hgap": 10
-							} ) {
-								name: "panel2"
-								"preferredSize": &Dimension0 new java.awt.Dimension( 100, 32 )
-								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "lblOther"
-									"icon": &SwingIcon1 new com.jformdesigner.model.SwingIcon( 0, "/images/Toolbar/Next.png" )
-									"horizontalAlignment": 4
-								}, new FormLayoutConstraints( class java.lang.String ) {
-									"value": "Center"
-								} )
-							} )
-						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-							"alignment": 0
-							"hgap": 15
-						} ) {
-							name: "User5"
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblImgUser5"
-								"icon": #SwingIcon0
-							} )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblNickUser5"
-								"text": "nickname user"
-							} )
-							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
-								"hgap": 10
-							} ) {
-								name: "panel10"
-								"preferredSize": #Dimension0
-								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "lblOther5"
-									"icon": #SwingIcon1
-									"horizontalAlignment": 4
-								}, new FormLayoutConstraints( class java.lang.String ) {
-									"value": "Center"
-								} )
-							} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lblTxtSuggestions"
+							"text": "We have no suggestion for you.\n\nPlease try again."
 						} )
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
@@ -80,32 +31,9 @@ new FormModel {
 							"text": "Followings"
 							"font": #Font0
 						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-							"alignment": 0
-							"hgap": 15
-						} ) {
-							name: "User6"
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblImgUser6"
-								"icon": #SwingIcon0
-							} )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblNickUser6"
-								"text": "nickname user"
-							} )
-							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
-								"hgap": 10
-							} ) {
-								name: "panel14"
-								"preferredSize": #Dimension0
-								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "lblOther6"
-									"icon": #SwingIcon1
-									"horizontalAlignment": 4
-								}, new FormLayoutConstraints( class java.lang.String ) {
-									"value": "Center"
-								} )
-							} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lblTxtSFollowings"
+							"text": "You are following no one"
 						} )
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
@@ -115,32 +43,9 @@ new FormModel {
 							"text": "Followers"
 							"font": #Font0
 						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-							"alignment": 0
-							"hgap": 15
-						} ) {
-							name: "User7"
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblImgUser7"
-								"icon": #SwingIcon0
-							} )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblNickUser7"
-								"text": "nickname user"
-							} )
-							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
-								"hgap": 10
-							} ) {
-								name: "panel15"
-								"preferredSize": #Dimension0
-								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "lblOther7"
-									"icon": #SwingIcon1
-									"horizontalAlignment": 4
-								}, new FormLayoutConstraints( class java.lang.String ) {
-									"value": "Center"
-								} )
-							} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lblTxtFollowers"
+							"text": "No one is following you"
 						} )
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
@@ -150,32 +55,9 @@ new FormModel {
 							"text": "Hidden"
 							"font": #Font0
 						} )
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
-							"alignment": 0
-							"hgap": 15
-						} ) {
-							name: "User8"
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblImgUser8"
-								"icon": #SwingIcon0
-							} )
-							add( new FormComponent( "javax.swing.JLabel" ) {
-								name: "lblNickUser8"
-								"text": "nickname user"
-							} )
-							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
-								"hgap": 10
-							} ) {
-								name: "panel16"
-								"preferredSize": #Dimension0
-								add( new FormComponent( "javax.swing.JLabel" ) {
-									name: "lblOther8"
-									"icon": #SwingIcon1
-									"horizontalAlignment": 4
-								}, new FormLayoutConstraints( class java.lang.String ) {
-									"value": "Center"
-								} )
-							} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "lblTxtHidden"
+							"text": "You have hidden no one"
 						} )
 					} )
 				} )
