@@ -1,7 +1,17 @@
 package com.socialcdeIntellij.action;
 
+import com.socialcdeIntellij.controller.Controller;
+import com.socialcdeIntellij.object.CustomTextArea;
+import com.socialcdeIntellij.object.ImagesMod;
+import com.socialcdeIntellij.shared.library.WPost;
 import com.socialcdeIntellij.shared.library.WUser;
+import org.jdesktop.swingx.HorizontalLayout;
+import org.jdesktop.swingx.VerticalLayout;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
@@ -15,15 +25,105 @@ public class ActionHomeTimeline {
     private static long lastId;
     private WUser userSelected;
     private WUser[] userCategory;
+    ImagesMod im = new ImagesMod();
 
 
-    public ActionHomeTimeline(HashMap<String, Object> uiData) {
+    public ActionHomeTimeline(final HashMap<String, Object> uiData) {
         String widgetName = uiData.get("ID_action").toString();
         int type = (int) uiData.get("Event_type");
        // Event event = (Event) uiData.get("Event");
         final ActionGeneral listener = new ActionGeneral();
 
         switch (widgetName) {
+
+            case "btnSendMessage":
+                if(Controller.getProxy().IsWebServiceRunning())
+                {
+                    String userMessage = null;
+
+                    if (!InterceptingFilter.verifyText(((CustomTextArea) uiData.get("TextMessage")).getText())) {
+                        JOptionPane.showMessageDialog(Controller.getFrame(), "The message is empty, please try again.",
+                                "SocialCDE message", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        userMessage = ((CustomTextArea) uiData.get("TextMessage")).getText();
+                        ((CustomTextArea) uiData.get("TextMessage")).setText("");
+                        if (!Controller.getProxy().Post(
+                                Controller.getCurrentUser().Username,
+                                Controller.getCurrentUserPassword(), userMessage)) {
+                            JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                                    "SocialCDE message", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            uiData.put("alert", "");
+
+                            WPost[]	homeTimelinePost = Controller.getProxy().
+                                    GetUserTimeline(Controller.getCurrentUser().Username,
+                                            Controller.getCurrentUserPassword(), Controller.getCurrentUser().Username);
+
+                            JPanel panel = new JPanel(new HorizontalLayout(10));
+                            panel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
+                            panel.setBackground(Color.WHITE);
+                            JPanel pnl2 = new JPanel(new VerticalLayout(10));
+                            pnl2.setBackground(Color.WHITE);
+
+                            if(Controller.getUsersAvatar().get(Controller.getCurrentUser().Username) == null)
+                            {
+                                Controller.getUsersAvatar().put(Controller.getCurrentUser().Username, im.getUserImage(Controller.getCurrentUser().Avatar));
+                            }
+
+                            JLabel labelUserAvatar = new JLabel();
+                            try {
+                                labelUserAvatar.setIcon(new ImageIcon(im.resize((BufferedImage) Controller.getUsersAvatar().get(Controller.getCurrentUser().Username),75,75)));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            panel.add(labelUserAvatar);
+
+                            JLabel username = new JLabel();
+                            username.setText(Controller.getCurrentUser().Username);
+                            username.setFont(new Font("Calibri", Font.BOLD, 15));
+                            pnl2.add(username);
+
+                            JTextPane message = new JTextPane();
+                            message.setContentType("text/html");
+                            message.setEditable(false);
+                            message.setBackground(Color.WHITE);
+                            message.setText(userMessage);
+                            pnl2.add(message);
+
+
+                            JLabel messageDate = new JLabel();
+                            messageDate.setText("About one minutes ago from SocialTFS");
+                            messageDate.setFont(new Font("Calibri", Font.ITALIC, 8));
+                            pnl2.add(messageDate);
+
+                            panel.add(pnl2);
+
+
+                            Controller.selectDynamicWindow(3);
+
+                            SwingUtilities.invokeLater(new Runnable()
+                            {
+                                @Override
+                                public void run()
+                                {
+                                    JScrollPane jsp = ((JScrollPane) uiData.get("Scroll"));
+                                    jsp.getVerticalScrollBar().setValue(0);
+                                }
+                            });
+
+                            Controller.getWindow().revalidate();
+
+
+                           /* ((Composite) uiData.get("userPostMaster")).redraw();
+                            ((Composite) uiData.get("userPostMaster")).layout();*/
+                        }
+                    }
+                }
+                /*else
+                {
+                    Controller.openConnectionLostPanel("Connection Lost!  \n You will be redirected to Login page.");
+                }*/
+                //break;
 
             /*case "usernameLink":
                 if(Controller.getProxy().IsWebServiceRunning())
@@ -452,124 +552,8 @@ public class ActionHomeTimeline {
                 {
                     Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
                 }
-                break;
+                break;*/
 
-            case "btnSendMessage":
-                if(Controller.getProxy().IsWebServiceRunning())
-                {
-                    String userMessage = null;
-
-                    if (!InterceptingFilter.verifyText(((Text) uiData
-                            .get("textMessage")).getText())) {
-                        uiData.put("alert", "message empty");
-                        MessageBox messageBox2 = new MessageBox(Controller.getWindow()
-                                .getShell(), SWT.ICON_ERROR | SWT.OK);
-                        messageBox2
-                                .setMessage("The message is empty, please try again.");
-                        messageBox2.setText("SocialCDEforEclipse Message");
-                        messageBox2.open();
-                    } else {
-                        userMessage = ((Text) uiData.get("textMessage")).getText();
-                        ((Text) uiData.get("textMessage")).setText("");
-                        if (!Controller.getProxy().Post(
-                                Controller.getCurrentUser().Username,
-                                Controller.getCurrentUserPassword(), userMessage)) {
-                            uiData.put("alert", "connection problem");
-                            MessageBox messageBox2 = new MessageBox(Controller
-                                    .getWindow().getShell(), SWT.ICON_ERROR | SWT.OK);
-                            messageBox2
-                                    .setMessage("Something was wrong, please try again.");
-                            messageBox2.setText("SocialCDEforEclipse Message");
-                            messageBox2.open();
-                        } else {
-                            uiData.put("alert", "");
-
-                            WPost[]	homeTimelinePost = Controller.getProxy().GetUserTimeline(Controller.getCurrentUser().Username, Controller.getCurrentUserPassword(), Controller.getCurrentUser().Username);
-
-
-
-                            Composite userPostComposite = new Composite(
-                                    ((Composite) uiData.get("userPostMaster")),
-                                    SWT.None);
-
-                            userPostComposite.setData("IdPost",homeTimelinePost[0].Id);
-                            userPostComposite.setLayout(new GridLayout(2, false));
-                            userPostComposite.setBackground(Display.getCurrent()
-                                    .getSystemColor(SWT.COLOR_WHITE));
-                            userPostComposite.setBackgroundMode(SWT.INHERIT_DEFAULT);
-                            GridData	gridData = new GridData();
-                            gridData.grabExcessHorizontalSpace = true;
-                            gridData.horizontalAlignment = GridData.FILL;
-                            userPostComposite.setLayoutData(gridData);
-
-                            Label labelUserAvatar = new Label(userPostComposite,
-                                    SWT.NONE);
-                            gridData = new GridData();
-                            gridData.verticalSpan = 3;
-                            labelUserAvatar.setLayoutData(gridData);
-                            labelUserAvatar.setData("ID_action", "labelAvatar");
-
-                            if(Controller.getUsersAvatar().get(Controller.getCurrentUser().Username) == null)
-                            {
-                                Controller.getUsersAvatar().put(Controller.getCurrentUser().Username, getUserImage(Controller.getCurrentUser().Avatar));
-                            }
-
-                            labelUserAvatar.setImage(resize(new Image(Display.getCurrent(),Controller.getUsersAvatar().get(Controller.getCurrentUser().Username),SWT.IMAGE_COPY),75,75));
-
-                            Label username = new Label(userPostComposite, SWT.None);
-                            username.setForeground(new Color(Display.getCurrent(), 97,
-                                    91, 91));
-                            username.setText(Controller.getCurrentUser().Username);
-                            username.setFont(new Font(Controller.getWindow()
-                                    .getDisplay(), "Calibri", 15, SWT.BOLD));
-                            gridData = new GridData();
-                            gridData.grabExcessHorizontalSpace = false;
-                            gridData.horizontalAlignment = GridData.FILL;
-                            username.setLayoutData(gridData);
-
-                            Label message = new Label(userPostComposite, SWT.WRAP);
-                            message.setText(userMessage);
-                            gridData = new GridData();
-                            gridData.widthHint = Controller.getWindowWidth() - 150;
-                            message.setLayoutData(gridData);
-
-                            Label messageDate = new Label(userPostComposite, SWT.None);
-                            messageDate.setForeground(new Color(Display.getCurrent(),
-                                    140, 140, 140));
-                            messageDate.setText("About one minutes ago from SocialTFS");
-
-                            messageDate.setFont(new Font(Controller.getWindow()
-                                    .getDisplay(), "Calibri", 8, SWT.ITALIC));
-                            gridData = new GridData();
-                            gridData.widthHint = Controller.getWindowWidth() - 150;
-                            messageDate.setLayoutData(gridData);
-
-
-
-                            Label barSeparator = new Label(userPostComposite,
-                                    SWT.BORDER);
-                            gridData = new GridData();
-                            gridData.widthHint = 100;
-                            gridData.heightHint = 1;
-                            gridData.horizontalSpan = 2;
-                            gridData.horizontalAlignment = GridData.CENTER;
-                            barSeparator.setLayoutData(gridData);
-
-                            userPostComposite.moveAbove(((Composite) uiData
-                                    .get("userPostMaster")).getChildren()[0]);
-
-//					barSeparator.moveAbove(((Composite) uiData
-//							.get("userPostMaster")).getChildren()[1]);
-                            ((Composite) uiData.get("userPostMaster")).redraw();
-                            ((Composite) uiData.get("userPostMaster")).layout();
-                        }
-                    }
-                }*/
-                /*else
-                {
-                    Controller.openConnectionLostPanel("Connection Lost!  \n You will be redirected to Login page.");
-                }*/
-                //break;
 
             default:
                 break;

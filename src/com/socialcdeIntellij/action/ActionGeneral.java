@@ -69,7 +69,18 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         uiData.put("Event_type", event.getID());
                         uiData.put("ID_action", event.getActionCommand());
 
-                        //new ActionPeople(uiData);
+                        new ActionPeople(uiData);
+
+                        break;
+
+                    case "HomeTimeline":
+                        uiData = Controller.getHomePanel().getData();
+                        uiData.put("Event", event);
+                        uiData.put("Event_type", event.getID());
+                        uiData.put("ID_action", event.getActionCommand());
+
+                        new ActionHomeTimeline(uiData);
+
                         break;
 
                 }
@@ -128,12 +139,23 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                             break;
 
                         case "People":
-                            //uiData = Controller.getPeoplePanel().getData();
+                            uiData = Controller.getPeoplePanel().getData();
                             uiData.put("Event", event);
                             uiData.put("Event_type", event.getID());
                             uiData.put("ID_action", event.getComponent().getName());
 
-                            //new ActionPeople(uiData);
+                            new ActionPeople(uiData);
+
+                            break;
+
+                        case "HomeTimeline":
+                            uiData = Controller.getHomeTimelinePanel().getData();
+                            uiData.put("Event", event);
+                            uiData.put("Event_type", event.getID());
+                            uiData.put("ID_action", event.getComponent().getName());
+
+                            new ActionHomeTimeline(uiData);
+
                             break;
 
                     }
@@ -189,12 +211,23 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         break;
 
                     case "People":
-                       // uiData = Controller.getPeoplePanel().getData();
+                        uiData = Controller.getPeoplePanel().getData();
                         uiData.put("Event", event);
                         uiData.put("Event_type", event.getID());
                         uiData.put("ID_action", event.getComponent().getName());
 
-                        //new ActionPeople(uiData);
+                        new ActionPeople(uiData);
+
+                        break;
+
+                    case "HomeTimeline":
+                        uiData = Controller.getHomeTimelinePanel().getData();
+                        uiData.put("Event", event);
+                        uiData.put("Event_type", event.getID());
+                        uiData.put("ID_action", event.getComponent().getName());
+
+                        new ActionHomeTimeline(uiData);
+
                         break;
 
                 }

@@ -5,13 +5,19 @@
 package com.socialcdeIntellij.dynamicview;
 
 import java.awt.*;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.HashMap;
 import javax.swing.*;
 import javax.swing.border.*;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
+
+import com.socialcdeIntellij.action.ActionGeneral;
 import com.socialcdeIntellij.action.ActionHomeTimeline;
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.object.*;
@@ -27,57 +33,62 @@ public class HomeTimelinePanel extends JPanel {
     private static int totalField = 0;
     private static long timerUpdate = 0;
     ImagesMod im = new ImagesMod();
-    JLabel otherPostAvailable;
-    JLabel noPostAvailable;
-    JLabel labelDownloadPost;
+    private JLabel otherPostAvailable;
+    private JLabel noPostAvailable;
+    private JLabel labelDownloadPost;
     private JPanel DownloadOlderPosts;
     private JPanel controlToPost;
-    JPanel userPanel;
-    JLabel lblImgAvatar;
-    JLabel lblUsername;
-    JPanel pnlUser;
-    JPanel pnl;
+    private JPanel userPanel;
+    private JLabel lblImgAvatar;
+    private JLabel lblUsername;
+    private JPanel pnlUser;
+    private JPanel pnl;
+    private JPanel subPanel;
+    private JScrollPane scrollPane1;
+    private JPanel panelDynamic;
+    private JTextArea textArea1;
+    private JPanel panelMsg;
+    private CustomTextArea customTextArea1;
+    private JLabel lblEnter;
+    private ActionGeneral listener = new ActionGeneral();
 
 
     public HomeTimelinePanel() {
         initComponents();
     }
 
-    private void createUIComponents() {
-        // TODO: add custom component creation code here
-    }
-
     private void initComponents() {
 
         timerUpdate = 0;
 
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Pablo Rossi
         scrollPane1 = new JScrollPane();
         panelDynamic = new JPanel();
-        //textArea1 = new JTextArea();
         panelMsg = new JPanel();
         customTextArea1 = new CustomTextArea();
         lblEnter = new JLabel();
 
-       // pnlUser = new JPanel(new HorizontalLayout(10));
-        insertTimeline(panelDynamic); //
-       // panelDynamic.add(pnlUser);
+        subPanel = new JPanel(new VerticalLayout(10));
+        subPanel.setBackground(Color.WHITE);
 
-        //======== this ========
-
-        // JFormDesigner evaluation mark
-        setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+        insertTimeline(subPanel);
+        panelDynamic.add(subPanel);
 
         setLayout(new VerticalLayout(30));
 
         //======== scrollPane1 ========
         {
             scrollPane1.setPreferredSize(new Dimension(403, 400));
+            //scrollPane1.getVerticalScrollBar().setValue(scrollPane1.getVerticalScrollBar().getMinimum());
+
+           /* SwingUtilities.invokeLater(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    scrollPane1.getVerticalScrollBar().setValue(0);
+                }
+            });*/
+
 
             //======== panelDynamic ========
             {
@@ -101,14 +112,18 @@ public class HomeTimelinePanel extends JPanel {
                 if (newPost.length > 0) {
                     otherPostAvailable = new JLabel("<html><a>Click to view older posts</a></html>");
                     otherPostAvailable.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                    panelDynamic.add(otherPostAvailable);
+                    JPanel jp = new JPanel(new FlowLayout());
+                    jp.add(otherPostAvailable);
+                    panelDynamic.add(jp);
 
                         /* otherPostAvailable.addListener(SWT.Selection, azioni);
                         otherPostAvailable.setData("ID_action", "otherPostAvailable");*/
                 }
                 else {
+                    JPanel jp = new JPanel(new FlowLayout());
                     noPostAvailable = new JLabel("There are no post in the cache.\n Please try again in two minutes.");
-                    panelDynamic.add(noPostAvailable);
+                    jp.add(noPostAvailable);
+                    panelDynamic.add(jp);
                 }
 
                // labelDownloadPost = new JLabel("Download old post");
@@ -121,40 +136,47 @@ public class HomeTimelinePanel extends JPanel {
 
         //======== panelMsg ========
         {
-            //panelMsg.setPreferredSize(new Dimension(382, 80));
             panelMsg.setLayout(new FlowLayout());
+            JPanel panelMsg2 = new JPanel(new HorizontalLayout(15));
+
 
             //---- customTextArea1 ----
-            customTextArea1.setPreferredSize(new Dimension(350, 90));
-            panelMsg.add(customTextArea1);
+            customTextArea1.setPreferredSize(new Dimension(328, 70));
+            customTextArea1.setName("Baloon");
+            panelMsg2.add(customTextArea1);
+
 
             //---- lblEnter ----
+            JPanel jp2 = new JPanel(new FlowLayout());
             try {
-                lblEnter.setIcon(new ImageIcon(im.getSEND_MESSAGE(50,35)));
+                lblEnter.setIcon(new ImageIcon(im.getSEND_MESSAGE(48,48)));
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
             lblEnter.setToolTipText("Send message");
+            lblEnter.setName("btnSendMessage");
+            lblEnter.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             lblEnter.setHorizontalAlignment(SwingConstants.LEFT);
             lblEnter.setVerticalAlignment(SwingConstants.TOP);
             lblEnter.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
             lblEnter.setVerticalTextPosition(SwingConstants.TOP);
-            panelMsg.add(lblEnter);
+            lblEnter.setAlignmentX(Component.CENTER_ALIGNMENT);
+            lblEnter.setAlignmentY(Component.CENTER_ALIGNMENT);
+            jp2.add(lblEnter);
+            panelMsg2.add(jp2);
+            panelMsg.add(panelMsg2);
+
+            lblEnter.addMouseListener(listener);
            /* btnSendMessage.setData("ID_action", "btnSendMessage");
             btnSendMessage.addListener(SWT.MouseDown, azioni);*/
         }
-        add(panelMsg);
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
+        add(panelMsg);
 
         //Controller.setWindowName("homeTimeline");
 
-        //panel.layout();
-
-
         Controller.getWindow().revalidate();
-
-
 
         final int time = 10000;
         final Runnable timer = new Runnable() {
@@ -180,8 +202,6 @@ public class HomeTimelinePanel extends JPanel {
                     }
                     timerUpdate = tempTimer;
                 }
-
-                //Display.getCurrent().timerExec(time, this);
             }
 
         };
@@ -189,18 +209,17 @@ public class HomeTimelinePanel extends JPanel {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Pablo Rossi
-    private JScrollPane scrollPane1;
-    private JPanel panelDynamic;
-    private JTextArea textArea1;
-    private JPanel panelMsg;
-    private CustomTextArea customTextArea1;
-    private JLabel lblEnter;
+
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public HashMap<String, Object> getData() {
 
         HashMap<String, Object> uiData = new HashMap<String, Object>();
 
+        uiData.put("LabelSendMessage", lblEnter);
+        uiData.put("TextMessage", customTextArea1);
+        uiData.put("Panel", this);
+        uiData.put("Scroll", scrollPane1);
         /*uiData.put("superUserPostMaster", superUserPostMaster);
         uiData.put("userPostMaster", userPostMaster);
         uiData.put("otherPostWarning", otherPostWarning);
@@ -215,6 +234,7 @@ public class HomeTimelinePanel extends JPanel {
 
     private String findLink(String message) {
         String[] subsequences = message.split(" ");
+
         String result = "";
         for(int i=0;i<subsequences.length; i++)
         {
@@ -222,7 +242,7 @@ public class HomeTimelinePanel extends JPanel {
             {
                 if(subsequences[i].contains("http"))
                 {
-                    result = "<a href=\" " + subsequences[i] + "\" > " + subsequences[i] + "</a> ";
+                    result = "<html><a href=\" " + subsequences[i] + "\" > " + subsequences[i] + "</a></html> ";
                 }
                 else
                 {
@@ -233,7 +253,7 @@ public class HomeTimelinePanel extends JPanel {
             {
                 if(subsequences[i].contains("http"))
                 {
-                    result += "<a href=\" " + subsequences[i] + "\" > " + subsequences[i] + "</a> ";
+                    result += " <html><a href=\" " + subsequences[i] + "\" > " + subsequences[i] + "</a></html> ";
                 }
                 else
                 {
@@ -268,7 +288,11 @@ public class HomeTimelinePanel extends JPanel {
                                            @Override
                                            public void run() {
                                                pnl = new JPanel(new HorizontalLayout(10));
+                                               pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
                                                pnl.setBackground(Color.WHITE);
+                                               JPanel pnl2 = new JPanel(new VerticalLayout(10));
+                                               pnl2.setBackground(Color.WHITE);
+
                                                //userPostComposite.setData("IdPost", posts[j].Id);
                                                lblImgAvatar = new JLabel();
 
@@ -294,18 +318,39 @@ public class HomeTimelinePanel extends JPanel {
                                                        .getCurrentUser().Username)) {
                                                    lblUsername.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                                                    lblUsername.setToolTipText("View " + posts[j].getUser().Username + " Timeline");
-
-
+                                                   lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
+                                                   //solo se user differente da proprio
                                                } else {
+                                                   lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
                                                    lblUsername.setForeground(Color.BLUE);
                                                }
 
-                                               pnl.add(lblUsername);
+                                               pnl2.add(lblUsername);
 
-                                               JLabel message = new JLabel();
+                                               JTextPane message = new JTextPane();
+                                               message.setContentType("text/html");
+                                               message.setEditable(false);
+                                               message.setBackground(Color.WHITE);
                                                message.setText(findLink(posts[j].getMessage()));
-
-                                               pnl.add(message);
+                                               message.addHyperlinkListener(new HyperlinkListener() {
+                                                   @Override
+                                                   public void hyperlinkUpdate(HyperlinkEvent e) {
+                                                       if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                                                           if (Desktop.isDesktopSupported()) {
+                                                               try {
+                                                                   Desktop.getDesktop().browse(e.getURL().toURI());
+                                                               } catch (IOException e1) {
+                                                                   // TODO Auto-generated catch block
+                                                                   e1.printStackTrace();
+                                                               } catch (URISyntaxException e1) {
+                                                                   // TODO Auto-generated catch block
+                                                                   e1.printStackTrace();
+                                                               }
+                                                           }
+                                                       }
+                                                   }
+                                               });
+                                               pnl2.add(message);
 
 
                                                Calendar nowDate = Calendar.getInstance();
@@ -361,11 +406,15 @@ public class HomeTimelinePanel extends JPanel {
                                                            } else {
                                                                messageDate.setText("Few seconds ago from "
                                                                        + posts[j].getService().getName());
+
                                                            }
                                                        }
                                                    }
                                                }
-                                               pnl.add(messageDate);
+                                               messageDate.setFont(new Font("Calibri", Font.ITALIC, 8));
+                                               messageDate.setForeground(Color.LIGHT_GRAY);
+                                               pnl2.add(messageDate);
+                                               pnl.add(pnl2);
                                                panel.add(pnl);
                                            }
                                        }

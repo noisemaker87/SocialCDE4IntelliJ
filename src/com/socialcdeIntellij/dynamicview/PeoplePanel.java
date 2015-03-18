@@ -8,6 +8,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 
 import com.socialcdeIntellij.action.ActionGeneral;
 import com.socialcdeIntellij.controller.Controller;
@@ -67,6 +68,7 @@ public class PeoplePanel extends JPanel {
             //======== panelPeople ========
             {
                 panelPeople.setLayout(new VerticalLayout(10));
+                panelPeople.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
 
                 //======== panelSuggestions ========
                 {
