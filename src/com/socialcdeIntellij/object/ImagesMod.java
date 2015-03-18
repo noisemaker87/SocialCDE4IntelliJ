@@ -6,7 +6,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -51,6 +50,32 @@ public class ImagesMod {
         Image image = ImageIO.read(stream);
         return image;
     }//prende immagine da stream
+
+    public Image getUserImage(String link){
+        try {
+            return resize((BufferedImage) get_ImageStream(new URL(link)),48,48);
+
+
+        } catch (IOException e) {
+
+            try {
+                return getDEFAULT_AVATAR(48,48);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
+
+        } catch (NullPointerException e) {
+
+            try {
+                return getDEFAULT_AVATAR(48,48);
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        return null;
+    }
 
 
     public Image getBALOON(int width, int height) throws IOException {
