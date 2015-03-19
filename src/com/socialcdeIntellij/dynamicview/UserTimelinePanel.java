@@ -19,7 +19,7 @@ public class UserTimelinePanel extends JPanel {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Davide Rossi
+        // Generated using JFormDesigner Evaluation license - Pablo Rossi
         panelProfile = new JPanel();
         lblReturn = new JLabel();
         lblAvatar = new JLabel();
@@ -44,7 +44,7 @@ public class UserTimelinePanel extends JPanel {
         panelDynamic = new JPanel();
 
         //======== this ========
-        setPreferredSize(new Dimension(450, 600));
+        setPreferredSize(new Dimension(403, 540));
 
         // JFormDesigner evaluation mark
         setBorder(new javax.swing.border.CompoundBorder(
@@ -190,7 +190,7 @@ public class UserTimelinePanel extends JPanel {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Davide Rossi
+    // Generated using JFormDesigner Evaluation license - Pablo Rossi
     private JPanel panelProfile;
     private JLabel lblReturn;
     private JLabel lblAvatar;

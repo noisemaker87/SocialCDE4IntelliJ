@@ -2,6 +2,7 @@ package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.object.CustomTextArea;
+import com.socialcdeIntellij.object.GeneralLabel;
 import com.socialcdeIntellij.object.ImagesMod;
 import com.socialcdeIntellij.shared.library.WPost;
 import com.socialcdeIntellij.shared.library.WUser;
@@ -9,12 +10,15 @@ import org.jdesktop.swingx.HorizontalLayout;
 import org.jdesktop.swingx.VerticalLayout;
 
 import javax.swing.*;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 import java.awt.*;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -90,11 +94,8 @@ public class ActionHomeTimeline {
                             message.setEditable(false);
                             message.setBackground(Color.WHITE);
                             message.setText(userMessage);
-                            //message.setCaretPosition(0);
-                            //message.grabFocus();
 
                             pnl2.add(message);
-
 
                             JLabel messageDate = new JLabel();
                             messageDate.setText("About one minutes ago from SocialTFS");
@@ -103,15 +104,8 @@ public class ActionHomeTimeline {
 
                             panel.add(pnl2);
 
-                            //JScrollPane jsp = ((JScrollPane) uiData.get("Scroll"));
-
                             Controller.selectDynamicWindow(3);
                             Controller.getWindow().revalidate();
-
-
-
-                           /* ((Composite) uiData.get("userPostMaster")).redraw();
-                            ((Composite) uiData.get("userPostMaster")).layout();*/
                         }
                     }
                 }
@@ -119,74 +113,9 @@ public class ActionHomeTimeline {
                 {
                     Controller.openConnectionLostPanel("Connection Lost!  \n You will be redirected to Login page.");
                 }*/
-                //break;
-
-            /*case "usernameLink":
-                if(Controller.getProxy().IsWebServiceRunning())
-                {
-                    userSelected = (WUser) uiData.get("User_data");
-
-                    userCategory = Controller.getProxy().GetSuggestedFriends(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword());
-
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type",
-                                    "Suggested");
-                        }
-                    }
-
-                    userCategory = null;
-
-                    userCategory = Controller.getProxy().GetFollowings(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword());
-
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type",
-                                    "Following");
-                        }
-                    }
-
-                    userCategory = null;
-
-                    userCategory = Controller.getProxy().GetFollowers(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword());
-
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type",
-                                    "Followers");
-                        }
-                    }
-
-                    userCategory = null;
-
-                    userCategory = Controller.getProxy().GetHiddenUsers(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword());
-
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type", "Hidden");
-                        }
-                    }
-
-                    userCategory = null;
-
-                    Controller.temporaryInformation.put("User_selected", userSelected);
-                    Controller.selectDynamicWindow(3);
-                }
-                else
-                {
-                    Controller.openConnectionLostPanel("Connection Lost! \n  You will be redirected to Login page.");
-                }
                 break;
 
-            case "labelAvatarLink":
+            case "lblImgAvatar":
                 if(Controller.getProxy().IsWebServiceRunning())
                 {
                     userSelected = (WUser) uiData.get("User_data");
@@ -244,20 +173,81 @@ public class ActionHomeTimeline {
 
                     Controller.temporaryInformation.put("User_selected", userSelected);
                     Controller.selectDynamicWindow(3);
+                    Controller.getWindow().revalidate();
                 }
-                else
+                /*else
                 {
                     Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }
+                }*/
                 break;
 
-            case "otherPostAvailable":
+            case "lblUsername":
                 if(Controller.getProxy().IsWebServiceRunning())
                 {
-                    ((Label) uiData.get("labelDownloadPost")).setVisible(true);
-                    ((Label) uiData.get("labelDownloadPost")).redraw();
-                    Display.getCurrent().update();
-                    ((ProgressBar) uiData.get("pbar")).setVisible(true);
+                    userSelected = (WUser) uiData.get("User_data");
+
+                    userCategory = Controller.getProxy().GetSuggestedFriends(
+                            Controller.getCurrentUser().Username,
+                            Controller.getCurrentUserPassword());
+
+                    for (int i = 0; i < userCategory.length; i++) {
+                        if (userCategory[i].equals(userSelected)) {
+                            Controller.temporaryInformation.put("User_type",
+                                    "Suggested");
+                        }
+                    }
+
+                    userCategory = null;
+
+                    userCategory = Controller.getProxy().GetFollowings(
+                            Controller.getCurrentUser().Username,
+                            Controller.getCurrentUserPassword());
+
+                    for (int i = 0; i < userCategory.length; i++) {
+                        if (userCategory[i].equals(userSelected)) {
+                            Controller.temporaryInformation.put("User_type",
+                                    "Following");
+                        }
+                    }
+
+                    userCategory = null;
+
+                    userCategory = Controller.getProxy().GetFollowers(
+                            Controller.getCurrentUser().Username,
+                            Controller.getCurrentUserPassword());
+
+                    for (int i = 0; i < userCategory.length; i++) {
+                        if (userCategory[i].equals(userSelected)) {
+                            Controller.temporaryInformation.put("User_type",
+                                    "Followers");
+                        }
+                    }
+
+                    userCategory = null;
+
+                    userCategory = Controller.getProxy().GetHiddenUsers(
+                            Controller.getCurrentUser().Username,
+                            Controller.getCurrentUserPassword());
+
+                    for (int i = 0; i < userCategory.length; i++) {
+                        if (userCategory[i].equals(userSelected)) {
+                            Controller.temporaryInformation.put("User_type", "Hidden");
+                        }
+                    }
+
+                    userCategory = null;
+
+                    Controller.temporaryInformation.put("User_selected", userSelected);
+                    Controller.selectDynamicWindow(3);
+                }
+                /*else
+                {
+                    Controller.openConnectionLostPanel("Connection Lost! \n  You will be redirected to Login page.");
+                }*/
+                break;
+
+            case "otherPostAvaible":
+                if(Controller.getProxy().IsWebServiceRunning()) {
 
                     final WPost[] posts = Controller.getProxy().GetHomeTimeline(
                             Controller.getCurrentUser().Username,
@@ -265,291 +255,190 @@ public class ActionHomeTimeline {
 
                     if (posts.length > 0) {
 
-                        for (Control element : ((Composite) uiData.get("userPostMaster")).getChildren()) {
-                            try {
-                                if( ((Composite) element).getChildren().length < 3 )
-                                {
-                                    element.dispose();
-                                    break;
-                                }
-                            } catch (Exception e) {
-                                // TODO: handle exception
+                        final int max = 100;
+
+                        for (int i = 0; i < posts.length; i++) {
+                            final int j = i;
+
+                            JPanel pnl = new JPanel(new HorizontalLayout(10));
+                            pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
+                            pnl.setBackground(Color.WHITE);
+                            JPanel pnl2 = new JPanel(new VerticalLayout(10));
+                            pnl2.setBackground(Color.WHITE);
+
+                            //userPostComposite.setData("IdPost", posts[j].Id);
+                            GeneralLabel lblImgAvatar = new GeneralLabel();
+                            lblImgAvatar.setName("lblImgAvatar");
+
+
+                            if (Controller.getUsersAvatar().get(posts[j].getUser().Username) == null) {
+                                Controller.getUsersAvatar().put(posts[j].getUser().Username, im.getUserImage(posts[j].getUser().Avatar));
+                            }
+                            lblImgAvatar.setIcon(new ImageIcon(Controller.getUsersAvatar().get(posts[j].getUser().Username)));
+
+                            if (!posts[j].getUser().Username.equals(Controller
+                                    .getCurrentUser().Username)) {
+                                lblImgAvatar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                lblImgAvatar.setToolTipText("View "
+                                        + posts[j].getUser().Username + " Timeline");
+
+                                lblImgAvatar.setwUser(posts[j].getUser());
+                                lblImgAvatar.addMouseListener(listener);
+
+                            }
+                            pnl.add(lblImgAvatar);
+
+                            GeneralLabel lblUsername = new GeneralLabel();
+                            lblUsername.setName("lblUsername");
+
+                            lblUsername.setText(posts[j].getUser().Username);
+                            if (!posts[j].getUser().Username.equals(Controller
+                                    .getCurrentUser().Username)) {
+                                lblUsername.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                lblUsername.setToolTipText("View " + posts[j].getUser().Username + " Timeline");
+                                lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
+
+                                lblUsername.setwUser(posts[j].getUser());
+                                lblUsername.addMouseListener(listener);
+                            } else {
+                                lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
+                                lblUsername.setForeground(Color.BLUE);
                             }
 
-                        }
+                            pnl2.add(lblUsername);
 
-				*//*((Composite) uiData.get("userPostMaster")).getChildren()[((Composite) uiData
-						.get("userPostMaster")).getChildren().length - 1]
-						.dispose();*//*
-                        Display.getCurrent().update();
-                    }
-                    final int max = 100;
-                    for (int i = 0; i < posts.length; i++) {
-
-                        final Composite userPostComposite = new Composite(
-                                ((Composite) uiData.get("userPostMaster")), SWT.None);
-                        final int j = i;
-
-
-                        if (((ProgressBar) uiData.get("pbar")).getSelection() == (max - 1)) {
-                            ((ProgressBar) uiData.get("pbar")).setSelection(0);
-                        } else {
-                            ((ProgressBar) uiData.get("pbar"))
-                                    .setSelection(((ProgressBar) uiData
-                                            .get("pbar")).getSelection() + 1);
-                            ((ProgressBar) uiData.get("pbar")).redraw();
-
-                        }
-
-                        userPostComposite.setData("IdPost", posts[j].Id);
-                        userPostComposite.setLayout(new GridLayout(2, false));
-                        userPostComposite.setBackground(Display.getCurrent()
-                                .getSystemColor(SWT.COLOR_WHITE));
-                        userPostComposite
-                                .setBackgroundMode(SWT.INHERIT_DEFAULT);
-                        GridData gridData = new GridData();
-                        gridData.widthHint = Controller.getWindowWidth() -10;
-                        userPostComposite.setLayoutData(gridData);
-
-                        Label labelUserAvatar = new Label(userPostComposite,
-                                SWT.NONE);
-                        gridData = new GridData();
-                        gridData.verticalSpan = 3;
-                        labelUserAvatar.setLayoutData(gridData);
-
-                        if(Controller.getUsersAvatar().get(posts[j].getUser().Username) == null)
-                        {
-                            Controller.getUsersAvatar().put(posts[j].getUser().Username, getUserImage(posts[j].getUser().Avatar));
-                        }
-
-                        labelUserAvatar.setImage(resize(new Image(Display.getCurrent(),Controller.getUsersAvatar().get(posts[j].getUser().Username),SWT.IMAGE_COPY),75,75));
-
-                        if (!posts[j].getUser().Username.equals(Controller
-                                .getCurrentUser().Username)) {
-                            labelUserAvatar.setCursor(new Cursor(Display
-                                    .getCurrent(), SWT.CURSOR_HAND));
-                            labelUserAvatar.setToolTipText("View "
-                                    + posts[j].getUser().Username + " Timeline");
-                            labelUserAvatar.setData("User_data",
-                                    posts[j].getUser());
-                            labelUserAvatar.setData("ID_action",
-                                    "labelAvatarLink");
-                            labelUserAvatar.addListener(SWT.MouseDown, azioni);
-                        }
-
-                        Label username = new Label(userPostComposite, SWT.None);
-                        username.setText(posts[j].getUser().Username);
-                        if (!posts[j].getUser().Username.equals(Controller
-                                .getCurrentUser().Username)) {
-                            username.setForeground(new Color(Display
-                                    .getCurrent(), 56, 149, 184));
-                            username.setCursor(new Cursor(Display.getCurrent(),
-                                    SWT.CURSOR_HAND));
-                            username.setToolTipText("View "
-                                    + posts[j].getUser().Username + " Timeline");
-                            username.setData("User_data", posts[j].getUser());
-                            username.setData("ID_action", "usernameLink");
-                            username.addListener(SWT.MouseDown, azioni);
-                        } else {
-                            username.setForeground(new Color(Display
-                                    .getCurrent(), 97, 91, 91));
-                        }
-
-                        username.setFont(new Font(Controller.getWindow()
-                                .getDisplay(), "Calibri", 15, SWT.BOLD));
-                        gridData = new GridData();
-                        gridData.horizontalAlignment = GridData.BEGINNING;
-                        username.setLayoutData(gridData);
-
-                        Link message = new Link(userPostComposite,  SWT.WRAP);
-                        message.setText( findLink( posts[j].getMessage() ) );
-                        message.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
-                        message.addListener(SWT.Selection, new Listener() {
-
-                            @Override
-                            public void handleEvent(Event event) {
-
-                                try {
-                                    PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser().openURL(new URL(event.text));
-                                } catch (PartInitException e) {
-
-                                    e.printStackTrace();
-                                } catch (MalformedURLException e) {
-
-                                    e.printStackTrace();
+                            JTextPane message = new JTextPane();
+                            message.setContentType("text/html");
+                            message.setEditable(false);
+                            message.setBackground(Color.WHITE);
+                            message.setText(findLink(posts[j].getMessage()));
+                            message.addHyperlinkListener(new HyperlinkListener() {
+                                @Override
+                                public void hyperlinkUpdate(HyperlinkEvent e) {
+                                    if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                                        if (Desktop.isDesktopSupported()) {
+                                            try {
+                                                Desktop.getDesktop().browse(e.getURL().toURI());
+                                            } catch (IOException e1) {
+                                                // TODO Auto-generated catch block
+                                                e1.printStackTrace();
+                                            } catch (URISyntaxException e1) {
+                                                // TODO Auto-generated catch block
+                                                e1.printStackTrace();
+                                            }
+                                        }
+                                    }
                                 }
-                            }
-                        });
-                        gridData = new GridData();
-                        gridData.widthHint = Controller.getWindowWidth() - 150;
-                        message.setLayoutData(gridData);
+                            });
+                            pnl2.add(message);
 
-                        Calendar nowDate = Calendar.getInstance();
-                        Calendar dateSelected = posts[j].getCreateAt();
-                        long millisDiff = nowDate.getTime().getTime()
-                                - dateSelected.getTime().getTime();
 
-                        int seconds = (int) (millisDiff / 1000 % 60);
-                        int minutes = (int) (millisDiff / 60000 % 60);
-                        int hours = (int) (millisDiff / 3600000 % 24);
-                        int days = (int) (millisDiff / 86400000);
+                            Calendar nowDate = Calendar.getInstance();
+                            Calendar dateSelected = posts[j].getCreateAt();
+                            long millisDiff = nowDate.getTime().getTime()
+                                    - dateSelected.getTime().getTime();
 
-                        Label messageDate = new Label(userPostComposite,
-                                SWT.None);
-                        messageDate.setForeground(new Color(Display
-                                .getCurrent(), 140, 140, 140));
+                            int seconds = (int) (millisDiff / 1000 % 60);
+                            int minutes = (int) (millisDiff / 60000 % 60);
+                            int hours = (int) (millisDiff / 3600000 % 24);
+                            int days = (int) (millisDiff / 86400000);
 
-                        if (days > 1 && days < 30) {
-                            messageDate.setText("About " + days
-                                    + " days ago from "
-                                    + posts[j].getService().getName());
-                        } else if (days > 30) {
-                            messageDate.setText("More than one month ago from "
-                                    + posts[j].getService().getName());
-                        } else if (days == 1) {
-                            messageDate.setText("About " + days
-                                    + " day ago from "
-                                    + posts[j].getService().getName());
-                        } else {
-                            if (hours > 1) {
-                                messageDate.setText("About " + hours
-                                        + " hours ago from "
+                            JLabel messageDate = new JLabel();
+
+                            if (days > 1 && days < 30) {
+                                messageDate.setText("About " + days + " days ago from "
                                         + posts[j].getService().getName());
-                            } else if (hours == 1) {
-                                messageDate.setText("About " + hours
-                                        + " hour ago from "
+                            } else if (days > 30) {
+                                messageDate.setText("More than one month ago from "
+                                        + posts[j].getService().getName());
+                            } else if (days == 1) {
+                                messageDate.setText("About " + days + " day ago from "
                                         + posts[j].getService().getName());
                             } else {
-
-                                if (minutes > 1) {
-                                    messageDate.setText("About " + minutes
-                                            + " minutes ago from "
+                                if (hours > 1) {
+                                    messageDate.setText("About " + hours
+                                            + " hours ago from "
                                             + posts[j].getService().getName());
-                                } else if (minutes == 1) {
-                                    messageDate.setText("About " + minutes
-                                            + " minute ago from "
+                                } else if (hours == 1) {
+                                    messageDate.setText("About " + hours
+                                            + " hour ago from "
                                             + posts[j].getService().getName());
                                 } else {
 
-                                    if (seconds > 1) {
-                                        messageDate.setText("About "
-                                                + seconds
-                                                + " seconds ago from "
-                                                + posts[j].getService()
-                                                .getName());
-                                    } else if (seconds == 1) {
-                                        messageDate.setText("About "
-                                                + seconds
-                                                + " second ago from "
-                                                + posts[j].getService()
-                                                .getName());
+                                    if (minutes > 1) {
+                                        messageDate.setText("About " + minutes
+                                                + " minutes ago from "
+                                                + posts[j].getService().getName());
+                                    } else if (minutes == 1) {
+                                        messageDate.setText("About " + minutes
+                                                + " minute ago from "
+                                                + posts[j].getService().getName());
                                     } else {
-                                        messageDate
-                                                .setText("Few seconds ago from "
-                                                        + posts[j].getService()
-                                                        .getName());
+
+                                        if (seconds > 1) {
+                                            messageDate.setText("About " + seconds
+                                                    + " seconds ago from "
+                                                    + posts[j].getService().getName());
+                                        } else if (seconds == 1) {
+                                            messageDate.setText("About " + seconds
+                                                    + " second ago from "
+                                                    + posts[j].getService().getName());
+                                        } else {
+                                            messageDate.setText("Few seconds ago from "
+                                                    + posts[j].getService().getName());
+
+                                        }
                                     }
                                 }
                             }
+                            messageDate.setFont(new Font("Calibri", Font.ITALIC, 8));
+                            messageDate.setForeground(Color.LIGHT_GRAY);
+                            pnl2.add(messageDate);
+                            pnl.add(pnl2);
+
+                            ((JPanel)uiData.get("panelDynamic")).remove(((JLabel)uiData.get("LabelOtherPost")));
+                           // ((JPanel)uiData.get("panelDynamic")).remove(((JLabel)uiData.get("LabelNoPost")));
+
+
+                            ((JPanel)uiData.get("panelDynamic")).add(pnl);
+
+
+
+                            SwingUtilities.invokeLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ((JScrollPane)uiData.get("scroll")).getVerticalScrollBar().setValue(0);
+                                }
+                            });
                         }
 
-                        messageDate.setFont(new Font(Controller.getWindow()
-                                .getDisplay(), "Calibri", 8, SWT.ITALIC));
-                        gridData = new GridData();
-                        gridData.grabExcessHorizontalSpace = true;
-                        gridData.horizontalAlignment = GridData.BEGINNING;
-                        messageDate.setLayoutData(gridData);
-
-						*//*Label labelhidden = new Label(((Composite) uiData
-								.get("userPostMaster")), SWT.None);
-						labelhidden.setText("prova");
-						labelhidden.setVisible(false);*//*
-
-                        Label barSeparator = new Label(userPostComposite,
-                                SWT.BORDER);
-                        gridData = new GridData();
-                        gridData.widthHint = 100;
-                        gridData.heightHint = 1;
-                        gridData.horizontalSpan = 2;
-                        gridData.horizontalAlignment = GridData.CENTER;
-                        barSeparator.setLayoutData(gridData);
-
-                        setLastId(posts[i].Id);
-
-                        //System.out.println("getLastId aggiornamento " + getLastId());
-
                     }
+                }
 
-                    ((Label) uiData.get("labelDownloadPost")).setVisible(false);
+                WPost[] newPosts = Controller.getProxy().GetHomeTimeline(
+                        Controller.getCurrentUser().Username,
+                        Controller.getCurrentUserPassword(), 0, getLastId());
 
-                    ((ProgressBar) uiData.get("pbar")).setVisible(false);
-                    ((ProgressBar) uiData.get("pbar")).setSelection(0);
+                if (newPosts == null || newPosts.length == 2) {
+                    newPosts = new WPost[0];
+                }
 
-                    WPost[] newPosts = Controller.getProxy().GetHomeTimeline(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword(), 0, getLastId());
+                if (newPosts.length > 0) {
+                    JPanel jp = new JPanel(new FlowLayout());
+                    jp.add(((JLabel) uiData.get("LabelOtherPost")));
+                    ((JPanel)uiData.get("panelDynamic")).add(jp);
 
-                    Composite otherPostWarning = new Composite(
-                            ((Composite) uiData.get("userPostMaster")), SWT.None);
-                    otherPostWarning.setLayout(new GridLayout(1, false));
-                    otherPostWarning.setBackground(Display.getCurrent().getSystemColor(
-                            SWT.COLOR_WHITE));
-                    GridData gridData = new GridData();
-                    gridData.horizontalSpan = 2;
-                    gridData.grabExcessHorizontalSpace = true;
-                    gridData.horizontalAlignment = GridData.FILL;
-                    otherPostWarning.setLayoutData(gridData);
-
-                    if (newPosts == null || newPosts.length == 2) {
-                        newPosts = new WPost[0];
-                    }
-
-                    if (newPosts.length > 0) {
-                        Link otherPostAvailable = new Link(otherPostWarning, SWT.NONE);
-                        otherPostAvailable.setCursor(new Cursor(Display.getCurrent(),
-                                SWT.CURSOR_HAND));
-                        otherPostAvailable.setFont(new Font(Controller.getWindow()
-                                .getDisplay(), "Calibri", 10, SWT.UNDERLINE_LINK));
-                        otherPostAvailable.setText("<a>Click to view older posts</a>");
-                        otherPostAvailable.setBackground(Display.getCurrent()
-                                .getSystemColor(SWT.COLOR_WHITE));
-                        gridData = new GridData();
-                        gridData.grabExcessHorizontalSpace = true;
-                        gridData.horizontalAlignment = GridData.CENTER;
-                        otherPostAvailable.setLayoutData(gridData);
-
-                        otherPostAvailable.addListener(SWT.Selection,
-                                ((Listener) uiData.get("action")));
-                        otherPostAvailable.setData("ID_action", "otherPostAvailable");
-
-                    } else {
-                        Label noPostAvailable = new Label(otherPostWarning, SWT.NONE);
-                        noPostAvailable.setText("There are no post in the cache.\n Please try again in two minutes.");
-                        noPostAvailable.setBackground(Display.getCurrent()
-                                .getSystemColor(SWT.COLOR_WHITE));
-                        noPostAvailable.setFont(new Font(Controller.getWindow()
-                                .getDisplay(), "Calibri", 10, SWT.None));
-                        gridData = new GridData();
-                        gridData.grabExcessHorizontalSpace = true;
-                        gridData.horizontalAlignment = GridData.CENTER;
-                        noPostAvailable.setLayoutData(gridData);
-                    }
-
-
-                    //((ScrolledComposite) uiData.get("superUserPostMaster")).layout();
-                    //((ScrolledComposite) uiData.get("superUserPostMaster")).redraw();
-
-                    ((Composite) uiData.get("userPostMaster")).layout();
-                    //((Composite) uiData.get("userPostMaster")).redraw();
-
+                } else {
+                    JPanel jp = new JPanel(new FlowLayout());
+                    jp.add(((JLabel) uiData.get("LabelNoPost")));
+                    ((JPanel)uiData.get("panelDynamic")).add(jp);
 
                 }
-                else
+               /* else
                 {
                     Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }
-                break;*/
-
+                }*/
+                    break;
 
             default:
                 break;

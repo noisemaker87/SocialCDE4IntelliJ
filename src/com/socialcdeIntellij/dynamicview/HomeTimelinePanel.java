@@ -1,33 +1,25 @@
-/*
- * Created by JFormDesigner on Fri Feb 27 11:36:02 CET 2015
- */
-
 package com.socialcdeIntellij.dynamicview;
 
 import com.socialcdeIntellij.action.ActionGeneral;
 import com.socialcdeIntellij.action.ActionHomeTimeline;
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.object.CustomTextArea;
+import com.socialcdeIntellij.object.GeneralLabel;
 import com.socialcdeIntellij.object.ImagesMod;
 import com.socialcdeIntellij.shared.library.WPost;
 import org.jdesktop.swingx.HorizontalLayout;
 import org.jdesktop.swingx.VerticalLayout;
-
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import java.awt.*;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.HashMap;
 
-/**
- * @author Davide Rossi
- */
+
 public class HomeTimelinePanel extends JPanel {
 
     private WPost[] posts;
@@ -40,8 +32,8 @@ public class HomeTimelinePanel extends JPanel {
     private JPanel DownloadOlderPosts;
     private JPanel controlToPost;
     private JPanel userPanel;
-    private JLabel lblImgAvatar;
-    private JLabel lblUsername;
+    private GeneralLabel lblImgAvatar;
+    private GeneralLabel lblUsername;
     private JPanel pnlUser;
     private JPanel pnl;
     private JPanel subPanel;
@@ -105,22 +97,18 @@ public class HomeTimelinePanel extends JPanel {
                 if (newPost.length > 0) {
                     otherPostAvailable = new JLabel("<html><a>Click to view older posts</a></html>");
                     otherPostAvailable.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    otherPostAvailable.setName("otherPostAvaible");
                     JPanel jp = new JPanel(new FlowLayout());
                     jp.add(otherPostAvailable);
                     panelDynamic.add(jp);
 
-                        /* otherPostAvailable.addListener(SWT.Selection, azioni);
-                        otherPostAvailable.setData("ID_action", "otherPostAvailable");*/
                 } else {
-                    JPanel jp = new JPanel(new FlowLayout());
                     noPostAvailable = new JLabel("There are no post in the cache.\n Please try again in two minutes.");
+                    JPanel jp = new JPanel(new FlowLayout());
                     jp.add(noPostAvailable);
                     panelDynamic.add(jp);
 
                 }
-
-                // labelDownloadPost = new JLabel("Download old post");
-
 
             }
 
@@ -135,12 +123,10 @@ public class HomeTimelinePanel extends JPanel {
             panelMsg.setLayout(new FlowLayout());
             JPanel panelMsg2 = new JPanel(new HorizontalLayout(15));
 
-
             //---- customTextArea1 ----
             customTextArea1.setPreferredSize(new Dimension(328, 70));
             customTextArea1.setName("Baloon");
             panelMsg2.add(customTextArea1);
-
 
             //---- lblEnter ----
             JPanel jp2 = new JPanel(new FlowLayout());
@@ -164,16 +150,11 @@ public class HomeTimelinePanel extends JPanel {
             panelMsg.add(panelMsg2);
 
             lblEnter.addMouseListener(listener);
-           /* btnSendMessage.setData("ID_action", "btnSendMessage");
-            btnSendMessage.addListener(SWT.MouseDown, azioni);*/
+            otherPostAvailable.addMouseListener(listener);
+
         }
 
         add(panelMsg);
-
-        //Controller.setWindowName("homeTimeline");
-
-       // Controller.getWindow().revalidate();
-
 
 
         final int time = 10000;
@@ -192,7 +173,7 @@ public class HomeTimelinePanel extends JPanel {
                     System.out.println("Confronto " + (tempTimer - timerUpdate));
                     if ((tempTimer - timerUpdate) < 10010 && (tempTimer - timerUpdate) > 9990) {
                         System.out.println("Chiamata eseguita parte 2 " + Calendar.getInstance().getTime().toString());
-                        //updateTimeline();
+                        updateTimeline(subPanel);
 
                         timerUpdate = System.currentTimeMillis();
                     }
@@ -220,15 +201,10 @@ public class HomeTimelinePanel extends JPanel {
         uiData.put("LabelSendMessage", lblEnter);
         uiData.put("TextMessage", customTextArea1);
         uiData.put("Panel", this);
-        //uiData.put("Scroll", scrollPane1);
-        /*uiData.put("superUserPostMaster", superUserPostMaster);
-        uiData.put("userPostMaster", userPostMaster);
-        uiData.put("otherPostWarning", otherPostWarning);
-        uiData.put("userPostMaster", userPostMaster);
-        uiData.put("textMessage", textMessage);
-        uiData.put("labelDownloadPost", labelDownloadPost);
-        uiData.put("pbar", pbar);
-        uiData.put("action", azioni);*/
+        uiData.put("panelDynamic", panelDynamic);
+        uiData.put("scroll", scrollPane1);
+        uiData.put("LabelOtherPost", otherPostAvailable);
+        uiData.put("LabelNoPost", noPostAvailable);
 
         return uiData;
     }
@@ -294,7 +270,8 @@ public class HomeTimelinePanel extends JPanel {
                                                pnl2.setBackground(Color.WHITE);
 
                                                //userPostComposite.setData("IdPost", posts[j].Id);
-                                               lblImgAvatar = new JLabel();
+                                               lblImgAvatar = new GeneralLabel();
+                                               lblImgAvatar.setName("lblImgAvatar");
 
                                                if (Controller.getUsersAvatar().get(posts[j].getUser().Username) == null) {
                                                    Controller.getUsersAvatar().put(posts[j].getUser().Username, im.getUserImage(posts[j].getUser().Avatar));
@@ -307,11 +284,14 @@ public class HomeTimelinePanel extends JPanel {
                                                    lblImgAvatar.setToolTipText("View "
                                                            + posts[j].getUser().Username + " Timeline");
 
+                                                   lblImgAvatar.setwUser(posts[j].getUser());
+                                                   lblImgAvatar.addMouseListener(listener);
 
                                                }
                                                pnl.add(lblImgAvatar);
 
-                                               lblUsername = new JLabel();
+                                               lblUsername = new GeneralLabel();
+                                               lblUsername.setName("lblUsername");
 
                                                lblUsername.setText(posts[j].getUser().Username);
                                                if (!posts[j].getUser().Username.equals(Controller
@@ -319,7 +299,9 @@ public class HomeTimelinePanel extends JPanel {
                                                    lblUsername.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                                                    lblUsername.setToolTipText("View " + posts[j].getUser().Username + " Timeline");
                                                    lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
-                                                   //solo se user differente da proprio
+
+                                                   lblUsername.setwUser(posts[j].getUser());
+                                                   lblUsername.addMouseListener(listener);
                                                } else {
                                                    lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
                                                    lblUsername.setForeground(Color.BLUE);
@@ -431,5 +413,200 @@ public class HomeTimelinePanel extends JPanel {
             ActionHomeTimeline.setLastId(posts[i].Id);
 
         }
+    }
+
+    public void updateTimeline(final JPanel panel) {
+
+        if(panelDynamic.getComponentCount()==1)
+        {
+            posts = Controller.getProxy().GetHomeTimeline(
+                    Controller.getCurrentUser().Username,
+                    Controller.getCurrentUserPassword());
+        }
+        else
+        {
+            posts = Controller.getProxy().GetHomeTimeline(
+                    Controller.getCurrentUser().Username,
+                    Controller.getCurrentUserPassword(),panelDynamic.getComponentCount(),0);
+        }
+        for (WPost element : posts) {
+            System.out.println("Elemento con id " + element.Id + " inviato da " + element.User.Username + " il " + element.CreateAt.getTime().toString());
+        }
+
+        //Controller.temporaryInformation.put("CurrentComposite", panelDynamic.getComponentCount()userPostMaster.getChildren()[0]);
+
+        if(posts.length > 0 &&  posts[0].Id != panelDynamic.getComponentCount())  {
+            boolean flag = true;
+
+            for (int i = 0; i < posts.length; i++) {
+                System.out.println("Numero posts nuovi  " + posts.length);
+
+                System.out.println("post n. " + i + " valore " +  posts[i].Message + " id " + posts[i].Id);
+               // System.out.println(" confronto con post n. 0 valore " +  userPostMaster.getChildren()[0].getData("IdPost").toString());
+
+                if(posts[i].Id == panelDynamic.getComponentCount())
+                {
+                    flag = false;
+                }
+
+                if(flag)
+                {
+
+                    final int j = i;
+
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            pnl = new JPanel(new HorizontalLayout(10));
+                            pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
+                            pnl.setBackground(Color.WHITE);
+                            JPanel pnl2 = new JPanel(new VerticalLayout(10));
+                            pnl2.setBackground(Color.WHITE);
+
+                            //userPostComposite.setData("IdPost", posts[j].Id);
+                            lblImgAvatar = new GeneralLabel();
+                            lblImgAvatar.setName("lblImgAvatar");
+
+                            if (Controller.getUsersAvatar().get(posts[j].getUser().Username) == null) {
+                                Controller.getUsersAvatar().put(posts[j].getUser().Username, im.getUserImage(posts[j].getUser().Avatar));
+                            }
+                            lblImgAvatar.setIcon(new ImageIcon(Controller.getUsersAvatar().get(posts[j].getUser().Username)));
+
+                            if (!posts[j].getUser().Username.equals(Controller
+                                    .getCurrentUser().Username)) {
+                                lblImgAvatar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                lblImgAvatar.setToolTipText("View "
+                                        + posts[j].getUser().Username + " Timeline");
+
+                                lblImgAvatar.setwUser(posts[j].getUser());
+                                lblImgAvatar.addMouseListener(listener);
+
+                            }
+                            pnl.add(lblImgAvatar);
+
+                            lblUsername = new GeneralLabel();
+                            lblUsername.setName("lblUsername");
+
+                            lblUsername.setText(posts[j].getUser().Username);
+                            if (!posts[j].getUser().Username.equals(Controller
+                                    .getCurrentUser().Username)) {
+                                lblUsername.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                                lblUsername.setToolTipText("View " + posts[j].getUser().Username + " Timeline");
+                                lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
+
+                                lblUsername.setwUser(posts[j].getUser());
+                                lblUsername.addMouseListener(listener);
+                            } else {
+                                lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
+                                lblUsername.setForeground(Color.BLUE);
+                            }
+
+                            pnl2.add(lblUsername);
+
+                            JTextPane message = new JTextPane();
+                            message.setContentType("text/html");
+                            message.setEditable(false);
+                            message.setBackground(Color.WHITE);
+                            message.setText(findLink(posts[j].getMessage()));
+                            message.addHyperlinkListener(new HyperlinkListener() {
+                                @Override
+                                public void hyperlinkUpdate(HyperlinkEvent e) {
+                                    if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                                        if (Desktop.isDesktopSupported()) {
+                                            try {
+                                                Desktop.getDesktop().browse(e.getURL().toURI());
+                                            } catch (IOException e1) {
+                                                // TODO Auto-generated catch block
+                                                e1.printStackTrace();
+                                            } catch (URISyntaxException e1) {
+                                                // TODO Auto-generated catch block
+                                                e1.printStackTrace();
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            pnl2.add(message);
+
+
+                            Calendar nowDate = Calendar.getInstance();
+                            Calendar dateSelected = posts[j].getCreateAt();
+                            long millisDiff = nowDate.getTime().getTime()
+                                    - dateSelected.getTime().getTime();
+
+                            int seconds = (int) (millisDiff / 1000 % 60);
+                            int minutes = (int) (millisDiff / 60000 % 60);
+                            int hours = (int) (millisDiff / 3600000 % 24);
+                            int days = (int) (millisDiff / 86400000);
+
+                            JLabel messageDate = new JLabel();
+
+                            if (days > 1 && days < 30) {
+                                messageDate.setText("About " + days + " days ago from "
+                                        + posts[j].getService().getName());
+                            } else if (days > 30) {
+                                messageDate.setText("More than one month ago from "
+                                        + posts[j].getService().getName());
+                            } else if (days == 1) {
+                                messageDate.setText("About " + days + " day ago from "
+                                        + posts[j].getService().getName());
+                            } else {
+                                if (hours > 1) {
+                                    messageDate.setText("About " + hours
+                                            + " hours ago from "
+                                            + posts[j].getService().getName());
+                                } else if (hours == 1) {
+                                    messageDate.setText("About " + hours
+                                            + " hour ago from "
+                                            + posts[j].getService().getName());
+                                } else {
+
+                                    if (minutes > 1) {
+                                        messageDate.setText("About " + minutes
+                                                + " minutes ago from "
+                                                + posts[j].getService().getName());
+                                    } else if (minutes == 1) {
+                                        messageDate.setText("About " + minutes
+                                                + " minute ago from "
+                                                + posts[j].getService().getName());
+                                    } else {
+
+                                        if (seconds > 1) {
+                                            messageDate.setText("About " + seconds
+                                                    + " seconds ago from "
+                                                    + posts[j].getService().getName());
+                                        } else if (seconds == 1) {
+                                            messageDate.setText("About " + seconds
+                                                    + " second ago from "
+                                                    + posts[j].getService().getName());
+                                        } else {
+                                            messageDate.setText("Few seconds ago from "
+                                                    + posts[j].getService().getName());
+
+                                        }
+                                    }
+                                }
+                            }
+                            messageDate.setFont(new Font("Calibri", Font.ITALIC, 8));
+                            messageDate.setForeground(Color.LIGHT_GRAY);
+                            pnl2.add(messageDate);
+                            pnl.add(pnl2);
+                            panel.add(pnl);
+
+                            SwingUtilities.invokeLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    scrollPane1.getVerticalScrollBar().setValue(0);
+                                }
+                            });
+                        }
+                    });
+
+
+                }
+            }
+
+        }
+
     }
 }

@@ -153,6 +153,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                             uiData.put("Event", event);
                             uiData.put("Event_type", event.getID());
                             uiData.put("ID_action", event.getComponent().getName());
+                            uiData.put("Object", event.getComponent());
 
                             new ActionHomeTimeline(uiData);
 
@@ -225,6 +226,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         uiData.put("Event", event);
                         uiData.put("Event_type", event.getID());
                         uiData.put("ID_action", event.getComponent().getName());
+                        uiData.put("Object", event.getComponent());
 
                         new ActionHomeTimeline(uiData);
 
