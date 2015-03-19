@@ -4,25 +4,26 @@
 
 package com.socialcdeIntellij.dynamicview;
 
-import java.awt.*;
-import java.awt.event.MouseListener;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.Calendar;
-import java.util.HashMap;
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
-
 import com.socialcdeIntellij.action.ActionGeneral;
 import com.socialcdeIntellij.action.ActionHomeTimeline;
 import com.socialcdeIntellij.controller.Controller;
-import com.socialcdeIntellij.object.*;
+import com.socialcdeIntellij.object.CustomTextArea;
+import com.socialcdeIntellij.object.ImagesMod;
 import com.socialcdeIntellij.shared.library.WPost;
-import org.jdesktop.swingx.*;
+import org.jdesktop.swingx.HorizontalLayout;
+import org.jdesktop.swingx.VerticalLayout;
+
+import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
+import java.awt.*;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.Calendar;
+import java.util.HashMap;
 
 /**
  * @author Davide Rossi
@@ -44,7 +45,7 @@ public class HomeTimelinePanel extends JPanel {
     private JPanel pnlUser;
     private JPanel pnl;
     private JPanel subPanel;
-    private JScrollPane scrollPane1;
+    private final JScrollPane scrollPane1 = new JScrollPane();
     private JPanel panelDynamic;
     private JTextArea textArea1;
     private JPanel panelMsg;
@@ -55,13 +56,13 @@ public class HomeTimelinePanel extends JPanel {
 
     public HomeTimelinePanel() {
         initComponents();
+
     }
 
     private void initComponents() {
 
         timerUpdate = 0;
 
-        scrollPane1 = new JScrollPane();
         panelDynamic = new JPanel();
         panelMsg = new JPanel();
         customTextArea1 = new CustomTextArea();
@@ -70,31 +71,23 @@ public class HomeTimelinePanel extends JPanel {
         subPanel = new JPanel(new VerticalLayout(10));
         subPanel.setBackground(Color.WHITE);
 
-        insertTimeline(subPanel);
-        panelDynamic.add(subPanel);
-
         setLayout(new VerticalLayout(30));
 
-        //======== scrollPane1 ========
+        //========= scrollPane ==========
         {
-            scrollPane1.setPreferredSize(new Dimension(403, 400));
-            //scrollPane1.getVerticalScrollBar().setValue(scrollPane1.getVerticalScrollBar().getMinimum());
-
-           /* SwingUtilities.invokeLater(new Runnable()
-            {
-                @Override
-                public void run()
-                {
-                    scrollPane1.getVerticalScrollBar().setValue(0);
-                }
-            });*/
-
-
             //======== panelDynamic ========
             {
                 panelDynamic.setBackground(Color.white);
                 panelDynamic.setBorder(new BevelBorder(BevelBorder.LOWERED));
                 panelDynamic.setLayout(new VerticalLayout(15));
+
+
+                insertTimeline(subPanel);
+
+
+
+                panelDynamic.add(subPanel);
+
 
                 long secondCallpostStartTime = System.currentTimeMillis();
 
@@ -118,21 +111,24 @@ public class HomeTimelinePanel extends JPanel {
 
                         /* otherPostAvailable.addListener(SWT.Selection, azioni);
                         otherPostAvailable.setData("ID_action", "otherPostAvailable");*/
-                }
-                else {
+                } else {
                     JPanel jp = new JPanel(new FlowLayout());
                     noPostAvailable = new JLabel("There are no post in the cache.\n Please try again in two minutes.");
                     jp.add(noPostAvailable);
                     panelDynamic.add(jp);
+
                 }
 
-               // labelDownloadPost = new JLabel("Download old post");
+                // labelDownloadPost = new JLabel("Download old post");
 
 
             }
+
+            scrollPane1.setPreferredSize(new Dimension(0, 400));
             scrollPane1.setViewportView(panelDynamic);
+            add(scrollPane1);
+
         }
-        add(scrollPane1);
 
         //======== panelMsg ========
         {
@@ -149,7 +145,7 @@ public class HomeTimelinePanel extends JPanel {
             //---- lblEnter ----
             JPanel jp2 = new JPanel(new FlowLayout());
             try {
-                lblEnter.setIcon(new ImageIcon(im.getSEND_MESSAGE(48,48)));
+                lblEnter.setIcon(new ImageIcon(im.getSEND_MESSAGE(48, 48)));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -176,7 +172,9 @@ public class HomeTimelinePanel extends JPanel {
 
         //Controller.setWindowName("homeTimeline");
 
-        Controller.getWindow().revalidate();
+       // Controller.getWindow().revalidate();
+
+
 
         final int time = 10000;
         final Runnable timer = new Runnable() {
@@ -196,8 +194,6 @@ public class HomeTimelinePanel extends JPanel {
                         System.out.println("Chiamata eseguita parte 2 " + Calendar.getInstance().getTime().toString());
                         //updateTimeline();
 
-                        panelDynamic.revalidate();
-
                         timerUpdate = System.currentTimeMillis();
                     }
                     timerUpdate = tempTimer;
@@ -205,12 +201,17 @@ public class HomeTimelinePanel extends JPanel {
             }
 
         };
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                scrollPane1.getVerticalScrollBar().setValue(0);
+            }
+        });
+
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Pablo Rossi
 
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public HashMap<String, Object> getData() {
 
@@ -219,7 +220,7 @@ public class HomeTimelinePanel extends JPanel {
         uiData.put("LabelSendMessage", lblEnter);
         uiData.put("TextMessage", customTextArea1);
         uiData.put("Panel", this);
-        uiData.put("Scroll", scrollPane1);
+        //uiData.put("Scroll", scrollPane1);
         /*uiData.put("superUserPostMaster", superUserPostMaster);
         uiData.put("userPostMaster", userPostMaster);
         uiData.put("otherPostWarning", otherPostWarning);
@@ -264,7 +265,6 @@ public class HomeTimelinePanel extends JPanel {
 
         return result;
     }
-
 
     public void insertTimeline(final JPanel panel) {
 
@@ -416,6 +416,13 @@ public class HomeTimelinePanel extends JPanel {
                                                pnl2.add(messageDate);
                                                pnl.add(pnl2);
                                                panel.add(pnl);
+
+                                               SwingUtilities.invokeLater(new Runnable() {
+                                                   @Override
+                                                   public void run() {
+                                                       scrollPane1.getVerticalScrollBar().setValue(0);
+                                                   }
+                                               });
                                            }
                                        }
 

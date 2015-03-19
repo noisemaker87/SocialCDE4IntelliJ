@@ -10,6 +10,8 @@ import org.jdesktop.swingx.VerticalLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -59,7 +61,7 @@ public class ActionHomeTimeline {
                                     GetUserTimeline(Controller.getCurrentUser().Username,
                                             Controller.getCurrentUserPassword(), Controller.getCurrentUser().Username);
 
-                            JPanel panel = new JPanel(new HorizontalLayout(10));
+                            final JPanel panel = new JPanel(new HorizontalLayout(10));
                             panel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
                             panel.setBackground(Color.WHITE);
                             JPanel pnl2 = new JPanel(new VerticalLayout(10));
@@ -88,6 +90,9 @@ public class ActionHomeTimeline {
                             message.setEditable(false);
                             message.setBackground(Color.WHITE);
                             message.setText(userMessage);
+                            //message.setCaretPosition(0);
+                            //message.grabFocus();
+
                             pnl2.add(message);
 
 
@@ -98,20 +103,11 @@ public class ActionHomeTimeline {
 
                             panel.add(pnl2);
 
+                            //JScrollPane jsp = ((JScrollPane) uiData.get("Scroll"));
 
                             Controller.selectDynamicWindow(3);
-
-                            SwingUtilities.invokeLater(new Runnable()
-                            {
-                                @Override
-                                public void run()
-                                {
-                                    JScrollPane jsp = ((JScrollPane) uiData.get("Scroll"));
-                                    jsp.getVerticalScrollBar().setValue(0);
-                                }
-                            });
-
                             Controller.getWindow().revalidate();
+
 
 
                            /* ((Composite) uiData.get("userPostMaster")).redraw();
