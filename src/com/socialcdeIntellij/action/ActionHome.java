@@ -198,9 +198,9 @@ public class ActionHome {
 
                     }
                 }
-               /* else {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }*/
+                else {
+                    Controller.openConnectionLostPanel();
+                }
 
                 break;
             default:

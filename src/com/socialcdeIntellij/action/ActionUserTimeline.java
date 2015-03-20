@@ -36,10 +36,10 @@ public class ActionUserTimeline {
                     Controller.selectDynamicWindow(2);
                     Controller.getWindow().revalidate();
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "lblFollow":
@@ -56,10 +56,10 @@ public class ActionUserTimeline {
                                 "SocialCDE message", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "lblUnfollow":
@@ -76,10 +76,10 @@ public class ActionUserTimeline {
                                 "SocialCDE message", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "lblSkill":
@@ -87,10 +87,10 @@ public class ActionUserTimeline {
                     final PopupSkill skillPanel = new PopupSkill(Controller.getFrame());
                     skillPanel.setUser(user_selected);
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "lblHide":
@@ -283,10 +283,10 @@ public class ActionUserTimeline {
 
                     }
                 }
-               /* else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             default:

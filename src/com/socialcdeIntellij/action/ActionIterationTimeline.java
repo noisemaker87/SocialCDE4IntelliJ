@@ -57,9 +57,9 @@ public class ActionIterationTimeline {
                         } else {
                             uiData.put("alert", "");
 
-                            WPost[]	homeTimelinePost = Controller.getProxy().
-                                    GetUserTimeline(Controller.getCurrentUser().Username,
-                                            Controller.getCurrentUserPassword(), Controller.getCurrentUser().Username);
+                            WPost[] iterationTimelinePost = Controller.getProxy().GetUserTimeline(
+                                    Controller.getCurrentUser().Username, Controller.getCurrentUserPassword(),
+                                    Controller.getCurrentUser().Username);
 
                             final JPanel panel = new JPanel(new HorizontalLayout(10));
                             panel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
@@ -105,10 +105,10 @@ public class ActionIterationTimeline {
                         }
                     }
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost!  \n You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "lblImgAvatar":
@@ -171,10 +171,10 @@ public class ActionIterationTimeline {
                     Controller.selectDynamicWindow(3);
                     Controller.getWindow().revalidate();
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "lblUsername":
@@ -236,18 +236,18 @@ public class ActionIterationTimeline {
                     Controller.temporaryInformation.put("User_selected", userSelected);
                     Controller.selectDynamicWindow(3);
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n  You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "otherPostAvaible":
                 if(Controller.getProxy().IsWebServiceRunning()) {
 
-                    final WPost[] posts = Controller.getProxy().GetHomeTimeline(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword(), 0, getLastId());
+                    final WPost[] posts =
+                            Controller.getProxy().GetIterationTimeline(Controller.getCurrentUser().Username,
+                                    Controller.getCurrentUserPassword(),0,getLastId());
 
                     for (int i = 0; i < posts.length; i++) {
                         final int j = i;
@@ -404,10 +404,9 @@ public class ActionIterationTimeline {
                         setLastId(posts[i].Id);
                     }
 
-
-                    WPost[] newPosts = Controller.getProxy().GetHomeTimeline(
+                    WPost[] newPosts = Controller.getProxy().GetIterationTimeline(
                             Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword(), 0, getLastId());
+                            Controller.getCurrentUserPassword(),0,getLastId());
 
                     if (newPosts == null || newPosts.length == 2) {
                         newPosts = new WPost[0];
@@ -425,10 +424,10 @@ public class ActionIterationTimeline {
 
                     }
                 }
-               /* else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             default:

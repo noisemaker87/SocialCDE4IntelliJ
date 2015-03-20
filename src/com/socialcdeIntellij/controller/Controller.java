@@ -307,7 +307,16 @@ public class Controller {
 
     }
 
+    public static void openConnectionLostPanel(){
+        int response = JOptionPane.showConfirmDialog(Controller.getFrame(), "Connection Lost! \n You will be redirected to Login page.",
+                "SocialCDE message", JOptionPane.OK_OPTION, JOptionPane.WARNING_MESSAGE);
 
+        if(response == JOptionPane.OK_OPTION){
+            Controller.setWindowName("Login");
+            Controller.setWindow(Controller.getLoginPanel());
+            Controller.getWindow().revalidate();
+        }
+    }
 
     public static void selectDynamicWindow(int choose) {
         JPanel container = new JPanel();

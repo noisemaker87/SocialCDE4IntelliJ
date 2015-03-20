@@ -16,6 +16,7 @@ import javax.swing.event.HyperlinkListener;
 
 import com.socialcdeIntellij.action.ActionGeneral;
 import com.socialcdeIntellij.action.ActionHomeTimeline;
+import com.socialcdeIntellij.action.ActionIterationTimeline;
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.object.*;
 import com.socialcdeIntellij.shared.library.WPost;
@@ -87,10 +88,8 @@ public class IterationTimelinePanel extends JPanel {
 
                 long secondCallpostStartTime = System.currentTimeMillis();
 
-                WPost[] newPost = Controller.getProxy().GetHomeTimeline(
-                        Controller.getCurrentUser().Username,
-                        Controller.getCurrentUserPassword(),
-                        ActionHomeTimeline.getLastId(), 0);
+                WPost[] newPost = Controller.getProxy().GetIterationTimeline(Controller.getCurrentUser().Username,
+                        Controller.getCurrentUserPassword(),ActionIterationTimeline.getLastId(),0);
 
                 long secondCallpostEndTime = System.currentTimeMillis();
 
@@ -257,13 +256,12 @@ public class IterationTimelinePanel extends JPanel {
 
         long postStartTime = System.currentTimeMillis();
 
-        posts = Controller.getProxy().GetHomeTimeline(
-                Controller.getCurrentUser().Username,
-                Controller.getCurrentUserPassword());
+        posts = Controller.getProxy().GetIterationTimeline(
+                Controller.getCurrentUser().Username,Controller.getCurrentUserPassword());
 
         long postEndTime = System.currentTimeMillis();
 
-        ActionHomeTimeline.setLastId(0);
+        ActionIterationTimeline.setLastId(0);
 
         for (int i = 0; i < posts.length; i++) {
 
@@ -420,7 +418,7 @@ public class IterationTimelinePanel extends JPanel {
 
             );
 
-            ActionHomeTimeline.setLastId(posts[i].Id);
+            ActionIterationTimeline.setLastId(posts[i].Id);
 
         }
     }
@@ -429,9 +427,11 @@ public class IterationTimelinePanel extends JPanel {
 
         if(panelDynamic.getComponentCount()==1)
         {
-            posts = Controller.getProxy().GetHomeTimeline(
+            /*posts = Controller.getProxy().GetHomeTimeline(
                     Controller.getCurrentUser().Username,
-                    Controller.getCurrentUserPassword());
+                    Controller.getCurrentUserPassword());*/
+            posts = Controller.getProxy().GetIterationTimeline(
+                    Controller.getCurrentUser().Username,Controller.getCurrentUserPassword());
         }
         else
         {

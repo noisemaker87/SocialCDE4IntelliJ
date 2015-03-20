@@ -109,10 +109,10 @@ public class ActionHomeTimeline {
                         }
                     }
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost!  \n You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "lblImgAvatar":
@@ -175,10 +175,10 @@ public class ActionHomeTimeline {
                     Controller.selectDynamicWindow(3);
                     Controller.getWindow().revalidate();
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "lblUsername":
@@ -240,10 +240,10 @@ public class ActionHomeTimeline {
                     Controller.temporaryInformation.put("User_selected", userSelected);
                     Controller.selectDynamicWindow(3);
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n  You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "otherPostAvaible":
@@ -429,10 +429,10 @@ public class ActionHomeTimeline {
 
                     }
                 }
-               /* else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                     break;
 
             default:

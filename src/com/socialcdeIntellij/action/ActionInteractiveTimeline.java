@@ -1,6 +1,7 @@
 package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
+import com.socialcdeIntellij.dynamicview.InteractiveTimelinePanel;
 import com.socialcdeIntellij.object.CustomTextArea;
 import com.socialcdeIntellij.object.GeneralLabel;
 import com.socialcdeIntellij.object.ImagesMod;
@@ -57,9 +58,9 @@ public class ActionInteractiveTimeline {
                         } else {
                             uiData.put("alert", "");
 
-                            WPost[]	homeTimelinePost = Controller.getProxy().
-                                    GetUserTimeline(Controller.getCurrentUser().Username,
-                                            Controller.getCurrentUserPassword(), Controller.getCurrentUser().Username);
+                            WPost[]	interactiveTimelinePost = Controller.getProxy().GetUserTimeline(
+                                    Controller.getCurrentUser().Username,
+                                    Controller.getCurrentUserPassword(),Controller.getCurrentUser().Username);
 
                             final JPanel panel = new JPanel(new HorizontalLayout(10));
                             panel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
@@ -105,10 +106,10 @@ public class ActionInteractiveTimeline {
                         }
                     }
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost!  \n You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "lblImgAvatar":
@@ -168,13 +169,13 @@ public class ActionInteractiveTimeline {
                     userCategory = null;
 
                     Controller.temporaryInformation.put("User_selected", userSelected);
-                    Controller.selectDynamicWindow(3);
+                    Controller.selectDynamicWindow(6);
                     Controller.getWindow().revalidate();
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "lblUsername":
@@ -234,20 +235,20 @@ public class ActionInteractiveTimeline {
                     userCategory = null;
 
                     Controller.temporaryInformation.put("User_selected", userSelected);
-                    Controller.selectDynamicWindow(3);
+                    Controller.selectDynamicWindow(6);
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n  You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             case "otherPostAvaible":
                 if(Controller.getProxy().IsWebServiceRunning()) {
 
-                    final WPost[] posts = Controller.getProxy().GetHomeTimeline(
+                    final WPost[] posts = Controller.getProxy().GetInteractiveTimeline(
                             Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword(), 0, getLastId());
+                            Controller.getCurrentUserPassword(),"", InteractiveTimelinePanel.getFileSelected(),"File", 0, getLastId());
 
                     for (int i = 0; i < posts.length; i++) {
                         final int j = i;
@@ -404,10 +405,9 @@ public class ActionInteractiveTimeline {
                         setLastId(posts[i].Id);
                     }
 
-
-                    WPost[] newPosts = Controller.getProxy().GetHomeTimeline(
+                    WPost[] newPosts = Controller.getProxy().GetInteractiveTimeline(
                             Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword(), 0, getLastId());
+                            Controller.getCurrentUserPassword(),"",InteractiveTimelinePanel.getFileSelected(),"File", 0, getLastId());
 
                     if (newPosts == null || newPosts.length == 2) {
                         newPosts = new WPost[0];
@@ -425,10 +425,10 @@ public class ActionInteractiveTimeline {
 
                     }
                 }
-               /* else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             default:

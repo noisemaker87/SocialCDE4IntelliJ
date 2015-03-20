@@ -26,10 +26,10 @@ public class ActionPeople {
                     Controller.selectDynamicWindow(3);
                     Controller.getWindow().revalidate();
                 }
-                /*else
+                else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
-                }*/
+                    Controller.openConnectionLostPanel();
+                }
                 break;
 
             default:

@@ -67,26 +67,24 @@ public class InteractiveTimelinePanel extends JPanel {
 
     private void initComponents() {
 
-        /*IEditorPart editor = null;
+        Editor editor = null;
         tempFileSelected = "";
-        try{
-            editor = PlatformUI.getWorkbench()
-                    .getActiveWorkbenchWindow().getActivePage()
-                    .getActiveEditor();
+        try {
+            editor = FileEditorManager.getInstance(Controller.getProject()).getSelectedTextEditor();
 
-            if(editor != null)
-            {
-                tempFileSelected = editor.getTitleToolTip();
+                   /* PlatformUI.getWorkbench()
+                    .getActiveWorkbenchWindow().getActivePage()
+                    .getActiveEditor();*/
+
+            if (editor != null) {
+                tempFileSelected = editor.getContentComponent().getToolTipText();
             }
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             fileSelected = "";
         }
 
-        fileSelected = tempFileSelected;*/
 
-
+        fileSelected = tempFileSelected;
 
         timerUpdate = 0;
 
@@ -229,7 +227,13 @@ public class InteractiveTimelinePanel extends JPanel {
 
     }
 
+    public static String getFileSelected() {
+        return fileSelected;
+    }
 
+    public static void setFileSelected(String fileSelected) {
+        InteractiveTimelinePanel.fileSelected = fileSelected;
+    }
 
     public HashMap<String, Object> getData() {
 
