@@ -1,6 +1,7 @@
 package com.socialcdeIntellij.controller;
 
 import com.intellij.ide.util.PropertiesComponent;
+import com.intellij.openapi.project.Project;
 import com.socialcdeIntellij.dynamicview.*;
 import com.socialcdeIntellij.model.ProxyWrapper;
 import com.socialcdeIntellij.object.OperationProgressBar;
@@ -17,6 +18,15 @@ import java.util.HashMap;
 public class Controller {
 
     private static JFrame frame = null;
+    private static Project project = null;
+
+    public static Project getProject() {
+        return project;
+    }
+
+    public static void setProject(Project project) {
+        Controller.project = project;
+    }
 
     private static RegistrationPanel registrationPanel = new RegistrationPanel();
     private static LoginPanel loginPanel = new LoginPanel();
