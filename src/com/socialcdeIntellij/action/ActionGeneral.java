@@ -63,6 +63,18 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
 
                         break;
 
+                    case "Settings":
+
+                        uiData = Controller.getSettingPanel().getData();
+                        uiData.put("Event", event);
+                        uiData.put("Event_type", event.getID());
+                        uiData.put("ID_action", event.getActionCommand());
+                        uiData.put("Object", event.getSource());
+
+                        new ActionSetting(uiData);
+
+                        break;
+
                     case "People":
                         uiData = Controller.getHomePanel().getData();
                         uiData.put("Event", event);
@@ -94,7 +106,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         break;
 
                     case "InteractiveTimeline":
-                        //uiData = Controller.getInteractiveTimelinePanel().getData();
+                        uiData = Controller.getInteractiveTimelinePanel().getData();
                         uiData.put("Event", event);
                         uiData.put("Event_type", event.getID());
                         uiData.put("ID_action", event.getActionCommand());
@@ -104,7 +116,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         break;
 
                     case "IterationTimeline":
-                        //uiData = Controller.getIterationTimelinePanel().getData();
+                        uiData = Controller.getIterationTimelinePanel().getData();
                         uiData.put("Event", event);
                         uiData.put("Event_type", event.getID());
                         uiData.put("ID_action", event.getActionCommand());
@@ -168,6 +180,18 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                             new ActionHome(uiData);
                             break;
 
+                        case "Settings":
+
+                            uiData = Controller.getSettingPanel().getData();
+                            uiData.put("Event", event);
+                            uiData.put("Event_type", event.getID());
+                            uiData.put("ID_action", event.getComponent().getName());
+                            uiData.put("Object", event.getComponent());
+
+                            new ActionSetting(uiData);
+
+                            break;
+
                         case "People":
                             uiData = Controller.getPeoplePanel().getData();
                             uiData.put("Event", event);
@@ -201,7 +225,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                             break;
 
                         case "InteractiveTimeline":
-                            //uiData = Controller.getInteractiveTimelinePanel().getData();
+                            uiData = Controller.getInteractiveTimelinePanel().getData();
                             uiData.put("Event", event);
                             uiData.put("Event_type", event.getID());
                             uiData.put("ID_action", event.getComponent().getName());
@@ -212,7 +236,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                             break;
 
                         case "IterationTimeline":
-                            //uiData = Controller.getIterationTimelinePanel().getData();
+                            uiData = Controller.getIterationTimelinePanel().getData();
                             uiData.put("Event", event);
                             uiData.put("Event_type", event.getID());
                             uiData.put("ID_action", event.getComponent().getName());
@@ -274,6 +298,18 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         new ActionHome(uiData);
                         break;
 
+                    case "Settings":
+
+                        uiData = Controller.getSettingPanel().getData();
+                        uiData.put("Event", event);
+                        uiData.put("Event_type", event.getID());
+                        uiData.put("ID_action", event.getComponent().getName());
+                        uiData.put("Object", event.getComponent());
+
+                        new ActionSetting(uiData);
+
+                        break;
+
                     case "People":
                         uiData = Controller.getPeoplePanel().getData();
                         uiData.put("Event", event);
@@ -307,7 +343,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         break;
 
                     case "InteractiveTimeline":
-                        //uiData = Controller.getInteractiveTimelinePanel().getData();
+                        uiData = Controller.getInteractiveTimelinePanel().getData();
                         uiData.put("Event", event);
                         uiData.put("Event_type", event.getID());
                         uiData.put("ID_action", event.getComponent().getName());
@@ -318,7 +354,7 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         break;
 
                     case "IterationTimeline":
-                        //uiData = Controller.getIterationTimelinePanel().getData();
+                        uiData = Controller.getIterationTimelinePanel().getData();
                         uiData.put("Event", event);
                         uiData.put("Event_type", event.getID());
                         uiData.put("ID_action", event.getComponent().getName());

@@ -47,7 +47,7 @@ public class ActionHomeTimeline {
                 {
                     String userMessage = null;
 
-                    if (!InterceptingFilter.verifyText(((CustomTextArea) uiData.get("TextMessage")).getText())) {
+                    if (((CustomTextArea) uiData.get("TextMessage")).getText().isEmpty()) {
                         JOptionPane.showMessageDialog(Controller.getFrame(), "The message is empty, please try again.",
                                 "SocialCDE message", JOptionPane.INFORMATION_MESSAGE);
                     } else {

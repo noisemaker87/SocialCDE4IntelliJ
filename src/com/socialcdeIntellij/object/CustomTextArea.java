@@ -16,7 +16,7 @@ public class CustomTextArea extends JTextArea{
     public CustomTextArea() {
         super(3,0);
         setOpaque( false );
-
+        setMargin(new Insets(2, 2, 20, 2));
         setWrapStyleWord(true);
         setLineWrap(true);
     }

@@ -73,10 +73,7 @@ public class HomeTimelinePanel extends JPanel {
                 panelDynamic.setBorder(new BevelBorder(BevelBorder.LOWERED));
                 panelDynamic.setLayout(new VerticalLayout(15));
 
-
                 insertTimeline(subPanel);
-
-
 
                 panelDynamic.add(subPanel);
 
@@ -132,6 +129,7 @@ public class HomeTimelinePanel extends JPanel {
             //---- customTextArea1 ----
             customTextArea1.setPreferredSize(new Dimension(328, 70));
             customTextArea1.setName("Baloon");
+
             panelMsg2.add(customTextArea1);
 
             //---- lblEnter ----
@@ -317,6 +315,7 @@ public class HomeTimelinePanel extends JPanel {
 
                                                JTextPane message = new JTextPane();
                                                message.setContentType("text/html");
+                                               //message.set
                                                message.setEditable(false);
                                                message.setBackground(Color.WHITE);
                                                message.setText(findLink(posts[j].getMessage()));
