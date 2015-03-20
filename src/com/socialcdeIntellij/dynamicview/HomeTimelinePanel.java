@@ -102,11 +102,17 @@ public class HomeTimelinePanel extends JPanel {
                     jp.add(otherPostAvailable);
                     panelDynamic.add(jp);
 
+                    noPostAvailable = new JLabel("There are no post in the cache.\n Please try again in two minutes.");
+
+
                 } else {
                     noPostAvailable = new JLabel("There are no post in the cache.\n Please try again in two minutes.");
                     JPanel jp = new JPanel(new FlowLayout());
                     jp.add(noPostAvailable);
                     panelDynamic.add(jp);
+
+                    otherPostAvailable = new JLabel("<html><a>Click to view older posts</a></html>");
+                    otherPostAvailable.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
                 }
 

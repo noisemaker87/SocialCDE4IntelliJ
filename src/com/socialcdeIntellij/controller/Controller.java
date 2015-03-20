@@ -392,6 +392,20 @@ public class Controller {
 
                 break;
 
+            case 6://user timeline
+
+                setDynamicPanelName("UserTimeline");
+                setUserTimelinePanel(new UserTimelinePanel());
+                setDynamicPanel(getUserTimelinePanel());
+                container.removeAll();
+                container.add(getProfilePanel());
+                container.add(getDynamicPanel());
+
+                container.revalidate();
+                setWindow(container);
+
+                break;
+
             default:
                 container.removeAll();
                 container.add(getProfilePanel());

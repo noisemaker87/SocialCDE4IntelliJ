@@ -83,6 +83,16 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
 
                         break;
 
+                    case "UserTimeline":
+                        uiData = Controller.getHomeTimelinePanel().getData();
+                        uiData.put("Event", event);
+                        uiData.put("Event_type", event.getID());
+                        uiData.put("ID_action", event.getActionCommand());
+
+                        new ActionUserTimeline(uiData);
+
+                        break;
+
                 }
 
                 break;
@@ -159,6 +169,17 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
 
                             break;
 
+                        case "UserTimeline":
+                            uiData = Controller.getHomeTimelinePanel().getData();
+                            uiData.put("Event", event);
+                            uiData.put("Event_type", event.getID());
+                            uiData.put("ID_action", event.getComponent().getName());
+                            uiData.put("Object", event.getComponent());
+
+                            new ActionUserTimeline(uiData);
+
+                            break;
+
                     }
                     break;
 
@@ -229,6 +250,17 @@ public class ActionGeneral implements ActionListener, FocusListener , MouseListe
                         uiData.put("Object", event.getComponent());
 
                         new ActionHomeTimeline(uiData);
+
+                        break;
+
+                    case "UserTimeline":
+                        uiData = Controller.getHomeTimelinePanel().getData();
+                        uiData.put("Event", event);
+                        uiData.put("Event_type", event.getID());
+                        uiData.put("ID_action", event.getComponent().getName());
+                        uiData.put("Object", event.getComponent());
+
+                        new ActionUserTimeline(uiData);
 
                         break;
 

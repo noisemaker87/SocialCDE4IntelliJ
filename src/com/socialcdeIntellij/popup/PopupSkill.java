@@ -4,6 +4,7 @@
 
 package com.socialcdeIntellij.popup;
 
+import com.socialcdeIntellij.shared.library.WUser;
 import org.jdesktop.swingx.VerticalLayout;
 
 import javax.swing.*;
@@ -16,6 +17,16 @@ import java.awt.*;
  * @author Davide Rossi
  */
 public class PopupSkill extends JDialog {
+    WUser user;
+
+    public WUser getUser() {
+        return user;
+    }
+
+    public void setUser(WUser user) {
+        this.user = user;
+    }
+
     public PopupSkill(Frame owner) {
         super(owner);
         initComponents();

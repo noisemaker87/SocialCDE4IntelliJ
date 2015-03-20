@@ -1,9 +1,9 @@
 package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
-import com.socialcdeIntellij.object.CustomTextArea;
 import com.socialcdeIntellij.object.GeneralLabel;
 import com.socialcdeIntellij.object.ImagesMod;
+import com.socialcdeIntellij.popup.PopupSkill;
 import com.socialcdeIntellij.shared.library.WPost;
 import com.socialcdeIntellij.shared.library.WUser;
 import org.jdesktop.swingx.HorizontalLayout;
@@ -13,245 +13,99 @@ import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import java.awt.*;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Calendar;
 import java.util.HashMap;
 
 /**
- * Created by Teo on 18/03/2015.
+ * Created by Teo on 20/03/2015.
  */
-public class ActionHomeTimeline {
+public class ActionUserTimeline {
 
-    private static long lastId;
-    private WUser userSelected;
-    private WUser[] userCategory;
-    ImagesMod im = new ImagesMod();
-
-
-    public ActionHomeTimeline(final HashMap<String, Object> uiData) {
+    public ActionUserTimeline(final HashMap<String, Object> uiData) {
         String widgetName = uiData.get("ID_action").toString();
         int type = (int) uiData.get("Event_type");
-       // Event event = (Event) uiData.get("Event");
+        final WUser user_selected = ((WUser) uiData.get("userSelected"));
         final ActionGeneral listener = new ActionGeneral();
+        ImagesMod im = new ImagesMod();
 
         switch (widgetName) {
-
-            case "btnSendMessage":
-                if(Controller.getProxy().IsWebServiceRunning())
-                {
-                    String userMessage = null;
-
-                    if (!InterceptingFilter.verifyText(((CustomTextArea) uiData.get("TextMessage")).getText())) {
-                        JOptionPane.showMessageDialog(Controller.getFrame(), "The message is empty, please try again.",
-                                "SocialCDE message", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        userMessage = ((CustomTextArea) uiData.get("TextMessage")).getText();
-                        ((CustomTextArea) uiData.get("TextMessage")).setText("");
-                        if (!Controller.getProxy().Post(
-                                Controller.getCurrentUser().Username,
-                                Controller.getCurrentUserPassword(), userMessage)) {
-                            JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
-                                    "SocialCDE message", JOptionPane.ERROR_MESSAGE);
-                        } else {
-                            uiData.put("alert", "");
-
-                            WPost[]	homeTimelinePost = Controller.getProxy().
-                                    GetUserTimeline(Controller.getCurrentUser().Username,
-                                            Controller.getCurrentUserPassword(), Controller.getCurrentUser().Username);
-
-                            final JPanel panel = new JPanel(new HorizontalLayout(10));
-                            panel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
-                            panel.setBackground(Color.WHITE);
-                            JPanel pnl2 = new JPanel(new VerticalLayout(10));
-                            pnl2.setBackground(Color.WHITE);
-
-                            if(Controller.getUsersAvatar().get(Controller.getCurrentUser().Username) == null)
-                            {
-                                Controller.getUsersAvatar().put(Controller.getCurrentUser().Username, im.getUserImage(Controller.getCurrentUser().Avatar));
-                            }
-
-                            JLabel labelUserAvatar = new JLabel();
-                            try {
-                                labelUserAvatar.setIcon(new ImageIcon(im.resize((BufferedImage) Controller.getUsersAvatar().get(Controller.getCurrentUser().Username),75,75)));
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            panel.add(labelUserAvatar);
-
-                            JLabel username = new JLabel();
-                            username.setText(Controller.getCurrentUser().Username);
-                            username.setFont(new Font("Calibri", Font.BOLD, 15));
-                            pnl2.add(username);
-
-                            JTextPane message = new JTextPane();
-                            message.setContentType("text/html");
-                            message.setEditable(false);
-                            message.setBackground(Color.WHITE);
-                            message.setText(userMessage);
-
-                            pnl2.add(message);
-
-                            JLabel messageDate = new JLabel();
-                            messageDate.setText("About one minutes ago from SocialTFS");
-                            messageDate.setFont(new Font("Calibri", Font.ITALIC, 8));
-                            pnl2.add(messageDate);
-
-                            panel.add(pnl2);
-
-                            Controller.selectDynamicWindow(3);
-                            Controller.getWindow().revalidate();
-                        }
-                    }
-                }
-                /*else
-                {
-                    Controller.openConnectionLostPanel("Connection Lost!  \n You will be redirected to Login page.");
-                }*/
-                break;
-
-            case "lblImgAvatar":
-                if(Controller.getProxy().IsWebServiceRunning())
-                {
-                    userSelected = (WUser) uiData.get("User_data");
-
-                    userCategory = Controller.getProxy().GetSuggestedFriends(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword());
-
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type",
-                                    "Suggested");
-                        }
-                    }
-
-                    userCategory = null;
-
-                    userCategory = Controller.getProxy().GetFollowings(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword());
-
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type",
-                                    "Following");
-                        }
-                    }
-
-                    userCategory = null;
-
-                    userCategory = Controller.getProxy().GetFollowers(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword());
-
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type",
-                                    "Followers");
-                        }
-                    }
-
-                    userCategory = null;
-
-                    userCategory = Controller.getProxy().GetHiddenUsers(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword());
-
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type", "Hidden");
-                        }
-                    }
-
-                    userCategory = null;
-
-                    Controller.temporaryInformation.put("User_selected", userSelected);
-                    Controller.selectDynamicWindow(3);
+            case "lblReturn":
+                if(Controller.getProxy().IsWebServiceRunning()) {
+                    Controller.selectDynamicWindow(2);
                     Controller.getWindow().revalidate();
                 }
                 /*else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
+                    Controller.openConnectionLostPanel("Connection Lost! You will be redirected to Login page.");
                 }*/
                 break;
 
-            case "lblUsername":
-                if(Controller.getProxy().IsWebServiceRunning())
-                {
-                    userSelected = (WUser) uiData.get("User_data");
-
-                    userCategory = Controller.getProxy().GetSuggestedFriends(
+            case "lblFollow":
+                if(Controller.getProxy().IsWebServiceRunning()) {
+                    if (Controller.getProxy().Follow(
                             Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword());
-
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type",
-                                    "Suggested");
-                        }
+                            Controller.getCurrentUserPassword(), user_selected.Id)) {
+                        ((JLabel) uiData.get("lblFollow")).setVisible(false);
+                        ((JLabel) uiData.get("lblUnfollow")).setVisible(true);
+                        ((JLabel) uiData.get("lblUnfollow")).setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     }
-
-                    userCategory = null;
-
-                    userCategory = Controller.getProxy().GetFollowings(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword());
-
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type",
-                                    "Following");
-                        }
+                    else{
+                        JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                                "SocialCDE message", JOptionPane.ERROR_MESSAGE);
                     }
-
-                    userCategory = null;
-
-                    userCategory = Controller.getProxy().GetFollowers(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword());
-
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type",
-                                    "Followers");
-                        }
-                    }
-
-                    userCategory = null;
-
-                    userCategory = Controller.getProxy().GetHiddenUsers(
-                            Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword());
-
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type", "Hidden");
-                        }
-                    }
-
-                    userCategory = null;
-
-                    Controller.temporaryInformation.put("User_selected", userSelected);
-                    Controller.selectDynamicWindow(3);
                 }
                 /*else
                 {
-                    Controller.openConnectionLostPanel("Connection Lost! \n  You will be redirected to Login page.");
+                    Controller.openConnectionLostPanel("Connection Lost! You will be redirected to Login page.");
                 }*/
                 break;
 
-            case "otherPostAvaible":
+            case "lblUnfollow":
+                if(Controller.getProxy().IsWebServiceRunning()) {
+                    if (Controller.getProxy().Follow(
+                            Controller.getCurrentUser().Username,
+                            Controller.getCurrentUserPassword(), user_selected.Id)) {
+                        ((JLabel) uiData.get("lblUnfollow")).setVisible(false);
+                        ((JLabel) uiData.get("lblFollow")).setVisible(true);
+                        ((JLabel) uiData.get("lblFollow")).setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                                "SocialCDE message", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                /*else
+                {
+                    Controller.openConnectionLostPanel("Connection Lost! You will be redirected to Login page.");
+                }*/
+                break;
+
+            case "lblSkill":
+                if(Controller.getProxy().IsWebServiceRunning()) {
+                    final PopupSkill skillPanel = new PopupSkill(Controller.getFrame());
+                    skillPanel.setUser(user_selected);
+                }
+                /*else
+                {
+                    Controller.openConnectionLostPanel("Connection Lost! You will be redirected to Login page.");
+                }*/
+                break;
+
+            case "lblHide":
+                //*********************************************************************
+                break;
+
+            case "otherPostAvailable":
+
                 if(Controller.getProxy().IsWebServiceRunning()) {
 
-                    final WPost[] posts = Controller.getProxy().GetHomeTimeline(
+                    final WPost[] posts = Controller.getProxy().GetUserTimeline(
                             Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword(), 0, getLastId());
+                            Controller.getCurrentUserPassword(),
+                            ((WUser) uiData.get("userSelected")).Username, 0,
+                            getLastId());
 
                     for (int i = 0; i < posts.length; i++) {
                         final int j = i;
@@ -433,20 +287,23 @@ public class ActionHomeTimeline {
                 {
                     Controller.openConnectionLostPanel("Connection Lost! \n You will be redirected to Login page.");
                 }*/
-                    break;
+                break;
 
             default:
                 break;
+
+
         }
     }
 
+    private static long lastId;
 
     public static long getLastId() {
         return lastId;
     }
 
     public static void setLastId(long lastId) {
-        ActionHomeTimeline.lastId = lastId;
+        ActionUserTimeline.lastId = lastId;
     }
 
     private String findLink(String message){
