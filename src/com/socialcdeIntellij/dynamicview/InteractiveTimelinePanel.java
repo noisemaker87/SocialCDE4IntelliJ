@@ -5,6 +5,7 @@
 package com.socialcdeIntellij.dynamicview;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Calendar;
@@ -58,6 +59,8 @@ public class InteractiveTimelinePanel extends JPanel {
     private ActionGeneral listener = new ActionGeneral();
     private static String fileSelected;
     private String tempFileSelected;
+    JPanel jp1;
+    JPanel jp2;
 
 
     public InteractiveTimelinePanel() {
@@ -88,6 +91,8 @@ public class InteractiveTimelinePanel extends JPanel {
 
         timerUpdate = 0;
 
+        jp1 = new JPanel(new FlowLayout());
+        jp2 = new JPanel(new FlowLayout());
         panelDynamic = new JPanel();
         panelMsg = new JPanel();
         customTextArea1 = new CustomTextArea();
@@ -123,27 +128,29 @@ public class InteractiveTimelinePanel extends JPanel {
                     newPost = new WPost[0];
                 }
 
-                if (newPost.length != 2 && newPost.length > 0) {
-                    otherPostAvailable = new JLabel("<html><a>Click to view older posts</a></html>");
-                    otherPostAvailable.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                    otherPostAvailable.setName("otherPostAvaible");
-                    JPanel jp = new JPanel(new FlowLayout());
-                    jp.add(otherPostAvailable);
-                    panelDynamic.add(jp);
+                otherPostAvailable = new JLabel("<html><a>Click to view older posts</a></html>");
+                otherPostAvailable.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                otherPostAvailable.setName("otherPostAvaible");
 
-                    noPostAvailable = new JLabel("There are no post in the cache.\n Please try again in two minutes.");
+                jp1.add(otherPostAvailable);
+                panelDynamic.add(jp1);
+
+                noPostAvailable = new JLabel("There are no post in the cache.\n Please try again in two minutes.");
+
+                jp2.add(noPostAvailable);
+                panelDynamic.add(jp2);
 
 
-                } else {
-                    noPostAvailable = new JLabel("There are no post in the cache.\n Please try again in two minutes.");
-                    JPanel jp = new JPanel(new FlowLayout());
-                    jp.add(noPostAvailable);
-                    panelDynamic.add(jp);
-
-                    otherPostAvailable = new JLabel("<html><a>Click to view older posts</a></html>");
-                    otherPostAvailable.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                if (newPost.length != 2 && newPost.length >0) {
+                    jp1.setVisible(true);
+                    jp2.setVisible(false);
 
                 }
+                else {
+                    jp1.setVisible(false);
+                    jp2.setVisible(true);
+                }
+
 
             }
 
@@ -244,8 +251,9 @@ public class InteractiveTimelinePanel extends JPanel {
         uiData.put("Panel", this);
         uiData.put("panelDynamic", panelDynamic);
         uiData.put("scroll", scrollPane1);
-        uiData.put("LabelOtherPost", otherPostAvailable);
-        uiData.put("LabelNoPost", noPostAvailable);
+        uiData.put("PanelOtherPost", jp1);
+        uiData.put("PanelNoPost", jp2);
+        uiData.put("PanelSubDynamic", subPanel);
 
         return uiData;
     }
@@ -328,7 +336,12 @@ public class InteractiveTimelinePanel extends JPanel {
                                                if (Controller.getUsersAvatar().get(posts[j].getUser().Username) == null) {
                                                    Controller.getUsersAvatar().put(posts[j].getUser().Username, im.getUserImage(posts[j].getUser().Avatar));
                                                }
-                                               lblImgAvatar.setIcon(new ImageIcon(Controller.getUsersAvatar().get(posts[j].getUser().Username)));
+                                               //lblImgAvatar.setIcon(new ImageIcon(Controller.getUsersAvatar().get(posts[j].getUser().Username)));
+                                               try {
+                                                   lblImgAvatar.setIcon(new ImageIcon(im.resize((BufferedImage) Controller.getUsersAvatar().get(posts[j].getUser().Username),75,75)));
+                                               } catch (IOException e) {
+                                                   e.printStackTrace();
+                                               }
 
                                                if (!posts[j].getUser().Username.equals(Controller
                                                        .getCurrentUser().Username)) {

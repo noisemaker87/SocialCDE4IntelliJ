@@ -83,6 +83,7 @@ public class ActionInteractiveTimeline {
                             JLabel username = new JLabel();
                             username.setText(Controller.getCurrentUser().Username);
                             username.setFont(new Font("Calibri", Font.BOLD, 15));
+                            username.setForeground(Color.BLUE);
                             pnl2.add(username);
 
                             JTextPane message = new JTextPane();
@@ -96,12 +97,16 @@ public class ActionInteractiveTimeline {
                             JLabel messageDate = new JLabel();
                             messageDate.setText("About one minutes ago from SocialTFS");
                             messageDate.setFont(new Font("Calibri", Font.ITALIC, 8));
+                            messageDate.setForeground(Color.LIGHT_GRAY);
                             pnl2.add(messageDate);
 
                             panel.add(pnl2);
 
-                            Controller.selectDynamicWindow(3);
-                            Controller.getWindow().revalidate();
+                            ((JPanel)uiData.get("PanelSubDynamic")).add(panel,0);
+                            ((JPanel)uiData.get("PanelSubDynamic")).revalidate();
+
+                           /* Controller.selectDynamicWindow(5);
+                            Controller.getWindow().revalidate();*/
                         }
                     }
                 }
@@ -235,6 +240,7 @@ public class ActionInteractiveTimeline {
 
                     Controller.temporaryInformation.put("User_selected", userSelected);
                     Controller.selectDynamicWindow(6);
+                    Controller.getWindow().revalidate();
                 }
                 else
                 {
@@ -394,12 +400,12 @@ public class ActionInteractiveTimeline {
 
                         ((JPanel) uiData.get("panelDynamic")).revalidate();
 
-                           /* SwingUtilities.invokeLater(new Runnable() {
+                            SwingUtilities.invokeLater(new Runnable() {
                                 @Override
                                 public void run() {
                                     ((JScrollPane)uiData.get("scroll")).getVerticalScrollBar().setValue(0);
                                 }
-                            });*/
+                            });
 
                         setLastId(posts[i].Id);
                     }
@@ -413,14 +419,17 @@ public class ActionInteractiveTimeline {
                     }
 
                     if (newPosts.length > 0) {
-                        JPanel jp = new JPanel(new FlowLayout());
-                        jp.add(((JLabel) uiData.get("LabelOtherPost")));
-                        ((JPanel) uiData.get("panelDynamic")).add(jp);
+
+                        ((JPanel) uiData.get("panelDynamic")).add(((JPanel) uiData.get("PanelOtherPost")));
+                        ((JPanel) uiData.get("PanelOtherPost")).setVisible(true);
+                        ((JPanel)uiData.get("PanelNoPost")).setVisible(false);
+
 
                     } else {
-                        JPanel jp = new JPanel(new FlowLayout());
-                        jp.add(((JLabel) uiData.get("LabelNoPost")));
-                        ((JPanel) uiData.get("panelDynamic")).add(jp);
+
+                        ((JPanel) uiData.get("panelDynamic")).add( ((JPanel)uiData.get("PanelNoPost")));
+                        ((JPanel)uiData.get("PanelOtherPost")).setVisible(false);
+                        ((JPanel)uiData.get("PanelNoPost")).setVisible(true);
 
                     }
                 }

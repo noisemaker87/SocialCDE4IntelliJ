@@ -59,7 +59,6 @@ public class ActionHomeTimeline {
                             JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
                                     "SocialCDE message", JOptionPane.ERROR_MESSAGE);
                         } else {
-                            uiData.put("alert", "");
 
                             WPost[]	homeTimelinePost = Controller.getProxy().
                                     GetUserTimeline(Controller.getCurrentUser().Username,
@@ -87,6 +86,7 @@ public class ActionHomeTimeline {
                             JLabel username = new JLabel();
                             username.setText(Controller.getCurrentUser().Username);
                             username.setFont(new Font("Calibri", Font.BOLD, 15));
+                            username.setForeground(Color.BLUE);
                             pnl2.add(username);
 
                             JTextPane message = new JTextPane();
@@ -100,12 +100,16 @@ public class ActionHomeTimeline {
                             JLabel messageDate = new JLabel();
                             messageDate.setText("About one minutes ago from SocialTFS");
                             messageDate.setFont(new Font("Calibri", Font.ITALIC, 8));
+                            messageDate.setForeground(Color.LIGHT_GRAY);
                             pnl2.add(messageDate);
 
                             panel.add(pnl2);
 
-                            Controller.selectDynamicWindow(3);
-                            Controller.getWindow().revalidate();
+                            //Controller.selectDynamicWindow(3)
+                            ((JPanel)uiData.get("PanelSubDynamic")).add(panel, 0);
+                            ((JPanel)uiData.get("PanelSubDynamic")).revalidate();
+                            /*Controller.selectDynamicWindow(3);
+                            Controller.getWindow().revalidate();*/
                         }
                     }
                 }
@@ -392,18 +396,19 @@ public class ActionHomeTimeline {
                         pnl2.add(messageDate);
                         pnl.add(pnl2);
 
-                        ((JPanel) uiData.get("panelDynamic")).remove(((JLabel) uiData.get("LabelOtherPost")));
+
+                        ((JPanel) uiData.get("panelDynamic")).remove(((JPanel) uiData.get("PanelOtherPost")));
 
                         ((JPanel) uiData.get("panelDynamic")).add(pnl);
 
                         ((JPanel) uiData.get("panelDynamic")).revalidate();
 
-                           /* SwingUtilities.invokeLater(new Runnable() {
+                            SwingUtilities.invokeLater(new Runnable() {
                                 @Override
                                 public void run() {
                                     ((JScrollPane)uiData.get("scroll")).getVerticalScrollBar().setValue(0);
                                 }
-                            });*/
+                            });
 
                         setLastId(posts[i].Id);
                     }
@@ -418,14 +423,17 @@ public class ActionHomeTimeline {
                     }
 
                     if (newPosts.length > 0) {
-                        JPanel jp = new JPanel(new FlowLayout());
-                        jp.add(((JLabel) uiData.get("LabelOtherPost")));
-                        ((JPanel) uiData.get("panelDynamic")).add(jp);
+
+                        ((JPanel) uiData.get("panelDynamic")).add(((JPanel) uiData.get("PanelOtherPost")));
+                        ((JPanel) uiData.get("PanelOtherPost")).setVisible(true);
+                        ((JPanel)uiData.get("PanelNoPost")).setVisible(false);
+
 
                     } else {
-                        JPanel jp = new JPanel(new FlowLayout());
-                        jp.add(((JLabel) uiData.get("LabelNoPost")));
-                        ((JPanel) uiData.get("panelDynamic")).add(jp);
+
+                        ((JPanel) uiData.get("panelDynamic")).add( ((JPanel)uiData.get("PanelNoPost")));
+                        ((JPanel)uiData.get("PanelOtherPost")).setVisible(false);
+                        ((JPanel)uiData.get("PanelNoPost")).setVisible(true);
 
                     }
                 }
