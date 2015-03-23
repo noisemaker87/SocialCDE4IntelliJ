@@ -4,6 +4,7 @@
 
 package com.socialcdeIntellij.popup;
 
+import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.shared.library.WUser;
 import org.jdesktop.swingx.VerticalLayout;
 
@@ -12,12 +13,16 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author Davide Rossi
  */
 public class PopupSkill extends JDialog {
-    WUser user;
+    private WUser user;
+    private JLabel lblSkill;
+    private JLabel noSkill;
 
     public WUser getUser() {
         return user;
@@ -39,12 +44,14 @@ public class PopupSkill extends JDialog {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Davide Rossi
+        // Generated using JFormDesigner Evaluation license - Pablo Rossi
         dialogPane = new JPanel();
         scrollPane2 = new JScrollPane();
-        textArea1 = new JTextArea();
+        contentPanel = new JPanel();
         panel1 = new JPanel();
         btnReturn = new JButton();
+        lblSkill = new JLabel();
+        noSkill = new JLabel();
 
         //======== this ========
         setResizable(false);
@@ -56,23 +63,55 @@ public class PopupSkill extends JDialog {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
 
-            // JFormDesigner evaluation mark
-            dialogPane.setBorder(new CompoundBorder(
-                new TitledBorder(new EmptyBorder(0, 0, 0, 0),
-                    "JFormDesigner Evaluation", TitledBorder.CENTER,
-                    TitledBorder.BOTTOM, new Font("Dialog", Font.BOLD, 12),
-                    Color.red), dialogPane.getBorder())); dialogPane.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
-
             dialogPane.setLayout(new VerticalLayout(10));
 
             //======== scrollPane2 ========
             {
+                scrollPane2.setPreferredSize(new Dimension(506, 136));
 
-                //---- textArea1 ----
-                textArea1.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
-                textArea1.setText("There are no skills or there are  no \"get your skills\" feature selected.\nTry again later");
-                textArea1.setEditable(false);
-                scrollPane2.setViewportView(textArea1);
+                //======== contentPanel ========
+                {
+                    contentPanel.setBackground(Color.white);
+                    contentPanel.setLayout(new FlowLayout());
+                    String[] skills = null;
+
+                    if(user != null){
+                        skills = Controller.getProxy().GetSkills(
+                                Controller.getCurrentUser().Username,
+                                Controller.getCurrentUserPassword(),
+                                user.Username);
+                    }
+                    else{
+                        skills = Controller.getProxy().GetSkills(
+                                Controller.getCurrentUser().Username,
+                                Controller.getCurrentUserPassword(),
+                                Controller.getCurrentUser().Username);
+                    }
+
+
+                    if (skills.length > 0) {
+                        String stringSkills = "";
+
+                        for (int i = 0; i < skills.length; i++) {
+                            if (i == skills.length - 1) {
+                                stringSkills += skills[i];
+                            } else {
+                                stringSkills += skills[i] + ", ";
+                            }
+                        }
+
+                        lblSkill.setText(stringSkills);
+                        lblSkill.setVisible(true);
+                        noSkill.setVisible(false);
+                        contentPanel.add(lblSkill);
+                    } else {
+                        noSkill.setText("There are no skills or there are no \"Get your skills\" \n feature selected.\n Try again later.");
+                        lblSkill.setVisible(false);
+                        noSkill.setVisible(true);
+                        contentPanel.add(noSkill);
+                    }
+                }
+                scrollPane2.setViewportView(contentPanel);
             }
             dialogPane.add(scrollPane2);
 
@@ -87,6 +126,12 @@ public class PopupSkill extends JDialog {
 
                 //---- btnReturn ----
                 btnReturn.setText("Back");
+                btnReturn.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        dispose();
+                    }
+                });
                 panel1.add(btnReturn, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.NORTH, GridBagConstraints.NONE,
                     new Insets(0, 0, 0, 0), 0, 0));
@@ -100,10 +145,10 @@ public class PopupSkill extends JDialog {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Davide Rossi
+    // Generated using JFormDesigner Evaluation license - Pablo Rossi
     private JPanel dialogPane;
     private JScrollPane scrollPane2;
-    private JTextArea textArea1;
+    private JPanel contentPanel;
     private JPanel panel1;
     private JButton btnReturn;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.prefs.Preferences;
 
 /**
  * Created by Teo on 10/03/2015.
@@ -139,7 +140,7 @@ public class ActionLogin {
                     Controller.getOpBar().setLabelBar("Login in progress..");
                     Controller.getOpBar().start();
 
-                    Controller.temporaryInformation.put("OperationProgressBar",  Controller.getOpBar());
+                    //Controller.temporaryInformation.put("OperationProgressBar",  Controller.getOpBar());
 
                 if (Controller.getProxy() == null) {
                     Controller.setProxy(new ProxyWrapper());
@@ -177,8 +178,7 @@ public class ActionLogin {
                         if (((JCheckBox) uiData.get("SavePassword"))
                                 .isSelected()) {
                             Controller.setPreferences("password",
-                                    ((JTextField) uiData.get("Password"))
-                                            .getText());
+                                    ((JTextField) uiData.get("Password")).getText());
                         } else {
                             Controller.setPreferences("password", "");
                         }
@@ -186,11 +186,11 @@ public class ActionLogin {
                         if (((JCheckBox) uiData.get("Autologin"))
                                 .isSelected()) {
                             Controller.setPreferences("autoLogin", "true");
-                            Controller.setPreferences("FlagAutologin", "False");
+                            //Controller.setPreferences("FlagAutologin", "False");
 
                         } else {
                             Controller.setPreferences("autoLogin", "false");
-                            Controller.setPreferences("FlagAutologin", "False");
+                           // Controller.setPreferences("FlagAutologin", "False");
                         }
 
                         Controller.setCurrentUser(user);
@@ -206,12 +206,11 @@ public class ActionLogin {
 
 
                         Controller.setWindowName("Profile");
-                       // Controller.setWindow(Controller.getProfilePanel());
+
                         Controller.selectDynamicWindow(0);
                         Controller.getWindow().revalidate();
-                        //clear(uiData);
 
-                        Controller.getOpBar().setStop(1);
+                        //Controller.getOpBar().setStop(1);
                     }
                 } else {
 

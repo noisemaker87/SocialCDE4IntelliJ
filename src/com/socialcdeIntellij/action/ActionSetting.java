@@ -40,6 +40,7 @@ public class ActionSetting {
                                     Controller.getCurrentUser().Username,
                                     Controller.getCurrentUserPassword(),
                                     ((JTextField) uiData.get("TextNewPassword")).getText())) {
+                                Controller.setPreferences("password", ((JTextField) uiData.get("TextNewPassword")).getText());
                                 JOptionPane.showMessageDialog(Controller.getFrame(), "The new password is set up!",
                                         "SocialCDE message", JOptionPane.INFORMATION_MESSAGE);
                                 ((JTextField) uiData.get("TextOldPassword")).setText("");

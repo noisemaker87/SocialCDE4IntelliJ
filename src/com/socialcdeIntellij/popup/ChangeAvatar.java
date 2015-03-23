@@ -4,14 +4,30 @@
 
 package com.socialcdeIntellij.popup;
 
+import com.socialcdeIntellij.controller.Controller;
+import com.socialcdeIntellij.object.GeneralButton;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.*;
 
-/**
- * @author Davide Rossi
- */
+import com.socialcdeIntellij.object.ImagesMod;
+import org.jdesktop.swingx.*;
+
 public class ChangeAvatar extends JDialog {
+
+    private ArrayList<GeneralButton> allAvatar;
+    private URI[] uriAvatar;
+    private ImagesMod im = new ImagesMod();
+    private JLabel lblNoAvatars;
+    private String avatarChoosen = null;
 
 
     public ChangeAvatar(Frame owner) {
@@ -30,13 +46,14 @@ public class ChangeAvatar extends JDialog {
         dialogPane = new JPanel();
         scrollPane1 = new JScrollPane();
         contentPanel = new JPanel();
-        label1 = new JLabel();
-        label2 = new JLabel();
         panel1 = new JPanel();
         okButton = new JButton();
+        lblNoAvatars = new JLabel("No avatars avaible");
+
 
         //======== this ========
         setName("ChangeAvatar");
+        setTitle("Select avatar");
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
@@ -44,56 +61,116 @@ public class ChangeAvatar extends JDialog {
         {
             dialogPane.setBorder(new EmptyBorder(12, 12, 12, 12));
 
-            // JFormDesigner evaluation mark
-            dialogPane.setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                    "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                    javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                    java.awt.Color.red), dialogPane.getBorder())); dialogPane.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
-
-            dialogPane.setLayout(new BorderLayout());
+            dialogPane.setLayout(new VerticalLayout(15));
 
             //======== scrollPane1 ========
             {
-                scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+                //scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
                 scrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
+                uriAvatar = Controller.getProxy().GetAvailableAvatars(
+                        Controller.getCurrentUser().Username,
+                        Controller.getCurrentUserPassword());
+
                 //======== contentPanel ========
+
                 {
                     contentPanel.setBackground(Color.white);
-                    contentPanel.setPreferredSize(new Dimension(327, 140));
                     contentPanel.setLayout(new FlowLayout());
 
-                    //---- label1 ----
-                    label1.setText("text");
-                    label1.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
-                    contentPanel.add(label1);
+                    if (uriAvatar.length > 0) {
+                        lblNoAvatars.setVisible(false);
 
-                    //---- label2 ----
-                    label2.setText("text");
-                    label2.setIcon(new ImageIcon(getClass().getResource("/images/DefaultAvatar.png")));
-                    contentPanel.add(label2);
+                        allAvatar = new ArrayList<GeneralButton>();
+                        for (int i = 0; i < uriAvatar.length; i++) {
+
+                            Boolean flag = true;
+                            System.out.println("uri  " + i + " n. "
+                                    + uriAvatar[i].toString());
+                            try {
+
+                                im.get_ImageStream(uriAvatar[i].toURL());
+
+                            } catch (Exception e) {
+                                // TODO: handle exception
+                                flag = false;
+                            }
+
+                            if (flag) {
+                                GeneralButton btnAvatar = new GeneralButton();
+
+                                if (Controller.getCurrentUser().getAvatar() != null &&  Controller.getCurrentUser().getAvatar()
+                                        .equals(uriAvatar[i].toString())) {
+                                    btnAvatar.setText("");
+                                    /*avatarImage.setData("ID_action", "btnAvatar");
+                                    avatarImage.setData("URI", uriAvatar[i]);*/
+                                    final int j = i;
+
+                                    try {
+                                        btnAvatar.setIcon(new ImageIcon(im.resize((BufferedImage) im.get_ImageStream(uriAvatar[i].toURL()), 70, 70)));
+
+                                    } catch (MalformedURLException e) {
+                                        // TODO Auto-generated catch block
+                                        e.printStackTrace();
+                                    } catch (IOException e) {
+                                        // TODO Auto-generated catch block
+                                        e.printStackTrace();
+                                    }
+                                    contentPanel.add(btnAvatar);
+                                    allAvatar.add(btnAvatar);
+
+                                    btnAvatar.addActionListener(new ActionListener() {
+                                        @Override
+                                        public void actionPerformed(ActionEvent e) {
+
+                                            if (!Controller.getProxy().SaveAvatar(
+                                                    Controller.getCurrentUser().Username,
+                                                    Controller.getCurrentUserPassword(),
+                                                    uriAvatar[j])) {
+                                                JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                                                        "SocialCDE message", JOptionPane.WARNING_MESSAGE);
+                                            }
+                                            else
+                                                avatarChoosen = String.valueOf(uriAvatar[j]);
+
+                                        }
+                                    });
+                                }
+
+                            }
+                        }
+                    }
+                    else{
+                        lblNoAvatars.setVisible(true);
+                        contentPanel.add(lblNoAvatars);
+                    }
+
+
                 }
                 scrollPane1.setViewportView(contentPanel);
             }
-            dialogPane.add(scrollPane1, BorderLayout.PAGE_START);
+            dialogPane.add(scrollPane1);
 
             //======== panel1 ========
             {
-                panel1.setPreferredSize(new Dimension(100, 133));
-                panel1.setLayout(new GridBagLayout());
-                ((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {0, 0};
-                ((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {133, 0};
-                ((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
-                ((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
+                panel1.setPreferredSize(new Dimension(100, 50));
+                panel1.setLayout(new FlowLayout());
 
                 //---- okButton ----
                 okButton.setText("OK");
-                panel1.add(okButton, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
-                    GridBagConstraints.SOUTH, GridBagConstraints.NONE,
-                    new Insets(0, 0, 0, 0), 0, 0));
+                okButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if(uriAvatar.length > 0 && avatarChoosen !=null){
+                            Controller.getCurrentUser().setAvatar(avatarChoosen);
+                        }
+                        else
+                            dispose();
+                    }
+                });
+                panel1.add(okButton);
             }
-            dialogPane.add(panel1, BorderLayout.CENTER);
+            dialogPane.add(panel1);
         }
         contentPane.add(dialogPane, BorderLayout.CENTER);
         pack();
@@ -106,8 +183,6 @@ public class ChangeAvatar extends JDialog {
     private JPanel dialogPane;
     private JScrollPane scrollPane1;
     private JPanel contentPanel;
-    private JLabel label1;
-    private JLabel label2;
     private JPanel panel1;
     private JButton okButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

@@ -11,6 +11,7 @@ import org.jdesktop.swingx.VerticalLayout;
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
+import java.util.prefs.Preferences;
 
 /**
  * Created by Teo on 02/03/2015.
@@ -19,6 +20,7 @@ public class Controller {
 
     private static JFrame frame = null;
     private static Project project = null;
+    private static Preferences prefs = Preferences.userNodeForPackage(Controller.class);
 
     public static Project getProject() {
         return project;
@@ -247,27 +249,17 @@ public class Controller {
     public static String getPreferences(String node) {
         String value;
         final String prefix = "SocialCDE";
-        try {
-            value = PropertiesComponent.getInstance().getValue(prefix + node);
-            //value = Activator.getDefault().getPreferenceStore().getString(prefix + node);
-        } catch (Exception e) {
-            value = null;
-        }
+        value = prefs.get(node, prefix);
+
         return value;
     }//prende le preferenze memorizzate - cambiato
 
-    public static boolean setPreferences(String node, String value) {
-        boolean flag = false;
-        final String prefix = "SocialCDE";
-        try {
-            PropertiesComponent.getInstance().setValue(prefix + node,value);
-            //Activator.getDefault().getPreferenceStore().setValue(prefix + node, value);
-            flag = true;
-        } catch (Exception e) {
-            flag = false;
-        }
-        return flag;
+    public static void setPreferences(String node, String value) {
+
+        prefs.put(node, value);
+
     }//memorizza le preferenze - cambiato
+
 
     public static boolean isRegistered() {
 

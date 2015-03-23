@@ -20,7 +20,6 @@ import java.util.HashMap;
 public class ProfilePanel extends JPanel {
 
     private ImagesMod im = new ImagesMod();
-
     private ActionGeneral listener;
 
 
@@ -114,17 +113,7 @@ public class ProfilePanel extends JPanel {
         lblInteractiveTimeline.addMouseListener(listener);
         lblLogout.addMouseListener(listener);
 
-        //Controller.selectDynamicWindow(0);
-
-       /* panelDynamic.add(Controller.getHomePanel()); //cosi no
-        panelDynamic.add(new HomePanel()); // cosi si*/
     }
-
-
-   // public JPanel getDynamic() {  return panelDynamic;}
-
-   // public void setDynamic(JPanel panelDynamic) {  this.panelDynamic = panelDynamic;    }
-
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
