@@ -7,8 +7,12 @@ import com.socialcdeIntellij.shared.library.WOAuthData;
 import com.socialcdeIntellij.shared.library.WService;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,6 +20,7 @@ import java.util.HashMap;
  * Created by Teo on 13/03/2015.
  */
 public class ActionHome {
+    PinWindow pinWindow = null;
 
     public ActionHome(HashMap<String, Object> uiData) {
 
@@ -44,6 +49,7 @@ public class ActionHome {
 
                     GeneralButton gb = (GeneralButton) uiData.get("Object");
                     WService service = gb.getService();
+
 
                     if (service.Registered) {
 
@@ -117,7 +123,8 @@ public class ActionHome {
                     }
                     else {
                         if (service.RequireOAuth) {
-                            final PinWindow pinWindow = new PinWindow(Controller.getFrame());
+                            pinWindow = new PinWindow(Controller.getFrame());
+                            pinWindow.setVisible(true);
                             WOAuthData oauthData = Controller.getProxy()
                                     .GetOAuthData(
                                             Controller.getCurrentUser().Username,
@@ -127,41 +134,37 @@ public class ActionHome {
                             pinWindow.setService(service);
                             pinWindow.setOauthData(oauthData);
 
-                            Controller.temporaryInformation.put("CurrentURL",
-                                    oauthData.AuthorizationLink);
-
-                            Controller.temporaryInformation.put("Service", service);
-
                             pinWindow.getBtnOk().addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
-                                   // ServiceOkClick();
+                                    serviceOkClick();
                                 }
                             });
 
                             pinWindow.getBtnCancel().addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
-                                    //ServiceCancelClick();
+                                    pinWindow.dispose();
                                 }
                             });
 
+                            if (Desktop.isDesktopSupported()) {
+                                try {
+                                    Desktop.getDesktop().browse(new URI(oauthData.AuthorizationLink));
+                                } catch (IOException e1) {
+                                    // TODO Auto-generated catch block
+                                    e1.printStackTrace();
+                                } catch (URISyntaxException e1) {
+                                    // TODO Auto-generated catch block
+                                    e1.printStackTrace();
+                                }
+                            }
 
-                            /*try {
-                                PlatformUI
-                                        .getWorkbench()
-                                        .getActiveWorkbenchWindow()
-                                        .getActivePage()
-                                        .showView(browserViewName);
-
-                            } catch (PartInitException e1) {
-
-                                e1.printStackTrace();
-                            }*/
                         }
                         else if(service.RequireTFSAuthentication) {
 
                             final TFSLogin tfsPanel = new TFSLogin(Controller.getFrame());
+                            tfsPanel.setVisible(true);
                             tfsPanel.setService(service);
 
                             tfsPanel.getOkButton().addActionListener(new ActionListener() {
@@ -180,6 +183,7 @@ public class ActionHome {
                                             tfsData.get("textDomain").toString())) {
                                         tfsPanel.dispose();
                                         Controller.selectDynamicWindow(0);
+                                        Controller.getWindow().revalidate();
 
                                     } else {
                                         JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
@@ -187,10 +191,14 @@ public class ActionHome {
                                         tfsPanel.dispose();
 
                                     }
-
                                 }
+                            });
 
-
+                            tfsPanel.getCancelButton().addActionListener(new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    tfsPanel.dispose();
+                                }
                             });
 
                         }
@@ -209,5 +217,59 @@ public class ActionHome {
     }
 
 
+    private void serviceOkClick() {
+
+        switch (pinWindow.getService().OAuthVersion) {
+            case 1:
+                if (Controller.getProxy().Authorize(
+                        Controller.getCurrentUser().Username,
+                        Controller.getCurrentUserPassword(),
+                        pinWindow.getService().Id, pinWindow.getTxtPin().getText(),
+                        pinWindow.getOauthData().AccessToken,
+                        pinWindow.getOauthData().AccessSecret)) {
+                    pinWindow.dispose();
+                    pinWindow.getService().Registered = true;
+                    pinWindow.setOauthData(null);
+
+                    Controller.selectDynamicWindow(0);
+                    Controller.getWindow().revalidate();
+                }
+                else{
+                    JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                            "SocialCDE message", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+
+            case 2:
+                try {
+
+                    if (Controller.getProxy().Authorize(
+                            Controller.getCurrentUser().Username,
+                            Controller.getCurrentUserPassword(),
+                            pinWindow.getService().Id,
+                            null,
+                            pinWindow.getOauthData().AccessToken, null)) {
+                        pinWindow.dispose();
+                        pinWindow.getService().Registered = true;
+                        pinWindow.setOauthData(null);
+
+                        Controller.selectDynamicWindow(0);
+                        Controller.getWindow().revalidate();
+                    }
+                    else {
+                        pinWindow.dispose();
+                        JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                                "SocialCDE message", JOptionPane.ERROR_MESSAGE);
+
+                        System.out.println("Autorizzazione non confermata");
+                    }
+                } catch (Exception e) {
+                    pinWindow.dispose();
+                    JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                            "SocialCDE message", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+        }
+    }
 
 }

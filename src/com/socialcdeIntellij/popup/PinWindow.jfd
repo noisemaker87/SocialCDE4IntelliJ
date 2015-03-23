@@ -12,9 +12,13 @@ new FormModel {
 				"text": "Inserisci il PIN:"
 				"name": "lblPin"
 			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "txtPin"
-				"name": "txtPin"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "panel2"
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "txtPin"
+					"name": "txtPin"
+					"preferredSize": new java.awt.Dimension( 200, 24 )
+				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 				name: "panel1"
@@ -23,11 +27,13 @@ new FormModel {
 					"text": "Ok"
 					"actionCommand": "btnOk"
 					"preferredSize": new java.awt.Dimension( 66, 32 )
+					"name": "btnOk"
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "btnCancel"
 					"text": "Cancel"
 					"actionCommand": "btnCancel"
+					"name": "btnCancel"
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
