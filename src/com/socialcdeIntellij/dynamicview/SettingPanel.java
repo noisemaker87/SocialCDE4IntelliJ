@@ -9,6 +9,7 @@ import java.util.HashMap;
 import javax.swing.*;
 
 import com.socialcdeIntellij.action.ActionGeneral;
+import com.socialcdeIntellij.controller.Controller;
 import org.jdesktop.swingx.*;
 
 /**
@@ -16,6 +17,9 @@ import org.jdesktop.swingx.*;
  */
 public class SettingPanel extends JPanel {
     ActionGeneral listener = new ActionGeneral();
+    private JLabel lblAutologinSetting;
+    private JRadioButton radioAutologin;
+    private JPanel panelnew;
 
     public SettingPanel() {
         initComponents();
@@ -36,6 +40,9 @@ public class SettingPanel extends JPanel {
         panel4 = new JPanel();
         btnCancel = new JButton();
         btnOk = new JButton();
+        lblAutologinSetting = new JLabel();
+        radioAutologin = new JRadioButton();
+        panelnew = new JPanel();
 
         //======== this ========
         setLayout(new CardLayout(0, 50));
@@ -59,7 +66,7 @@ public class SettingPanel extends JPanel {
 
             //======== panel1 ========
             {
-                panel1.setLayout(new VerticalLayout());
+                panel1.setLayout(new VerticalLayout(15));
 
                 //======== panel2 ========
                 {
@@ -92,8 +99,30 @@ public class SettingPanel extends JPanel {
                     panel2.add(txtNewPassword, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
                         GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                         new Insets(0, 0, 0, 0), 0, 0));
+
+
                 }
+
+                panelnew.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 5));
+
+                //---- lblAutologinSetting ----
+                lblAutologinSetting.setText("Auto-login: ");
+                lblAutologinSetting.setName("lblAutologinSetting");
+                panelnew.add(lblAutologinSetting);
+
+                //---- radioAutologin ----
+                radioAutologin.setActionCommand("radioAutologin");
+                radioAutologin.setName("radioAutologin");
+                if(Controller.getPreferences("autoLogin").equals("True"))
+                    radioAutologin.setSelected(true);
+                else
+                    radioAutologin.setSelected(false);
+                panelnew.add(radioAutologin);
+
+
+
                 panel1.add(panel2);
+                panel1.add(panelnew);
             }
             panel3.add(panel1);
 
@@ -147,6 +176,7 @@ public class SettingPanel extends JPanel {
         uiData.put("TextOldPassword", txtOldPassword);
         uiData.put("TextNewPassword", txtNewPassword);
         uiData.put("LabelAlert", lblAlert);
+        uiData.put("RadioAutologin", radioAutologin);
 
         return uiData;
     }

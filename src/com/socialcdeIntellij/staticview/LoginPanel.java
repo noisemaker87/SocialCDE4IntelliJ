@@ -5,6 +5,8 @@
 package com.socialcdeIntellij.staticview;
 
 import java.awt.*;
+import java.awt.event.InputEvent;
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import javax.swing.*;
 import com.socialcdeIntellij.action.ActionGeneral;
@@ -99,6 +101,7 @@ public class LoginPanel extends JPanel {
                 panelTxt.setLayout(new VerticalLayout(4));
 
                 //---- txtProxy ----
+                txtProxy.setText("");
                 txtProxy.setMinimumSize(new Dimension(100, 24));
                 txtProxy.setPreferredSize(new Dimension(250, 24));
                 txtProxy.setAutoscrolls(false);
@@ -108,12 +111,15 @@ public class LoginPanel extends JPanel {
                 txtProxy.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
                 txtProxy.setHorizontalAlignment(SwingConstants.LEFT);
                 txtProxy.setName("txtProxy");
-                if(!Controller.getPreferences("proxyHost").isEmpty()){
+                if(!Controller.getPreferences("proxyHost").isEmpty()
+                        && (Controller.getPreferences("autoLogin").equals("True")
+                            || Controller.getPreferences("savePassword").equals("True"))){
                     txtProxy.setText(Controller.getPreferences("proxyHost"));
                 }
                 panelTxt.add(txtProxy);
 
                 //---- txtUsername ----
+                txtUsername.setText("");
                 txtUsername.setMinimumSize(new Dimension(76, 24));
                 txtUsername.setPreferredSize(new Dimension(250, 24));
                 txtUsername.setAutoscrolls(false);
@@ -121,15 +127,20 @@ public class LoginPanel extends JPanel {
                 txtUsername.setAlignmentX(28.5F);
                 txtUsername.setMaximumSize(new Dimension(1000, 24));
                 txtUsername.setName("txtUsername");
-                if(!Controller.getPreferences("username").isEmpty()){
-                    txtProxy.setText(Controller.getPreferences("username"));
+                if(!Controller.getPreferences("username").isEmpty()
+                        && (Controller.getPreferences("autoLogin").equals("True")
+                        || Controller.getPreferences("savePassword").equals("True"))){
+                    txtUsername.setText(Controller.getPreferences("username"));
                 }
                 panelTxt.add(txtUsername);
 
                 //---- txtPassword ----
+                txtPassword.setText("");
                 txtPassword.setName("txtPassword");
-                if(!Controller.getPreferences("password").isEmpty()){
-                    txtProxy.setText(Controller.getPreferences("password"));
+                if(!Controller.getPreferences("password").isEmpty()
+                        && (Controller.getPreferences("autoLogin").equals("True")
+                        || Controller.getPreferences("savePassword").equals("True"))){
+                    txtPassword.setText(Controller.getPreferences("password"));
                 }
                 panelTxt.add(txtPassword);
             }
@@ -187,8 +198,10 @@ public class LoginPanel extends JPanel {
             ckBxAuto_login.setText("Auto login");
             ckBxAuto_login.setName("ckBxAuto_login");
             ckBxAuto_login.setActionCommand("ckBxAuto_login");
-            if(!Controller.getPreferences("autoLogin").equals(true)){
+            //ckBxAuto_login.setSelected(false);
+            if(Controller.getPreferences("autoLogin").equals("True")){
                 ckBxAuto_login.setSelected(true);
+
             }
             panelCheckBtn.add(ckBxAuto_login);
 
@@ -197,7 +210,8 @@ public class LoginPanel extends JPanel {
             ckBxSave_psw.setMargin(new Insets(2, 12, 2, 2));
             ckBxSave_psw.setActionCommand("ckBxSave_psw");
             ckBxSave_psw.setName("ckBxSave_psw");
-            if(!Controller.getPreferences("savePassword").equals(true)){
+            //ckBxSave_psw.setSelected(false);
+            if(Controller.getPreferences("savePassword").equals("True")){
                 ckBxSave_psw.setSelected(true);
             }
             panelCheckBtn.add(ckBxSave_psw);
@@ -216,9 +230,19 @@ public class LoginPanel extends JPanel {
         txtUsername.addFocusListener(listener);
         txtPassword.addFocusListener(listener);
         btnLogin.addActionListener(listener);
-        ckBxAuto_login.addActionListener(listener);
-        ckBxSave_psw.addActionListener(listener);
         lblChange.addMouseListener(listener);
+
+
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                if(ckBxAuto_login.isSelected()){
+                    btnLogin.doClick();
+                }
+            }
+        });
+
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

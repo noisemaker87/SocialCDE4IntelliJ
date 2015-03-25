@@ -1,6 +1,5 @@
 package com.socialcdeIntellij.controller;
 
-import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.project.Project;
 import com.socialcdeIntellij.dynamicview.*;
 import com.socialcdeIntellij.model.ProxyWrapper;
@@ -13,22 +12,12 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.prefs.Preferences;
 
-/**
- * Created by Teo on 02/03/2015.
- */
+
 public class Controller {
 
     private static JFrame frame = null;
     private static Project project = null;
     private static Preferences prefs = Preferences.userNodeForPackage(Controller.class);
-
-    public static Project getProject() {
-        return project;
-    }
-
-    public static void setProject(Project project) {
-        Controller.project = project;
-    }
 
     private static RegistrationPanel registrationPanel = new RegistrationPanel();
     private static LoginPanel loginPanel = new LoginPanel();
@@ -45,7 +34,7 @@ public class Controller {
     private static boolean flag = false;
     private static CardLayout cardLayout = new CardLayout();
     private static CardLayout cardLayout2 = new CardLayout();
-    private static JPanel window = new JPanel(cardLayout);// qui x cambiare pannello iniziale
+    private static JPanel window = new JPanel(cardLayout);
     private static JPanel dynamicPanel = new JPanel(cardLayout2);
     private static String windowName = null;
     private static String dynamicPanelName = null;
@@ -57,6 +46,14 @@ public class Controller {
     private static HashMap<String,Image> usersAvatar = new HashMap<String,Image>();
     private static HashMap<String, Image> servicesImage = new HashMap<String,Image>();
 
+
+    public static Project getProject() {
+        return project;
+    }
+
+    public static void setProject(Project project) {
+        Controller.project = project;
+    }
 
     //progress bar***************************************************************************
     private static OperationProgressBar opBar = new OperationProgressBar();

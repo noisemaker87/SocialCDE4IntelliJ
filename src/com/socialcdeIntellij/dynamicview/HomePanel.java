@@ -19,15 +19,33 @@ import com.socialcdeIntellij.object.ImagesMod;
 import com.socialcdeIntellij.shared.library.WService;
 import org.jdesktop.swingx.*;
 
-/**
- * @author Davide Rossi
- */
+
 public class HomePanel extends JPanel {
+    private JPanel panelInfoUser;
+    private JLabel lblAvatar;
+    private JPanel panelInfo;
+    private JPanel panelSettings;
+    private JLabel lblNickname;
+    private JPanel panelSubSettings;
+    private JLabel lblSkills;
+    private JLabel lblSettings;
+    private JPanel panelInfo2;
+    private JPanel panelPost;
+    private JLabel lblPosts;
+    private JLabel lblNumPost;
+    private JPanel panelfollowing;
+    private JLabel lblFollowing;
+    private JLabel lblNumFollowing;
+    private JPanel panelFollowers;
+    private JLabel lblFollowers;
+    private JLabel lblNumFollowers;
+    private JScrollPane scrollPane1;
+    private JPanel panelService;
+    private JPanel panelserviceDemo;
     private ImagesMod im = new ImagesMod();
     private ActionGeneral listener = new ActionGeneral();;
     private ButtonService services;
     private WService[] wService;
-    private WService wService2;
     private HashMap<String, Object> uiData= new HashMap<String, Object>();
 
     public HomePanel() {
@@ -35,9 +53,7 @@ public class HomePanel extends JPanel {
     }
 
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-
 
-        // Generated using JFormDesigner Evaluation license - Pablo Rossi
         panelInfoUser = new JPanel();
         lblAvatar = new JLabel();
         panelInfo = new JPanel();
@@ -59,9 +75,6 @@ public class HomePanel extends JPanel {
         scrollPane1 = new JScrollPane();
         panelService = new JPanel();
         panelserviceDemo = new JPanel();
-        panel2 = new JPanel();
-        lblService = new JLabel();
-        lblStatus = new JLabel();
 
         //======== this ========
         setBackground(Color.white);
@@ -236,9 +249,7 @@ public class HomePanel extends JPanel {
                             public void run() {
                                 services = new ButtonService();
 
-                                //services.setName("btnRegister");
                                 services.setwService(wService[j]);
-                                //services.addMouseListener(listener);
 
                                 services.getButton().setService(wService[j]);
                                 services.getButton().addActionListener(listener);
@@ -264,7 +275,7 @@ public class HomePanel extends JPanel {
                             }
                         });
                     }
-                    //uiData.put("service", wService);
+
                 } else {
                     JLabel lblNothing = new JLabel("There are no services available yet.\nPlease try again soon or contact your admin.");
                     lblNothing.setVisible(true);
@@ -276,44 +287,11 @@ public class HomePanel extends JPanel {
             scrollPane1.setViewportView(panelService);
         }
         add(scrollPane1);
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
         lblAvatar.addMouseListener(listener);
         lblSkills.addMouseListener(listener);
         lblSettings.addMouseListener(listener);
-
-
-
     }
-
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Pablo Rossi
-    private JPanel panelInfoUser;
-    private JLabel lblAvatar;
-    private JPanel panelInfo;
-    private JPanel panelSettings;
-    private JLabel lblNickname;
-    private JPanel panelSubSettings;
-    private JLabel lblSkills;
-    private JLabel lblSettings;
-    private JPanel panelInfo2;
-    private JPanel panelPost;
-    private JLabel lblPosts;
-    private JLabel lblNumPost;
-    private JPanel panelfollowing;
-    private JLabel lblFollowing;
-    private JLabel lblNumFollowing;
-    private JPanel panelFollowers;
-    private JLabel lblFollowers;
-    private JLabel lblNumFollowers;
-    private JScrollPane scrollPane1;
-    private JPanel panelService;
-    private JPanel panelserviceDemo;
-
-    private JPanel panel2;
-    private JLabel lblService;
-    private JLabel lblStatus;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     private Image getServiceImage(String link){
         try {
@@ -358,9 +336,6 @@ public class HomePanel extends JPanel {
         uiData.put("LabelNumPost",lblNumPost);
         uiData.put("LabelNumFollowing", lblNumFollowing);
         uiData.put("LabelNumFollowers",lblNumFollowers);
-
-        //dinamico
-        //uiData.put("ButtonService", services);
 
         return uiData;
     }

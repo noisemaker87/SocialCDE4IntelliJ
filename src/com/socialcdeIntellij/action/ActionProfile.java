@@ -71,7 +71,7 @@ public class ActionProfile {
 
                     Controller.setCurrentUser(null);
                     Controller.setCurrentUserPassword(null);
-                    Controller.setPreferences("FlagAutologin", "False");
+                    Controller.setPreferences("autologin", "false");
                     Controller.getServicesImage().clear();
                     Controller.getUsersAvatar().clear();
                 }

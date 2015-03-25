@@ -260,17 +260,11 @@ public class ActionRegistration {
 
                             Controller.setPreferences("proxyHost", ((JTextField) uiData.get("ProxyHost")).getText());
 
-                            Controller.setPreferences("username",
-                                    ((JTextField) uiData.get("Username")).getText());
+                            Controller.setPreferences("username",  ((JTextField) uiData.get("Username")).getText());
 
-                            Controller.setPreferences("proxyRoot",
-                                    ((JTextField) uiData.get("ProxyHost")).getText());
+                            Controller.setPreferences("proxyRoot", ((JTextField) uiData.get("ProxyHost")).getText());
 
-                            Controller.setPreferences("password",
-                                    ((JTextField) uiData.get("Password")).getText());
-
-                            Controller.setPreferences("email",
-                                    ((JTextField) uiData.get("Email")).getText());
+                            Controller.setPreferences("password",  ((JTextField) uiData.get("Password")).getText());
 
                         } else {
                             ((JLabel) uiData.get("LabelAlert"))

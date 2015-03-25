@@ -200,27 +200,27 @@ public class ActionLogin {
 
 
                             } else {
-                                if (((JCheckBox) uiData.get("SavePassword"))
-                                        .isSelected()) {
-                                    Controller.setPreferences("password",((JTextField) uiData.get("Password")).getText());
-                                    Controller.setPreferences("savePassword", "true");
-                                } else {
-                                    Controller.setPreferences("password", "");
-                                    Controller.setPreferences("savePassword", "false");
-                                }
-
-                                if (((JCheckBox) uiData.get("Autologin"))
-                                        .isSelected()) {
+                                if (((JCheckBox) uiData.get("SavePassword")).isSelected()) {
                                     Controller.setPreferences("proxyHost", ((JTextField) uiData.get("ProxyHost")).getText());
                                     Controller.setPreferences("username", user.Username);
                                     Controller.setPreferences("password",  ((JTextField) uiData.get("Password")).getText());
-                                    Controller.setPreferences("autoLogin", "true");
+                                    Controller.setPreferences("savePassword", "True");
+                                } else {
+                                    /*Controller.setPreferences("proxyHost", "");
+                                    Controller.setPreferences("username", "");
+                                    Controller.setPreferences("password", "");*/
+                                    Controller.setPreferences("savePassword", "False");
+                                }
+
+                                if (((JCheckBox) uiData.get("Autologin")).isSelected()) {
+                                    Controller.setPreferences("proxyHost", ((JTextField) uiData.get("ProxyHost")).getText());
+                                    Controller.setPreferences("username", user.Username);
+                                    Controller.setPreferences("password",  ((JTextField) uiData.get("Password")).getText());
+                                    Controller.setPreferences("autoLogin", "True");
                                     //Controller.setPreferences("FlagAutologin", "False");
                                 } else {
-                                    Controller.setPreferences("proxyHost", "");
-                                    Controller.setPreferences("username", "");
-                                    Controller.setPreferences("password", "");
-                                    Controller.setPreferences("autoLogin", "false");
+
+                                    Controller.setPreferences("autoLogin", "False");
                                     // Controller.setPreferences("FlagAutologin", "False");
                                 }
 
@@ -228,7 +228,17 @@ public class ActionLogin {
                                 Controller.setCurrentUserPassword(((JTextField) uiData
                                         .get("Password")).getText());
 
-                                //Controller.setPreferences("proxyRoot", ((JTextField) uiData.get("ProxyHost")).getText());
+                                Controller.setPreferences("proxyRoot", ((JTextField) uiData.get("ProxyHost")).getText());
+
+                                System.out.println(" ");
+                                System.out.println("DA ActionLogin:");
+                                System.out.println("proxyhost -> " + Controller.getPreferences("proxyHost"));
+                                System.out.println("proxyRoot -> "+ Controller.getPreferences("proxyRoot"));
+                                System.out.println("username -> "+ Controller.getPreferences("username"));
+                                System.out.println("password -> "+ Controller.getPreferences("password"));
+                                System.out.println("autoLogin -> "+ Controller.getPreferences("autoLogin"));
+                                System.out.println("savePassword -> "+ Controller.getPreferences("savePassword"));
+
 
                                 Controller.setWindowName("Profile");
 
