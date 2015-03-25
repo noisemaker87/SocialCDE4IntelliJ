@@ -61,10 +61,12 @@ public class PeoplePanel extends JPanel {
             {
                 panelPeople.setLayout(new VerticalLayout(10));
                 panelPeople.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
+                panelPeople.setBackground(Color.WHITE);
 
                 //======== panelSuggestions ========
                 {
                     panelSuggestions.setLayout(new VerticalLayout());
+                    panelSuggestions.setBackground(Color.WHITE);
 
                     final WUser[] suggestion = Controller.getProxy().GetSuggestedFriends(
                             Controller.getCurrentUser().Username,
@@ -135,6 +137,7 @@ public class PeoplePanel extends JPanel {
                 //======== panelFollowings ========
                 {
                     panelFollowings.setLayout(new VerticalLayout());
+                    panelFollowings.setBackground(Color.WHITE);
 
                     final WUser[] following = Controller.getProxy().GetFollowings(
                             Controller.getCurrentUser().Username,
@@ -206,6 +209,7 @@ public class PeoplePanel extends JPanel {
                 //======== panelFollowers ========
                 {
                     panelFollowers.setLayout(new VerticalLayout());
+                    panelFollowers.setBackground(Color.WHITE);
 
                     final WUser[] followers = Controller.getProxy().GetFollowers(
                             Controller.getCurrentUser().Username,
@@ -278,6 +282,7 @@ public class PeoplePanel extends JPanel {
                 //======== panelHidden ========
                 {
                     panelHidden.setLayout(new VerticalLayout());
+                    panelHidden.setBackground(Color.WHITE);
 
                     final WUser[] hiddenUsers = Controller.getProxy().GetHiddenUsers(
                             Controller.getCurrentUser().Username,

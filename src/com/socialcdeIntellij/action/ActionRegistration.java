@@ -170,12 +170,12 @@ public class ActionRegistration {
             case "btnRegister":
                 /*//opBar = new OperationProgressBar();*/
 
-                Controller.setWindowName("ProgressBar");
+               /* Controller.setWindowName("ProgressBar");
                 Controller.setWindow(Controller.getOpBar());
 
                 Controller.getWindow().revalidate();
                 Controller.getOpBar().setFlag(false);
-                Controller.getOpBar().start();
+                Controller.getOpBar().start();*/
 
 
                 Controller.temporaryInformation.put("ProgressBarThread", Controller.getOpBar());
@@ -225,7 +225,6 @@ public class ActionRegistration {
                                 .setText("Please compile all field correctly!");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
@@ -236,7 +235,6 @@ public class ActionRegistration {
                                 .setText("Please enter a valid proxy!");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
@@ -247,7 +245,7 @@ public class ActionRegistration {
                                 .setText("There's a problem. Check your connection and try again");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        Controller.getOpBar().setStop(1);
+
                         reRegistration();
 
                         break;
@@ -280,7 +278,6 @@ public class ActionRegistration {
 
                             ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                            Controller.getOpBar().setStop(1);
                             reRegistration();
 
                         }
@@ -292,7 +289,6 @@ public class ActionRegistration {
                                 .setText("Please enter the email on which you recived the invite");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
@@ -303,7 +299,6 @@ public class ActionRegistration {
                                 .setText("Please enter the invitation code that you recived in the invite");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
@@ -313,7 +308,6 @@ public class ActionRegistration {
                                 .setText("The Username chosen is not aviable");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
@@ -323,14 +317,12 @@ public class ActionRegistration {
                                 .setText("Response not valid from the server");
                         ((JLabel) uiData.get("LabelAlert")).setVisible(true);
 
-                        Controller.getOpBar().setStop(1);
                         reRegistration();
 
                         break;
                 }
 
                 if (res == 0) {
-                    Controller.getOpBar().setStop(1);
 
                     Controller.setWindowName("Login");
                     Controller.setWindow(Controller.getLoginPanel());
