@@ -14,7 +14,7 @@ import java.util.prefs.Preferences;
 
 
 public class Controller {
-
+    private static Point point = null;
     private static JFrame frame = null;
     private static Project project = null;
     private static Preferences prefs = Preferences.userNodeForPackage(Controller.class);
@@ -47,6 +47,14 @@ public class Controller {
     private static HashMap<String, Image> servicesImage = new HashMap<String,Image>();
 
 
+    public static Point getPoint() {
+        return point;
+    }
+
+    public static void setPoint(Point point) {
+        Controller.point = point;
+    }
+
     public static Project getProject() {
         return project;
     }
@@ -72,10 +80,6 @@ public class Controller {
         if (flag == false) {
             setWindowName("Login");
             setWindow(getLoginPanel());
-            //return getWindow();
-
-            //setWindowName("Profile");
-           // selectDynamicWindow(0);
 
             return getWindow();
         }

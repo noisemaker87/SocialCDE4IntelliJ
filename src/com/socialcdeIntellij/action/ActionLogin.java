@@ -269,7 +269,7 @@ public class ActionLogin {
                 Controller.setWindowName("Registration");
                 Controller.setWindow(Controller.getRegistrationPanel());
                 Controller.getWindow().revalidate();
-                clear(uiData);
+                //clear(uiData);
 
                 break;
 
