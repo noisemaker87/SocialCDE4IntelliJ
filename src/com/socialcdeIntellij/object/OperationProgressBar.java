@@ -77,7 +77,7 @@ public class OperationProgressBar extends JPanel  {
     private class WorkRunnable implements Runnable {
         public void run() {
             try {
-                for (int i = 0; i <= 100; i++) {
+                for (int i = 0; i <= 100; i+=5) {
                     updateProgress(i);
                     // A sleep .... just to do something.
                     try {

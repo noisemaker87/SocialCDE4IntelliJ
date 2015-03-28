@@ -11,5 +11,7 @@
     <orderEntry type="library" name="TableLayout" level="project" />
     <orderEntry type="library" name="IntelliJ IDEA GridLayout" level="project" />
     <orderEntry type="library" name="JGoodies Forms" level="project" />
+    <orderEntry type="library" name="DJNativeSwing" level="project" />
+    <orderEntry type="library" name="swt" level="project" />
   </component>
 </module>
