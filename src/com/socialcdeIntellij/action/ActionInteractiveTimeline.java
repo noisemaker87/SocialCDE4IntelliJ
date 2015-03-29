@@ -83,7 +83,7 @@ public class ActionInteractiveTimeline {
                             JLabel username = new JLabel();
                             username.setText(Controller.getCurrentUser().Username);
                             username.setFont(new Font("Calibri", Font.BOLD, 15));
-                            username.setForeground(Color.BLUE);
+                            username.setForeground(Color.BLACK);
                             pnl2.add(username);
 
                             JTextPane message = new JTextPane();
@@ -295,12 +295,13 @@ public class ActionInteractiveTimeline {
                             lblUsername.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                             lblUsername.setToolTipText("View " + posts[j].getUser().Username + " Timeline");
                             lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
+                            lblUsername.setForeground(Color.BLUE);
 
                             lblUsername.setwUser(posts[j].getUser());
                             lblUsername.addMouseListener(listener);
                         } else {
                             lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
-                            lblUsername.setForeground(Color.BLUE);
+                            lblUsername.setForeground(Color.BLACK);
                         }
 
                         pnl2.add(lblUsername);

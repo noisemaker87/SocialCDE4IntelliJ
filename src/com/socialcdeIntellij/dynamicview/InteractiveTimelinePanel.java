@@ -364,12 +364,13 @@ public class InteractiveTimelinePanel extends JPanel {
                                                    lblUsername.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                                                    lblUsername.setToolTipText("View " + posts[j].getUser().Username + " Timeline");
                                                    lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
+                                                   lblUsername.setForeground(Color.BLUE);
 
                                                    lblUsername.setwUser(posts[j].getUser());
                                                    lblUsername.addMouseListener(listener);
                                                } else {
                                                    lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
-                                                   lblUsername.setForeground(Color.BLUE);
+                                                   lblUsername.setForeground(Color.BLACK);
                                                }
 
                                                pnl2.add(lblUsername);
@@ -583,12 +584,13 @@ public class InteractiveTimelinePanel extends JPanel {
                                     lblUsername.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                                     lblUsername.setToolTipText("View " + posts[j].getUser().Username + " Timeline");
                                     lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
+                                    lblUsername.setForeground(Color.BLUE);
 
                                     lblUsername.setwUser(posts[j].getUser());
                                     lblUsername.addMouseListener(listener);
                                 } else {
                                     lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
-                                    lblUsername.setForeground(Color.BLUE);
+                                    lblUsername.setForeground(Color.BLACK);
                                 }
 
                                 pnl2.add(lblUsername);

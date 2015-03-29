@@ -5,6 +5,7 @@
 package com.socialcdeIntellij.dynamicview;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Calendar;
@@ -29,7 +30,7 @@ import org.jdesktop.swingx.*;
  */
 public class UserTimelinePanel extends JPanel {
     ImagesMod im = new ImagesMod();
-    WUser user;
+    WUser userSelected;
     private String userType;
     private WPost[] posts;
     private static int totalField;
@@ -75,12 +76,11 @@ public class UserTimelinePanel extends JPanel {
 
         setLayout(new VerticalLayout());
 
-        WUser userSelected = Controller.getProxy()
+        userSelected = Controller.getProxy()
                 .GetColleagueProfile(
                         Controller.getCurrentUser().Username,
                         Controller.getCurrentUserPassword(),
-                        ((WUser) Controller.temporaryInformation
-                                .get("User_selected")).Id);
+                        ((WUser) Controller.temporaryInformation.get("User_selected")).Id);
 
         //======== panelProfile ========
         {
@@ -94,12 +94,19 @@ public class UserTimelinePanel extends JPanel {
 
 
             //---- lblAvatar ----
-            if(Controller.getUsersAvatar().get(user.Username) == null)
+
+            if(Controller.getUsersAvatar().get(userSelected.Username) == null)
             {
-                Controller.getUsersAvatar().put(user.Username, im.getUserImage(user.Avatar));
+                Controller.getUsersAvatar().put(userSelected.Username, im.getUserImage(userSelected.Avatar));
             }
 
-            lblAvatar.setIcon(new ImageIcon(Controller.getUsersAvatar().get(user.Username)));
+            //lblAvatar.setIcon(new ImageIcon(Controller.getUsersAvatar().get(userSelected.Username)));
+            try {
+                lblAvatar.setIcon(new ImageIcon(im.resize((BufferedImage) Controller.getUsersAvatar().get(userSelected.Username), 45, 45)));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            lblAvatar.setName("lblAvatar");
             panelProfile.add(lblAvatar);
 
             //======== panelInfo ========
@@ -403,12 +410,12 @@ public class UserTimelinePanel extends JPanel {
                                                        pnl.add(pnl2);
                                                        panelDynamic.add(pnl);
 
-                                                       SwingUtilities.invokeLater(new Runnable() {
+                                                      /* SwingUtilities.invokeLater(new Runnable() {
                                                            @Override
                                                            public void run() {
                                                                scrollPane1.getVerticalScrollBar().setValue(0);
                                                            }
-                                                       });
+                                                       });*/
                                                    }
                                                }
 
@@ -522,11 +529,11 @@ public class UserTimelinePanel extends JPanel {
     }
 
     public WUser getUser() {
-        return user;
+        return userSelected;
     }
 
     public void setUser(WUser user) {
-        this.user = user;
+        this.userSelected = user;
     }
 
     public String getUserType() {
@@ -546,7 +553,7 @@ public class UserTimelinePanel extends JPanel {
         uiData.put("labelFollow", lblFollow);
         uiData.put("labelSkills", lblSkill);
         uiData.put("labelHide", lblHide);
-        uiData.put("userSelected", user);
+        uiData.put("userSelected", userSelected);
         uiData.put("LabelOtherPost", otherPostAvailable);
         uiData.put("LabelNoPost", noPostAvailable);
         uiData.put("labelReturn", lblReturn);

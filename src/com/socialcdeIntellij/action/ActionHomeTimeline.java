@@ -1,9 +1,7 @@
 package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
-import com.socialcdeIntellij.object.CustomTextArea;
-import com.socialcdeIntellij.object.GeneralLabel;
-import com.socialcdeIntellij.object.ImagesMod;
+import com.socialcdeIntellij.object.*;
 import com.socialcdeIntellij.shared.library.WPost;
 import com.socialcdeIntellij.shared.library.WUser;
 import org.jdesktop.swingx.HorizontalLayout;
@@ -86,7 +84,7 @@ public class ActionHomeTimeline {
                             JLabel username = new JLabel();
                             username.setText(Controller.getCurrentUser().Username);
                             username.setFont(new Font("Calibri", Font.BOLD, 15));
-                            username.setForeground(Color.BLUE);
+                            username.setForeground(Color.BLACK);
                             pnl2.add(username);
 
                             JTextPane message = new JTextPane();
@@ -119,10 +117,12 @@ public class ActionHomeTimeline {
                 }
                 break;
 
-            case "lblImgAvatar":
+            /*case "lblImgAvatar":
                 if(Controller.getProxy().IsWebServiceRunning())
                 {
-                    userSelected = (WUser) uiData.get("User_data");
+                    userSelected = ((GeneralLabel) uiData.get("LabelAvatar")).getwUser();
+                    //(WUser) Controller.temporaryInformation.get("User_selected");
+                    //(WUser) uiData.get("User_data");
 
                     userCategory = Controller.getProxy().GetSuggestedFriends(
                             Controller.getCurrentUser().Username,
@@ -175,20 +175,22 @@ public class ActionHomeTimeline {
 
                     userCategory = null;
 
-                    Controller.temporaryInformation.put("User_selected", userSelected);
-                    Controller.selectDynamicWindow(3);
+                    //Controller.temporaryInformation.put("User_selected", userSelected);
+                    Controller.selectDynamicWindow(6);
                     Controller.getWindow().revalidate();
                 }
                 else
                 {
                     Controller.openConnectionLostPanel();
                 }
-                break;
+                break;*/
 
-            case "lblUsername":
+            case "lblUser":
                 if(Controller.getProxy().IsWebServiceRunning())
                 {
-                    userSelected = (WUser) uiData.get("User_data");
+                    LabelClicked labelClicked = ((LabelClicked) uiData.get("Object"));
+                    userSelected = labelClicked.getLabel().getwUser();//(WUser) Controller.temporaryInformation.get("User_selected");
+                    //(WUser) uiData.get("User_data");
 
                     userCategory = Controller.getProxy().GetSuggestedFriends(
                             Controller.getCurrentUser().Username,
@@ -242,7 +244,8 @@ public class ActionHomeTimeline {
                     userCategory = null;
 
                     Controller.temporaryInformation.put("User_selected", userSelected);
-                    Controller.selectDynamicWindow(3);
+                    Controller.selectDynamicWindow(6);
+                    Controller.getWindow().revalidate();
                 }
                 else
                 {
@@ -297,12 +300,14 @@ public class ActionHomeTimeline {
                             lblUsername.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                             lblUsername.setToolTipText("View " + posts[j].getUser().Username + " Timeline");
                             lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
+                            lblUsername.setForeground(Color.BLUE);
 
                             lblUsername.setwUser(posts[j].getUser());
                             lblUsername.addMouseListener(listener);
                         } else {
                             lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
-                            lblUsername.setForeground(Color.BLUE);
+                            lblUsername.setForeground(Color.BLACK);
+
                         }
 
                         pnl2.add(lblUsername);

@@ -105,7 +105,7 @@ public class PopupSkill extends JDialog {
                         noSkill.setVisible(false);
                         contentPanel.add(lblSkill);
                     } else {
-                        noSkill.setText("There are no skills or there are no \"Get your skills\" \n feature selected.\n Try again later.");
+                        noSkill.setText("<html>There are no skills or there are no \"Get your skills\" <br> feature selected.<br> Try again later.</html>");
                         lblSkill.setVisible(false);
                         noSkill.setVisible(true);
                         contentPanel.add(noSkill);

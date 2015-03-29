@@ -124,7 +124,7 @@ public class ActionHome {
                             }
                         });
                     }
-                   /* else {
+                    else {
                         if (service.RequireOAuth) {
 
                             final WOAuthData oauthData = Controller.getProxy()
@@ -156,7 +156,7 @@ public class ActionHome {
                             browser.startBrowser(oauthData.AuthorizationLink);
                             System.out.println("INIZIO **** "+browser.getUrlString());
 
-                           *//* final URL url;
+                          /*  final URL url;
                             final URI uri;
 
                             if (Desktop.isDesktopSupported()) {
@@ -171,7 +171,7 @@ public class ActionHome {
                                     // TODO Auto-generated catch block
                                     e1.printStackTrace();
                                 }
-                            }*//*
+                            }*/
 
                            // pinWindow.setService(service);
                             //pinWindow.setOauthData(oauthData);
@@ -194,9 +194,9 @@ public class ActionHome {
                                                     //pinWindow.getService().Id,
                                                     pinWindow.getTxtPin().getText(),
                                                     oauthData.getAccessToken(),
-                                                    oauthData.getAccessSecret())
-                                                    *//*pinWindow.getOauthData().AccessToken,
-                                                    pinWindow.getOauthData().AccessSecret)*//*) {
+                                                    oauthData.getAccessSecret()))
+                                                   /* pinWindow.getOauthData().AccessToken,
+                                                    pinWindow.getOauthData().AccessSecret))*/ {
                                                 pinWindow.dispose();
                                                 //pinWindow.getService().Registered = true;
                                                 service.Registered = true;
@@ -204,11 +204,10 @@ public class ActionHome {
 
                                                 {//inizio pannello interno service registered
                                                     final PopupServiceRegistered popupServiceRegistered = new PopupServiceRegistered(Controller.getFrame());
-                                                    popupServiceRegistered.setVisible(true);
 
-                                                    popupServiceRegistered.setService(service);
                                                     popupServiceRegistered.setServiceName(service.Name);
                                                     popupServiceRegistered.setImage(Controller.getServicesImage().get(service.Name));
+                                                    popupServiceRegistered.setVisible(true);
 
                                                     popupServiceRegistered.getUnsubscriveButton().addActionListener(new ActionListener() {
                                                         @Override
@@ -217,15 +216,14 @@ public class ActionHome {
                                                             int response = JOptionPane.showConfirmDialog(Controller.getFrame(), "Are you sure you want to unsubscribe?",
                                                                     "SocialCDE message", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-                                                            if(response == JOptionPane.OK_OPTION){
+                                                            if (response == JOptionPane.OK_OPTION) {
                                                                 if (!Controller.getProxy().DeleteRegistredService(Controller.getCurrentUser().Username,
                                                                         Controller.getCurrentUserPassword(),
-                                                                        popupServiceRegistered.getService().Id)){
-                                                                    JOptionPane.showMessageDialog(Controller.getFrame(),"Something was wrong, please try again.",
-                                                                            "SocialCDE message",JOptionPane.ERROR_MESSAGE);
+                                                                        popupServiceRegistered.getService().Id)) {
+                                                                    JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                                                                            "SocialCDE message", JOptionPane.ERROR_MESSAGE);
                                                                     popupServiceRegistered.dispose();
-                                                                }
-                                                                else {
+                                                                } else {
                                                                     popupServiceRegistered.dispose();
                                                                     Controller.selectDynamicWindow(0);
                                                                     Controller.getWindow().revalidate();
@@ -285,7 +283,7 @@ public class ActionHome {
                                                 System.out.println("QUA **** "+browser.getWb().getResourceLocation());
                                             getAccessToken(browser.getWb().getResourceLocation(), service);
                                           //  System.out.println("MIO TOKEN: **** "+ Controller.temporaryInformation.get("AccessToken").toString());
-*//*
+
                                             if (Controller.getProxy().Authorize(
                                                     Controller.getCurrentUser().Username,
                                                     Controller.getCurrentUserPassword(),
@@ -293,7 +291,7 @@ public class ActionHome {
                                                     null,
                                                     Controller.temporaryInformation.get("AccessToken").toString(),
                                                     //oauthData.getAccessToken(),
-                                                    null)) {*//*
+                                                    null)) {
                                                 pinWindow.dispose();
                                                 //pinWindow.getService().Registered = true;
                                                 service.Registered = true;
@@ -301,11 +299,10 @@ public class ActionHome {
 
                                                 {//inizio pannello interno service registered
                                                     final PopupServiceRegistered popupServiceRegistered = new PopupServiceRegistered(Controller.getFrame());
-                                                    popupServiceRegistered.setVisible(true);
 
-                                                    popupServiceRegistered.setService(service);
                                                     popupServiceRegistered.setServiceName(service.Name);
                                                     popupServiceRegistered.setImage(Controller.getServicesImage().get(service.Name));
+                                                    popupServiceRegistered.setVisible(true);
 
                                                     popupServiceRegistered.getUnsubscriveButton().addActionListener(new ActionListener() {
                                                         @Override
@@ -372,14 +369,14 @@ public class ActionHome {
 
                                                 Controller.selectDynamicWindow(0);
                                                 Controller.getWindow().revalidate();
-                                           *//* } else {
+                                            } else {
                                                 pinWindow.dispose();
                                                 JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
                                                         "SocialCDE message", JOptionPane.ERROR_MESSAGE);
 
 
                                                 System.out.println("Autorizzazione non confermata");
-                                            }*//*
+                                            }
 
                                             break;
 
@@ -394,7 +391,7 @@ public class ActionHome {
                                 }
                             });
 
-                            *//*if (Desktop.isDesktopSupported()) {
+                           /* if (Desktop.isDesktopSupported()) {
                                 try {
                                     Desktop.getDesktop().browse(new URI(oauthData.AuthorizationLink));
                                 } catch (IOException e1) {
@@ -404,7 +401,7 @@ public class ActionHome {
                                     // TODO Auto-generated catch block
                                     e1.printStackTrace();
                                 }
-                            }*//*
+                            }*/
 
                         }
                         else if(service.RequireTFSAuthentication) {
@@ -450,7 +447,7 @@ public class ActionHome {
                         }
 
 
-                    }*/
+                    }
                 }
                 else {
                     Controller.openConnectionLostPanel();

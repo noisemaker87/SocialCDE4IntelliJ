@@ -152,7 +152,7 @@ public class ActionUserTimeline {
                             lblUsername.addMouseListener(listener);
                         } else {
                             lblUsername.setFont(new Font("Calibri", Font.BOLD, 15));
-                            lblUsername.setForeground(Color.BLUE);
+                            lblUsername.setForeground(Color.BLACK);
                         }
 
                         pnl2.add(lblUsername);

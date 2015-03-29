@@ -254,7 +254,6 @@ public class HomePanel extends JPanel {
                                 services.getButton().setService(wService[j]);
                                 services.getButton().addActionListener(listener);
 
-
                                 if(Controller.getServicesImage().get(wService[j].Name) == null)
                                 {
                                     Controller.getServicesImage().put(wService[j].Name,

@@ -24,7 +24,7 @@ public class PeoplePanel extends JPanel {
     JPanel pnlUser;
     JLabel lblImgUser;
     JLabel lblUsername;
-    JLabel lblNext;
+
     ImagesMod im = new ImagesMod();
     ActionGeneral listener = new ActionGeneral();
 
@@ -79,47 +79,40 @@ public class PeoplePanel extends JPanel {
 
                     //---- lblTxtSuggestions ----
                     if(suggestion.length == 0) {
-                        lblTxtSuggestions.setText("We have no suggestion for you.\n\nPlease try again.");
+                        lblTxtSuggestions.setText("<html>We have no suggestion for you.<br>Please try again.</html>");
                         panelSuggestions.add(lblTxtSuggestions);
                     }
                     else{
                         for (int i = 0; i < suggestion.length; i++) {
                             final int j = i;
 
-                            SwingUtilities.invokeLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    pnlUser = new JPanel(new HorizontalLayout(15));
-                                    //JPanel p1 = new JPanel(new VerticalLayout(5));
 
-                                    lblImgUser = new JLabel();
+                            pnlUser = new JPanel(new HorizontalLayout(15));
+                            pnlUser.setBackground(Color.WHITE);
 
-                                    lblUsername = new JLabel();
-                                    lblNext = new JLabel();
+                            lblImgUser = new JLabel();
+
+                            lblUsername = new JLabel();
 
 
-                                    if (Controller.getUsersAvatar().get(suggestion[j].Username) == null) {
-                                        Controller.getUsersAvatar().put(suggestion[j].Username, im.getUserImage(suggestion[j].Avatar));
-                                    }
 
-                                    lblImgUser.setIcon(new ImageIcon(Controller.getUsersAvatar().get(suggestion[j].Username)));
-                                    lblImgUser.setName("lblImgUser");
-                                    pnlUser.add(lblImgUser);
+                            if (Controller.getUsersAvatar().get(suggestion[j].Username) == null) {
+                                Controller.getUsersAvatar().put(suggestion[j].Username, im.getUserImage(suggestion[j].Avatar));
+                            }
 
-                                    lblUsername.setText(suggestion[j].Username);
-                                    pnlUser.add(lblUsername);
-                                    // p1.add(lblUsername);
+                            lblImgUser.setIcon(new ImageIcon(Controller.getUsersAvatar().get(suggestion[j].Username)));
+                            lblImgUser.setName("lblImgUser");
+                            pnlUser.add(lblImgUser);
 
-                                    try {
-                                        lblNext.setIcon(new ImageIcon(im.getNEXT(32, 32)));
+                            lblUsername.setText(suggestion[j].Username);
+                            pnlUser.add(lblUsername);
+                            // p1.add(lblUsername);
 
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                    lblNext.setName("lblNext");
 
-                                    lblImgUser.addMouseListener(listener);
-                                    lblNext.addMouseListener(listener);
+                            panelSuggestions.add(pnlUser);
+
+                            lblImgUser.addMouseListener(listener);
+
 
                                     /*compositeSuggestionUser.setData("ID_action",
                                             "User_selected");
@@ -127,8 +120,7 @@ public class PeoplePanel extends JPanel {
                                             "Suggested");
                                     compositeSuggestionUser.setData("User_data",
                                             suggestion[j]);*/
-                                }
-                            });
+
                         }
                     }
                 }
@@ -161,11 +153,11 @@ public class PeoplePanel extends JPanel {
                                 @Override
                                 public void run() {
                                     pnlUser = new JPanel(new HorizontalLayout(15));
-                                    //JPanel p1 = new JPanel(new VerticalLayout(5));
+                                    pnlUser.setBackground(Color.WHITE);
 
                                     lblImgUser = new JLabel();
                                     lblUsername = new JLabel();
-                                    lblNext = new JLabel();
+
 
 
                                     if (Controller.getUsersAvatar().get(following[j].Username) == null) {
@@ -180,16 +172,10 @@ public class PeoplePanel extends JPanel {
                                     pnlUser.add(lblUsername);
                                     // p1.add(lblUsername);
 
-                                    try {
-                                        lblNext.setIcon(new ImageIcon(im.getNEXT(32, 32)));
-
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                    lblNext.setName("lblNext");
+                                    panelFollowings.add(pnlUser);
 
                                     lblImgUser.addMouseListener(listener);
-                                    lblNext.addMouseListener(listener);
+
 
                                     /*compositeFollowingUser.setData("ID_action",
                                             "User_selected");
@@ -234,11 +220,10 @@ public class PeoplePanel extends JPanel {
                                 @Override
                                 public void run() {
                                     pnlUser = new JPanel(new HorizontalLayout(15));
-                                    //JPanel p1 = new JPanel(new VerticalLayout(5));
+                                    pnlUser.setBackground(Color.WHITE);
 
                                     lblImgUser = new JLabel();
                                     lblUsername = new JLabel();
-                                    lblNext = new JLabel();
 
 
                                     if (Controller.getUsersAvatar().get(followers[j].Username) == null) {
@@ -253,16 +238,10 @@ public class PeoplePanel extends JPanel {
                                     pnlUser.add(lblUsername);
                                     // p1.add(lblUsername);
 
-                                    try {
-                                        lblNext.setIcon(new ImageIcon(im.getNEXT(32, 32)));
 
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                    lblNext.setName("lblNext");
+                                    panelFollowers.add(pnlUser);
 
                                     lblImgUser.addMouseListener(listener);
-                                    lblNext.addMouseListener(listener);
 
                                     /*compositeFollowersUser.setData("ID_action",
                                             "User_selected");
@@ -306,11 +285,11 @@ public class PeoplePanel extends JPanel {
                                 @Override
                                 public void run() {
                                     pnlUser = new JPanel(new HorizontalLayout(15));
-                                    //JPanel p1 = new JPanel(new VerticalLayout(5));
+                                    pnlUser.setBackground(Color.WHITE);
 
                                     lblImgUser = new JLabel();
                                     lblUsername = new JLabel();
-                                    lblNext = new JLabel();
+
 
 
                                     if (Controller.getUsersAvatar().get(hiddenUsers[j].Username) == null) {
@@ -325,16 +304,10 @@ public class PeoplePanel extends JPanel {
                                     pnlUser.add(lblUsername);
                                     // p1.add(lblUsername);
 
-                                    try {
-                                        lblNext.setIcon(new ImageIcon(im.getNEXT(32, 32)));
 
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-                                    lblNext.setName("lblNext");
+                                    panelHidden.add(pnlUser);
 
                                     lblImgUser.addMouseListener(listener);
-                                    lblNext.addMouseListener(listener);
 
                                     /*compositeHiddenUser.setData("ID_action","User_selected");
 						            compositeHiddenUser.setData("User_type", "Hidden");
