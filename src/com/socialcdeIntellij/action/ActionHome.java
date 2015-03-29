@@ -1,5 +1,6 @@
 package com.socialcdeIntellij.action;
 
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.object.Browser;
 import com.socialcdeIntellij.object.GeneralButton;
@@ -12,10 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,7 +21,7 @@ import java.util.HashMap;
  * Created by Teo on 13/03/2015.
  */
 public class ActionHome {
-    HttpURLConnection conn = null;
+
 
 
     public ActionHome(HashMap<String, Object> uiData) {
@@ -34,6 +32,8 @@ public class ActionHome {
 
             case "lblAvatar":
                 ChangeAvatar changeAvatar = new ChangeAvatar(Controller.getFrame());
+                //Controller.temporaryInformation.put("newAvatar",uiData.get("LabelAvatar"));
+                changeAvatar.setSize(new Dimension(300, 300));
                 changeAvatar.setVisible(true);
 
                 break;
@@ -54,15 +54,14 @@ public class ActionHome {
                     GeneralButton gb = (GeneralButton) uiData.get("Object");
                     final WService service = gb.getService();
 
-
-                    if (service.Registered) {
+                    if (service.isRegistered()) {
+                        Controller.temporaryInformation.put("service",service);
 
                         final PopupServiceRegistered popupServiceRegistered = new PopupServiceRegistered(Controller.getFrame());
-                        popupServiceRegistered.setVisible(true);
 
-                        popupServiceRegistered.setService(service);
                         popupServiceRegistered.setServiceName(service.Name);
                         popupServiceRegistered.setImage(Controller.getServicesImage().get(service.Name));
+                        popupServiceRegistered.setVisible(true);
 
                         popupServiceRegistered.getUnsubscriveButton().addActionListener(new ActionListener() {
                             @Override
@@ -125,7 +124,7 @@ public class ActionHome {
                             }
                         });
                     }
-                    else {
+                   /* else {
                         if (service.RequireOAuth) {
 
                             final WOAuthData oauthData = Controller.getProxy()
@@ -152,11 +151,12 @@ public class ActionHome {
                                 pinWindow.setVisible(true);
                             }
 
-                            Browser browser = new Browser();
-                            browser.getWb().navigate(oauthData.AuthorizationLink);
-                            browser.startBrowser();
+                            final Browser browser = new Browser();
 
-                           /* final URL url;
+                            browser.startBrowser(oauthData.AuthorizationLink);
+                            System.out.println("INIZIO **** "+browser.getUrlString());
+
+                           *//* final URL url;
                             final URI uri;
 
                             if (Desktop.isDesktopSupported()) {
@@ -171,7 +171,7 @@ public class ActionHome {
                                     // TODO Auto-generated catch block
                                     e1.printStackTrace();
                                 }
-                            }*/
+                            }*//*
 
                            // pinWindow.setService(service);
                             //pinWindow.setOauthData(oauthData);
@@ -183,25 +183,11 @@ public class ActionHome {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
 
-                                   /* WOAuthData oauthData2 = Controller.getProxy()
-                                            .GetOAuthData(
-                                                    Controller.getCurrentUser().Username,
-                                                    Controller.getCurrentUserPassword(),
-                                                    service.Id);
-
-                                    System.out.println("****PROVA****** \naccess secret "
-                                            + oauthData2.AccessSecret + "\n token "
-                                            + oauthData2.AccessToken + "\n oauth link "
-                                            + oauthData2.AuthorizationLink + "\n id "
-                                            + service.Id);*/
-
-
-
                                     switch (service.getOAuthVersion()) {
 
                                         case 1:
                                             System.out.println("******: "+pinWindow.getTxtPin().getText());
-                                            if (!Controller.getProxy().Authorize(
+                                            if (Controller.getProxy().Authorize(
                                                     Controller.getCurrentUser().Username,
                                                     Controller.getCurrentUserPassword(),
                                                     service.getId(),
@@ -209,8 +195,8 @@ public class ActionHome {
                                                     pinWindow.getTxtPin().getText(),
                                                     oauthData.getAccessToken(),
                                                     oauthData.getAccessSecret())
-                                                    /*pinWindow.getOauthData().AccessToken,
-                                                    pinWindow.getOauthData().AccessSecret)*/) {
+                                                    *//*pinWindow.getOauthData().AccessToken,
+                                                    pinWindow.getOauthData().AccessSecret)*//*) {
                                                 pinWindow.dispose();
                                                 //pinWindow.getService().Registered = true;
                                                 service.Registered = true;
@@ -296,17 +282,20 @@ public class ActionHome {
                                             break;
 
                                         case 2:
-                                            System.out.println("qui **** "+oauthData.getAccessToken());
-                                           // System.out.println("speriamo *** "+ conn[0].getURL());
+                                                System.out.println("QUA **** "+browser.getWb().getResourceLocation());
+                                            getAccessToken(browser.getWb().getResourceLocation(), service);
+                                          //  System.out.println("MIO TOKEN: **** "+ Controller.temporaryInformation.get("AccessToken").toString());
+*//*
                                             if (Controller.getProxy().Authorize(
                                                     Controller.getCurrentUser().Username,
                                                     Controller.getCurrentUserPassword(),
                                                     service.getId(),
                                                     null,
-                                                    oauthData.getAccessToken(),
-                                                    null)) {
+                                                    Controller.temporaryInformation.get("AccessToken").toString(),
+                                                    //oauthData.getAccessToken(),
+                                                    null)) {*//*
                                                 pinWindow.dispose();
-                                                pinWindow.getService().Registered = true;
+                                                //pinWindow.getService().Registered = true;
                                                 service.Registered = true;
                                                 pinWindow.setOauthData(null);
 
@@ -383,14 +372,14 @@ public class ActionHome {
 
                                                 Controller.selectDynamicWindow(0);
                                                 Controller.getWindow().revalidate();
-                                            } else {
+                                           *//* } else {
                                                 pinWindow.dispose();
                                                 JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
                                                         "SocialCDE message", JOptionPane.ERROR_MESSAGE);
 
 
                                                 System.out.println("Autorizzazione non confermata");
-                                            }
+                                            }*//*
 
                                             break;
 
@@ -405,7 +394,7 @@ public class ActionHome {
                                 }
                             });
 
-                            /*if (Desktop.isDesktopSupported()) {
+                            *//*if (Desktop.isDesktopSupported()) {
                                 try {
                                     Desktop.getDesktop().browse(new URI(oauthData.AuthorizationLink));
                                 } catch (IOException e1) {
@@ -415,7 +404,7 @@ public class ActionHome {
                                     // TODO Auto-generated catch block
                                     e1.printStackTrace();
                                 }
-                            }*/
+                            }*//*
 
                         }
                         else if(service.RequireTFSAuthentication) {
@@ -461,7 +450,7 @@ public class ActionHome {
                         }
 
 
-                    }
+                    }*/
                 }
                 else {
                     Controller.openConnectionLostPanel();
@@ -474,6 +463,47 @@ public class ActionHome {
     }
 
 
+    public void getAccessToken(String event, WService service){
+        if (service != null && service.Name.equals("Facebook") && event.contains("#")) {
 
+            Controller.temporaryInformation
+                    .put("AccessToken",
+                            event.split("#")[1].toString()
+                                    .split("&")[0].toString()
+                                    .split("=")[1].toString());
+        } else if (service != null && service.Name.equals("LinkedIn") && event.contains("?")) {
+
+            Controller.temporaryInformation.put("AccessToken",
+                    event.split("=")[1].toString());
+        } else if ( service != null && event.contains("?")
+                && service.Name.equals("GitHub")) {
+            URL query = null;
+            try {
+                query = new URL(event.toString());
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                // e.printStackTrace();
+            }
+
+            Controller.temporaryInformation.put("AccessToken", query
+                    .toString().split("=")[1]);
+        }
+        else if (service != null &&
+                service.Name.equals("Yammer")
+                && event.contains("?")
+                && !event.contains("&")) {
+            URL query = null;
+            try {
+                query = new URL(event.toString());
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            Controller.temporaryInformation.put("AccessToken", query
+                    .toString().split("=")[1]);
+        }
+
+    }
 
 }

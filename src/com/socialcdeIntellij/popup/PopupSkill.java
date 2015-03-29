@@ -67,7 +67,7 @@ public class PopupSkill extends JDialog {
 
             //======== scrollPane2 ========
             {
-                scrollPane2.setPreferredSize(new Dimension(506, 136));
+                scrollPane2.setPreferredSize(new Dimension(300, 136));
 
                 //======== contentPanel ========
                 {

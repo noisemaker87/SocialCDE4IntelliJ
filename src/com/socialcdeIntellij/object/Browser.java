@@ -2,9 +2,12 @@ package com.socialcdeIntellij.object;
 
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
+import com.socialcdeIntellij.controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by Teo on 28/03/2015.
@@ -13,6 +16,7 @@ public class Browser extends JPanel{
     final JWebBrowser wb;
     JPanel panel;
     String initialPage = "http://www.google.it";
+    JFrame f = new JFrame();
 
     public Browser() {
         setLayout(new CardLayout());
@@ -41,48 +45,23 @@ public class Browser extends JPanel{
         return wb.getResourceLocation();
     }
 
-    public void startBrowser(){
+    public void startBrowser(final String url){
         NativeInterface.open();
 
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                JFrame f = new JFrame();
-                f.setLayout(new BorderLayout());
-                f.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        f.setLayout(new BorderLayout());
+        f.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 
-                Browser b = new Browser();
-                b.getWb().navigate("http://libero.it");
-                b.setVisible(true);
+        wb.navigate(url);
 
-                f.add(b);
-                f.setVisible(true);
-                f.pack();
-                f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+        f.add(this);
+        f.setVisible(true);
+        f.pack();
+        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-            }
-        });
     }
 
-  /* public static void main(String[] args) {
-        NativeInterface.open();
 
-       SwingUtilities.invokeLater(new Runnable() {
-           @Override
-           public void run() {
-               JFrame f = new JFrame();
-               f.setLayout(new BorderLayout());
-               f.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 
-               Browser b = new Browser();
-               b.setVisible(true);
 
-               f.add(b);
-               f.setVisible(true);
-               f.pack();
-               f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-           }
-       });
-   }*/
 }

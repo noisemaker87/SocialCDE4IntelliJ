@@ -445,11 +445,6 @@ public class ProxyWrapper implements ISocialProxy {
 			conn.setAllowUserInteraction(false);
 			conn.setRequestProperty("Content-Type", "application/json");
 
-           // conn.getURL();
-            //System.out.println("provaimo : ******* " + conn.getURL());
-
-
-
 			// Create the form content
 			OutputStream out = conn.getOutputStream();
 			Writer writer = new OutputStreamWriter(out, "UTF-8");
