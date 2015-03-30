@@ -44,9 +44,6 @@ public class ProfilePanel extends JPanel {
         //======== panelToolbar ========
         {
             panelToolbar.setBackground(new Color(204, 204, 204));
-            panelToolbar.setMaximumSize(new Dimension(450, 42));
-            panelToolbar.setMinimumSize(new Dimension(450, 42));
-            panelToolbar.setPreferredSize(new Dimension(450, 40));
             panelToolbar.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
             //---- lblProfile ----
