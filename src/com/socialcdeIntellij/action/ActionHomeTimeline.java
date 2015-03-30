@@ -1,7 +1,10 @@
 package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
-import com.socialcdeIntellij.object.*;
+import com.socialcdeIntellij.object.CustomTextArea;
+import com.socialcdeIntellij.object.GeneralLabel;
+import com.socialcdeIntellij.object.ImagesMod;
+import com.socialcdeIntellij.object.LabelClicked;
 import com.socialcdeIntellij.shared.library.WPost;
 import com.socialcdeIntellij.shared.library.WUser;
 import org.jdesktop.swingx.HorizontalLayout;
@@ -11,13 +14,9 @@ import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import java.awt.*;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -189,17 +188,17 @@ public class ActionHomeTimeline {
                 if(Controller.getProxy().IsWebServiceRunning())
                 {
                     LabelClicked labelClicked = ((LabelClicked) uiData.get("Object"));
-                    userSelected = labelClicked.getLabel().getwUser();//(WUser) Controller.temporaryInformation.get("User_selected");
-                    //(WUser) uiData.get("User_data");
+                    userSelected = labelClicked.getLabel().getwUser();
 
                     userCategory = Controller.getProxy().GetSuggestedFriends(
                             Controller.getCurrentUser().Username,
                             Controller.getCurrentUserPassword());
 
                     for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type",
-                                    "Suggested");
+                        if (userCategory[i].Username.equals(userSelected.Username)) {
+                            /*Controller.temporaryInformation.put("User_type",
+                                    "Suggested");*/
+                            labelClicked.setUserType("Suggested");
                         }
                     }
 
@@ -210,25 +209,28 @@ public class ActionHomeTimeline {
                             Controller.getCurrentUserPassword());
 
                     for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type",
-                                    "Following");
+                        if (userCategory[i].Username.equals(userSelected.Username)) {
+                            /*Controller.temporaryInformation.put("User_type",
+                                    "Following");*/
+                            labelClicked.setUserType("Following");
                         }
                     }
+                    //userCategory = null;
 
-                    userCategory = null;
-
-                    userCategory = Controller.getProxy().GetFollowers(
+                    WUser[] userCategory2 = Controller.getProxy().GetFollowers(
                             Controller.getCurrentUser().Username,
                             Controller.getCurrentUserPassword());
 
-                    for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type",
-                                    "Followers");
+                    if(userCategory.length==0 && userCategory2.length>0) {
+
+                        for (int i = 0; i < userCategory2.length; i++) {
+                            if (userCategory2[i].Username.equals(userSelected.Username)) {
+                                /*Controller.temporaryInformation.put("User_type",
+                                        "Followers");*/
+                                labelClicked.setUserType("Followers");
+                            }
                         }
                     }
-
                     userCategory = null;
 
                     userCategory = Controller.getProxy().GetHiddenUsers(
@@ -236,14 +238,16 @@ public class ActionHomeTimeline {
                             Controller.getCurrentUserPassword());
 
                     for (int i = 0; i < userCategory.length; i++) {
-                        if (userCategory[i].equals(userSelected)) {
-                            Controller.temporaryInformation.put("User_type", "Hidden");
+                        if (userCategory[i].Username.equals(userSelected.Username)) {
+                            //Controller.temporaryInformation.put("User_type", "Hidden");
+                            labelClicked.setUserType("Hidden");
                         }
                     }
 
                     userCategory = null;
 
                     Controller.temporaryInformation.put("User_selected", userSelected);
+                    Controller.temporaryInformation.put("UserType", labelClicked.getUserType());
                     Controller.selectDynamicWindow(6);
                     Controller.getWindow().revalidate();
                 }

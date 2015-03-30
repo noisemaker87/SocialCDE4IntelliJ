@@ -4,12 +4,12 @@ import com.socialcdeIntellij.action.ActionGeneral;
 import com.socialcdeIntellij.action.ActionHomeTimeline;
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.object.CustomTextArea;
-import com.socialcdeIntellij.object.GeneralLabel;
 import com.socialcdeIntellij.object.ImagesMod;
 import com.socialcdeIntellij.object.LabelClicked;
 import com.socialcdeIntellij.shared.library.WPost;
 import org.jdesktop.swingx.HorizontalLayout;
 import org.jdesktop.swingx.VerticalLayout;
+
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.event.HyperlinkEvent;
@@ -274,7 +274,7 @@ public class HomeTimelinePanel extends JPanel {
 
             final int j = i;
 
-            SwingUtilities.invokeLater(new Runnable() {
+           SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
                     pnl = new JPanel(new HorizontalLayout(10));
@@ -305,6 +305,7 @@ public class HomeTimelinePanel extends JPanel {
                         // Controller.temporaryInformation.put("User_selected", posts[j].getUser());
 
                         lblImgAvatar.getLabel().setwUser(posts[j].getUser());
+                        //lblImgAvatar.setUserType("");
                         lblImgAvatar.addMouseListener(listener);
 
                     }
@@ -429,9 +430,8 @@ public class HomeTimelinePanel extends JPanel {
                         }
                     });
                 }
-                                       }
 
-            );
+            });
 
             ActionHomeTimeline.setLastId(posts[i].Id);
 

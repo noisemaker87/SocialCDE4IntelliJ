@@ -4,17 +4,17 @@
 
 package com.socialcdeIntellij.dynamicview;
 
-import java.awt.*;
-import java.io.IOException;
-import java.util.HashMap;
-import javax.swing.*;
-import javax.swing.border.BevelBorder;
-
 import com.socialcdeIntellij.action.ActionGeneral;
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.object.ImagesMod;
+import com.socialcdeIntellij.object.LabelClicked;
 import com.socialcdeIntellij.shared.library.WUser;
-import org.jdesktop.swingx.*;
+import org.jdesktop.swingx.HorizontalLayout;
+import org.jdesktop.swingx.VerticalLayout;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.HashMap;
 
 /**
  * @author Davide Rossi
@@ -22,8 +22,8 @@ import org.jdesktop.swingx.*;
 public class PeoplePanel extends JPanel {
 
     JPanel pnlUser;
-    JLabel lblImgUser;
-    JLabel lblUsername;
+    LabelClicked lblImgUser;
+    LabelClicked lblUsername;
 
     ImagesMod im = new ImagesMod();
     ActionGeneral listener = new ActionGeneral();
@@ -90,9 +90,9 @@ public class PeoplePanel extends JPanel {
                             pnlUser = new JPanel(new HorizontalLayout(15));
                             pnlUser.setBackground(Color.WHITE);
 
-                            lblImgUser = new JLabel();
+                            lblImgUser = new LabelClicked();
 
-                            lblUsername = new JLabel();
+                            lblUsername = new LabelClicked();
 
 
 
@@ -100,11 +100,13 @@ public class PeoplePanel extends JPanel {
                                 Controller.getUsersAvatar().put(suggestion[j].Username, im.getUserImage(suggestion[j].Avatar));
                             }
 
-                            lblImgUser.setIcon(new ImageIcon(Controller.getUsersAvatar().get(suggestion[j].Username)));
+                            lblImgUser.getLabel().setIcon(new ImageIcon(Controller.getUsersAvatar().get(suggestion[j].Username)));
                             lblImgUser.setName("lblImgUser");
+                            lblImgUser.setUserType("Suggested");
                             pnlUser.add(lblImgUser);
 
-                            lblUsername.setText(suggestion[j].Username);
+                            lblUsername.getLabel().setText(suggestion[j].Username);
+                            lblUsername.setUserType("Suggested");
                             pnlUser.add(lblUsername);
                             // p1.add(lblUsername);
 
@@ -155,8 +157,8 @@ public class PeoplePanel extends JPanel {
                                     pnlUser = new JPanel(new HorizontalLayout(15));
                                     pnlUser.setBackground(Color.WHITE);
 
-                                    lblImgUser = new JLabel();
-                                    lblUsername = new JLabel();
+                                    lblImgUser = new LabelClicked();
+                                    lblUsername = new LabelClicked();
 
 
 
@@ -164,11 +166,13 @@ public class PeoplePanel extends JPanel {
                                         Controller.getUsersAvatar().put(following[j].Username, im.getUserImage(following[j].Avatar));
                                     }
 
-                                    lblImgUser.setIcon(new ImageIcon(Controller.getUsersAvatar().get(following[j].Username)));
+                                    lblImgUser.getLabel().setIcon(new ImageIcon(Controller.getUsersAvatar().get(following[j].Username)));
                                     lblImgUser.setName("lblImgUser");
+                                    lblImgUser.setUserType("Following");
                                     pnlUser.add(lblImgUser);
 
-                                    lblUsername.setText(following[j].Username);
+                                    lblUsername.getLabel().setText(following[j].Username);
+                                    lblUsername.setUserType("Following");
                                     pnlUser.add(lblUsername);
                                     // p1.add(lblUsername);
 
@@ -222,19 +226,21 @@ public class PeoplePanel extends JPanel {
                                     pnlUser = new JPanel(new HorizontalLayout(15));
                                     pnlUser.setBackground(Color.WHITE);
 
-                                    lblImgUser = new JLabel();
-                                    lblUsername = new JLabel();
+                                    lblImgUser = new LabelClicked();
+                                    lblUsername = new LabelClicked();
 
 
                                     if (Controller.getUsersAvatar().get(followers[j].Username) == null) {
                                         Controller.getUsersAvatar().put(followers[j].Username, im.getUserImage(followers[j].Avatar));
                                     }
 
-                                    lblImgUser.setIcon(new ImageIcon(Controller.getUsersAvatar().get(followers[j].Username)));
+                                    lblImgUser.getLabel().setIcon(new ImageIcon(Controller.getUsersAvatar().get(followers[j].Username)));
                                     lblImgUser.setName("lblImgUser");
+                                    lblImgUser.setUserType("Followers");
                                     pnlUser.add(lblImgUser);
 
-                                    lblUsername.setText(followers[j].Username);
+                                    lblUsername.getLabel().setText(followers[j].Username);
+                                    lblUsername.setUserType("Followers");
                                     pnlUser.add(lblUsername);
                                     // p1.add(lblUsername);
 
@@ -287,8 +293,8 @@ public class PeoplePanel extends JPanel {
                                     pnlUser = new JPanel(new HorizontalLayout(15));
                                     pnlUser.setBackground(Color.WHITE);
 
-                                    lblImgUser = new JLabel();
-                                    lblUsername = new JLabel();
+                                    lblImgUser = new LabelClicked();
+                                    lblUsername = new LabelClicked();
 
 
 
@@ -296,11 +302,13 @@ public class PeoplePanel extends JPanel {
                                         Controller.getUsersAvatar().put(hiddenUsers[j].Username, im.getUserImage(hiddenUsers[j].Avatar));
                                     }
 
-                                    lblImgUser.setIcon(new ImageIcon(Controller.getUsersAvatar().get(hiddenUsers[j].Username)));
+                                    lblImgUser.getLabel().setIcon(new ImageIcon(Controller.getUsersAvatar().get(hiddenUsers[j].Username)));
                                     lblImgUser.setName("lblImgUser");
+                                    lblImgUser.setUserType("Hidden");
                                     pnlUser.add(lblImgUser);
 
-                                    lblUsername.setText(hiddenUsers[j].Username);
+                                    lblUsername.getLabel().setText(hiddenUsers[j].Username);
+                                    lblUsername.setUserType("Hidden");
                                     pnlUser.add(lblUsername);
                                     // p1.add(lblUsername);
 

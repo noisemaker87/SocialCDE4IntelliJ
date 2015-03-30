@@ -11,6 +11,7 @@ import java.awt.*;
 public class LabelClicked extends JPanel {
     private JPanel panel1;
     private GeneralLabel label;
+    private String userType;
 
 
     public LabelClicked() {
@@ -49,4 +50,13 @@ public class LabelClicked extends JPanel {
     }
 
     public GeneralLabel getLabel(){return label;}
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
 }

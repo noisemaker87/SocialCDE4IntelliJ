@@ -4,13 +4,11 @@
 
 package com.socialcdeIntellij.staticview;
 
-import com.socialcdeIntellij.dynamicview.*;
 import com.socialcdeIntellij.action.ActionGeneral;
-import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.object.ImagesMod;
 import org.jdesktop.swingx.VerticalLayout;
+
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.*;
 import java.util.HashMap;
 
@@ -39,8 +37,7 @@ public class ProfilePanel extends JPanel {
         lblLogout = new JLabel();
 
         //======== this ========
-        setPreferredSize(new Dimension(450, 40));
-        setMinimumSize(new Dimension(450, 570));
+        setPreferredSize(new Dimension(450, 25));
 
         setLayout(new VerticalLayout(2));
 
@@ -50,7 +47,7 @@ public class ProfilePanel extends JPanel {
             panelToolbar.setMaximumSize(new Dimension(450, 42));
             panelToolbar.setMinimumSize(new Dimension(450, 42));
             panelToolbar.setPreferredSize(new Dimension(450, 40));
-            panelToolbar.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 5));
+            panelToolbar.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
             //---- lblProfile ----
             lblProfile.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Profile.png")));
