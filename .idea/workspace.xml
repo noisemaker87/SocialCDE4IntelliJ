@@ -50,24 +50,24 @@
         <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/UserTimelinePanel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-21.503979" vertical-offset="9127" max-vertical-offset="9826">
-              <caret line="60" column="4" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
+              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2019#2020#0" expanded="true" />
-                <element signature="e#2051#2052#0" expanded="true" />
-                <element signature="e#15815#16792#0" expanded="true" />
-                <element signature="e#16791#16792#0" expanded="true" />
-                <element signature="e#20272#20490#0" expanded="true" />
-                <element signature="e#20489#20490#0" expanded="true" />
-                <element signature="e#23450#23451#0" expanded="true" />
-                <element signature="e#23485#23486#0" expanded="true" />
-                <element signature="e#23524#23525#0" expanded="true" />
-                <element signature="e#23564#23565#0" expanded="true" />
-                <element signature="e#23599#23600#0" expanded="true" />
-                <element signature="e#23630#23631#0" expanded="true" />
-                <element signature="e#23678#23679#0" expanded="true" />
-                <element signature="e#23718#23719#0" expanded="true" />
-                <element signature="e#23864#23880#0" expanded="true" />
+                <element signature="e#2015#2016#0" expanded="true" />
+                <element signature="e#2047#2048#0" expanded="true" />
+                <element signature="e#15811#16788#0" expanded="true" />
+                <element signature="e#16787#16788#0" expanded="true" />
+                <element signature="e#20268#20486#0" expanded="true" />
+                <element signature="e#20485#20486#0" expanded="true" />
+                <element signature="e#23446#23447#0" expanded="true" />
+                <element signature="e#23481#23482#0" expanded="true" />
+                <element signature="e#23520#23521#0" expanded="true" />
+                <element signature="e#23560#23561#0" expanded="true" />
+                <element signature="e#23595#23596#0" expanded="true" />
+                <element signature="e#23626#23627#0" expanded="true" />
+                <element signature="e#23674#23675#0" expanded="true" />
+                <element signature="e#23714#23715#0" expanded="true" />
+                <element signature="e#23860#23876#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -717,7 +717,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -729,7 +729,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2859304" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1169,24 +1169,24 @@
     <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/UserTimelinePanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-21.503979" vertical-offset="9127" max-vertical-offset="9826">
-          <caret line="60" column="4" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2019#2020#0" expanded="true" />
-            <element signature="e#2051#2052#0" expanded="true" />
-            <element signature="e#15815#16792#0" expanded="true" />
-            <element signature="e#16791#16792#0" expanded="true" />
-            <element signature="e#20272#20490#0" expanded="true" />
-            <element signature="e#20489#20490#0" expanded="true" />
-            <element signature="e#23450#23451#0" expanded="true" />
-            <element signature="e#23485#23486#0" expanded="true" />
-            <element signature="e#23524#23525#0" expanded="true" />
-            <element signature="e#23564#23565#0" expanded="true" />
-            <element signature="e#23599#23600#0" expanded="true" />
-            <element signature="e#23630#23631#0" expanded="true" />
-            <element signature="e#23678#23679#0" expanded="true" />
-            <element signature="e#23718#23719#0" expanded="true" />
-            <element signature="e#23864#23880#0" expanded="true" />
+            <element signature="e#2015#2016#0" expanded="true" />
+            <element signature="e#2047#2048#0" expanded="true" />
+            <element signature="e#15811#16788#0" expanded="true" />
+            <element signature="e#16787#16788#0" expanded="true" />
+            <element signature="e#20268#20486#0" expanded="true" />
+            <element signature="e#20485#20486#0" expanded="true" />
+            <element signature="e#23446#23447#0" expanded="true" />
+            <element signature="e#23481#23482#0" expanded="true" />
+            <element signature="e#23520#23521#0" expanded="true" />
+            <element signature="e#23560#23561#0" expanded="true" />
+            <element signature="e#23595#23596#0" expanded="true" />
+            <element signature="e#23626#23627#0" expanded="true" />
+            <element signature="e#23674#23675#0" expanded="true" />
+            <element signature="e#23714#23715#0" expanded="true" />
+            <element signature="e#23860#23876#0" expanded="true" />
           </folding>
         </state>
       </provider>
