@@ -212,9 +212,6 @@ public class Controller {
 
 
 
-
-    //*******************************************************************************************
-
     public static HashMap<String, Image> getUsersAvatar() {
         return usersAvatar;
     }
@@ -253,14 +250,13 @@ public class Controller {
         value = prefs.get(node, prefix);
 
         return value;
-    }//prende le preferenze memorizzate - cambiato
+    }
 
     public static void setPreferences(String node, String value) {
 
         prefs.put(node, value);
 
-    }//memorizza le preferenze - cambiato
-
+    }
 
     public static boolean isRegistered() {
 
@@ -314,10 +310,6 @@ public class Controller {
     public static void selectDynamicWindow(int choose) {
         JPanel container = new JPanel();
         container.setLayout(new VerticalLayout(2));
-
-       /* Controller.temporaryInformation.put("ProgressBarThread", getOpBar());
-        Controller.getOpBar().setLabelBar("Operation in progress..");
-        Controller.getOpBar().start();*/
 
         switch (choose) {
             case 0://home profile
@@ -427,7 +419,5 @@ public class Controller {
         }
 
     }
-
-
 
 }

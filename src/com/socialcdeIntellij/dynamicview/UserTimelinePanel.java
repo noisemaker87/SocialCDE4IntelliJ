@@ -57,6 +57,8 @@ public class UserTimelinePanel extends JPanel {
     private JLabel lblHide;
     private JScrollPane scrollPane1;
     private JPanel panelDynamic;
+    JPanel jp1;
+    JPanel jp2;
 
 
     public UserTimelinePanel() {
@@ -91,6 +93,7 @@ public class UserTimelinePanel extends JPanel {
         lblUsername = new JLabel();
         lblImgAvatar = new JLabel();
 
+
         //======== this ========
 
         setLayout(new VerticalLayout());
@@ -110,6 +113,7 @@ public class UserTimelinePanel extends JPanel {
 
             //---- lblReturn ----
             panelReturn.setLayout(new FlowLayout(FlowLayout.LEFT));
+            lblReturn.setName("lblReturn");
             lblReturn.setIcon(new ImageIcon(getClass().getResource("/images/Toolbar/Back.png")));
             lblReturn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             lblReturn.setBackground(new Color(204, 204, 204));
@@ -235,80 +239,53 @@ public class UserTimelinePanel extends JPanel {
             panelIcon.setBackground(Color.white);
             panelIcon.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
+            lblFollow.setName("lblFollow");
+            lblFollow.setIcon(new ImageIcon(getClass().getResource("/images/Follow.png")));
+            lblFollow.setToolTipText("Follow this user in SocialCDE for Intellij");
+            lblFollow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            lblFollow.setVisible(false);
+            panelIcon.add(lblFollow);
+
+            lblUnfollow.setName("lblUnfollow");
+            lblUnfollow.setIcon(new ImageIcon(getClass().getResource("/images/Unfollow.png")));
+            lblUnfollow.setToolTipText("Unfollow this user in SocialCDE for Intellij");
+            lblUnfollow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            lblUnfollow.setVisible(false);
+            panelIcon.add(lblUnfollow);
+
+            lblSkill.setName("lblSkill");
+            lblSkill.setIcon(new ImageIcon(getClass().getResource("/images/skills.png")));
+            lblSkill.setToolTipText("View his/her skills");
+            lblSkill.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            lblSkill.setVisible(true);
+            panelIcon.add(lblSkill);
+
+            //---- lblHide ----
+            lblHide.setName("lblHide");
+            lblHide.setIcon(new ImageIcon(getClass().getResource("/images/Hide.png")));
+            lblHide.setToolTipText("Hide this user from SocialCDE for Intellij");
+            lblHide.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            lblHide.setVisible(true);
+            panelIcon.add(lblHide);
+
+
            if(userType == "Suggested"){
                 //---- lblFollow ----
-                lblFollow.setIcon(new ImageIcon(getClass().getResource("/images/Follow.png")));
-                lblFollow.setToolTipText("Follow this user in SocialCDE for Intellij");
-                lblFollow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 lblFollow.setVisible(true);
                 lblUnfollow.setVisible(false);
-                panelIcon.add(lblFollow);
-
-                //---- lblSkill ----
-                lblSkill.setIcon(new ImageIcon(getClass().getResource("/images/skills.png")));
-                lblSkill.setToolTipText("View his/her skills");
-                lblSkill.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                lblSkill.setVisible(true);
-                panelIcon.add(lblSkill);
-
-                //---- lblHide ----
-                lblHide.setIcon(new ImageIcon(getClass().getResource("/images/Hide.png")));
-                lblHide.setToolTipText("Hide this user from SocialCDE for Intellij");
-                lblHide.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                lblHide.setVisible(true);
-                panelIcon.add(lblHide);
-
             }
             else if (userType == "Following"){
                 //---- lblUnFollow ----
-                lblUnfollow.setIcon(new ImageIcon(getClass().getResource("/images/Unfollow.png")));
-                lblUnfollow.setToolTipText("Unfollow this user in SocialCDE for Intellij");
-                lblUnfollow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 lblFollow.setVisible(false);
                 lblUnfollow.setVisible(true);
-                panelIcon.add(lblUnfollow);
-
-                //---- lblSkill ----
-                lblSkill.setIcon(new ImageIcon(getClass().getResource("/images/skills.png")));
-                lblSkill.setToolTipText("View his/her skills");
-                lblSkill.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                lblSkill.setVisible(true);
-                panelIcon.add(lblSkill);
-
-                //---- lblHide ----
-                lblHide.setIcon(new ImageIcon(getClass().getResource("/images/Hide.png")));
-                lblHide.setToolTipText("Hide this user from SocialCDE for Intellij");
-                lblHide.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                lblHide.setVisible(true);
-                panelIcon.add(lblHide);
             }
             else if (userType == "Followers" || userType == "Hidden"){
-                //---- lblFollow ----
-                lblFollow.setIcon(new ImageIcon(getClass().getResource("/images/Follow.png")));
-                lblFollow.setToolTipText("Follow this user in SocialCDE for Intellij");
-                lblFollow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 lblFollow.setVisible(true);
                 lblUnfollow.setVisible(false);
-                panelIcon.add(lblFollow);
-
-                //---- lblSkill ----
-                lblSkill.setIcon(new ImageIcon(getClass().getResource("/images/skills.png")));
-                lblSkill.setToolTipText("View his/her skills");
-                lblSkill.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                lblSkill.setVisible(true);
-                panelIcon.add(lblSkill);
-
-                //---- lblHide ----
-                lblHide.setIcon(new ImageIcon(getClass().getResource("/images/Hide.png")));
-                lblHide.setToolTipText("Hide this user from SocialCDE for Intellij");
-                lblHide.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                lblHide.setVisible(true);
-                panelIcon.add(lblHide);
             }
 
         }
         panelSettings.add(panelIcon);
-        //add(panelIcon);
 
         posts = Controller.getProxy().GetUserTimeline(
                 Controller.getCurrentUser().Username,
@@ -466,30 +443,37 @@ public class UserTimelinePanel extends JPanel {
                         Controller.getCurrentUserPassword(), userSelected.Username,
                         ActionUserTimeline.getLastId(), 0);
 
-                if (newPost == null) {
+                if (newPost == null || newPost.length == 2) {
                     newPost = new WPost[0];
                 }
-                if (newPost.length > 0) {
-                    otherPostAvailable = new JLabel("<html><a>Click to view older posts</a></html>");
-                    otherPostAvailable.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                    otherPostAvailable.setName("otherPostAvaible");
-                    JPanel jp = new JPanel(new FlowLayout());
-                    jp.add(otherPostAvailable);
-                    panelDynamic.add(jp);
 
-                    noPostAvailable = new JLabel("There are no post in the cache.\n Please try again in two minutes.");
+                jp1 = new JPanel(new FlowLayout());
+                jp2 = new JPanel(new FlowLayout());
+
+                otherPostAvailable = new JLabel("<html><a>Click to view older posts</a></html>");
+                otherPostAvailable.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                otherPostAvailable.setName("otherPostAvailable");
 
 
-                } else {
-                    noPostAvailable = new JLabel("There are no post in the cache.\n Please try again in two minutes.");
-                    JPanel jp = new JPanel(new FlowLayout());
-                    jp.add(noPostAvailable);
-                    panelDynamic.add(jp);
+                jp1.add(otherPostAvailable);
+                panelDynamic.add(jp1);
 
-                    otherPostAvailable = new JLabel("<html><a>Click to view older posts</a></html>");
-                    otherPostAvailable.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                noPostAvailable = new JLabel("<html>There are no post in the cache.<br> Please try again in two minutes.</html>");
+
+                jp2.add(noPostAvailable);
+                panelDynamic.add(jp2);
+
+
+                if (newPost.length >0) {
+                    jp1.setVisible(true);
+                    jp2.setVisible(false);
 
                 }
+                else {
+                    jp1.setVisible(false);
+                    jp2.setVisible(true);
+                }
+
             }
 
             scrollPane1.setPreferredSize(new Dimension(0, 400));
@@ -503,6 +487,7 @@ public class UserTimelinePanel extends JPanel {
         lblUnfollow.addMouseListener(listener);
         lblSkill.addMouseListener(listener);
         lblHide.addMouseListener(listener);
+        otherPostAvailable.addMouseListener(listener);
     }
 
     private String findLink(String message){
@@ -553,19 +538,22 @@ public class UserTimelinePanel extends JPanel {
         this.userType = userType;
     }
 
-
     public HashMap<String, Object> getData() {
         // TODO Auto-generated method stub
         HashMap<String, Object> uiData = new HashMap<String, Object>();
 
         uiData.put("userType", userType);
         uiData.put("labelFollow", lblFollow);
+        uiData.put("labelUnfollow", lblUnfollow);
         uiData.put("labelSkills", lblSkill);
         uiData.put("labelHide", lblHide);
         uiData.put("userSelected", userSelected);
-        uiData.put("LabelOtherPost", otherPostAvailable);
-        uiData.put("LabelNoPost", noPostAvailable);
+        uiData.put("PanelOtherPost", jp1);
+        uiData.put("PanelNoPost", jp2);
         uiData.put("labelReturn", lblReturn);
+        uiData.put("Panel", this);
+        uiData.put("panelDynamic", panelDynamic);
+        uiData.put("scroll", scrollPane1);
 
         return uiData;
     }

@@ -47,7 +47,8 @@ public class OperationProgressBar extends JPanel  {
                 //---- progressOpBar ----
                 progressOpBar.setBackground(Color.white);
                 progressOpBar.setPreferredSize(new Dimension(146, 20));
-                progressOpBar.setStringPainted(true);
+               // progressOpBar.setStringPainted(true);
+                progressOpBar.setIndeterminate(true);
                 panel3.add(progressOpBar);
             }
             panel2.add(panel3, "card1");
