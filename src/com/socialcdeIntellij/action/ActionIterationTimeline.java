@@ -9,12 +9,10 @@ import org.jdesktop.swingx.HorizontalLayout;
 import org.jdesktop.swingx.VerticalLayout;
 
 import javax.swing.*;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -59,10 +57,10 @@ public class ActionIterationTimeline {
                                     Controller.getCurrentUser().Username, Controller.getCurrentUserPassword(),
                                     Controller.getCurrentUser().Username);
 
-                            final JPanel panel = new JPanel(new HorizontalLayout(10));
-                            panel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
+                            final JPanel panel = new JPanel(new HorizontalLayout(3));
+                           // panel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
                             panel.setBackground(Color.WHITE);
-                            JPanel pnl2 = new JPanel(new VerticalLayout(10));
+                            JPanel pnl2 = new JPanel(new VerticalLayout(2));
                             pnl2.setBackground(Color.WHITE);
 
                             if(Controller.getUsersAvatar().get(Controller.getCurrentUser().Username) == null)
@@ -84,13 +82,29 @@ public class ActionIterationTimeline {
                             username.getLabel().setForeground(Color.BLACK);
                             pnl2.add(username);
 
-                            JTextPane message = new JTextPane();
-                            message.setContentType("text/html");
+                            //JTextPane message = new JTextPane();
+                            JTextArea message = new JTextArea();
+                            // message.setContentType("text/html");
+                            message.setLineWrap(true);
+                            message.setWrapStyleWord(true);
                             message.setEditable(false);
                             message.setBackground(Color.WHITE);
                             message.setText(userMessage);
 
-                            pnl2.add(message);
+                            final JScrollPane scrollMessage = new JScrollPane();
+                            scrollMessage.setBorder(new EmptyBorder(0,0,0,0));
+                            scrollMessage.setViewportView(message);
+                            scrollMessage.setPreferredSize(new Dimension(150, 50));
+                            //scrollMessage.setBorder(null);
+                            scrollMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+                            scrollMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+                            SwingUtilities.invokeLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    scrollMessage.getVerticalScrollBar().setValue(0);
+                                }
+                            });
+                            pnl2.add(scrollMessage);
 
                             JLabel messageDate = new JLabel();
                             messageDate.setText("About one minutes ago from SocialTFS");
@@ -200,10 +214,10 @@ public class ActionIterationTimeline {
                     for (int i = 0; i < posts.length; i++) {
                         final int j = i;
 
-                        JPanel pnl = new JPanel(new HorizontalLayout(10));
-                        pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
+                        JPanel pnl = new JPanel(new HorizontalLayout(3));
+                        //pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
                         pnl.setBackground(Color.WHITE);
-                        JPanel pnl2 = new JPanel(new VerticalLayout(10));
+                        JPanel pnl2 = new JPanel(new VerticalLayout(2));
                         pnl2.setBackground(Color.WHITE);
 
                         //userPostComposite.setData("IdPost", posts[j].Id);
@@ -255,31 +269,47 @@ public class ActionIterationTimeline {
 
                         pnl2.add(lblUsername);
 
-                        JTextPane message = new JTextPane();
-                        message.setContentType("text/html");
-
+                        /*JTextPane message = new JTextPane();
+                            message.setContentType("text/html");*/
+                        JTextArea message = new JTextArea();
+                        message.setLineWrap(true);
+                        message.setWrapStyleWord(true);
                         message.setEditable(false);
                         message.setBackground(Color.WHITE);
                         message.setText(findLink(posts[j].getMessage()));
-                        message.addHyperlinkListener(new HyperlinkListener() {
-                            @Override
-                            public void hyperlinkUpdate(HyperlinkEvent e) {
-                                if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                                    if (Desktop.isDesktopSupported()) {
-                                        try {
-                                            Desktop.getDesktop().browse(e.getURL().toURI());
-                                        } catch (IOException e1) {
-                                            // TODO Auto-generated catch block
-                                            e1.printStackTrace();
-                                        } catch (URISyntaxException e1) {
-                                            // TODO Auto-generated catch block
-                                            e1.printStackTrace();
+                            /*message.addHyperlinkListener(new HyperlinkListener() {
+                                @Override
+                                public void hyperlinkUpdate(HyperlinkEvent e) {
+                                    if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                                        if (Desktop.isDesktopSupported()) {
+                                            try {
+                                                Desktop.getDesktop().browse(e.getURL().toURI());
+                                            } catch (IOException e1) {
+                                                // TODO Auto-generated catch block
+                                                e1.printStackTrace();
+                                            } catch (URISyntaxException e1) {
+                                                // TODO Auto-generated catch block
+                                                e1.printStackTrace();
+                                            }
                                         }
                                     }
                                 }
+                            });*/
+
+                        final JScrollPane scrollMessage = new JScrollPane();
+                        scrollMessage.setBorder(new EmptyBorder(0,0,0,0));
+                        scrollMessage.setViewportView(message);
+                        scrollMessage.setPreferredSize(new Dimension(150, 50));
+                        scrollMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+                        scrollMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+                        //scrollMessage.setBorder(null);
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                scrollMessage.getVerticalScrollBar().setValue(0);
                             }
                         });
-                        pnl2.add(message);
+                        pnl2.add(scrollMessage);
 
 
                         Calendar nowDate = Calendar.getInstance();

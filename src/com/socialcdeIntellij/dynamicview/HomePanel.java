@@ -110,7 +110,7 @@ public class HomePanel extends JPanel {
                 e.printStackTrace();
             }
 
-
+            lblAvatar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             lblAvatar.setName("lblAvatar");
             panelInfoUser.add(lblAvatar);
 

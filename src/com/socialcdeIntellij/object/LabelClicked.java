@@ -28,7 +28,7 @@ public class LabelClicked extends JPanel {
         setBackground(Color.white);
         setName("lblUser");
 
-        setLayout(new HorizontalLayout(20));
+        setLayout(new HorizontalLayout(0));
 
         //======== panel1 ========
         {

@@ -11,12 +11,10 @@ import org.jdesktop.swingx.HorizontalLayout;
 import org.jdesktop.swingx.VerticalLayout;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -121,6 +119,7 @@ public class HomeTimelinePanel extends JPanel {
 
             scrollPane1.setPreferredSize(new Dimension(0, 450));
             scrollPane1.setViewportView(panelDynamic);
+            //scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
             add(scrollPane1);
 
         }
@@ -207,12 +206,12 @@ public class HomeTimelinePanel extends JPanel {
 
         };
 
-        SwingUtilities.invokeLater(new Runnable() {
+        /*SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 scrollPane1.getVerticalScrollBar().setValue(0);
             }
-        });
+        });*/
 
     }
 
@@ -290,10 +289,10 @@ public class HomeTimelinePanel extends JPanel {
            SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    pnl = new JPanel(new HorizontalLayout(10));
-                    pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
+                    pnl = new JPanel(new HorizontalLayout(3));
+                    //pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
                     pnl.setBackground(Color.WHITE);
-                    JPanel pnl2 = new JPanel(new VerticalLayout(10));
+                    JPanel pnl2 = new JPanel(new VerticalLayout(2));
                     pnl2.setBackground(Color.WHITE);
 
                     //userPostComposite.setData("IdPost", posts[j].Id);
@@ -345,31 +344,48 @@ public class HomeTimelinePanel extends JPanel {
 
                     pnl2.add(lblUsername);
 
-                    JTextPane message = new JTextPane();
-                    message.setContentType("text/html");
-
+                    /*JTextPane message = new JTextPane();
+                            message.setContentType("text/html");*/
+                    JTextArea message = new JTextArea();
+                    message.setLineWrap(true);
+                    message.setWrapStyleWord(true);
                     message.setEditable(false);
                     message.setBackground(Color.WHITE);
                     message.setText(findLink(posts[j].getMessage()));
-                    message.addHyperlinkListener(new HyperlinkListener() {
-                        @Override
-                        public void hyperlinkUpdate(HyperlinkEvent e) {
-                            if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                                if (Desktop.isDesktopSupported()) {
-                                    try {
-                                        Desktop.getDesktop().browse(e.getURL().toURI());
-                                    } catch (IOException e1) {
-                                        // TODO Auto-generated catch block
-                                        e1.printStackTrace();
-                                    } catch (URISyntaxException e1) {
-                                        // TODO Auto-generated catch block
-                                        e1.printStackTrace();
+                            /*message.addHyperlinkListener(new HyperlinkListener() {
+                                @Override
+                                public void hyperlinkUpdate(HyperlinkEvent e) {
+                                    if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                                        if (Desktop.isDesktopSupported()) {
+                                            try {
+                                                Desktop.getDesktop().browse(e.getURL().toURI());
+                                            } catch (IOException e1) {
+                                                // TODO Auto-generated catch block
+                                                e1.printStackTrace();
+                                            } catch (URISyntaxException e1) {
+                                                // TODO Auto-generated catch block
+                                                e1.printStackTrace();
+                                            }
+                                        }
                                     }
                                 }
-                            }
+                            });*/
+
+                    final JScrollPane scrollMessage = new JScrollPane();
+                    scrollMessage.setBorder(new EmptyBorder(0,0,0,0));
+                    scrollMessage.setViewportView(message);
+                    scrollMessage.setPreferredSize(new Dimension(150, 50));
+                    scrollMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+                    scrollMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+                    //scrollMessage.setBorder(null);
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            scrollMessage.getVerticalScrollBar().setValue(0);
                         }
                     });
-                    pnl2.add(message);
+                    pnl2.add(scrollMessage);
+
 
 
                     Calendar nowDate = Calendar.getInstance();
@@ -493,10 +509,10 @@ public class HomeTimelinePanel extends JPanel {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                            pnl = new JPanel(new HorizontalLayout(10));
-                            pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
+                            pnl = new JPanel(new HorizontalLayout(3));
+                           // pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
                             pnl.setBackground(Color.WHITE);
-                            JPanel pnl2 = new JPanel(new VerticalLayout(10));
+                            JPanel pnl2 = new JPanel(new VerticalLayout(2));
                             pnl2.setBackground(Color.WHITE);
 
                             //userPostComposite.setData("IdPost", posts[j].Id);
@@ -548,13 +564,15 @@ public class HomeTimelinePanel extends JPanel {
 
                             pnl2.add(lblUsername);
 
-                            JTextPane message = new JTextPane();
-                            message.setContentType("text/html");
-
+                            /*JTextPane message = new JTextPane();
+                            message.setContentType("text/html");*/
+                            JTextArea message = new JTextArea();
+                            message.setLineWrap(true);
+                            message.setWrapStyleWord(true);
                             message.setEditable(false);
                             message.setBackground(Color.WHITE);
                             message.setText(findLink(posts[j].getMessage()));
-                            message.addHyperlinkListener(new HyperlinkListener() {
+                            /*message.addHyperlinkListener(new HyperlinkListener() {
                                 @Override
                                 public void hyperlinkUpdate(HyperlinkEvent e) {
                                     if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
@@ -571,8 +589,22 @@ public class HomeTimelinePanel extends JPanel {
                                         }
                                     }
                                 }
+                            });*/
+
+                            final JScrollPane scrollMessage = new JScrollPane();
+                            scrollMessage.setBorder(new EmptyBorder(0,0,0,0));
+                            scrollMessage.setViewportView(message);
+                            scrollMessage.setPreferredSize(new Dimension(150, 50));
+                            scrollMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+                            scrollMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+                            //scrollMessage.setBorder(null);
+                            SwingUtilities.invokeLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    scrollMessage.getVerticalScrollBar().setValue(0);
+                                }
                             });
-                            pnl2.add(message);
+                            pnl2.add(scrollMessage);
 
 
                             Calendar nowDate = Calendar.getInstance();

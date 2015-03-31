@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f05318d9-41b8-4734-bb10-dd821cb30d88" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/object/PanelArea.java" />
-      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\out\production\IntelliJPlugin\com\socialcdeIntellij\object\CustomTextArea.class" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\out\production\IntelliJPlugin\com\socialcdeIntellij\staticview\LoginPanel.jfd" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\out\production\IntelliJPlugin\com\socialcdeIntellij\staticview\ProfilePanel.jfd" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\out\production\IntelliJPlugin\com\socialcdeIntellij\staticview\RegistrationPanel.jfd" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\src\com\socialcdeIntellij\object\CustomTextArea.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\src\com\socialcdeIntellij\staticview\LoginPanel.jfd" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\src\com\socialcdeIntellij\staticview\ProfilePanel.jfd" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\src\com\socialcdeIntellij\staticview\RegistrationPanel.jfd" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\out\production\IntelliJPlugin\com\socialcdeIntellij\dynamicview\HomeTimelinePanel$4$1.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\out\production\IntelliJPlugin\com\socialcdeIntellij\dynamicview\HomeTimelinePanel$4$2.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\out\production\IntelliJPlugin\com\socialcdeIntellij\dynamicview\HomeTimelinePanel$4.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\out\production\IntelliJPlugin\com\socialcdeIntellij\dynamicview\UserTimelinePanel$1.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\out\production\IntelliJPlugin\com\socialcdeIntellij\dynamicview\UserTimelinePanel$2.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspaceIntelliJ\IntelliJPlugin\out\production\IntelliJPlugin\com\socialcdeIntellij\dynamicview\UserTimelinePanel.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionHomeTimeline$1.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionHomeTimeline$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionHomeTimeline$2.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionHomeTimeline$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionHomeTimeline.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionHomeTimeline.class" />
@@ -20,19 +17,17 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionIterationTimeline$1.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionIterationTimeline$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionIterationTimeline$2.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionIterationTimeline$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionIterationTimeline.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionIterationTimeline.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/images/Baloon.png" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/images/Baloon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/images/Baloon.png" afterPath="$PROJECT_DIR$/src/images/Baloon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/controller/Controller.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/controller/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomePanel$1.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomePanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionUserTimeline$1.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionUserTimeline$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionUserTimeline$2.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionUserTimeline$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionUserTimeline.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/action/ActionUserTimeline.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/popup/HidePanel$1.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/popup/HidePanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/popup/HidePanel.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/popup/HidePanel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomePanel.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomePanel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$1.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$2.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$3$1.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$3$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$3$2.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$3$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$3.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$4$1.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$4$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$4$2.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$4$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$4.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/HomeTimelinePanel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/InteractiveTimelinePanel$1.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/InteractiveTimelinePanel$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/InteractiveTimelinePanel$2.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/InteractiveTimelinePanel$2.class" />
@@ -52,28 +47,19 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/IterationTimelinePanel$4$2.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/IterationTimelinePanel$4$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/IterationTimelinePanel$4.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/IterationTimelinePanel$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/IterationTimelinePanel.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/IterationTimelinePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/staticview/LoginPanel$1.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/staticview/LoginPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/staticview/LoginPanel.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/staticview/LoginPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/staticview/RegistrationPanel.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/staticview/RegistrationPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/popup/TFSLogin.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/popup/TFSLogin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/UserTimelinePanel$1.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/UserTimelinePanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/UserTimelinePanel$2.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/UserTimelinePanel$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/UserTimelinePanel.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/UserTimelinePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/images/send_message.png" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/images/send_message.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/images/send_message.png" afterPath="$PROJECT_DIR$/src/images/send_message.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/object/LabelClicked.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/object/LabelClicked.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/PeoplePanel.class" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/dynamicview/PeoplePanel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionHomeTimeline.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionHomeTimeline.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionInteractiveTimeline.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionInteractiveTimeline.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionIterationTimeline.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionIterationTimeline.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/controller/Controller.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/controller/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionUserTimeline.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionUserTimeline.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/popup/HidePanel.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/popup/HidePanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomePanel.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomePanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomeTimelinePanel.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomeTimelinePanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/InteractiveTimelinePanel.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/InteractiveTimelinePanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/IterationTimelinePanel.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/IterationTimelinePanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/staticview/LoginPanel.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/staticview/LoginPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/staticview/RegistrationPanel.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/staticview/RegistrationPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/popup/TFSLogin.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/popup/TFSLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/popup/TFSLogin.jfd" afterPath="$PROJECT_DIR$/out/production/IntelliJPlugin/com/socialcdeIntellij/popup/TFSLogin.jfd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/popup/TFSLogin.jfd" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/popup/TFSLogin.jfd" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/object/LabelClicked.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/object/LabelClicked.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/PeoplePanel.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/PeoplePanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/UserTimelinePanel.java" afterPath="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/UserTimelinePanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -108,36 +94,42 @@
       <file leaf-file-name="HomeTimelinePanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomeTimelinePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1960" max-vertical-offset="10812">
-              <caret line="81" column="43" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
+            <state vertical-scroll-proportion="-3.9310346" vertical-offset="4340" max-vertical-offset="10914">
+              <caret line="298" column="31" selection-start-line="298" selection-start-column="26" selection-end-line="298" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7898#7914#0" expanded="true" />
+                <element signature="method#findLink#0;class#HomeTimelinePanel#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InteractiveTimelinePanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/InteractiveTimelinePanel.java">
+      <file leaf-file-name="PeoplePanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/PeoplePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2300" max-vertical-offset="11900">
-              <caret line="148" column="60" selection-start-line="148" selection-start-column="60" selection-end-line="148" selection-end-column="60" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-9.379311" vertical-offset="578" max-vertical-offset="5219">
+              <caret line="62" column="63" selection-start-line="62" selection-start-column="63" selection-end-line="62" selection-end-column="63" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IterationTimelinePanel.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/IterationTimelinePanel.java">
+      <file leaf-file-name="UserTimelinePanel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/UserTimelinePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44474393" vertical-offset="1875" max-vertical-offset="10744">
-              <caret line="122" column="60" selection-start-line="122" selection-start-column="60" selection-end-line="122" selection-end-column="60" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.6812866" vertical-offset="7893" max-vertical-offset="9367">
+              <caret line="502" column="45" selection-start-line="502" selection-start-column="45" selection-end-line="502" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomePanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomePanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="974" max-vertical-offset="5763">
+              <caret line="112" column="80" selection-start-line="112" selection-start-column="80" selection-end-line="112" selection-end-column="80" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -150,7 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/object/OperationProgressBar.jfd" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/object/PopBar.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/object/Altro.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionProfile.java" />
@@ -173,34 +164,35 @@
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionLogin.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/object/LabelClick.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/UserPanel.jfd" />
-        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/object/LabelClicked.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionPeople.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionGeneral.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/popup/HidePanel.jfd" />
-        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/popup/HidePanel.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/object/OperationProgressBar.java" />
-        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionUserTimeline.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/MainAction.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/Tool.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionSetting.java" />
-        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/PeoplePanel.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/SettingPanel.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/staticview/ProfilePanel.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/controller/Controller.java" />
-        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/UserTimelinePanel.java" />
-        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomePanel.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/popup/TFSLogin.jfd" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/popup/TFSLogin.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/object/CustomTextArea.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/object/PanelArea.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/staticview/LoginPanel.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/staticview/RegistrationPanel.java" />
+        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/object/VisibleCaretListener.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionHomeTimeline.java" />
-        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionInteractiveTimeline.java" />
-        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionIterationTimeline.java" />
+        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionUserTimeline.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomeTimelinePanel.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/InteractiveTimelinePanel.java" />
         <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/IterationTimelinePanel.java" />
+        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionInteractiveTimeline.java" />
+        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionIterationTimeline.java" />
+        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/object/LabelClicked.java" />
+        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/popup/HidePanel.java" />
+        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/PeoplePanel.java" />
+        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomePanel.java" />
+        <option value="$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/UserTimelinePanel.java" />
       </list>
     </option>
   </component>
@@ -236,8 +228,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -332,6 +322,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IntelliJPlugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IntelliJPlugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socialcdeIntellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="popup" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -355,6 +367,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="object" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IntelliJPlugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IntelliJPlugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="socialcdeIntellij" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -440,6 +474,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -454,7 +490,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SocialCDEIntellij" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
     <property name="OverrideImplement.combined" value="true" />
@@ -718,7 +754,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28517398" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253833" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -731,6 +766,7 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="240" y="183" width="383" height="266" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JFormDesigner Bindings" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32789558" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253833" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -760,6 +796,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/IterationTimelinePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11118">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/object/ImagesMod.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="730" max-vertical-offset="3315">
@@ -833,13 +879,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/model/ProxyWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="922" max-vertical-offset="4369">
-          <caret line="444" column="30" selection-start-line="444" selection-start-column="30" selection-end-line="444" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/popup/PopupServiceRegistered.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7410256" vertical-offset="2261" max-vertical-offset="3434">
@@ -883,19 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/object/LabelClicked.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9128205" vertical-offset="545" max-vertical-offset="1037">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding>
-            <element signature="e#1436#1437#0" expanded="false" />
-            <element signature="e#1467#1468#0" expanded="false" />
-            <element signature="e#1515#1516#0" expanded="false" />
-            <element signature="e#1555#1556#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionPeople.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.2994792" vertical-offset="161" max-vertical-offset="1751">
@@ -915,14 +941,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.7115903" vertical-offset="561" max-vertical-offset="7939">
           <caret line="135" column="31" selection-start-line="135" selection-start-column="28" selection-end-line="135" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/shared/library/WHidden.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="629">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -941,18 +959,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/popup/HidePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.4231806" vertical-offset="529" max-vertical-offset="2873">
-          <caret line="97" column="23" selection-start-line="97" selection-start-column="23" selection-end-line="97" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/object/OperationProgressBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="394" max-vertical-offset="1734">
           <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -966,48 +976,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionUserTimeline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48245615" vertical-offset="5428" max-vertical-offset="6749">
-          <caret line="335" column="0" selection-start-line="335" selection-start-column="0" selection-end-line="335" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#16000#16001#0" expanded="false" />
-            <element signature="e#16029#16030#0" expanded="false" />
-            <element signature="e#16078#16079#0" expanded="false" />
-            <element signature="e#16128#16129#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/MainAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45013478" vertical-offset="20" max-vertical-offset="476">
-          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/PeoplePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="547" max-vertical-offset="5253">
-          <caret line="62" column="63" selection-start-line="62" selection-start-column="63" selection-end-line="62" selection-end-column="63" />
-          <folding>
-            <element signature="e#1197#1198#0" expanded="false" />
-            <element signature="e#1229#1230#0" expanded="false" />
-            <element signature="e#14744#14760#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/SettingPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="313" max-vertical-offset="3077">
           <caret line="47" column="41" selection-start-line="47" selection-start-column="41" selection-end-line="47" selection-end-column="41" />
-          <folding>
-            <element signature="e#576#577#0" expanded="false" />
-            <element signature="e#608#609#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1022,34 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="362" max-vertical-offset="1972">
           <caret line="45" column="65" selection-start-line="45" selection-start-column="65" selection-end-line="45" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/Tool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6640625" vertical-offset="102" max-vertical-offset="578">
-          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/UserTimelinePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48245615" vertical-offset="7859" max-vertical-offset="9384">
-          <caret line="480" column="55" selection-start-line="480" selection-start-column="55" selection-end-line="480" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#21866#21882#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="3728" max-vertical-offset="5763">
-          <caret line="244" column="40" selection-start-line="244" selection-start-column="36" selection-end-line="244" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1084,12 +1028,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2648" max-vertical-offset="3332">
           <caret line="182" column="55" selection-start-line="182" selection-start-column="55" selection-end-line="182" selection-end-column="55" />
-          <folding>
-            <element signature="e#2440#2612#0" expanded="true" />
-            <element signature="e#2611#2612#0" expanded="true" />
-            <marker date="1427791145131" expanded="true" signature="-1:-1" placeholder="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-            <marker date="1427791145131" expanded="false" signature="-1:-1" placeholder="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1097,10 +1035,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2516" max-vertical-offset="4369">
           <caret line="168" column="62" selection-start-line="168" selection-start-column="62" selection-end-line="168" selection-end-column="62" />
-          <folding>
-            <marker date="1427800869535" expanded="true" signature="-1:-1" placeholder="// JFormDesigner - Component initialization - DO NOT MODIFY" />
-            <marker date="1427800869535" expanded="false" signature="-1:-1" placeholder="// JFormDesigner - Variables declaration - DO NOT MODIFY" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1108,37 +1042,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.0338542" vertical-offset="2755" max-vertical-offset="5202">
           <caret line="217" column="73" selection-start-line="217" selection-start-column="73" selection-end-line="217" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionHomeTimeline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38304093" vertical-offset="430" max-vertical-offset="7174">
-          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionInteractiveTimeline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48245615" vertical-offset="651" max-vertical-offset="6851">
-          <caret line="48" column="19" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#findLink#0;class#ActionInteractiveTimeline#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionIterationTimeline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15633424" vertical-offset="605" max-vertical-offset="6902">
-          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#findLink#0;class#ActionIterationTimeline#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1147,32 +1050,21 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="646">
           <caret line="28" column="27" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#231#232#0" expanded="true" />
-            <element signature="e#278#279#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
-            <element signature="e#353#354#0" expanded="true" />
-            <element signature="e#403#404#0" expanded="true" />
-            <element signature="e#442#443#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomeTimelinePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1960" max-vertical-offset="10812">
-          <caret line="81" column="43" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7898#7914#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#231#232#0" expanded="false" />
+            <element signature="e#278#279#0" expanded="false" />
+            <element signature="e#324#325#0" expanded="false" />
+            <element signature="e#353#354#0" expanded="false" />
+            <element signature="e#403#404#0" expanded="false" />
+            <element signature="e#442#443#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/InteractiveTimelinePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2300" max-vertical-offset="11900">
-          <caret line="148" column="60" selection-start-line="148" selection-start-column="60" selection-end-line="148" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="1450" max-vertical-offset="12410">
+          <caret line="94" column="49" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1181,11 +1073,136 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/IterationTimelinePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44474393" vertical-offset="1875" max-vertical-offset="10744">
-          <caret line="122" column="60" selection-start-line="122" selection-start-column="60" selection-end-line="122" selection-end-column="60" />
+        <state vertical-scroll-proportion="-3.9310346" vertical-offset="1008" max-vertical-offset="11271">
+          <caret line="68" column="49" selection-start-line="68" selection-start-column="19" selection-end-line="68" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionIterationTimeline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9310346" vertical-offset="3558" max-vertical-offset="7361">
+          <caret line="219" column="68" selection-start-line="219" selection-start-column="38" selection-end-line="219" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#findLink#0;class#ActionIterationTimeline#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/object/LabelClicked.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1067709" vertical-offset="0" max-vertical-offset="969">
+          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/shared/library/WHidden.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.09375" vertical-offset="70" max-vertical-offset="629">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/model/ProxyWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0225352" vertical-offset="23097" max-vertical-offset="27149">
+          <caret line="1390" column="25" selection-start-line="1390" selection-start-column="25" selection-end-line="1390" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionUserTimeline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7061994" vertical-offset="1696" max-vertical-offset="6647">
+          <caret line="153" column="68" selection-start-line="153" selection-start-column="38" selection-end-line="153" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionHomeTimeline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.5906432" vertical-offset="1834" max-vertical-offset="7633">
+          <caret line="177" column="64" selection-start-line="177" selection-start-column="60" selection-end-line="177" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/action/ActionInteractiveTimeline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.2280703" vertical-offset="1563" max-vertical-offset="7514">
+          <caret line="180" column="65" selection-start-line="180" selection-start-column="60" selection-end-line="180" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/popup/HidePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.9002695" vertical-offset="491" max-vertical-offset="3026">
+          <caret line="127" column="84" selection-start-line="127" selection-start-column="84" selection-end-line="127" selection-end-column="84" />
+          <folding>
+            <element signature="e#4186#5349#0" expanded="true" />
+            <element signature="e#5348#5349#0" expanded="true" />
+            <element signature="e#5707#5899#0" expanded="true" />
+            <element signature="e#5898#5899#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/Tool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6640625" vertical-offset="102" max-vertical-offset="578">
+          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/MainAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45013478" vertical-offset="20" max-vertical-offset="476">
+          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="974" max-vertical-offset="5763">
+          <caret line="112" column="80" selection-start-line="112" selection-start-column="80" selection-end-line="112" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/PeoplePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.379311" vertical-offset="578" max-vertical-offset="5219">
+          <caret line="62" column="63" selection-start-line="62" selection-start-column="63" selection-end-line="62" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/HomeTimelinePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9310346" vertical-offset="4340" max-vertical-offset="10914">
+          <caret line="298" column="31" selection-start-line="298" selection-start-column="26" selection-end-line="298" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#findLink#0;class#HomeTimelinePanel#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/socialcdeIntellij/dynamicview/UserTimelinePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6812866" vertical-offset="7893" max-vertical-offset="9367">
+          <caret line="502" column="45" selection-start-line="502" selection-start-column="45" selection-end-line="502" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>

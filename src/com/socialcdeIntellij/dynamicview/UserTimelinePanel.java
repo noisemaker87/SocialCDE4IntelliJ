@@ -11,12 +11,10 @@ import org.jdesktop.swingx.VerticalLayout;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -307,10 +305,10 @@ public class UserTimelinePanel extends JPanel {
                 for (int i = 0; i < posts.length; i++) {
                     final int j = i;
 
-                    pnl = new JPanel(new HorizontalLayout(10));
-                    pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
+                    pnl = new JPanel(new HorizontalLayout(3));
+                    // pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
                     pnl.setBackground(Color.WHITE);
-                    JPanel pnl2 = new JPanel(new VerticalLayout(10));
+                    JPanel pnl2 = new JPanel(new VerticalLayout(2));
                     pnl2.setBackground(Color.WHITE);
 
                     //userPostComposite.setData("IdPost", posts[j].Id);
@@ -322,7 +320,7 @@ public class UserTimelinePanel extends JPanel {
                     }
 
                     try {
-                        lblAvatar.setIcon(new ImageIcon(im.resize((BufferedImage) Controller.getUsersAvatar().get(posts[j].getUser().Username), 75, 75)));
+                        lblAvatar.setIcon(new ImageIcon(im.resize((BufferedImage) Controller.getUsersAvatar().get(posts[j].getUser().Username), 50, 50)));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -339,30 +337,47 @@ public class UserTimelinePanel extends JPanel {
 
                     pnl2.add(lblNickname);
 
-                    JTextPane message = new JTextPane();
-                    message.setContentType("text/html");
+                    /*JTextPane message = new JTextPane();
+                            message.setContentType("text/html");*/
+                    JTextArea message = new JTextArea();
+                    message.setLineWrap(true);
+                    message.setWrapStyleWord(true);
                     message.setEditable(false);
                     message.setBackground(Color.WHITE);
                     message.setText(findLink(posts[j].getMessage()));
-                    message.addHyperlinkListener(new HyperlinkListener() {
-                        @Override
-                        public void hyperlinkUpdate(HyperlinkEvent e) {
-                            if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                                if (Desktop.isDesktopSupported()) {
-                                    try {
-                                        Desktop.getDesktop().browse(e.getURL().toURI());
-                                    } catch (IOException e1) {
-                                        // TODO Auto-generated catch block
-                                        e1.printStackTrace();
-                                    } catch (URISyntaxException e1) {
-                                        // TODO Auto-generated catch block
-                                        e1.printStackTrace();
+                            /*message.addHyperlinkListener(new HyperlinkListener() {
+                                @Override
+                                public void hyperlinkUpdate(HyperlinkEvent e) {
+                                    if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                                        if (Desktop.isDesktopSupported()) {
+                                            try {
+                                                Desktop.getDesktop().browse(e.getURL().toURI());
+                                            } catch (IOException e1) {
+                                                // TODO Auto-generated catch block
+                                                e1.printStackTrace();
+                                            } catch (URISyntaxException e1) {
+                                                // TODO Auto-generated catch block
+                                                e1.printStackTrace();
+                                            }
+                                        }
                                     }
                                 }
-                            }
+                            });*/
+
+                    final JScrollPane scrollMessage = new JScrollPane();
+                    scrollMessage.setBorder(new EmptyBorder(0,0,0,0));
+                    scrollMessage.setViewportView(message);
+                    scrollMessage.setPreferredSize(new Dimension(150, 50));
+                    scrollMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+                    scrollMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+                    //scrollMessage.setBorder(null);
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            scrollMessage.getVerticalScrollBar().setValue(0);
                         }
                     });
-                    pnl2.add(message);
+                    pnl2.add(scrollMessage);
 
 
                     Calendar nowDate = Calendar.getInstance();
@@ -478,7 +493,7 @@ public class UserTimelinePanel extends JPanel {
 
             }
 
-            scrollPane1.setPreferredSize(new Dimension(0, 460));
+            scrollPane1.setPreferredSize(new Dimension(0, 430));
             scrollPane1.setViewportView(panelDynamic);
             add(scrollPane1);
         }

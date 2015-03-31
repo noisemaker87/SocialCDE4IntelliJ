@@ -60,7 +60,7 @@ public class PeoplePanel extends JPanel {
 
         //======== scrollPane1 ========
         {
-            scrollPane1.setPreferredSize(new Dimension(450, 550));
+            scrollPane1.setPreferredSize(new Dimension(450, 540));
 
             //======== panelPeople ========
             {

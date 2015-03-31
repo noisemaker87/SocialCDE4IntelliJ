@@ -115,24 +115,24 @@ public class HidePanel extends JDialog {
                 okButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if(ckBoxSuggestions.isSelected())
-                            hiddenSetting.setSuggestions(true);
-                        else
-                            hiddenSetting.setSuggestions(false);
 
-                        if(ckBoxInteractive.isSelected())
-                            hiddenSetting.setInteractive(true);
-                        else
-                            hiddenSetting.setInteractive(false);
+                        if (!Controller.getProxy().UpdateHiddenUser(
+                                Controller.getCurrentUser().Username,
+                                Controller.getCurrentUserPassword(),
+                                user_selected.Id, ckBoxSuggestions.isSelected(),
+                                ckBoxIteration.isSelected(),
+                                ckBoxInteractive.isSelected() )) {
 
-                        if(ckBoxIteration.isSelected())
-                            hiddenSetting.setDynamic(true);
-                        else
-                            hiddenSetting.setDynamic(false);
-
-                        JOptionPane.showMessageDialog(Controller.getFrame(), "Saved",
-                                "SocialCDE message", JOptionPane.INFORMATION_MESSAGE);
-                        dispose();
+                            JOptionPane.showMessageDialog(Controller.getFrame(),
+                                    "Something was wrong, please try again!",
+                                    "SocialCDE message", JOptionPane.WARNING_MESSAGE);
+                            dispose();
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(Controller.getFrame(), "Saved",
+                                    "SocialCDE message", JOptionPane.INFORMATION_MESSAGE);
+                            dispose();
+                        }
                     }
                 });
 
@@ -173,4 +173,13 @@ public class HidePanel extends JDialog {
     private GeneralButton okButton;
     private GeneralButton cancelButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    public HashMap<String, Object> getData() {
+        // TODO Auto-generated method stub
+        HashMap<String, Object> uiData = new HashMap<String, Object>();
+        uiData.put("hideSuggestions", ckBoxSuggestions);
+        uiData.put("hideInteractive", ckBoxInteractive);
+        uiData.put("hideIteration", ckBoxIteration);
+        return uiData;
+    }
 }
