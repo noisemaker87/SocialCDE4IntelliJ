@@ -1,7 +1,6 @@
 package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
-import com.socialcdeIntellij.object.CustomTextArea;
 import com.socialcdeIntellij.object.ImagesMod;
 import com.socialcdeIntellij.object.LabelClicked;
 import com.socialcdeIntellij.shared.library.WPost;
@@ -43,12 +42,12 @@ public class ActionHomeTimeline {
                 {
                     String userMessage = null;
 
-                    if (((CustomTextArea) uiData.get("TextMessage")).getText().isEmpty()) {
+                    if (((JTextArea) uiData.get("TextMessage")).getText().isEmpty()) {
                         JOptionPane.showMessageDialog(Controller.getFrame(), "The message is empty, please try again.",
                                 "SocialCDE message", JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        userMessage = ((CustomTextArea) uiData.get("TextMessage")).getText();
-                        ((CustomTextArea) uiData.get("TextMessage")).setText("");
+                        userMessage = ((JTextArea) uiData.get("TextMessage")).getText();
+                        ((JTextArea) uiData.get("TextMessage")).setText("");
                         if (!Controller.getProxy().Post(
                                 Controller.getCurrentUser().Username,
                                 Controller.getCurrentUserPassword(), userMessage)) {

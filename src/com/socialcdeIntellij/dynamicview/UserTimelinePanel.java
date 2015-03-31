@@ -8,9 +8,9 @@ import com.socialcdeIntellij.shared.library.WPost;
 import com.socialcdeIntellij.shared.library.WUser;
 import org.jdesktop.swingx.HorizontalLayout;
 import org.jdesktop.swingx.VerticalLayout;
+
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.MatteBorder;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import java.awt.*;
@@ -97,6 +97,7 @@ public class UserTimelinePanel extends JPanel {
         //======== this ========
 
         setLayout(new VerticalLayout());
+       // setPreferredSize(new Dimension(448, 610));
 
         userSelected = Controller.getProxy()
                 .GetColleagueProfile(
@@ -162,16 +163,22 @@ public class UserTimelinePanel extends JPanel {
                 //======== panelInfo2 ========
                 {
                     panelInfo2.setBackground(Color.white);
-                    panelInfo2.setLayout(new GridLayout(1, 3, 10, 0));
-                   // panelInfo2.setLayout(new FlowLayout());
+                    panelInfo2.setLayout(new FlowLayout(FlowLayout.CENTER,5,0));
+
+                    JSeparator sep1 = new JSeparator();
+                    sep1.setOrientation(SwingConstants.VERTICAL);
+                    sep1.setPreferredSize(new Dimension(3,30));
+                    sep1.setVisible(true);
+
+                    JSeparator sep2 = new JSeparator();
+                    sep2.setPreferredSize(new Dimension(3,30));
+                    sep2.setVisible(true);
+                    sep2.setOrientation(SwingConstants.VERTICAL);
 
                     //======== panelPost ========
                     {
                         panelPost.setBackground(Color.white);
-                        panelPost.setBorder(new MatteBorder(0, 0, 0, 1, Color.black));
-                        //panelPost.setLayout(new GridLayout(2, 1));
                         panelPost.setLayout(new VerticalLayout(2));
-                        panelPost.setSize(new Dimension(20,10));
 
                         //---- lblPosts ----
                         lblPosts.setText("Posts");
@@ -184,14 +191,12 @@ public class UserTimelinePanel extends JPanel {
                         panelPost.add(lblNumPost);
                     }
                     panelInfo2.add(panelPost);
+                    panelInfo2.add(sep1);
 
                     //======== panelfollowing ========
                     {
                         panelfollowing.setBackground(Color.white);
-                        //panelfollowing.setLayout(new GridLayout(2, 1));
                         panelfollowing.setLayout(new VerticalLayout(2));
-                        panelfollowing.setSize(new Dimension(20, 10));
-                       // panelfollowing.setBorder(new MatteBorder(0, 1, 0, 0, Color.black));
 
                         //---- lblFollowing ----
                         lblFollowing.setText("Following");
@@ -204,15 +209,12 @@ public class UserTimelinePanel extends JPanel {
                         panelfollowing.add(lblNumFollowing);
                     }
                     panelInfo2.add(panelfollowing);
+                    panelInfo2.add(sep2);
 
                     //======== panelFollowers ========
                     {
                         panelFollowers.setBackground(Color.white);
-                        panelFollowers.setBorder(new MatteBorder(0, 1, 0, 0, Color.black));
-                        panelFollowers.setPreferredSize(new Dimension(70, 32));
-                        //panelFollowers.setLayout(new GridLayout(2, 1));
                         panelFollowers.setLayout(new VerticalLayout(2));
-                        panelFollowers.setSize(new Dimension(20,10));
 
                         //---- lblFollowers ----
 
@@ -476,7 +478,7 @@ public class UserTimelinePanel extends JPanel {
 
             }
 
-            scrollPane1.setPreferredSize(new Dimension(0, 400));
+            scrollPane1.setPreferredSize(new Dimension(0, 460));
             scrollPane1.setViewportView(panelDynamic);
             add(scrollPane1);
         }

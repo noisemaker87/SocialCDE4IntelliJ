@@ -9,9 +9,9 @@ import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.socialcdeIntellij.action.ActionGeneral;
 import com.socialcdeIntellij.action.ActionInteractiveTimeline;
 import com.socialcdeIntellij.controller.Controller;
-import com.socialcdeIntellij.object.CustomTextArea;
 import com.socialcdeIntellij.object.ImagesMod;
 import com.socialcdeIntellij.object.LabelClicked;
+import com.socialcdeIntellij.object.PanelArea;
 import com.socialcdeIntellij.shared.library.WPost;
 import org.jdesktop.swingx.HorizontalLayout;
 import org.jdesktop.swingx.VerticalLayout;
@@ -51,13 +51,14 @@ public class InteractiveTimelinePanel extends JPanel {
     private JPanel panelDynamic;
     private JTextArea textArea1;
     private JPanel panelMsg;
-    private CustomTextArea customTextArea1;
     private JLabel lblEnter;
     private ActionGeneral listener = new ActionGeneral();
     private static String fileSelected;
     private String tempFileSelected;
     JPanel jp1;
     JPanel jp2;
+    private JTextArea mytextArea;
+    private JScrollPane scrollPaneArea;
 
 
     public InteractiveTimelinePanel() {
@@ -92,13 +93,11 @@ public class InteractiveTimelinePanel extends JPanel {
         jp2 = new JPanel(new FlowLayout());
         panelDynamic = new JPanel();
         panelMsg = new JPanel();
-        customTextArea1 = new CustomTextArea();
         lblEnter = new JLabel();
-
         subPanel = new JPanel(new VerticalLayout(10));
         subPanel.setBackground(Color.WHITE);
 
-        setLayout(new VerticalLayout(30));
+        setLayout(new VerticalLayout(15));
 
         //========= scrollPane ==========
         {
@@ -108,13 +107,9 @@ public class InteractiveTimelinePanel extends JPanel {
                 panelDynamic.setBorder(new BevelBorder(BevelBorder.LOWERED));
                 panelDynamic.setLayout(new VerticalLayout(15));
 
-
                 insertTimeline(subPanel);
 
-
-
                 panelDynamic.add(subPanel);
-
 
                 long secondCallpostStartTime = System.currentTimeMillis();
 
@@ -151,7 +146,7 @@ public class InteractiveTimelinePanel extends JPanel {
 
             }
 
-            scrollPane1.setPreferredSize(new Dimension(0, 400));
+            scrollPane1.setPreferredSize(new Dimension(0, 450));
             scrollPane1.setViewportView(panelDynamic);
             add(scrollPane1);
 
@@ -160,17 +155,34 @@ public class InteractiveTimelinePanel extends JPanel {
         //======== panelMsg ========
         {
             panelMsg.setLayout(new FlowLayout());
-            JPanel panelMsg2 = new JPanel(new HorizontalLayout(15));
+            //JPanel panelMsg2 = new JPanel(new HorizontalLayout(15));
+            JPanel panelMsg2 = new JPanel(new FlowLayout(FlowLayout.CENTER,5,0));
 
             //---- customTextArea1 ----
-            customTextArea1.setPreferredSize(new Dimension(328, 70));
-            customTextArea1.setName("Baloon");
-            panelMsg2.add(customTextArea1);
+            mytextArea = new JTextArea();
+            mytextArea.setLineWrap(true);
+            mytextArea.setWrapStyleWord(true);
+            mytextArea.setBorder(null);
+
+            scrollPaneArea = new JScrollPane();
+
+            scrollPaneArea.setViewportView(mytextArea);
+            scrollPaneArea.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+            scrollPaneArea.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+            scrollPaneArea.setPreferredSize(new Dimension(218, 42));
+
+            PanelArea pa = new PanelArea(new FlowLayout());
+            pa.setOpaque(false);
+            pa.setPreferredSize(new Dimension(218,60));
+
+            pa.setVisible(true);
+            pa.add(scrollPaneArea);
+            panelMsg2.add(pa);
 
             //---- lblEnter ----
             JPanel jp2 = new JPanel(new FlowLayout());
             try {
-                lblEnter.setIcon(new ImageIcon(im.getSEND_MESSAGE(48, 48)));
+                lblEnter.setIcon(new ImageIcon(im.getSEND_MESSAGE(32, 32)));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -244,7 +256,7 @@ public class InteractiveTimelinePanel extends JPanel {
         HashMap<String, Object> uiData = new HashMap<String, Object>();
 
         uiData.put("LabelSendMessage", lblEnter);
-        uiData.put("TextMessage", customTextArea1);
+        uiData.put("TextMessage", mytextArea);
         uiData.put("Panel", this);
         uiData.put("panelDynamic", panelDynamic);
         uiData.put("scroll", scrollPane1);

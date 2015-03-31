@@ -310,6 +310,7 @@ public class Controller {
     public static void selectDynamicWindow(int choose) {
         JPanel container = new JPanel();
         container.setLayout(new VerticalLayout(2));
+        container.setPreferredSize(new Dimension(270,550));
 
         switch (choose) {
             case 0://home profile

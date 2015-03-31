@@ -13,7 +13,6 @@ import org.jdesktop.swingx.HorizontalLayout;
 import org.jdesktop.swingx.VerticalLayout;
 
 import javax.swing.*;
-import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -80,8 +79,9 @@ public class HomePanel extends JPanel {
 
         //======== this ========
         setBackground(Color.white);
-        setPreferredSize(new Dimension(448, 610));
+        //setPreferredSize(new Dimension(448, 610));
         setName("Home");
+
 
         setLayout(new VerticalLayout(10));
 
@@ -158,13 +158,21 @@ public class HomePanel extends JPanel {
                 //======== panelInfo2 ========
                 {
                     panelInfo2.setBackground(Color.white);
-                    panelInfo2.setLayout(new GridLayout(1, 3, 10, 0));
+                    panelInfo2.setLayout(new FlowLayout(FlowLayout.CENTER, 5,0));
+
+                    JSeparator sep1 = new JSeparator();
+                    sep1.setOrientation(SwingConstants.VERTICAL);
+                    sep1.setPreferredSize(new Dimension(3,30));
+                    sep1.setVisible(true);
+
+                    JSeparator sep2 = new JSeparator();
+                    sep2.setPreferredSize(new Dimension(3,30));
+                    sep2.setVisible(true);
+                    sep2.setOrientation(SwingConstants.VERTICAL);
 
                     //======== panelPost ========
                     {
                         panelPost.setBackground(Color.white);
-                        panelPost.setBorder(new MatteBorder(0, 0, 0, 1, Color.black));
-                        //panelPost.setLayout(new GridLayout(2, 1));
                         panelPost.setLayout(new VerticalLayout(2));
 
                         //---- lblPosts ----
@@ -180,11 +188,11 @@ public class HomePanel extends JPanel {
                         panelPost.add(lblNumPost);
                     }
                     panelInfo2.add(panelPost);
+                    panelInfo2.add(sep1);
 
                     //======== panelfollowing ========
                     {
                         panelfollowing.setBackground(Color.white);
-                       // panelfollowing.setLayout(new GridLayout(2, 1));
                         panelfollowing.setLayout(new VerticalLayout(2));
 
                         //---- lblFollowing ----
@@ -200,19 +208,16 @@ public class HomePanel extends JPanel {
                         panelfollowing.add(lblNumFollowing);
                     }
                     panelInfo2.add(panelfollowing);
+                    panelInfo2.add(sep2);
 
                     //======== panelFollowers ========
                     {
                         panelFollowers.setBackground(Color.white);
-                        panelFollowers.setBorder(new MatteBorder(0, 1, 0, 0, Color.black));
-                        panelFollowers.setPreferredSize(new Dimension(70, 32));
-                        //panelFollowers.setLayout(new GridLayout(2, 1));
                         panelFollowers.setLayout(new VerticalLayout(2));
 
                         //---- lblFollowers ----
                         lblFollowers.setText("Followers");
                         lblFollowers.setHorizontalAlignment(SwingConstants.CENTER);
-                        lblFollowers.setAlignmentX(0.5F);
                         lblFollowers.setHorizontalTextPosition(SwingConstants.CENTER);
                         panelFollowers.add(lblFollowers);
 
@@ -237,7 +242,7 @@ public class HomePanel extends JPanel {
                     (ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
             scrollPane1.setHorizontalScrollBarPolicy
                     (ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-            scrollPane1.setPreferredSize(new Dimension(200, 400));
+            scrollPane1.setPreferredSize(new Dimension(200, 460));
 
             //======== panelService ========
             {
