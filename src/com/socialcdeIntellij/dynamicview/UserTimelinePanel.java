@@ -306,7 +306,7 @@ public class UserTimelinePanel extends JPanel {
                     final int j = i;
 
                     pnl = new JPanel(new HorizontalLayout(3));
-                    // pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
+                    pnl.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 0));
                     pnl.setBackground(Color.WHITE);
                     JPanel pnl2 = new JPanel(new VerticalLayout(2));
                     pnl2.setBackground(Color.WHITE);
@@ -344,7 +344,7 @@ public class UserTimelinePanel extends JPanel {
                     message.setWrapStyleWord(true);
                     message.setEditable(false);
                     message.setBackground(Color.WHITE);
-                    message.setText(findLink(posts[j].getMessage()));
+                    message.setText(posts[j].getMessage());
                             /*message.addHyperlinkListener(new HyperlinkListener() {
                                 @Override
                                 public void hyperlinkUpdate(HyperlinkEvent e) {

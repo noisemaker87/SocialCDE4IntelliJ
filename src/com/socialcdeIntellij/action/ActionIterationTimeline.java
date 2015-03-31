@@ -276,7 +276,7 @@ public class ActionIterationTimeline {
                         message.setWrapStyleWord(true);
                         message.setEditable(false);
                         message.setBackground(Color.WHITE);
-                        message.setText(findLink(posts[j].getMessage()));
+                        message.setText(posts[j].getMessage());
                             /*message.addHyperlinkListener(new HyperlinkListener() {
                                 @Override
                                 public void hyperlinkUpdate(HyperlinkEvent e) {

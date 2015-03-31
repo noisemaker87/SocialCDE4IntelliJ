@@ -170,7 +170,7 @@ public class ActionUserTimeline {
 
                         if (!posts[j].getUser().Username.equals(Controller
                                 .getCurrentUser().Username)) {
-                            lblImgAvatar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                            //lblImgAvatar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                             lblImgAvatar.setToolTipText("View "
                                     + posts[j].getUser().Username + " Timeline");
                             // Controller.temporaryInformation.put("User_selected", posts[j].getUser());
@@ -210,7 +210,7 @@ public class ActionUserTimeline {
                         message.setWrapStyleWord(true);
                         message.setEditable(false);
                         message.setBackground(Color.WHITE);
-                        message.setText(findLink(posts[j].getMessage()));
+                        message.setText(posts[j].getMessage());
                             /*message.addHyperlinkListener(new HyperlinkListener() {
                                 @Override
                                 public void hyperlinkUpdate(HyperlinkEvent e) {
@@ -330,9 +330,11 @@ public class ActionUserTimeline {
                     }
 
 
-                    WPost[] newPosts = Controller.getProxy().GetHomeTimeline(
+                    WPost[] newPosts = Controller.getProxy().GetUserTimeline(
                             Controller.getCurrentUser().Username,
-                            Controller.getCurrentUserPassword(), 0, getLastId());
+                            Controller.getCurrentUserPassword(),
+                            ((WUser) uiData.get("userSelected")).Username, 0,
+                            getLastId());
 
                     if (newPosts == null || newPosts.length == 2) {
                         newPosts = new WPost[0];

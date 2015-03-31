@@ -275,7 +275,7 @@ public class ActionInteractiveTimeline {
                         message.setWrapStyleWord(true);
                         message.setEditable(false);
                         message.setBackground(Color.WHITE);
-                        message.setText(findLink(posts[j].getMessage()));
+                        message.setText(posts[j].getMessage());
 
                         final JScrollPane scrollMessage = new JScrollPane();
                         scrollMessage.setBorder(new EmptyBorder(0,0,0,0));
