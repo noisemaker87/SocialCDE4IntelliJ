@@ -21,6 +21,8 @@ public class Tool implements ToolWindowFactory {
         Content content=ContentFactory.SERVICE.getInstance().createContent(getPanel(),"",true);
         toolWindow.getContentManager().addContent(content);
 
+        Controller.setToolWindow(toolWindow);
+
     }
 
     public JPanel getPanel(){
@@ -29,7 +31,6 @@ public class Tool implements ToolWindowFactory {
         panel.add(Controller.getCurrentPanel());
         panel.setPreferredSize(Controller.getCurrentPanel().getSize());
         panel.setVisible(true);
-
 
         return panel;
     }

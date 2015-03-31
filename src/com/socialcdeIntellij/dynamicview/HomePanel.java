@@ -77,6 +77,7 @@ public class HomePanel extends JPanel {
         panelService = new JPanel();
         panelserviceDemo = new JPanel();
 
+        Controller.setCounter(0);
         //======== this ========
         setBackground(Color.white);
         //setPreferredSize(new Dimension(448, 610));

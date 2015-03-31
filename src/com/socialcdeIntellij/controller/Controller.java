@@ -1,6 +1,7 @@
 package com.socialcdeIntellij.controller;
 
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.wm.ToolWindow;
 import com.socialcdeIntellij.dynamicview.*;
 import com.socialcdeIntellij.model.ProxyWrapper;
 import com.socialcdeIntellij.object.OperationProgressBar;
@@ -18,6 +19,8 @@ public class Controller {
     private static JFrame frame = null;
     private static Project project = null;
     private static Preferences prefs = Preferences.userNodeForPackage(Controller.class);
+    private static ToolWindow toolWindow;
+    private static int counter = 0;
 
     private static RegistrationPanel registrationPanel = new RegistrationPanel();
     private static LoginPanel loginPanel = new LoginPanel();
@@ -74,6 +77,22 @@ public class Controller {
         opBar = newOpBar;
     }
  //***************************************************************************************
+
+    public static int getCounter() {
+        return counter;
+    }
+
+    public static void setCounter(int counter) {
+        Controller.counter = counter;
+    }
+
+    public static ToolWindow getToolWindow() {
+        return toolWindow;
+    }
+
+    public static void setToolWindow(ToolWindow toolWindow) {
+        Controller.toolWindow = toolWindow;
+    }
 
 //metodi cambio pannelli*************************************************************************************
     public static JPanel getCurrentPanel() {

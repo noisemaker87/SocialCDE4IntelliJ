@@ -1,6 +1,10 @@
 package com.socialcdeIntellij.action;
 
-import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.wm.ToolWindowAnchor;
+import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.ui.content.Content;
+import com.intellij.ui.content.ContentFactory;
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.object.Browser;
 import com.socialcdeIntellij.object.GeneralButton;
@@ -12,8 +16,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -21,8 +25,6 @@ import java.util.HashMap;
  * Created by Teo on 13/03/2015.
  */
 public class ActionHome {
-
-
 
     public ActionHome(HashMap<String, Object> uiData) {
 
@@ -151,9 +153,29 @@ public class ActionHome {
                                 pinWindow.setVisible(true);
                             }
 
+
+
                             final Browser browser = new Browser();
 
                             browser.startBrowser(oauthData.AuthorizationLink);
+
+                            Controller.setCounter(Controller.getCounter()+1);
+                            ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(Controller.getProject());
+                            ToolWindow toolWindow = toolWindowManager.registerToolWindow("Browser"+Controller.getCounter(),true, ToolWindowAnchor.LEFT);
+                            Content content= ContentFactory.SERVICE.getInstance().createContent(browser,"",true);
+                            toolWindow.getContentManager().addContent(content);
+
+                            toolWindow.show( new Runnable() {
+                                @Override
+                                public void run() {
+                                    browser.setVisible(true);
+                                }
+                            });
+
+                            //Controller.getToolWindow().hide();
+
+
+
                             System.out.println("INIZIO **** "+browser.getUrlString());
 
                           /*  final URL url;
@@ -204,10 +226,10 @@ public class ActionHome {
 
                                                 {//inizio pannello interno service registered
                                                     final PopupServiceRegistered popupServiceRegistered = new PopupServiceRegistered(Controller.getFrame());
+                                                    popupServiceRegistered.setVisible(true);
 
                                                     popupServiceRegistered.setServiceName(service.Name);
                                                     popupServiceRegistered.setImage(Controller.getServicesImage().get(service.Name));
-                                                    popupServiceRegistered.setVisible(true);
 
                                                     popupServiceRegistered.getUnsubscriveButton().addActionListener(new ActionListener() {
                                                         @Override
@@ -279,96 +301,105 @@ public class ActionHome {
                                             }
                                             break;
 
-                                        case 2:
+                                        case 2://facebook
                                                 System.out.println("QUA **** "+browser.getWb().getResourceLocation());
                                             getAccessToken(browser.getWb().getResourceLocation(), service);
                                           //  System.out.println("MIO TOKEN: **** "+ Controller.temporaryInformation.get("AccessToken").toString());
 
-                                            if (Controller.getProxy().Authorize(
-                                                    Controller.getCurrentUser().Username,
-                                                    Controller.getCurrentUserPassword(),
-                                                    service.getId(),
-                                                    null,
-                                                    Controller.temporaryInformation.get("AccessToken").toString(),
-                                                    //oauthData.getAccessToken(),
-                                                    null)) {
-                                                pinWindow.dispose();
-                                                //pinWindow.getService().Registered = true;
-                                                service.Registered = true;
-                                                pinWindow.setOauthData(null);
+                                            if(!(Controller.temporaryInformation.get("AccessToken") == null)){
+                                                if (Controller.getProxy().Authorize(
+                                                        Controller.getCurrentUser().Username,
+                                                        Controller.getCurrentUserPassword(),
+                                                        service.getId(),
+                                                        null,
+                                                        Controller.temporaryInformation.get("AccessToken").toString(),
+                                                        //oauthData.getAccessToken(),
+                                                        null)) {
+                                                    pinWindow.dispose();
+                                                    //pinWindow.getService().Registered = true;
+                                                    service.Registered = true;
+                                                    pinWindow.setOauthData(null);
 
-                                                {//inizio pannello interno service registered
-                                                    final PopupServiceRegistered popupServiceRegistered = new PopupServiceRegistered(Controller.getFrame());
+                                                    {//inizio pannello interno service registered
+                                                        final PopupServiceRegistered popupServiceRegistered = new PopupServiceRegistered(Controller.getFrame());
+                                                        popupServiceRegistered.setVisible(true);
 
-                                                    popupServiceRegistered.setServiceName(service.Name);
-                                                    popupServiceRegistered.setImage(Controller.getServicesImage().get(service.Name));
-                                                    popupServiceRegistered.setVisible(true);
+                                                        popupServiceRegistered.setServiceName(service.Name);
+                                                        popupServiceRegistered.setImage(Controller.getServicesImage().get(service.Name));
 
-                                                    popupServiceRegistered.getUnsubscriveButton().addActionListener(new ActionListener() {
-                                                        @Override
-                                                        public void actionPerformed(ActionEvent e) {
+                                                        popupServiceRegistered.getUnsubscriveButton().addActionListener(new ActionListener() {
+                                                            @Override
+                                                            public void actionPerformed(ActionEvent e) {
 
-                                                            int response = JOptionPane.showConfirmDialog(Controller.getFrame(), "Are you sure you want to unsubscribe?",
-                                                                    "SocialCDE message", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+                                                                int response = JOptionPane.showConfirmDialog(Controller.getFrame(), "Are you sure you want to unsubscribe?",
+                                                                        "SocialCDE message", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-                                                            if(response == JOptionPane.OK_OPTION){
-                                                                if (!Controller.getProxy().DeleteRegistredService(Controller.getCurrentUser().Username,
+                                                                if (response == JOptionPane.OK_OPTION) {
+                                                                    if (!Controller.getProxy().DeleteRegistredService(Controller.getCurrentUser().Username,
+                                                                            Controller.getCurrentUserPassword(),
+                                                                            popupServiceRegistered.getService().Id)) {
+                                                                        JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                                                                                "SocialCDE message", JOptionPane.ERROR_MESSAGE);
+                                                                        popupServiceRegistered.dispose();
+                                                                    } else {
+                                                                        popupServiceRegistered.dispose();
+                                                                        Controller.selectDynamicWindow(0);
+                                                                        Controller.getWindow().revalidate();
+                                                                    }
+                                                                }
+
+
+                                                            }
+                                                        });
+
+                                                        popupServiceRegistered.getSaveButton().addActionListener(new ActionListener() {
+                                                            @Override
+                                                            public void actionPerformed(ActionEvent e) {
+                                                                ArrayList<JCheckBox> btnCheckbox = popupServiceRegistered.getCheckboxCreated();
+
+                                                                int counter = 0;
+                                                                for (int i = 0; i < btnCheckbox.size(); i++) {
+                                                                    if (btnCheckbox.get(i).isSelected()) {
+                                                                        counter += 1;
+                                                                    }
+                                                                }
+
+                                                                String[] strFeature = new String[counter];
+                                                                counter = 0;
+                                                                for (int i = 0; i < btnCheckbox.size(); i++) {
+                                                                    if (btnCheckbox.get(i).isSelected()) {
+                                                                        strFeature[counter] = btnCheckbox.get(i).getName();
+                                                                        counter += 1;
+                                                                    }
+                                                                }
+
+                                                                if (Controller.getProxy().UpdateChosenFeatures(
+                                                                        Controller.getCurrentUser().Username,
                                                                         Controller.getCurrentUserPassword(),
-                                                                        popupServiceRegistered.getService().Id)){
-                                                                    JOptionPane.showMessageDialog(Controller.getFrame(),"Something was wrong, please try again.",
-                                                                            "SocialCDE message",JOptionPane.ERROR_MESSAGE);
+                                                                        popupServiceRegistered.getService().Id, strFeature)) {
                                                                     popupServiceRegistered.dispose();
-                                                                }
-                                                                else {
+                                                                } else {
+                                                                    JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                                                                            "SocialCDE message", JOptionPane.ERROR_MESSAGE);
                                                                     popupServiceRegistered.dispose();
-                                                                    Controller.selectDynamicWindow(0);
-                                                                    Controller.getWindow().revalidate();
+
                                                                 }
                                                             }
+                                                        });
+                                                    }//fine pannello interno service registered
 
 
-                                                        }
-                                                    });
-
-                                                    popupServiceRegistered.getSaveButton().addActionListener(new ActionListener() {
-                                                        @Override
-                                                        public void actionPerformed(ActionEvent e) {
-                                                            ArrayList<JCheckBox> btnCheckbox = popupServiceRegistered.getCheckboxCreated();
-
-                                                            int counter = 0;
-                                                            for (int i = 0; i < btnCheckbox.size(); i++) {
-                                                                if (btnCheckbox.get(i).isSelected()) {
-                                                                    counter += 1;
-                                                                }
-                                                            }
-
-                                                            String[] strFeature = new String[counter];
-                                                            counter = 0;
-                                                            for (int i = 0; i < btnCheckbox.size(); i++) {
-                                                                if (btnCheckbox.get(i).isSelected()) {
-                                                                    strFeature[counter] = btnCheckbox.get(i).getName();
-                                                                    counter += 1;
-                                                                }
-                                                            }
-
-                                                            if (Controller.getProxy().UpdateChosenFeatures(
-                                                                    Controller.getCurrentUser().Username,
-                                                                    Controller.getCurrentUserPassword(),
-                                                                    popupServiceRegistered.getService().Id, strFeature)) {
-                                                                popupServiceRegistered.dispose();
-                                                            } else {
-                                                                JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
-                                                                        "SocialCDE message", JOptionPane.ERROR_MESSAGE);
-                                                                popupServiceRegistered.dispose();
-
-                                                            }
-                                                        }
-                                                    });
-                                                }//fine pannello interno service registered
+                                                    Controller.selectDynamicWindow(0);
+                                                    Controller.getWindow().revalidate();
+                                                }
+                                                else {
+                                                    pinWindow.dispose();
+                                                    JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
+                                                            "SocialCDE message", JOptionPane.ERROR_MESSAGE);
 
 
-                                                Controller.selectDynamicWindow(0);
-                                                Controller.getWindow().revalidate();
+                                                    System.out.println("Autorizzazione non confermata");
+                                                }
                                             } else {
                                                 pinWindow.dispose();
                                                 JOptionPane.showMessageDialog(Controller.getFrame(), "Something was wrong, please try again.",
@@ -462,16 +493,15 @@ public class ActionHome {
 
     public void getAccessToken(String event, WService service){
         if (service != null && service.Name.equals("Facebook") && event.contains("#")) {
-
+            System.out.println("arriva****");
             Controller.temporaryInformation
                     .put("AccessToken",
-                            event.split("#")[1].toString()
-                                    .split("&")[0].toString()
-                                    .split("=")[1].toString());
+                            event.split("#")[1].toString().split("&")[0].toString().split("=")[1].toString());
+
         } else if (service != null && service.Name.equals("LinkedIn") && event.contains("?")) {
 
-            Controller.temporaryInformation.put("AccessToken",
-                    event.split("=")[1].toString());
+            Controller.temporaryInformation.put("AccessToken", event.split("=")[1].toString());
+
         } else if ( service != null && event.contains("?")
                 && service.Name.equals("GitHub")) {
             URL query = null;
@@ -482,8 +512,7 @@ public class ActionHome {
                 // e.printStackTrace();
             }
 
-            Controller.temporaryInformation.put("AccessToken", query
-                    .toString().split("=")[1]);
+            Controller.temporaryInformation.put("AccessToken", query.toString().split("=")[1]);
         }
         else if (service != null &&
                 service.Name.equals("Yammer")
@@ -497,8 +526,7 @@ public class ActionHome {
                 e.printStackTrace();
             }
 
-            Controller.temporaryInformation.put("AccessToken", query
-                    .toString().split("=")[1]);
+            Controller.temporaryInformation.put("AccessToken", query.toString().split("=")[1]);
         }
 
     }

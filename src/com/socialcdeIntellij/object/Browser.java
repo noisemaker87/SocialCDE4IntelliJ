@@ -2,12 +2,9 @@ package com.socialcdeIntellij.object;
 
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
-import com.socialcdeIntellij.controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 /**
  * Created by Teo on 28/03/2015.
@@ -48,16 +45,16 @@ public class Browser extends JPanel{
     public void startBrowser(final String url){
         NativeInterface.open();
 
-        f.setLayout(new BorderLayout());
-        f.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        //f.setLayout(new BorderLayout());
+        //f.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 
         wb.navigate(url);
 
         setVisible(true);
-        f.add(this);
-        f.setVisible(true);
-        f.pack();
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //f.add(this);
+        //f.setVisible(true);
+        //f.pack();
+       // f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
 
