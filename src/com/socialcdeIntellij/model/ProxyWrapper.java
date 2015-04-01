@@ -463,7 +463,6 @@ public class ProxyWrapper implements ISocialProxy {
 				String result = "";
 				while ((output = br.readLine()) != null) {
 					result += output;
-                    System.out.println("vedo: "+output);
 
 				}
 				br.close();
@@ -478,6 +477,8 @@ public class ProxyWrapper implements ISocialProxy {
 			woutAuthData = null;
 
 		}
+
+
 
 		return woutAuthData;
 
@@ -512,7 +513,7 @@ public class ProxyWrapper implements ISocialProxy {
 
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-			conn.setRequestMethod("POST");
+            conn.setRequestMethod("POST");
 			conn.setDoOutput(true);
 			conn.setDoInput(true);
 			conn.setUseCaches(false);
@@ -548,6 +549,8 @@ public class ProxyWrapper implements ISocialProxy {
 					result += output;
 
 				}
+                System.out.println("RESULT AUTHORIZE: "+result);
+
 				br.close();
 
 			}

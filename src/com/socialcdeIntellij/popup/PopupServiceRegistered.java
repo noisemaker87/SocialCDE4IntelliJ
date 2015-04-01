@@ -4,17 +4,18 @@
 
 package com.socialcdeIntellij.popup;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import javax.swing.*;
-import javax.swing.border.*;
-
 import com.socialcdeIntellij.action.ActionGeneral;
 import com.socialcdeIntellij.controller.Controller;
 import com.socialcdeIntellij.shared.library.WFeature;
 import com.socialcdeIntellij.shared.library.WService;
-import org.jdesktop.swingx.*;
+import org.jdesktop.swingx.HorizontalLayout;
+import org.jdesktop.swingx.VerticalLayout;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @author Davide Rossi
@@ -108,6 +109,7 @@ public class PopupServiceRegistered extends JDialog {
 
                         service = (WService) Controller.temporaryInformation.get("service");
 
+                        System.out.println("forse qui**************** "+service);
                         WFeature[] featuresService = Controller.getProxy().GetChosenFeatures(
                                 Controller.getCurrentUser().Username,
                                 Controller.getCurrentUserPassword(), service.Id);
