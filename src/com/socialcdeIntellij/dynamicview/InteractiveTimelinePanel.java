@@ -18,7 +18,6 @@ import org.jdesktop.swingx.VerticalLayout;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -385,48 +384,16 @@ public class InteractiveTimelinePanel extends JPanel {
 
                     pnl2.add(lblUsername);
 
-                    /*JTextPane message = new JTextPane();
-                            message.setContentType("text/html");*/
+
                     JTextArea message = new JTextArea();
+                    message.setPreferredSize(new Dimension(160,60));
+                    message.setFont(new Font("Calibri", Font.ITALIC, 11));
                     message.setLineWrap(true);
                     message.setWrapStyleWord(true);
                     message.setEditable(false);
                     message.setBackground(Color.WHITE);
                     message.setText(posts[j].getMessage());
-                            /*message.addHyperlinkListener(new HyperlinkListener() {
-                                @Override
-                                public void hyperlinkUpdate(HyperlinkEvent e) {
-                                    if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                                        if (Desktop.isDesktopSupported()) {
-                                            try {
-                                                Desktop.getDesktop().browse(e.getURL().toURI());
-                                            } catch (IOException e1) {
-                                                // TODO Auto-generated catch block
-                                                e1.printStackTrace();
-                                            } catch (URISyntaxException e1) {
-                                                // TODO Auto-generated catch block
-                                                e1.printStackTrace();
-                                            }
-                                        }
-                                    }
-                                }
-                            });*/
-
-                    final JScrollPane scrollMessage = new JScrollPane();
-                    scrollMessage.setBorder(new EmptyBorder(0,0,0,0));
-                    scrollMessage.setViewportView(message);
-                    scrollMessage.setPreferredSize(new Dimension(150, 50));
-                    scrollMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-                    scrollMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-                    //scrollMessage.setBorder(null);
-                    SwingUtilities.invokeLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            scrollMessage.getVerticalScrollBar().setValue(0);
-                        }
-                    });
-                    pnl2.add(scrollMessage);
-
+                    pnl2.add(message);
 
                     Calendar nowDate = Calendar.getInstance();
                     Calendar dateSelected = posts[j].getCreateAt();
@@ -619,7 +586,6 @@ public class InteractiveTimelinePanel extends JPanel {
                                     lblUsername.setToolTipText("View " + posts[j].getUser().Username + " Timeline");
                                     lblUsername.getLabel().setFont(new Font("Calibri", Font.BOLD, 15));
                                     lblUsername.getLabel().setForeground(Color.BLUE);
-                                    //Controller.temporaryInformation.put("User_selected", posts[j].getUser());
 
                                     lblUsername.getLabel().setwUser(posts[j].getUser());
                                     lblUsername.addMouseListener(listener);
@@ -630,47 +596,14 @@ public class InteractiveTimelinePanel extends JPanel {
 
                                 pnl2.add(lblUsername);
 
-                                /*JTextPane message = new JTextPane();
-                            message.setContentType("text/html");*/
+
                                 JTextArea message = new JTextArea();
                                 message.setLineWrap(true);
                                 message.setWrapStyleWord(true);
                                 message.setEditable(false);
                                 message.setBackground(Color.WHITE);
                                 message.setText(posts[j].getMessage());
-                            /*message.addHyperlinkListener(new HyperlinkListener() {
-                                @Override
-                                public void hyperlinkUpdate(HyperlinkEvent e) {
-                                    if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                                        if (Desktop.isDesktopSupported()) {
-                                            try {
-                                                Desktop.getDesktop().browse(e.getURL().toURI());
-                                            } catch (IOException e1) {
-                                                // TODO Auto-generated catch block
-                                                e1.printStackTrace();
-                                            } catch (URISyntaxException e1) {
-                                                // TODO Auto-generated catch block
-                                                e1.printStackTrace();
-                                            }
-                                        }
-                                    }
-                                }
-                            });*/
-
-                                final JScrollPane scrollMessage = new JScrollPane();
-                                scrollMessage.setBorder(new EmptyBorder(0,0,0,0));
-                                scrollMessage.setViewportView(message);
-                                scrollMessage.setPreferredSize(new Dimension(150, 50));
-                                scrollMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-                                scrollMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-                                //scrollMessage.setBorder(null);
-                                SwingUtilities.invokeLater(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        scrollMessage.getVerticalScrollBar().setValue(0);
-                                    }
-                                });
-                                pnl2.add(scrollMessage);
+                                pnl2.add(message);
 
 
                                 Calendar nowDate = Calendar.getInstance();

@@ -9,7 +9,6 @@ import org.jdesktop.swingx.HorizontalLayout;
 import org.jdesktop.swingx.VerticalLayout;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -82,29 +81,16 @@ public class ActionHomeTimeline {
                             username.getLabel().setForeground(Color.BLACK);
                             pnl2.add(username);
 
-                            //JTextPane message = new JTextPane();
+
                             JTextArea message = new JTextArea();
-                           // message.setContentType("text/html");
+                            message.setPreferredSize(new Dimension(160,60));
+                            message.setFont(new Font("Calibri", Font.ITALIC, 11));
                             message.setLineWrap(true);
                             message.setWrapStyleWord(true);
                             message.setEditable(false);
                             message.setBackground(Color.WHITE);
                             message.setText(userMessage);
-
-                            final JScrollPane scrollMessage = new JScrollPane();
-                            scrollMessage.setBorder(new EmptyBorder(0,0,0,0));
-                            scrollMessage.setViewportView(message);
-                            scrollMessage.setPreferredSize(new Dimension(150, 50));
-                            //scrollMessage.setBorder(null);
-                            scrollMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-                            scrollMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-                            SwingUtilities.invokeLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    scrollMessage.getVerticalScrollBar().setValue(0);
-                                }
-                            });
-                            pnl2.add(scrollMessage);
+                            pnl2.add(message);
 
                             JLabel messageDate = new JLabel();
                             messageDate.setText("About one minutes ago from SocialTFS");
@@ -114,7 +100,7 @@ public class ActionHomeTimeline {
 
                             panel.add(pnl2);
 
-                            //Controller.selectDynamicWindow(3)
+
                             ((JPanel)uiData.get("PanelSubDynamic")).add(panel, 0);
                             ((JPanel)uiData.get("PanelSubDynamic")).revalidate();
                         }
@@ -266,48 +252,16 @@ public class ActionHomeTimeline {
 
                         pnl2.add(lblUsername);
 
-                        /*JTextPane message = new JTextPane();
-                            message.setContentType("text/html");*/
+
                         JTextArea message = new JTextArea();
+                        message.setPreferredSize(new Dimension(160,60));
+                        message.setFont(new Font("Calibri", Font.ITALIC, 11));
                         message.setLineWrap(true);
                         message.setWrapStyleWord(true);
                         message.setEditable(false);
                         message.setBackground(Color.WHITE);
                         message.setText(posts[j].getMessage());
-                            /*message.addHyperlinkListener(new HyperlinkListener() {
-                                @Override
-                                public void hyperlinkUpdate(HyperlinkEvent e) {
-                                    if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                                        if (Desktop.isDesktopSupported()) {
-                                            try {
-                                                Desktop.getDesktop().browse(e.getURL().toURI());
-                                            } catch (IOException e1) {
-                                                // TODO Auto-generated catch block
-                                                e1.printStackTrace();
-                                            } catch (URISyntaxException e1) {
-                                                // TODO Auto-generated catch block
-                                                e1.printStackTrace();
-                                            }
-                                        }
-                                    }
-                                }
-                            });*/
-
-                        final JScrollPane scrollMessage = new JScrollPane();
-                        scrollMessage.setBorder(new EmptyBorder(0,0,0,0));
-                        scrollMessage.setViewportView(message);
-                        scrollMessage.setPreferredSize(new Dimension(150, 50));
-                        scrollMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-                        scrollMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-                        //scrollMessage.setBorder(null);
-                        SwingUtilities.invokeLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                scrollMessage.getVerticalScrollBar().setValue(0);
-                            }
-                        });
-                        pnl2.add(scrollMessage);
-
+                        pnl2.add(message);
 
                         Calendar nowDate = Calendar.getInstance();
                         Calendar dateSelected = posts[j].getCreateAt();
