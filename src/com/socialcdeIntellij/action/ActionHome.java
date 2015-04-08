@@ -18,7 +18,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.*;
@@ -189,6 +188,7 @@ public class ActionHome {
 
                                         int progress = wb.getLoadingProgress();
                                         if (progress == 100) {
+                                            System.out.println("nome servizio: "+service.Name);
                                             getAccessToken(pageUrl,service);
                                             System.out.println("C'è IL TOKEN??*** "+(String) Controller.temporaryInformation.get("AccessToken"));
                                         }
@@ -273,34 +273,7 @@ public class ActionHome {
                             }
 
 
-                            //Controller.getToolWindow().hide();
-
-
-
                             System.out.println("INIZIO **** "+browser.getUrlString());
-
-                          /*  final URL url;
-                            final URI uri;
-
-                            if (Desktop.isDesktopSupported()) {
-                                try {
-                                    Desktop desktop = Desktop.getDesktop();
-                                    uri = new URI(oauthData.AuthorizationLink);
-                                    desktop.browse(uri);
-                                } catch (IOException e1) {
-                                    // TODO Auto-generated catch block
-                                    e1.printStackTrace();
-                                } catch (URISyntaxException e1) {
-                                    // TODO Auto-generated catch block
-                                    e1.printStackTrace();
-                                }
-                            }*/
-
-                           // pinWindow.setService(service);
-                            //pinWindow.setOauthData(oauthData);
-                            System.out.println("service *** "+service);
-                            System.out.println("oauthdata *** "+oauthData);
-
 
                             pinWindow.getBtnOk().addActionListener(new ActionListener() {
                                 @Override
@@ -407,8 +380,6 @@ public class ActionHome {
 
                                         case 2://facebook
                                                 System.out.println("QUA **** "+browser.getWb().getResourceLocation());
-                                            //getAccessToken(browser.getWb().getResourceLocation(), service);
-                                          //  System.out.println("MIO TOKEN: **** "+ Controller.temporaryInformation.get("AccessToken").toString());
 
                                             if(!(((String) Controller.temporaryInformation.get("AccessToken")).isEmpty())){
                                                 if (Controller.getProxy().Authorize(
@@ -417,11 +388,8 @@ public class ActionHome {
                                                         service.getId(),
                                                         null,
                                                         (String) Controller.temporaryInformation.get("AccessToken"),
-                                                        //oauthData.getAccessToken(),
-                                                        //oauthData.getAccessToken(),
                                                         null)) {
                                                     pinWindow.dispose();
-                                                    //pinWindow.getService().Registered = true;
                                                     service.Registered = true;
                                                     Controller.getWindow().revalidate();
                                                     pinWindow.setOauthData(null);
@@ -530,17 +498,6 @@ public class ActionHome {
                                 }
                             });
 
-                           /* if (Desktop.isDesktopSupported()) {
-                                try {
-                                    Desktop.getDesktop().browse(new URI(oauthData.AuthorizationLink));
-                                } catch (IOException e1) {
-                                    // TODO Auto-generated catch block
-                                    e1.printStackTrace();
-                                } catch (URISyntaxException e1) {
-                                    // TODO Auto-generated catch block
-                                    e1.printStackTrace();
-                                }
-                            }*/
 
                         }
                         else if(service.RequireTFSAuthentication) {
@@ -601,7 +558,6 @@ public class ActionHome {
 
     public void getAccessToken(String event, WService service){
         if (service != null && service.Name.equals("Facebook") && event.contains("#")) {
-            System.out.println("arriva****");
             Controller.temporaryInformation
                     .put("AccessToken",
                             event.split("#")[1].toString().split("&")[0].toString().split("=")[1].toString());
@@ -610,31 +566,14 @@ public class ActionHome {
 
             Controller.temporaryInformation.put("AccessToken", event.split("=")[1].toString());
 
-        } else if ( service != null && event.contains("?")
-                && service.Name.equals("GitHub")) {
-            URL query = null;
-            try {
-                query = new URL(event.toString());
-            } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
-                // e.printStackTrace();
-            }
-
-            Controller.temporaryInformation.put("AccessToken", query.toString().split("=")[1]);
+        } else if ( service != null && event.contains("?") && service.Name.equals("GitHub")) {
+            Controller.temporaryInformation.put("AccessToken", event.split("=")[1].toString());
         }
         else if (service != null &&
                 service.Name.equals("Yammer")
                 && event.contains("?")
                 && !event.contains("&")) {
-            URL query = null;
-            try {
-                query = new URL(event.toString());
-            } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            Controller.temporaryInformation.put("AccessToken", query.toString().split("=")[1]);
+            Controller.temporaryInformation.put("AccessToken", event.split("=")[1].toString());
         }
 
     }

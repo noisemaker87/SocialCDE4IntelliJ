@@ -20,9 +20,5 @@ public class MainAction extends AnAction {
         Controller.setFrame(WindowManager.getInstance().getFrame(project));
         Controller.setProject(project);
 
-      /*
-        String txt= Messages.showInputDialog(project, "What is your name?", "Input your name", Messages.getQuestionIcon());
-        Messages.showMessageDialog(project, "Hello, " + txt + "!\n I am glad to see you.", "Information", Messages.getInformationIcon());*/
-
     }
 }
