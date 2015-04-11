@@ -1,13 +1,11 @@
 package com.socialcdeIntellij.action;
 
 import com.socialcdeIntellij.controller.Controller;
-import com.socialcdeIntellij.model.ProxyWrapper;
+import com.socialcdeIntellij.proxyservice.ProxyWrapper;
 import com.socialcdeIntellij.object.ImagesMod;
-import com.socialcdeIntellij.object.OperationProgressBar;
-import com.socialcdeIntellij.staticview.LoginPanel;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.HashMap;
 

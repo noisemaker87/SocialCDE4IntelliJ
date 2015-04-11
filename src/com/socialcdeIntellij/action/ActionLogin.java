@@ -1,8 +1,7 @@
 package com.socialcdeIntellij.action;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.socialcdeIntellij.controller.Controller;
-import com.socialcdeIntellij.model.ProxyWrapper;
+import com.socialcdeIntellij.proxyservice.ProxyWrapper;
 import com.socialcdeIntellij.object.*;
 
 import com.socialcdeIntellij.shared.library.WUser;
@@ -10,17 +9,10 @@ import com.socialcdeIntellij.shared.library.WUser;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
-import java.util.TimerTask;
-import java.util.prefs.Preferences;
 
 /**
  * Created by Teo on 10/03/2015.

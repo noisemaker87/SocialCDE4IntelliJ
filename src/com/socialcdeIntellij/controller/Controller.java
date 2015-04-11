@@ -3,7 +3,7 @@ package com.socialcdeIntellij.controller;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
 import com.socialcdeIntellij.dynamicview.*;
-import com.socialcdeIntellij.model.ProxyWrapper;
+import com.socialcdeIntellij.proxyservice.ProxyWrapper;
 import com.socialcdeIntellij.object.OperationProgressBar;
 import com.socialcdeIntellij.shared.library.WUser;
 import com.socialcdeIntellij.staticview.*;
